@@ -3,10 +3,10 @@ import { useRef } from "react";
 import { Zap, AlertTriangle, Info, HelpCircle } from "lucide-react";
 
 const slaLevels = [
-  { priority: "P1", label: "Critical", time: "15 Min", desc: "Breach / Ransomware", icon: Zap, accent: true },
-  { priority: "P2", label: "High", time: "45 Min", desc: "Malware / Unauthorized Access", icon: AlertTriangle, accent: false },
-  { priority: "P3", label: "Medium", time: "4 Hours", desc: "Suspicious Activity", icon: Info, accent: false },
-  { priority: "P4", label: "Low", time: "8 Hours", desc: "General Requests", icon: HelpCircle, accent: false },
+  { priority: "P1", label: "Critical", time: "15 Min", desc: "Breach / Ransomware", icon: Zap, neonTime: true },
+  { priority: "P2", label: "High", time: "45 Min", desc: "Malware / Unauthorized Access", icon: AlertTriangle, neonTime: true },
+  { priority: "P3", label: "Medium", time: "4 Hours", desc: "Suspicious Activity", icon: Info, neonTime: false },
+  { priority: "P4", label: "Low", time: "8 Hours", desc: "General Requests", icon: HelpCircle, neonTime: false },
 ];
 
 const SLASection = () => {
@@ -26,7 +26,7 @@ const SLASection = () => {
         <h2 className="font-display text-3xl sm:text-4xl font-bold mb-4 text-foreground">
           Response Targets
         </h2>
-        <p className="text-muted-foreground max-w-2xl mb-14 leading-relaxed">
+        <p className="text-secondary-foreground max-w-2xl mb-14 leading-relaxed">
           Speed is the difference between containment and catastrophe. Our SLA guarantees rapid
           response across every severity tier.
         </p>
@@ -40,14 +40,16 @@ const SLASection = () => {
             animate={inView ? { opacity: 1, y: 0 } : {}}
             transition={{ duration: 0.5, delay: i * 0.1 }}
             className={`glass-card rounded-xl p-8 text-center transition-all duration-300 ${
-              sla.accent ? "neon-border" : "hover:neon-border"
+              sla.neonTime ? "neon-border" : "hover:neon-border"
             }`}
           >
-            <sla.icon className={`mx-auto mb-4 ${sla.accent ? "text-primary" : "text-muted-foreground"}`} size={24} />
-            <p className="font-display text-xs tracking-widest text-muted-foreground mb-1">
+            <sla.icon className={`mx-auto mb-4 ${sla.neonTime ? "text-primary" : "text-foreground/70"}`} size={24} />
+            <p className="font-display text-xs tracking-widest text-secondary-foreground mb-1">
               {sla.priority} — {sla.label}
             </p>
-            <p className="font-display text-3xl font-black neon-text my-3">{sla.time}</p>
+            <p className={`font-display text-3xl font-black my-3 ${sla.neonTime ? "neon-text" : "text-foreground"}`}>
+              {sla.time}
+            </p>
             <p className="text-muted-foreground text-sm">{sla.desc}</p>
           </motion.div>
         ))}

@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -7,22 +7,22 @@
 @layer base {
   :root {
     --background: 0 0% 2%;
-    --foreground: 0 0% 92%;
+    --foreground: 0 0% 100%;
 
     --card: 0 0% 10%;
-    --card-foreground: 0 0% 92%;
+    --card-foreground: 0 0% 100%;
 
     --popover: 0 0% 8%;
-    --popover-foreground: 0 0% 92%;
+    --popover-foreground: 0 0% 100%;
 
     --primary: 110 100% 54%;
     --primary-foreground: 0 0% 2%;
 
     --secondary: 0 0% 10%;
-    --secondary-foreground: 0 0% 92%;
+    --secondary-foreground: 0 0% 88%;
 
     --muted: 0 0% 14%;
-    --muted-foreground: 0 0% 55%;
+    --muted-foreground: 0 0% 78%;
 
     --accent: 110 100% 54%;
     --accent-foreground: 0 0% 2%;
@@ -63,7 +63,7 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Syne', sans-serif;
   }
 }
 
@@ -111,6 +111,6 @@
 
 @layer utilities {
   .font-display {
-    font-family: 'Orbitron', sans-serif;
+    font-family: 'Syne', sans-serif;
   }
 }

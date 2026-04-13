@@ -3,11 +3,10 @@ import { Menu, X } from "lucide-react";
 import logo from "@/assets/araska-logo.png";
 
 const navLinks = [
-  { label: "Mission", href: "#mission" },
-  { label: "Services", href: "#services" },
+  { label: "Vigilance", href: "#mission" },
+  { label: "Our Stack", href: "#tech" },
   { label: "SLA", href: "#sla" },
-  { label: "Tech Stack", href: "#tech" },
-  { label: "Contact", href: "#contact" },
+  { label: "Legal", href: "#contact" },
 ];
 
 const Header = () => {
@@ -27,9 +26,12 @@ const Header = () => {
       }`}
     >
       <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
-        <a href="#" className="flex items-center gap-3">
-          <img src={logo} alt="Araska Cyber Core" className="h-10 w-10" />
-          <span className="font-display text-sm font-bold tracking-wider neon-text hidden sm:inline">
+        <a href="#" className="flex items-center gap-3 relative">
+          <div className="relative">
+            <div className="absolute inset-0 rounded-full bg-primary/20 blur-xl scale-150" />
+            <img src={logo} alt="Araska Cyber Core" className="h-16 w-16 relative z-10" />
+          </div>
+          <span className="font-display text-lg font-bold tracking-wider neon-text hidden sm:inline">
             ARASKA
           </span>
         </a>
@@ -39,7 +41,7 @@ const Header = () => {
             <a
               key={link.href}
               href={link.href}
-              className="text-sm text-muted-foreground hover:text-primary transition-colors duration-200 tracking-wide"
+              className="text-sm text-foreground/80 hover:text-primary transition-colors duration-200 tracking-wide font-medium"
             >
               {link.label}
             </a>
@@ -65,7 +67,7 @@ const Header = () => {
               key={link.href}
               href={link.href}
               onClick={() => setMobileOpen(false)}
-              className="text-sm text-muted-foreground hover:text-primary transition-colors"
+              className="text-sm text-foreground/80 hover:text-primary transition-colors font-medium"
             >
               {link.label}
             </a>

@@ -25,7 +25,7 @@ const values = [
 const About = () => (
   <div className="min-h-screen bg-background">
     <Header />
-    <main className="pt-28 pb-16">
+    <main className="pt-36 pb-16">
       <div className="max-w-4xl mx-auto px-6">
         {/* Who We Are */}
         <motion.div
@@ -34,7 +34,8 @@ const About = () => (
           transition={{ duration: 0.5 }}
           className="mb-20"
         >
-          <p className="text-primary font-display text-xs tracking-[0.3em] uppercase mb-3">About Us</p>
+          <span className="eyebrow">About Us</span>
+          <span className="eyebrow-rule" />
           <h1 className="font-display text-4xl sm:text-5xl font-extrabold text-foreground mb-8">
             Built to Protect. Built to Last.
           </h1>
@@ -51,32 +52,35 @@ const About = () => (
           </div>
         </motion.div>
 
-        {/* Values */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.15 }}
-          className="mb-20"
-        >
-          <p className="text-primary font-display text-xs tracking-[0.3em] uppercase mb-3">Our Values</p>
-          <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mb-8">
-            What Drives Us
-          </h2>
-          <div className="grid sm:grid-cols-2 gap-6">
-            {values.map((v, i) => (
-              <motion.div
-                key={v.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.2 + i * 0.08 }}
-                className="glass-card rounded-xl p-8"
-              >
-                <h3 className="font-display text-lg font-semibold mb-3 text-foreground">{v.title}</h3>
-                <p className="text-muted-foreground text-sm leading-relaxed">{v.desc}</p>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
+        {/* Values — Light Section */}
+        <div className="section-light -mx-6 px-6 py-20 md:-mx-12 md:px-12 lg:-mx-24 lg:px-24 mb-20 rounded-none">
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.5, delay: 0.15 }}
+            className="max-w-4xl mx-auto"
+          >
+            <span className="eyebrow">Our Values</span>
+            <span className="eyebrow-rule" />
+            <h2 className="font-display text-3xl sm:text-4xl font-bold text-light-foreground mb-8">
+              What Drives Us
+            </h2>
+            <div className="grid sm:grid-cols-2 gap-6">
+              {values.map((v, i) => (
+                <motion.div
+                  key={v.title}
+                  initial={{ opacity: 0, y: 20 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: 0.2 + i * 0.08 }}
+                  className="bg-white rounded-lg p-8 border border-light-muted/20 hover:shadow-lg transition-all duration-200"
+                >
+                  <h3 className="font-display text-lg font-semibold mb-3 text-light-foreground">{v.title}</h3>
+                  <p className="text-light-muted text-sm leading-relaxed">{v.desc}</p>
+                </motion.div>
+              ))}
+            </div>
+          </motion.div>
+        </div>
 
         {/* Approach */}
         <motion.div
@@ -85,7 +89,8 @@ const About = () => (
           transition={{ duration: 0.5, delay: 0.3 }}
           className="mb-20"
         >
-          <p className="text-primary font-display text-xs tracking-[0.3em] uppercase mb-3">Our Approach</p>
+          <span className="eyebrow">Our Approach</span>
+          <span className="eyebrow-rule" />
           <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mb-6">
             How We Deliver Security
           </h2>
@@ -104,12 +109,12 @@ const About = () => (
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="glass-card neon-border rounded-2xl p-12 text-center"
+          className="glass-card gold-border rounded-lg p-12 text-center"
         >
           <h2 className="font-display text-2xl sm:text-3xl font-bold text-foreground mb-4">
             Want to know more about how we work?
           </h2>
-          <Link to="/contact" className="neon-btn text-sm">
+          <Link to="/contact" className="gold-btn text-sm">
             Get in Touch
           </Link>
         </motion.div>

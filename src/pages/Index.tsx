@@ -11,13 +11,15 @@ import Footer from "@/components/Footer";
 const Index = () => (
   <div className="min-h-screen bg-background">
     <Header />
-    <HeroSection />
-    <TrustBar />
-    <ProblemSection />
-    <ServicesOverview />
-    <WhyUsSection />
-    <HowItWorks />
-    <CTABanner />
+    <main className="pt-[36px]">
+      <HeroSection />
+      <TrustBar />
+      <ProblemSection />
+      <ServicesOverview />
+      <WhyUsSection />
+      <HowItWorks />
+      <CTABanner />
+    </main>
     <Footer />
   </div>
 );

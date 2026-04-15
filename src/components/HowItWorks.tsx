@@ -29,7 +29,7 @@ const HowItWorks = () => {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section className="section-padding bg-secondary/30" ref={ref}>
+    <section className="section-padding section-dark-alt" ref={ref}>
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -37,7 +37,8 @@ const HowItWorks = () => {
           transition={{ duration: 0.5 }}
           className="mb-14"
         >
-          <p className="text-primary font-display text-xs tracking-[0.3em] uppercase mb-3">Our Process</p>
+          <span className="eyebrow">Our Process</span>
+          <span className="eyebrow-rule" />
           <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground">
             How We Work With You
           </h2>
@@ -53,10 +54,10 @@ const HowItWorks = () => {
               className="relative"
             >
               {i < steps.length - 1 && (
-                <div className="hidden lg:block absolute top-8 left-full w-full h-px bg-gradient-to-r from-primary/40 to-transparent -translate-x-4 z-0" />
+                <div className="hidden lg:block absolute top-8 left-full w-full h-px bg-gradient-to-r from-primary/30 to-transparent -translate-x-4 z-0" />
               )}
-              <div className="glass-card rounded-xl p-8 relative z-10 h-full">
-                <span className="font-display text-3xl font-extrabold neon-text mb-4 block">{s.step}</span>
+              <div className="glass-card rounded-lg p-8 relative z-10 h-full hover:translate-y-[-2px] transition-all duration-200">
+                <span className="font-display text-3xl font-extrabold text-primary mb-4 block">{s.step}</span>
                 <h3 className="font-display text-lg font-semibold mb-3 text-foreground">{s.title}</h3>
                 <p className="text-muted-foreground text-sm leading-relaxed">{s.desc}</p>
               </div>

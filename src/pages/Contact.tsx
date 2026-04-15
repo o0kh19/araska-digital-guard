@@ -11,14 +11,14 @@ const Contact = () => {
   const update = (field: string, value: string) => setForm((prev) => ({ ...prev, [field]: value }));
   const canSubmit = form.name && form.email && form.message;
 
-  const inputCls = "w-full bg-secondary/50 border border-border rounded-lg px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors";
+  const inputCls = "w-full bg-secondary/50 border border-border rounded px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-colors";
   const labelCls = "block text-sm font-medium text-foreground mb-1.5";
 
   if (submitted) {
     return (
       <div className="min-h-screen bg-background">
         <Header />
-        <main className="pt-28 pb-16 flex items-center justify-center">
+        <main className="pt-36 pb-16 flex items-center justify-center">
           <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="text-center px-6">
             <CheckCircle className="text-primary mx-auto mb-6" size={48} />
             <h1 className="font-display text-3xl font-bold text-foreground mb-4">Message Sent</h1>
@@ -33,9 +33,11 @@ const Contact = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      <main className="pt-28 pb-16">
+      <main className="pt-36 pb-16">
         <div className="max-w-5xl mx-auto px-6">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-12">
+            <span className="eyebrow">Reach Out</span>
+            <span className="eyebrow-rule" />
             <h1 className="font-display text-4xl sm:text-5xl font-extrabold text-foreground mb-4">Get in Touch</h1>
             <p className="text-muted-foreground text-lg">
               Whether you have a quick question or want to start a conversation about your security, we are here.
@@ -48,7 +50,7 @@ const Contact = () => {
               initial={{ opacity: 0, x: -20 }}
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.1 }}
-              className="md:col-span-3 glass-card rounded-xl p-8"
+              className="md:col-span-3 glass-card rounded-lg p-8"
             >
               <div className="space-y-5">
                 <div className="grid sm:grid-cols-2 gap-5">
@@ -60,7 +62,7 @@ const Contact = () => {
                 <button
                   onClick={() => canSubmit && setSubmitted(true)}
                   disabled={!canSubmit}
-                  className="neon-btn text-xs py-2.5 px-6 disabled:opacity-40 disabled:cursor-not-allowed disabled:transform-none"
+                  className="gold-btn text-xs py-2.5 px-6 disabled:opacity-40 disabled:cursor-not-allowed disabled:transform-none"
                 >
                   Send Message
                 </button>
@@ -74,7 +76,7 @@ const Contact = () => {
               transition={{ delay: 0.2 }}
               className="md:col-span-2 space-y-6"
             >
-              <div className="glass-card rounded-xl p-6">
+              <div className="glass-card rounded-lg p-6">
                 <div className="flex items-center gap-3 mb-2">
                   <Mail className="text-primary" size={18} />
                   <h3 className="font-display text-sm font-semibold text-foreground">Email</h3>
@@ -83,14 +85,14 @@ const Contact = () => {
                   info@araskacybercore.com
                 </a>
               </div>
-              <div className="glass-card rounded-xl p-6">
+              <div className="glass-card rounded-lg p-6">
                 <div className="flex items-center gap-3 mb-2">
                   <MapPin className="text-primary" size={18} />
                   <h3 className="font-display text-sm font-semibold text-foreground">Headquarters</h3>
                 </div>
                 <p className="text-sm text-muted-foreground">United Kingdom</p>
               </div>
-              <div className="glass-card rounded-xl p-6">
+              <div className="glass-card rounded-lg p-6">
                 <div className="flex items-center gap-3 mb-2">
                   <Clock className="text-primary" size={18} />
                   <h3 className="font-display text-sm font-semibold text-foreground">Response Time</h3>

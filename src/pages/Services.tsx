@@ -40,7 +40,7 @@ const services = [
 const Services = () => (
   <div className="min-h-screen bg-background">
     <Header />
-    <main className="pt-28 pb-16">
+    <main className="pt-36 pb-16">
       <div className="max-w-7xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -48,7 +48,8 @@ const Services = () => (
           transition={{ duration: 0.5 }}
           className="mb-16"
         >
-          <p className="text-primary font-display text-xs tracking-[0.3em] uppercase mb-3">Our Services</p>
+          <span className="eyebrow">Our Services</span>
+          <span className="eyebrow-rule" />
           <h1 className="font-display text-4xl sm:text-5xl font-extrabold text-foreground mb-4">
             What We Do
           </h1>
@@ -65,18 +66,18 @@ const Services = () => (
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="glass-card rounded-xl p-8 md:p-10 hover:neon-border transition-all duration-300 scroll-mt-28"
+              className="glass-card rounded-lg p-8 md:p-10 transition-all duration-200 scroll-mt-36 hover:translate-y-[-2px]"
             >
               <div className="flex items-start gap-6">
-                <div className="hidden sm:flex items-center justify-center w-14 h-14 rounded-xl bg-primary/10 flex-shrink-0">
-                  <svc.icon className="text-primary" size={28} />
+                <div className="hidden sm:flex items-center justify-center w-14 h-14 rounded-lg bg-primary/10 flex-shrink-0">
+                  <svc.icon className="text-primary" size={28} strokeWidth={1.5} />
                 </div>
                 <div className="flex-1">
                   <h2 className="font-display text-2xl font-bold text-foreground mb-4">{svc.title}</h2>
                   <p className="text-secondary-foreground leading-relaxed mb-6">{svc.desc}</p>
                   <Link
                     to={`/get-a-quote?service=${encodeURIComponent(svc.title)}`}
-                    className="neon-btn text-xs py-2.5 px-6"
+                    className="gold-btn text-xs py-2.5 px-6"
                   >
                     Get a Quote for This Service
                   </Link>

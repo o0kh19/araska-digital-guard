@@ -46,7 +46,7 @@ const GetAQuote = () => {
 
   const handleSubmit = () => setSubmitted(true);
 
-  const inputCls = "w-full bg-secondary/50 border border-border rounded-lg px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/50 focus:border-primary transition-colors";
+  const inputCls = "w-full bg-secondary/50 border border-border rounded px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-colors";
   const selectCls = inputCls;
   const labelCls = "block text-sm font-medium text-foreground mb-1.5";
 
@@ -54,7 +54,7 @@ const GetAQuote = () => {
     return (
       <div className="min-h-screen bg-background">
         <Header />
-        <main className="pt-28 pb-16 flex items-center justify-center">
+        <main className="pt-36 pb-16 flex items-center justify-center">
           <motion.div
             initial={{ opacity: 0, scale: 0.95 }}
             animate={{ opacity: 1, scale: 1 }}
@@ -81,9 +81,11 @@ const GetAQuote = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      <main className="pt-28 pb-16">
+      <main className="pt-36 pb-16">
         <div className="max-w-3xl mx-auto px-6">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-10">
+            <span className="eyebrow">Request a Proposal</span>
+            <span className="eyebrow-rule" />
             <h1 className="font-display text-4xl sm:text-5xl font-extrabold text-foreground mb-4">
               Get a Tailored Quote
             </h1>
@@ -97,15 +99,15 @@ const GetAQuote = () => {
           <div className="flex items-center gap-2 mb-10">
             {[1, 2, 3, 4].map((s) => (
               <div key={s} className="flex-1 flex items-center gap-2">
-                <div className={`h-2 flex-1 rounded-full transition-colors ${s <= step ? "bg-primary" : "bg-border"}`} />
+                <div className={`h-1.5 flex-1 rounded-full transition-colors ${s <= step ? "bg-primary" : "bg-border"}`} />
               </div>
             ))}
           </div>
-          <p className="text-xs text-muted-foreground mb-8">
+          <p className="text-xs text-muted-foreground mb-8 font-mono">
             Step {step} of 4 — {["About Your Organisation", "Your Current Security Setup", "What You Need", "Anything Else"][step - 1]}
           </p>
 
-          <div className="glass-card rounded-xl p-8 md:p-10">
+          <div className="glass-card rounded-lg p-8 md:p-10">
             {/* Step 1 */}
             {step === 1 && (
               <div className="space-y-5">
@@ -195,7 +197,7 @@ const GetAQuote = () => {
                   <label className={labelCls}>Which services are you interested in? *</label>
                   <div className="grid sm:grid-cols-2 gap-2 mt-2">
                     {serviceOptions.map((s) => (
-                      <label key={s} className="flex items-center gap-3 p-3 rounded-lg border border-border hover:border-primary/30 transition-colors cursor-pointer">
+                      <label key={s} className="flex items-center gap-3 p-3 rounded border border-border hover:border-primary/30 transition-colors cursor-pointer">
                         <input
                           type="checkbox"
                           checked={form.services.includes(s)}
@@ -218,7 +220,7 @@ const GetAQuote = () => {
                   <label className={labelCls}>Compliance or regulatory requirements</label>
                   <div className="grid sm:grid-cols-2 gap-2 mt-2">
                     {complianceOptions.map((c) => (
-                      <label key={c} className="flex items-center gap-3 p-3 rounded-lg border border-border hover:border-primary/30 transition-colors cursor-pointer">
+                      <label key={c} className="flex items-center gap-3 p-3 rounded border border-border hover:border-primary/30 transition-colors cursor-pointer">
                         <input
                           type="checkbox"
                           checked={form.compliance.includes(c)}
@@ -294,7 +296,7 @@ const GetAQuote = () => {
                 <button
                   onClick={() => canNext() && setStep(step + 1)}
                   disabled={!canNext()}
-                  className="neon-btn text-xs py-2.5 px-6 disabled:opacity-40 disabled:cursor-not-allowed disabled:transform-none"
+                  className="gold-btn text-xs py-2.5 px-6 disabled:opacity-40 disabled:cursor-not-allowed disabled:transform-none"
                 >
                   Next →
                 </button>
@@ -302,7 +304,7 @@ const GetAQuote = () => {
                 <button
                   onClick={handleSubmit}
                   disabled={!canNext()}
-                  className="neon-btn text-xs py-2.5 px-6 disabled:opacity-40 disabled:cursor-not-allowed disabled:transform-none"
+                  className="gold-btn text-xs py-2.5 px-6 disabled:opacity-40 disabled:cursor-not-allowed disabled:transform-none"
                 >
                   Send My Request
                 </button>

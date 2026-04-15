@@ -43,7 +43,7 @@ const Resources = () => {
   return (
     <div className="min-h-screen bg-background">
       <Header />
-      <main className="pt-28 pb-16">
+      <main className="pt-36 pb-16">
         <div className="max-w-7xl mx-auto px-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
@@ -51,6 +51,8 @@ const Resources = () => {
             transition={{ duration: 0.5 }}
             className="mb-10"
           >
+            <span className="eyebrow">Insights</span>
+            <span className="eyebrow-rule" />
             <h1 className="font-display text-4xl sm:text-5xl font-extrabold text-foreground mb-4">
               Resources
             </h1>
@@ -65,10 +67,10 @@ const Resources = () => {
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`text-xs font-medium px-4 py-2 rounded-full border transition-all duration-200 ${
+                className={`text-xs font-medium px-4 py-2 rounded border transition-all duration-200 font-mono ${
                   activeCategory === cat
                     ? "border-primary bg-primary/10 text-primary"
-                    : "border-border text-muted-foreground hover:border-primary/50 hover:text-foreground"
+                    : "border-border text-muted-foreground hover:border-primary/40 hover:text-foreground"
                 }`}
               >
                 {cat}
@@ -84,9 +86,9 @@ const Resources = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: i * 0.08 }}
-                className="glass-card rounded-xl p-8 hover:neon-border transition-all duration-300 flex flex-col"
+                className="glass-card rounded-lg p-8 transition-all duration-200 flex flex-col hover:translate-y-[-3px]"
               >
-                <span className="text-xs text-primary font-medium tracking-wide mb-3">{post.category}</span>
+                <span className="text-xs text-primary font-mono font-medium tracking-wide mb-3">{post.category}</span>
                 <h3 className="font-display text-lg font-semibold text-foreground mb-3 leading-snug">
                   {post.title}
                 </h3>

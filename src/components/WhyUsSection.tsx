@@ -30,7 +30,7 @@ const WhyUsSection = () => {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section className="section-padding" ref={ref}>
+    <section className="section-padding section-light" ref={ref}>
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -38,8 +38,9 @@ const WhyUsSection = () => {
           transition={{ duration: 0.5 }}
           className="mb-14"
         >
-          <p className="text-primary font-display text-xs tracking-[0.3em] uppercase mb-3">Why Us</p>
-          <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground">
+          <span className="eyebrow text-primary">Why Us</span>
+          <span className="eyebrow-rule" />
+          <h2 className="font-display text-3xl sm:text-4xl font-bold text-light-foreground">
             Why Organisations Choose Us
           </h2>
         </motion.div>
@@ -51,11 +52,13 @@ const WhyUsSection = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="glass-card rounded-xl p-8 hover:neon-border transition-all duration-300"
+              className="bg-white rounded-lg p-8 border border-light-muted/20 hover:shadow-lg transition-all duration-200 hover:translate-y-[-2px]"
             >
-              <p.icon className="text-primary mb-4" size={24} />
-              <h3 className="font-display text-lg font-semibold mb-3 text-foreground">{p.title}</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed">{p.desc}</p>
+              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+                <p.icon className="text-primary" size={22} strokeWidth={1.5} />
+              </div>
+              <h3 className="font-display text-lg font-semibold mb-3 text-light-foreground">{p.title}</h3>
+              <p className="text-light-muted text-sm leading-relaxed">{p.desc}</p>
             </motion.div>
           ))}
         </div>

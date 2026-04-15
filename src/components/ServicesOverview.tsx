@@ -41,7 +41,7 @@ const ServicesOverview = () => {
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
   return (
-    <section id="services" className="section-padding bg-secondary/30" ref={ref}>
+    <section id="services" className="section-padding section-dark" ref={ref}>
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -49,7 +49,8 @@ const ServicesOverview = () => {
           transition={{ duration: 0.5 }}
           className="mb-14"
         >
-          <p className="text-primary font-display text-xs tracking-[0.3em] uppercase mb-3">What We Do</p>
+          <span className="eyebrow">What We Do</span>
+          <span className="eyebrow-rule" />
           <h2 className="font-display text-3xl sm:text-4xl font-bold mb-4 text-foreground">
             End-to-End Cybersecurity Services
           </h2>
@@ -65,9 +66,11 @@ const ServicesOverview = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="glass-card rounded-xl p-8 hover:neon-border transition-all duration-300 flex flex-col group"
+              className="glass-card rounded-lg p-8 transition-all duration-200 flex flex-col group hover:translate-y-[-3px]"
             >
-              <svc.icon className="text-primary mb-5" size={28} />
+              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-5">
+                <svc.icon className="text-primary" size={22} strokeWidth={1.5} />
+              </div>
               <h3 className="font-display text-lg font-semibold mb-3 text-foreground">{svc.title}</h3>
               <p className="text-muted-foreground text-sm leading-relaxed mb-6 flex-1">{svc.desc}</p>
               <Link

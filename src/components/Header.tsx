@@ -27,71 +27,97 @@ const Header = () => {
   }, [location]);
 
   return (
-    <header
-      className={`fixed top-0 left-0 right-0 z-50 transition-all duration-300 ${
-        scrolled ? "glass-card border-b border-border" : "bg-background/80 backdrop-blur-sm"
-      }`}
-    >
-      <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
-        <Link to="/" className="flex items-center gap-3 relative">
-          <div className="relative">
-            <div className="absolute inset-0 rounded-full bg-primary/20 blur-xl scale-150" />
-            <img src={logo} alt="Araska Cyber Core" className="h-12 w-12 relative z-10" />
-          </div>
-          <span className="font-display text-lg font-bold tracking-wider neon-text hidden sm:inline">
-            ARASKA
-          </span>
-        </Link>
-
-        <nav className="hidden lg:flex items-center gap-8">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              to={link.href}
-              className={`text-sm transition-colors duration-200 tracking-wide font-medium ${
-                location.pathname === link.href
-                  ? "text-primary"
-                  : "text-foreground/80 hover:text-primary"
-              }`}
-            >
-              {link.label}
-            </Link>
-          ))}
-          <Link to="/get-a-quote" className="neon-btn text-xs py-2.5 px-6">
-            Get a Quote
+    <>
+      {/* Utility Bar */}
+      <div className="fixed top-0 left-0 right-0 z-[60] bg-[hsl(222_47%_4%)] border-b border-border/30">
+        <div className="max-w-7xl mx-auto flex items-center justify-end px-6 py-2 gap-6">
+          <Link to="/contact" className="text-xs text-muted-foreground hover:text-foreground transition-colors">
+            Support
           </Link>
-        </nav>
-
-        <button
-          className="lg:hidden text-foreground"
-          onClick={() => setMobileOpen(!mobileOpen)}
-          aria-label="Toggle menu"
-        >
-          {mobileOpen ? <X size={24} /> : <Menu size={24} />}
-        </button>
+          <Link to="/contact" className="text-xs text-muted-foreground hover:text-foreground transition-colors">
+            Contact
+          </Link>
+          <Link to="/get-a-quote" className="text-xs text-primary font-medium hover:text-primary-light transition-colors">
+            Breached?
+          </Link>
+        </div>
       </div>
 
-      {mobileOpen && (
-        <nav className="lg:hidden glass-card border-t border-border px-6 py-6 flex flex-col gap-4">
-          {navLinks.map((link) => (
-            <Link
-              key={link.href}
-              to={link.href}
-              className={`text-sm transition-colors font-medium ${
-                location.pathname === link.href
-                  ? "text-primary"
-                  : "text-foreground/80 hover:text-primary"
-              }`}
-            >
-              {link.label}
-            </Link>
-          ))}
-          <Link to="/get-a-quote" className="neon-btn text-xs py-2.5 px-6 text-center">
-            Get a Quote
+      {/* Main Nav */}
+      <header
+        className={`fixed top-[36px] left-0 right-0 z-50 transition-all duration-300 border-b ${
+          scrolled
+            ? "bg-background/90 backdrop-blur-lg border-primary/10"
+            : "bg-background/80 backdrop-blur-sm border-border/20"
+        }`}
+      >
+        <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
+          <Link to="/" className="flex items-center gap-3">
+            <img src={logo} alt="Araska Cyber Core" className="h-10 w-10" />
+            <div className="hidden sm:flex flex-col leading-tight">
+              <span className="font-display text-sm font-extrabold tracking-[0.06em] text-foreground">
+                ARASKA
+              </span>
+              <span className="font-display text-[10px] font-extrabold tracking-[0.06em]">
+                <span className="text-primary">CYBER</span>{" "}
+                <span className="text-foreground">CORE</span>
+              </span>
+            </div>
           </Link>
-        </nav>
-      )}
-    </header>
+
+          <nav className="hidden lg:flex items-center gap-8">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                to={link.href}
+                className={`text-sm transition-all duration-200 tracking-wide font-medium relative ${
+                  location.pathname === link.href
+                    ? "text-primary"
+                    : "text-foreground/80 hover:text-primary"
+                }`}
+              >
+                {link.label}
+                {location.pathname === link.href && (
+                  <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full" />
+                )}
+              </Link>
+            ))}
+            <Link to="/get-a-quote" className="gold-btn text-xs py-2.5 px-6">
+              Get a Quote
+            </Link>
+          </nav>
+
+          <button
+            className="lg:hidden text-foreground"
+            onClick={() => setMobileOpen(!mobileOpen)}
+            aria-label="Toggle menu"
+          >
+            {mobileOpen ? <X size={24} /> : <Menu size={24} />}
+          </button>
+        </div>
+
+        {mobileOpen && (
+          <nav className="lg:hidden bg-background border-t border-border/30 px-6 py-6 flex flex-col gap-4">
+            {navLinks.map((link) => (
+              <Link
+                key={link.href}
+                to={link.href}
+                className={`text-sm transition-colors font-medium ${
+                  location.pathname === link.href
+                    ? "text-primary"
+                    : "text-foreground/80 hover:text-primary"
+                }`}
+              >
+                {link.label}
+              </Link>
+            ))}
+            <Link to="/get-a-quote" className="gold-btn text-xs py-2.5 px-6 text-center">
+              Get a Quote
+            </Link>
+          </nav>
+        )}
+      </header>
+    </>
   );
 };
 

@@ -18,27 +18,32 @@ const companyLinks = [
 ];
 
 const Footer = () => (
-  <footer className="border-t border-border bg-secondary/20">
-    <div className="max-w-7xl mx-auto px-6 py-16">
+  <footer className="section-dark border-t border-border/20">
+    <div className="max-w-7xl mx-auto px-6 py-20">
       <div className="grid md:grid-cols-4 gap-10">
         {/* Brand */}
         <div>
-          <div className="flex items-center gap-3 mb-3">
-            <img src={logo} alt="Araska Cyber Core" className="h-10 w-10" loading="lazy" width={512} height={512} />
-            <span className="font-display text-sm font-bold tracking-wider neon-text">ARASKA</span>
+          <div className="flex items-center gap-3 mb-4">
+            <img src={logo} alt="Araska Cyber Core" className="h-9 w-9" loading="lazy" width={512} height={512} />
+            <div className="flex flex-col leading-tight">
+              <span className="font-display text-xs font-extrabold tracking-[0.06em] text-foreground">ARASKA</span>
+              <span className="font-display text-[9px] font-extrabold tracking-[0.06em]">
+                <span className="text-primary">CYBER</span> <span className="text-foreground">CORE</span>
+              </span>
+            </div>
           </div>
-          <p className="text-muted-foreground text-xs tracking-widest uppercase">
+          <p className="text-muted-foreground text-xs leading-relaxed">
             Your Threat Is Real. So Is Our Response.
           </p>
         </div>
 
         {/* Services */}
         <div>
-          <h4 className="font-display text-sm font-semibold text-foreground mb-4">Services</h4>
-          <ul className="space-y-2">
+          <h4 className="eyebrow mb-4 text-primary">Services</h4>
+          <ul className="space-y-2.5">
             {serviceLinks.map((link) => (
               <li key={link.href}>
-                <Link to={link.href} className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                <Link to={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
                   {link.label}
                 </Link>
               </li>
@@ -48,11 +53,11 @@ const Footer = () => (
 
         {/* Company */}
         <div>
-          <h4 className="font-display text-sm font-semibold text-foreground mb-4">Company</h4>
-          <ul className="space-y-2">
+          <h4 className="eyebrow mb-4 text-primary">Company</h4>
+          <ul className="space-y-2.5">
             {companyLinks.map((link) => (
               <li key={link.href}>
-                <Link to={link.href} className="text-sm text-muted-foreground hover:text-primary transition-colors">
+                <Link to={link.href} className="text-sm text-muted-foreground hover:text-foreground transition-colors">
                   {link.label}
                 </Link>
               </li>
@@ -62,7 +67,7 @@ const Footer = () => (
 
         {/* Contact */}
         <div>
-          <h4 className="font-display text-sm font-semibold text-foreground mb-4">Contact</h4>
+          <h4 className="eyebrow mb-4 text-primary">Contact</h4>
           <div className="space-y-3">
             <a
               href="mailto:info@araskacybercore.com"
@@ -79,7 +84,8 @@ const Footer = () => (
         </div>
       </div>
 
-      <div className="mt-12 pt-6 border-t border-border flex flex-col sm:flex-row justify-between items-center gap-4">
+      {/* Bottom bar */}
+      <div className="mt-16 pt-6 border-t border-foreground/10 flex flex-col sm:flex-row justify-between items-center gap-4">
         <p className="text-xs text-muted-foreground">
           © {new Date().getFullYear()} Araska Cyber Core. All rights reserved.
         </p>

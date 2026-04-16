@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Syne:wght@400;500;600;700;800&family=Inter:wght@300;400;500;600;700;800&family=IBM+Plex+Mono:wght@400;500;600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap');
 
 @tailwind base;
 @tailwind components;
@@ -6,63 +6,74 @@
 
 @layer base {
   :root {
-    --background: 222 47% 6%;
+    --background: 222 60% 7%;
     --foreground: 0 0% 100%;
 
-    --card: 222 40% 10%;
+    --card: 220 50% 14%;
     --card-foreground: 0 0% 100%;
 
-    --popover: 222 40% 8%;
+    --popover: 222 55% 9%;
     --popover-foreground: 0 0% 100%;
 
-    --primary: 40 90% 41%;
-    --primary-foreground: 222 47% 6%;
+    --primary: 40 86% 41%;
+    --primary-foreground: 222 60% 7%;
 
-    --primary-light: 43 92% 62%;
+    --primary-light: 43 90% 61%;
 
-    --secondary: 222 35% 14%;
-    --secondary-foreground: 220 20% 75%;
+    --secondary: 220 50% 14%;
+    --secondary-foreground: 215 25% 63%;
 
-    --muted: 222 30% 18%;
-    --muted-foreground: 220 15% 65%;
+    --muted: 220 40% 18%;
+    --muted-foreground: 215 20% 62%;
 
-    --accent: 40 90% 41%;
-    --accent-foreground: 222 47% 6%;
+    --accent: 40 86% 41%;
+    --accent-foreground: 222 60% 7%;
 
     --destructive: 0 84% 60%;
     --destructive-foreground: 0 0% 98%;
 
-    --border: 222 20% 20%;
-    --input: 222 20% 20%;
-    --ring: 40 90% 41%;
+    --border: 220 30% 18%;
+    --input: 222 45% 10%;
+    --ring: 40 86% 41%;
 
     --radius: 0.5rem;
 
     /* Light section tokens */
-    --light-bg: 220 20% 97%;
-    --light-foreground: 222 47% 10%;
-    --light-muted: 220 10% 45%;
+    --light-bg: 220 14% 96%;
+    --light-foreground: 222 60% 7%;
+    --light-muted: 215 15% 40%;
 
-    --sidebar-background: 222 47% 4%;
+    /* Card on light */
+    --light-card-border: 215 20% 88%;
+
+    --sidebar-background: 222 60% 4%;
     --sidebar-foreground: 0 0% 92%;
-    --sidebar-primary: 40 90% 41%;
-    --sidebar-primary-foreground: 222 47% 6%;
-    --sidebar-accent: 222 30% 12%;
+    --sidebar-primary: 40 86% 41%;
+    --sidebar-primary-foreground: 222 60% 7%;
+    --sidebar-accent: 222 40% 12%;
     --sidebar-accent-foreground: 0 0% 92%;
-    --sidebar-border: 222 20% 16%;
-    --sidebar-ring: 40 90% 41%;
+    --sidebar-border: 222 30% 16%;
+    --sidebar-ring: 40 86% 41%;
 
     /* Custom tokens */
-    --gold-glow: 0 0 20px hsl(40 90% 41% / 0.3), 0 0 60px hsl(40 90% 41% / 0.1);
-    --gold-glow-strong: 0 0 20px hsl(40 90% 41% / 0.5), 0 0 80px hsl(40 90% 41% / 0.2);
-    --glass-bg: hsl(222 40% 10% / 0.6);
-    --glass-border: hsl(222 20% 20% / 0.5);
+    --gold-glow: 0 0 20px hsl(40 86% 41% / 0.3), 0 0 60px hsl(40 86% 41% / 0.1);
+    --gold-glow-strong: 0 0 20px hsl(40 86% 41% / 0.5), 0 0 80px hsl(40 86% 41% / 0.2);
+    --glass-bg: hsl(220 50% 14% / 0.6);
+    --glass-border: hsl(40 86% 41% / 0.18);
+
+    /* Accent helpers */
+    --accent-glow: hsl(40 86% 41% / 0.08);
+    --accent-border: hsl(40 86% 41% / 0.18);
+    --accent-border-hover: hsl(40 86% 41% / 0.45);
+    --border-subtle: hsl(0 0% 100% / 0.08);
+    --border-section: hsl(40 86% 41% / 0.12);
   }
 }
 
 @layer base {
   * {
     @apply border-border;
+    transition: color 0.2s ease, background-color 0.2s ease, border-color 0.2s ease, transform 0.2s ease;
   }
 
   html {
@@ -74,20 +85,20 @@
   }
 
   h1, h2, h3, h4, h5, h6 {
-    font-family: 'Syne', sans-serif;
+    font-family: 'Inter', sans-serif;
   }
 }
 
 @layer components {
   .glass-card {
-    background: var(--glass-bg);
-    border: 1px solid hsl(var(--primary) / 0.15);
+    background: hsl(220 50% 14%);
+    border: 1px solid var(--accent-border);
     backdrop-filter: blur(16px);
     -webkit-backdrop-filter: blur(16px);
   }
 
   .glass-card:hover {
-    border-color: hsl(var(--primary) / 0.35);
+    border-color: var(--accent-border-hover);
   }
 
   .gold-border {
@@ -105,9 +116,10 @@
   }
 
   .gold-btn {
-    @apply inline-flex items-center justify-center px-8 py-4 font-display font-bold text-sm uppercase tracking-widest rounded transition-all duration-200;
+    @apply inline-flex items-center justify-center px-8 py-4 font-sans font-bold text-sm uppercase tracking-[0.08em] rounded transition-all duration-200;
     background: hsl(var(--primary));
     color: hsl(var(--primary-foreground));
+    border-radius: 4px;
   }
 
   .gold-btn:hover {
@@ -121,14 +133,16 @@
   }
 
   .outline-btn {
-    @apply inline-flex items-center justify-center px-8 py-4 font-display font-bold text-sm uppercase tracking-widest rounded transition-all duration-200;
+    @apply inline-flex items-center justify-center px-8 py-4 font-sans font-bold text-sm uppercase tracking-[0.08em] rounded transition-all duration-200;
     background: transparent;
-    border: 1.5px solid hsl(var(--primary));
+    border: 1.5px solid hsl(var(--primary) / 0.5);
     color: hsl(var(--foreground));
+    border-radius: 4px;
   }
 
   .outline-btn:hover {
     background: hsl(var(--primary) / 0.08);
+    border-color: hsl(var(--primary));
     color: hsl(var(--primary));
   }
 
@@ -151,12 +165,14 @@
 
   .eyebrow {
     @apply text-xs tracking-[0.2em] uppercase font-medium mb-3;
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'Inter', sans-serif;
+    font-weight: 500;
+    font-size: 12px;
     color: hsl(var(--primary));
   }
 
   .eyebrow-rule {
-    @apply block w-10 h-0.5 mt-2 mb-4;
+    @apply block w-12 h-0.5 mt-2 mb-4;
     background: hsl(var(--primary));
   }
 
@@ -170,10 +186,10 @@
 
 @layer utilities {
   .font-display {
-    font-family: 'Syne', sans-serif;
+    font-family: 'Inter', sans-serif;
   }
 
   .font-mono-label {
-    font-family: 'IBM Plex Mono', monospace;
+    font-family: 'Inter', sans-serif;
   }
 }

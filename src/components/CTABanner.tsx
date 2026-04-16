@@ -12,7 +12,12 @@ const CTABanner = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6 }}
-        className="max-w-4xl mx-auto text-center glass-card gold-border rounded-lg p-12 md:p-16 relative overflow-hidden"
+        className="max-w-4xl mx-auto text-center rounded-lg p-12 md:p-16 relative overflow-hidden"
+        style={{
+          background: '#152040',
+          border: '1px solid rgba(200,146,10,0.3)',
+          boxShadow: '0 0 20px rgba(200,146,10,0.1)',
+        }}
       >
         {/* Subtle hex watermark */}
         <div className="absolute inset-0 opacity-[0.03]">
@@ -28,10 +33,10 @@ const CTABanner = () => {
         </div>
 
         <div className="relative z-10">
-          <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mb-4">
+          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4 tracking-[-0.015em]">
             Ready to take your security seriously?
           </h2>
-          <p className="text-muted-foreground text-lg max-w-xl mx-auto mb-8 leading-relaxed">
+          <p className="text-muted-foreground text-lg max-w-xl mx-auto mb-8 leading-[1.8]">
             Tell us about your organisation and we'll put together a tailored proposal.
             No obligation. No generic packages.
           </p>

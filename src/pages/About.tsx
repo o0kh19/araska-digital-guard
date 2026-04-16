@@ -36,10 +36,10 @@ const About = () => (
         >
           <span className="eyebrow">About Us</span>
           <span className="eyebrow-rule" />
-          <h1 className="font-display text-4xl sm:text-5xl font-extrabold text-foreground mb-8">
+          <h1 className="text-4xl sm:text-5xl font-extrabold text-foreground mb-8 tracking-[-0.02em]">
             Built to Protect. Built to Last.
           </h1>
-          <div className="space-y-6 text-secondary-foreground text-lg leading-relaxed">
+          <div className="space-y-6 text-muted-foreground text-lg leading-[1.8]">
             <p>
               Araska Cyber Core was founded on a straightforward belief: organisations of every size deserve access to serious cybersecurity capability. For too long, enterprise-grade security has been the preserve of large corporations with large budgets. We exist to change that.
             </p>
@@ -62,7 +62,7 @@ const About = () => (
           >
             <span className="eyebrow">Our Values</span>
             <span className="eyebrow-rule" />
-            <h2 className="font-display text-3xl sm:text-4xl font-bold text-light-foreground mb-8">
+            <h2 className="text-3xl sm:text-4xl font-bold text-light-foreground mb-8 tracking-[-0.015em]">
               What Drives Us
             </h2>
             <div className="grid sm:grid-cols-2 gap-6">
@@ -72,10 +72,19 @@ const About = () => (
                   initial={{ opacity: 0, y: 20 }}
                   animate={{ opacity: 1, y: 0 }}
                   transition={{ duration: 0.5, delay: 0.2 + i * 0.08 }}
-                  className="bg-white rounded-lg p-8 border border-light-muted/20 hover:shadow-lg transition-all duration-200"
+                  className="bg-white rounded-lg p-9 transition-all duration-200 hover:translate-y-[-3px]"
+                  style={{ border: '1px solid #E2E8F0', borderRadius: '8px' }}
+                  onMouseEnter={(e) => {
+                    e.currentTarget.style.borderColor = '#C8920A';
+                    e.currentTarget.style.boxShadow = '0 4px 20px rgba(200,146,10,0.12)';
+                  }}
+                  onMouseLeave={(e) => {
+                    e.currentTarget.style.borderColor = '#E2E8F0';
+                    e.currentTarget.style.boxShadow = 'none';
+                  }}
                 >
-                  <h3 className="font-display text-lg font-semibold mb-3 text-light-foreground">{v.title}</h3>
-                  <p className="text-light-muted text-sm leading-relaxed">{v.desc}</p>
+                  <h3 className="text-[19px] font-semibold mb-3 text-light-foreground">{v.title}</h3>
+                  <p className="text-[#3A4A5C] text-[15px] leading-[1.8]">{v.desc}</p>
                 </motion.div>
               ))}
             </div>
@@ -91,10 +100,10 @@ const About = () => (
         >
           <span className="eyebrow">Our Approach</span>
           <span className="eyebrow-rule" />
-          <h2 className="font-display text-3xl sm:text-4xl font-bold text-foreground mb-6">
+          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-6 tracking-[-0.015em]">
             How We Deliver Security
           </h2>
-          <div className="space-y-6 text-secondary-foreground text-lg leading-relaxed">
+          <div className="space-y-6 text-muted-foreground text-lg leading-[1.8]">
             <p>
               Araska Cyber Core operates on a co-managed model. This means we work alongside your existing IT or security team rather than replacing them. Our analysts integrate with your environment, your communication channels, and your incident management processes. For organisations without a dedicated security team, we act as that function entirely.
             </p>
@@ -109,9 +118,14 @@ const About = () => (
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
-          className="glass-card gold-border rounded-lg p-12 text-center"
+          className="rounded-lg p-12 text-center"
+          style={{
+            background: '#152040',
+            border: '1px solid rgba(200,146,10,0.3)',
+            boxShadow: '0 0 20px rgba(200,146,10,0.1)',
+          }}
         >
-          <h2 className="font-display text-2xl sm:text-3xl font-bold text-foreground mb-4">
+          <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-4 tracking-[-0.015em]">
             Want to know more about how we work?
           </h2>
           <Link to="/contact" className="gold-btn text-sm">

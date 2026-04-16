@@ -38,9 +38,9 @@ const WhyUsSection = () => {
           transition={{ duration: 0.5 }}
           className="mb-14"
         >
-          <span className="eyebrow text-primary">Why Us</span>
+          <span className="eyebrow">Why Us</span>
           <span className="eyebrow-rule" />
-          <h2 className="font-display text-3xl sm:text-4xl font-bold text-light-foreground">
+          <h2 className="text-3xl sm:text-4xl font-bold text-light-foreground tracking-[-0.015em]">
             Why Organisations Choose Us
           </h2>
         </motion.div>
@@ -52,13 +52,28 @@ const WhyUsSection = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="bg-white rounded-lg p-8 border border-light-muted/20 hover:shadow-lg transition-all duration-200 hover:translate-y-[-2px]"
+              className="bg-white rounded-lg p-9 transition-all duration-200 hover:translate-y-[-3px]"
+              style={{
+                border: '1px solid #E2E8F0',
+                borderRadius: '8px',
+              }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = '#C8920A';
+                e.currentTarget.style.boxShadow = '0 4px 20px rgba(200,146,10,0.12)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = '#E2E8F0';
+                e.currentTarget.style.boxShadow = 'none';
+              }}
             >
-              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-4">
+              <div
+                className="w-[52px] h-[52px] rounded-md flex items-center justify-center mb-4"
+                style={{ background: 'rgba(200,146,10,0.08)', border: '1px solid rgba(200,146,10,0.2)' }}
+              >
                 <p.icon className="text-primary" size={22} strokeWidth={1.5} />
               </div>
-              <h3 className="font-display text-lg font-semibold mb-3 text-light-foreground">{p.title}</h3>
-              <p className="text-light-muted text-sm leading-relaxed">{p.desc}</p>
+              <h3 className="text-[19px] font-semibold mb-3 text-light-foreground">{p.title}</h3>
+              <p className="text-[#3A4A5C] text-[15px] leading-[1.8]">{p.desc}</p>
             </motion.div>
           ))}
         </div>

@@ -29,7 +29,7 @@ const Header = () => {
   return (
     <>
       {/* Utility Bar */}
-      <div className="fixed top-0 left-0 right-0 z-[60] bg-[hsl(222_47%_4%)] border-b border-border/30">
+      <div className="fixed top-0 left-0 right-0 z-[60] bg-[#070B14] border-b" style={{ borderColor: 'rgba(255,255,255,0.08)' }}>
         <div className="max-w-7xl mx-auto flex items-center justify-end px-6 py-2 gap-6">
           <Link to="/contact" className="text-xs text-muted-foreground hover:text-foreground transition-colors">
             Support
@@ -45,20 +45,22 @@ const Header = () => {
 
       {/* Main Nav */}
       <header
-        className={`fixed top-[36px] left-0 right-0 z-50 transition-all duration-300 border-b ${
-          scrolled
-            ? "bg-background/90 backdrop-blur-lg border-primary/10"
-            : "bg-background/80 backdrop-blur-sm border-border/20"
-        }`}
+        className="fixed top-[36px] left-0 right-0 z-50 transition-all duration-300"
+        style={{
+          background: scrolled ? 'rgba(10,14,26,0.92)' : 'rgba(10,14,26,0.80)',
+          backdropFilter: 'blur(12px)',
+          WebkitBackdropFilter: 'blur(12px)',
+          borderBottom: '1px solid rgba(200,146,10,0.15)',
+        }}
       >
         <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
           <Link to="/" className="flex items-center gap-3">
             <img src={logo} alt="Araska Cyber Core" className="h-10 w-10" />
             <div className="hidden sm:flex flex-col leading-tight">
-              <span className="font-display text-sm font-extrabold tracking-[0.06em] text-foreground">
+              <span className="text-sm font-extrabold tracking-[0.06em] text-foreground">
                 ARASKA
               </span>
-              <span className="font-display text-[10px] font-extrabold tracking-[0.06em]">
+              <span className="text-[10px] font-extrabold tracking-[0.06em]">
                 <span className="text-primary">CYBER</span>{" "}
                 <span className="text-foreground">CORE</span>
               </span>
@@ -70,16 +72,16 @@ const Header = () => {
               <Link
                 key={link.href}
                 to={link.href}
-                className={`text-sm transition-all duration-200 tracking-wide font-medium relative ${
+                className={`text-sm font-medium tracking-[0.04em] relative pb-1 transition-all duration-200 ${
                   location.pathname === link.href
-                    ? "text-primary"
-                    : "text-foreground/80 hover:text-primary"
+                    ? "text-primary-light"
+                    : "text-[#D0D8E4] hover:text-primary-light"
                 }`}
+                style={{
+                  borderBottom: location.pathname === link.href ? '2px solid hsl(40 86% 41%)' : '2px solid transparent',
+                }}
               >
                 {link.label}
-                {location.pathname === link.href && (
-                  <span className="absolute -bottom-1 left-0 right-0 h-0.5 bg-primary rounded-full" />
-                )}
               </Link>
             ))}
             <Link to="/get-a-quote" className="gold-btn text-xs py-2.5 px-6">
@@ -97,15 +99,15 @@ const Header = () => {
         </div>
 
         {mobileOpen && (
-          <nav className="lg:hidden bg-background border-t border-border/30 px-6 py-6 flex flex-col gap-4">
+          <nav className="lg:hidden bg-background px-6 py-6 flex flex-col gap-4" style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }}>
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 to={link.href}
                 className={`text-sm transition-colors font-medium ${
                   location.pathname === link.href
-                    ? "text-primary"
-                    : "text-foreground/80 hover:text-primary"
+                    ? "text-primary-light"
+                    : "text-[#D0D8E4] hover:text-primary-light"
                 }`}
               >
                 {link.label}

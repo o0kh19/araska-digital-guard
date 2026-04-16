@@ -51,10 +51,10 @@ const ServicesOverview = () => {
         >
           <span className="eyebrow">What We Do</span>
           <span className="eyebrow-rule" />
-          <h2 className="font-display text-3xl sm:text-4xl font-bold mb-4 text-foreground">
+          <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-foreground tracking-[-0.015em]">
             End-to-End Cybersecurity Services
           </h2>
-          <p className="text-muted-foreground max-w-2xl leading-relaxed">
+          <p className="text-muted-foreground max-w-2xl leading-[1.8]">
             Tailored to your organisation's size, industry, and risk profile.
           </p>
         </motion.div>
@@ -66,16 +66,26 @@ const ServicesOverview = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="glass-card rounded-lg p-8 transition-all duration-200 flex flex-col group hover:translate-y-[-3px]"
+              className="rounded-lg p-9 transition-all duration-250 flex flex-col group hover:translate-y-[-3px]"
+              style={{
+                background: '#152040',
+                border: '1px solid rgba(200,146,10,0.18)',
+                borderRadius: '8px',
+              }}
+              onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(200,146,10,0.45)'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(200,146,10,0.18)'; }}
             >
-              <div className="w-10 h-10 rounded-lg bg-primary/10 flex items-center justify-center mb-5">
+              <div
+                className="w-[52px] h-[52px] rounded-md flex items-center justify-center mb-5"
+                style={{ background: 'rgba(200,146,10,0.08)', border: '1px solid rgba(200,146,10,0.2)' }}
+              >
                 <svc.icon className="text-primary" size={22} strokeWidth={1.5} />
               </div>
-              <h3 className="font-display text-lg font-semibold mb-3 text-foreground">{svc.title}</h3>
-              <p className="text-muted-foreground text-sm leading-relaxed mb-6 flex-1">{svc.desc}</p>
+              <h3 className="text-[19px] font-semibold mb-3 text-foreground">{svc.title}</h3>
+              <p className="text-muted-foreground text-[15px] leading-[1.8] mb-6 flex-1">{svc.desc}</p>
               <Link
                 to={`/services#${svc.slug}`}
-                className="text-primary text-sm font-medium hover:underline inline-flex items-center gap-1 group-hover:gap-2 transition-all"
+                className="text-primary text-sm font-medium hover:underline hover:text-primary-light inline-flex items-center gap-1 group-hover:gap-2 transition-all"
               >
                 Learn More →
               </Link>

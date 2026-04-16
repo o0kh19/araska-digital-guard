@@ -18,7 +18,7 @@ const companyLinks = [
 ];
 
 const Footer = () => (
-  <footer className="section-dark border-t border-border/20">
+  <footer className="section-dark" style={{ borderTop: '1px solid rgba(200,146,10,0.12)' }}>
     <div className="max-w-7xl mx-auto px-6 py-20">
       <div className="grid md:grid-cols-4 gap-10">
         {/* Brand */}
@@ -26,8 +26,8 @@ const Footer = () => (
           <div className="flex items-center gap-3 mb-4">
             <img src={logo} alt="Araska Cyber Core" className="h-9 w-9" loading="lazy" width={512} height={512} />
             <div className="flex flex-col leading-tight">
-              <span className="font-display text-xs font-extrabold tracking-[0.06em] text-foreground">ARASKA</span>
-              <span className="font-display text-[9px] font-extrabold tracking-[0.06em]">
+              <span className="text-xs font-extrabold tracking-[0.06em] text-foreground">ARASKA</span>
+              <span className="text-[9px] font-extrabold tracking-[0.06em]">
                 <span className="text-primary">CYBER</span> <span className="text-foreground">CORE</span>
               </span>
             </div>
@@ -39,7 +39,7 @@ const Footer = () => (
 
         {/* Services */}
         <div>
-          <h4 className="eyebrow mb-4 text-primary">Services</h4>
+          <h4 className="text-xs font-medium uppercase tracking-[0.18em] text-primary mb-4">Services</h4>
           <ul className="space-y-2.5">
             {serviceLinks.map((link) => (
               <li key={link.href}>
@@ -53,7 +53,7 @@ const Footer = () => (
 
         {/* Company */}
         <div>
-          <h4 className="eyebrow mb-4 text-primary">Company</h4>
+          <h4 className="text-xs font-medium uppercase tracking-[0.18em] text-primary mb-4">Company</h4>
           <ul className="space-y-2.5">
             {companyLinks.map((link) => (
               <li key={link.href}>
@@ -67,7 +67,7 @@ const Footer = () => (
 
         {/* Contact */}
         <div>
-          <h4 className="eyebrow mb-4 text-primary">Contact</h4>
+          <h4 className="text-xs font-medium uppercase tracking-[0.18em] text-primary mb-4">Contact</h4>
           <div className="space-y-3">
             <a
               href="mailto:info@araskacybercore.com"
@@ -85,13 +85,13 @@ const Footer = () => (
       </div>
 
       {/* Bottom bar */}
-      <div className="mt-16 pt-6 border-t border-foreground/10 flex flex-col sm:flex-row justify-between items-center gap-4">
-        <p className="text-xs text-muted-foreground">
+      <div className="mt-16 pt-6 flex flex-col sm:flex-row justify-between items-center gap-4" style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+        <p className="text-xs" style={{ color: '#5A6A80' }}>
           © {new Date().getFullYear()} Araska Cyber Core. All rights reserved.
         </p>
         <div className="flex gap-6">
-          <span className="text-xs text-muted-foreground hover:text-primary cursor-pointer transition-colors">Privacy Policy</span>
-          <span className="text-xs text-muted-foreground hover:text-primary cursor-pointer transition-colors">Terms of Service</span>
+          <span className="text-xs cursor-pointer transition-colors hover:text-primary-light" style={{ color: '#5A6A80' }}>Privacy Policy</span>
+          <span className="text-xs cursor-pointer transition-colors hover:text-primary-light" style={{ color: '#5A6A80' }}>Terms of Service</span>
         </div>
       </div>
     </div>

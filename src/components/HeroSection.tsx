@@ -3,14 +3,21 @@ import { Link } from "react-router-dom";
 
 const HeroSection = () => (
   <section className="relative min-h-screen flex items-center overflow-hidden section-dark">
-    {/* Subtle diagonal gradient glow */}
+    {/* Background textures */}
     <div className="absolute inset-0">
-      <div className="absolute top-0 right-0 w-2/3 h-2/3 bg-gradient-to-bl from-primary/[0.04] via-transparent to-transparent" />
+      {/* Radial gold glow top-right */}
       <div
-        className="absolute inset-0 opacity-[0.03]"
+        className="absolute inset-0"
         style={{
-          backgroundImage: "radial-gradient(circle, hsl(220 20% 40%) 1px, transparent 1px)",
-          backgroundSize: "30px 30px",
+          background: 'radial-gradient(ellipse at 80% 20%, rgba(200,146,10,0.07) 0%, transparent 60%)',
+        }}
+      />
+      {/* Dot grid */}
+      <div
+        className="absolute inset-0"
+        style={{
+          backgroundImage: 'radial-gradient(rgba(200,146,10,0.07) 1px, transparent 1px)',
+          backgroundSize: '28px 28px',
         }}
       />
     </div>
@@ -31,7 +38,8 @@ const HeroSection = () => (
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.05 }}
-          className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/10 mb-8"
+          className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8"
+          style={{ border: '1px solid rgba(200,146,10,0.3)', background: 'rgba(200,146,10,0.08)' }}
         >
           <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
           <span className="text-primary text-xs font-medium tracking-wide">SOC Operations Active — 24/7</span>
@@ -41,7 +49,7 @@ const HeroSection = () => (
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-4xl sm:text-5xl lg:text-7xl font-display font-extrabold leading-[1.05] mb-6 text-foreground tracking-tight"
+          className="text-4xl sm:text-5xl lg:text-7xl font-extrabold leading-[1.05] mb-6 text-foreground tracking-[-0.02em]"
         >
           Your Threat Is Real.
           <br />
@@ -52,7 +60,7 @@ const HeroSection = () => (
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-secondary-foreground text-lg sm:text-xl max-w-xl mb-10 leading-relaxed"
+          className="text-muted-foreground text-lg sm:text-xl max-w-xl mb-10 leading-relaxed"
         >
           Araska Cyber Core delivers enterprise-grade security operations, threat intelligence, and
           cyber resilience services to organisations across the globe — so you can focus on your
@@ -82,12 +90,10 @@ const HeroSection = () => (
         className="hidden lg:flex items-center justify-center"
       >
         <div className="relative w-[400px] h-[400px]">
-          {/* Gold radial glow behind */}
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-[300px] h-[300px] rounded-full bg-primary/10 blur-[80px]" />
+            <div className="w-[300px] h-[300px] rounded-full blur-[80px]" style={{ background: 'rgba(200,146,10,0.10)' }} />
           </div>
 
-          {/* Concentric hexagons */}
           <svg viewBox="0 0 400 400" className="absolute inset-0 w-full h-full">
             {[180, 150, 120].map((r, i) => {
               const cx = 200, cy = 200;
@@ -100,28 +106,25 @@ const HeroSection = () => (
                   key={i}
                   points={points}
                   fill="none"
-                  stroke="hsl(40 90% 41%)"
+                  stroke="#C8920A"
                   strokeWidth={i === 2 ? 2 : 1}
                   opacity={i === 0 ? 0.1 : i === 1 ? 0.2 : 0.6}
                 />
               );
             })}
 
-            {/* Waveform / pulse line */}
             <polyline
               points="130,200 160,200 175,175 195,220 210,180 225,200 270,200"
               fill="none"
-              stroke="hsl(40 90% 41%)"
+              stroke="#C8920A"
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
               opacity="0.8"
             />
 
-            {/* Core dot */}
-            <circle cx="200" cy="235" r="5" fill="hsl(40 90% 41%)" opacity="0.9" />
+            <circle cx="200" cy="235" r="5" fill="#C8920A" opacity="0.9" />
 
-            {/* Vertex nodes */}
             {Array.from({ length: 6 }, (_, j) => {
               const angle = (Math.PI / 3) * j - Math.PI / 2;
               const r = 120;
@@ -131,7 +134,7 @@ const HeroSection = () => (
                   cx={200 + r * Math.cos(angle)}
                   cy={200 + r * Math.sin(angle)}
                   r="4"
-                  fill="hsl(40 90% 41%)"
+                  fill="#C8920A"
                   opacity="0.7"
                 />
               );

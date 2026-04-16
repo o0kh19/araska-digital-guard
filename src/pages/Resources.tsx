@@ -53,10 +53,10 @@ const Resources = () => {
           >
             <span className="eyebrow">Insights</span>
             <span className="eyebrow-rule" />
-            <h1 className="font-display text-4xl sm:text-5xl font-extrabold text-foreground mb-4">
+            <h1 className="text-4xl sm:text-5xl font-extrabold text-foreground mb-4 tracking-[-0.02em]">
               Resources
             </h1>
-            <p className="text-muted-foreground max-w-2xl text-lg leading-relaxed">
+            <p className="text-muted-foreground max-w-2xl text-lg leading-[1.8]">
               Threat briefings, security guides, and practical insights from the Araska Cyber Core team.
             </p>
           </motion.div>
@@ -67,11 +67,15 @@ const Resources = () => {
               <button
                 key={cat}
                 onClick={() => setActiveCategory(cat)}
-                className={`text-xs font-medium px-4 py-2 rounded border transition-all duration-200 font-mono ${
+                className={`text-xs font-medium px-4 py-2 rounded transition-all duration-200 ${
                   activeCategory === cat
-                    ? "border-primary bg-primary/10 text-primary"
-                    : "border-border text-muted-foreground hover:border-primary/40 hover:text-foreground"
+                    ? "text-primary"
+                    : "text-muted-foreground hover:text-foreground"
                 }`}
+                style={{
+                  border: activeCategory === cat ? '1px solid rgba(200,146,10,0.45)' : '1px solid rgba(200,146,10,0.18)',
+                  background: activeCategory === cat ? 'rgba(200,146,10,0.08)' : 'transparent',
+                }}
               >
                 {cat}
               </button>
@@ -86,16 +90,21 @@ const Resources = () => {
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.4, delay: i * 0.08 }}
-                className="glass-card rounded-lg p-8 transition-all duration-200 flex flex-col hover:translate-y-[-3px]"
+                className="rounded-lg p-8 transition-all duration-200 flex flex-col hover:translate-y-[-3px]"
+                style={{
+                  background: '#152040',
+                  border: '1px solid rgba(200,146,10,0.18)',
+                  borderRadius: '8px',
+                }}
               >
-                <span className="text-xs text-primary font-mono font-medium tracking-wide mb-3">{post.category}</span>
-                <h3 className="font-display text-lg font-semibold text-foreground mb-3 leading-snug">
+                <span className="text-xs text-primary font-medium tracking-wide mb-3">{post.category}</span>
+                <h3 className="text-lg font-semibold text-foreground mb-3 leading-snug">
                   {post.title}
                 </h3>
-                <p className="text-muted-foreground text-sm leading-relaxed mb-6 flex-1">{post.excerpt}</p>
+                <p className="text-muted-foreground text-sm leading-[1.8] mb-6 flex-1">{post.excerpt}</p>
                 <div className="flex items-center justify-between">
                   <span className="text-xs text-muted-foreground">{post.date}</span>
-                  <span className="text-primary text-sm font-medium cursor-pointer hover:underline">Read More →</span>
+                  <span className="text-primary text-sm font-medium cursor-pointer hover:underline hover:text-primary-light">Read More →</span>
                 </div>
               </motion.article>
             ))}

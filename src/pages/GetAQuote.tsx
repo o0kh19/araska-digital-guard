@@ -46,9 +46,23 @@ const GetAQuote = () => {
 
   const handleSubmit = () => setSubmitted(true);
 
-  const inputCls = "w-full bg-secondary/50 border border-border rounded px-4 py-3 text-sm text-foreground placeholder:text-muted-foreground focus:outline-none focus:ring-2 focus:ring-primary/40 focus:border-primary transition-colors";
-  const selectCls = inputCls;
-  const labelCls = "block text-sm font-medium text-foreground mb-1.5";
+  const inputCls = "w-full rounded px-4 py-3.5 text-[15px] text-foreground placeholder:text-[#5A6A80] focus:outline-none transition-colors";
+  const inputStyle = {
+    background: '#0D1526',
+    border: '1px solid rgba(200,146,10,0.18)',
+    borderRadius: '4px',
+  };
+  const inputFocusProps = {
+    onFocus: (e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+      e.currentTarget.style.borderColor = '#C8920A';
+      e.currentTarget.style.boxShadow = '0 0 0 3px rgba(200,146,10,0.12)';
+    },
+    onBlur: (e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
+      e.currentTarget.style.borderColor = 'rgba(200,146,10,0.18)';
+      e.currentTarget.style.boxShadow = 'none';
+    },
+  };
+  const labelCls = "block text-xs font-medium uppercase tracking-[0.12em] text-muted-foreground mb-1.5";
 
   if (submitted) {
     return (
@@ -61,8 +75,8 @@ const GetAQuote = () => {
             className="max-w-lg mx-auto text-center px-6"
           >
             <CheckCircle className="text-primary mx-auto mb-6" size={48} />
-            <h1 className="font-display text-3xl font-bold text-foreground mb-4">Thank You</h1>
-            <p className="text-secondary-foreground leading-relaxed">
+            <h1 className="text-3xl font-bold text-foreground mb-4">Thank You</h1>
+            <p className="text-muted-foreground leading-[1.8]">
               We've received your request. A member of our team will review your details and be in touch
               within one business day. In the meantime, feel free to explore our{" "}
               <a href="/resources" className="text-primary hover:underline">resources</a> or reach out
@@ -86,10 +100,10 @@ const GetAQuote = () => {
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-10">
             <span className="eyebrow">Request a Proposal</span>
             <span className="eyebrow-rule" />
-            <h1 className="font-display text-4xl sm:text-5xl font-extrabold text-foreground mb-4">
+            <h1 className="text-4xl sm:text-5xl font-extrabold text-foreground mb-4 tracking-[-0.02em]">
               Get a Tailored Quote
             </h1>
-            <p className="text-muted-foreground text-lg leading-relaxed max-w-2xl">
+            <p className="text-muted-foreground text-lg leading-[1.8] max-w-2xl">
               Every organisation is different. Fill in the details below and we will come back to you with
               a scoped proposal built around your specific situation. There is no obligation and no generic packages.
             </p>
@@ -103,34 +117,34 @@ const GetAQuote = () => {
               </div>
             ))}
           </div>
-          <p className="text-xs text-muted-foreground mb-8 font-mono">
+          <p className="text-xs text-muted-foreground mb-8">
             Step {step} of 4 — {["About Your Organisation", "Your Current Security Setup", "What You Need", "Anything Else"][step - 1]}
           </p>
 
-          <div className="glass-card rounded-lg p-8 md:p-10">
+          <div className="rounded-lg p-8 md:p-10" style={{ background: '#152040', border: '1px solid rgba(200,146,10,0.18)', borderRadius: '8px' }}>
             {/* Step 1 */}
             {step === 1 && (
               <div className="space-y-5">
                 <div className="grid sm:grid-cols-2 gap-5">
-                  <div><label className={labelCls}>Full Name *</label><input className={inputCls} value={form.name} onChange={(e) => update("name", e.target.value)} /></div>
-                  <div><label className={labelCls}>Job Title *</label><input className={inputCls} value={form.title} onChange={(e) => update("title", e.target.value)} /></div>
+                  <div><label className={labelCls}>Full Name *</label><input className={inputCls} style={inputStyle} value={form.name} onChange={(e) => update("name", e.target.value)} {...inputFocusProps} /></div>
+                  <div><label className={labelCls}>Job Title *</label><input className={inputCls} style={inputStyle} value={form.title} onChange={(e) => update("title", e.target.value)} {...inputFocusProps} /></div>
                 </div>
                 <div className="grid sm:grid-cols-2 gap-5">
-                  <div><label className={labelCls}>Organisation Name *</label><input className={inputCls} value={form.org} onChange={(e) => update("org", e.target.value)} /></div>
-                  <div><label className={labelCls}>Work Email *</label><input type="email" className={inputCls} value={form.email} onChange={(e) => update("email", e.target.value)} /></div>
+                  <div><label className={labelCls}>Organisation Name *</label><input className={inputCls} style={inputStyle} value={form.org} onChange={(e) => update("org", e.target.value)} {...inputFocusProps} /></div>
+                  <div><label className={labelCls}>Work Email *</label><input type="email" className={inputCls} style={inputStyle} value={form.email} onChange={(e) => update("email", e.target.value)} {...inputFocusProps} /></div>
                 </div>
-                <div><label className={labelCls}>Country / Region *</label><input className={inputCls} value={form.country} onChange={(e) => update("country", e.target.value)} /></div>
+                <div><label className={labelCls}>Country / Region *</label><input className={inputCls} style={inputStyle} value={form.country} onChange={(e) => update("country", e.target.value)} {...inputFocusProps} /></div>
                 <div className="grid sm:grid-cols-2 gap-5">
                   <div>
                     <label className={labelCls}>Organisation Size *</label>
-                    <select className={selectCls} value={form.orgSize} onChange={(e) => update("orgSize", e.target.value)}>
+                    <select className={inputCls} style={inputStyle} value={form.orgSize} onChange={(e) => update("orgSize", e.target.value)} {...inputFocusProps}>
                       <option value="">Select...</option>
                       {orgSizes.map((o) => <option key={o} value={o}>{o}</option>)}
                     </select>
                   </div>
                   <div>
                     <label className={labelCls}>Industry Sector *</label>
-                    <select className={selectCls} value={form.industry} onChange={(e) => update("industry", e.target.value)}>
+                    <select className={inputCls} style={inputStyle} value={form.industry} onChange={(e) => update("industry", e.target.value)} {...inputFocusProps}>
                       <option value="">Select...</option>
                       {industries.map((o) => <option key={o} value={o}>{o}</option>)}
                     </select>
@@ -144,7 +158,7 @@ const GetAQuote = () => {
               <div className="space-y-5">
                 <div>
                   <label className={labelCls}>Do you currently have a dedicated internal security team? *</label>
-                  <select className={selectCls} value={form.hasSecTeam} onChange={(e) => update("hasSecTeam", e.target.value)}>
+                  <select className={inputCls} style={inputStyle} value={form.hasSecTeam} onChange={(e) => update("hasSecTeam", e.target.value)} {...inputFocusProps}>
                     <option value="">Select...</option>
                     <option value="Yes">Yes</option>
                     <option value="No">No</option>
@@ -153,7 +167,7 @@ const GetAQuote = () => {
                 </div>
                 <div>
                   <label className={labelCls}>Do you currently use any SIEM or monitoring tools? *</label>
-                  <select className={selectCls} value={form.hasSIEM} onChange={(e) => update("hasSIEM", e.target.value)}>
+                  <select className={inputCls} style={inputStyle} value={form.hasSIEM} onChange={(e) => update("hasSIEM", e.target.value)} {...inputFocusProps}>
                     <option value="">Select...</option>
                     <option value="Yes — Microsoft Sentinel">Yes — Microsoft Sentinel</option>
                     <option value="Yes — another tool">Yes — another tool</option>
@@ -163,7 +177,7 @@ const GetAQuote = () => {
                 </div>
                 <div>
                   <label className={labelCls}>Do you have endpoint detection and response (EDR) deployed? *</label>
-                  <select className={selectCls} value={form.hasEDR} onChange={(e) => update("hasEDR", e.target.value)}>
+                  <select className={inputCls} style={inputStyle} value={form.hasEDR} onChange={(e) => update("hasEDR", e.target.value)} {...inputFocusProps}>
                     <option value="">Select...</option>
                     <option value="Yes — Microsoft Defender">Yes — Microsoft Defender</option>
                     <option value="Yes — another tool">Yes — another tool</option>
@@ -173,14 +187,14 @@ const GetAQuote = () => {
                 </div>
                 <div>
                   <label className={labelCls}>How would you describe your current security maturity? *</label>
-                  <select className={selectCls} value={form.maturity} onChange={(e) => update("maturity", e.target.value)}>
+                  <select className={inputCls} style={inputStyle} value={form.maturity} onChange={(e) => update("maturity", e.target.value)} {...inputFocusProps}>
                     <option value="">Select...</option>
                     {maturityLevels.map((o) => <option key={o} value={o}>{o}</option>)}
                   </select>
                 </div>
                 <div>
                   <label className={labelCls}>Have you experienced a security incident or breach in the last 24 months? *</label>
-                  <select className={selectCls} value={form.hadIncident} onChange={(e) => update("hadIncident", e.target.value)}>
+                  <select className={inputCls} style={inputStyle} value={form.hadIncident} onChange={(e) => update("hadIncident", e.target.value)} {...inputFocusProps}>
                     <option value="">Select...</option>
                     <option value="Yes">Yes</option>
                     <option value="No">No</option>
@@ -197,7 +211,11 @@ const GetAQuote = () => {
                   <label className={labelCls}>Which services are you interested in? *</label>
                   <div className="grid sm:grid-cols-2 gap-2 mt-2">
                     {serviceOptions.map((s) => (
-                      <label key={s} className="flex items-center gap-3 p-3 rounded border border-border hover:border-primary/30 transition-colors cursor-pointer">
+                      <label
+                        key={s}
+                        className="flex items-center gap-3 p-3 rounded cursor-pointer transition-colors"
+                        style={{ border: form.services.includes(s) ? '1px solid rgba(200,146,10,0.45)' : '1px solid rgba(200,146,10,0.18)' }}
+                      >
                         <input
                           type="checkbox"
                           checked={form.services.includes(s)}
@@ -211,7 +229,7 @@ const GetAQuote = () => {
                 </div>
                 <div>
                   <label className={labelCls}>Approximately how many endpoints? *</label>
-                  <select className={selectCls} value={form.endpoints} onChange={(e) => update("endpoints", e.target.value)}>
+                  <select className={inputCls} style={inputStyle} value={form.endpoints} onChange={(e) => update("endpoints", e.target.value)} {...inputFocusProps}>
                     <option value="">Select...</option>
                     {endpointRanges.map((o) => <option key={o} value={o}>{o}</option>)}
                   </select>
@@ -220,7 +238,11 @@ const GetAQuote = () => {
                   <label className={labelCls}>Compliance or regulatory requirements</label>
                   <div className="grid sm:grid-cols-2 gap-2 mt-2">
                     {complianceOptions.map((c) => (
-                      <label key={c} className="flex items-center gap-3 p-3 rounded border border-border hover:border-primary/30 transition-colors cursor-pointer">
+                      <label
+                        key={c}
+                        className="flex items-center gap-3 p-3 rounded cursor-pointer transition-colors"
+                        style={{ border: form.compliance.includes(c) ? '1px solid rgba(200,146,10,0.45)' : '1px solid rgba(200,146,10,0.18)' }}
+                      >
                         <input
                           type="checkbox"
                           checked={form.compliance.includes(c)}
@@ -234,7 +256,7 @@ const GetAQuote = () => {
                 </div>
                 <div>
                   <label className={labelCls}>Primary motivation for reaching out? *</label>
-                  <select className={selectCls} value={form.motivation} onChange={(e) => update("motivation", e.target.value)}>
+                  <select className={inputCls} style={inputStyle} value={form.motivation} onChange={(e) => update("motivation", e.target.value)} {...inputFocusProps}>
                     <option value="">Select...</option>
                     {motivations.map((o) => <option key={o} value={o}>{o}</option>)}
                   </select>
@@ -247,14 +269,14 @@ const GetAQuote = () => {
               <div className="space-y-5">
                 <div>
                   <label className={labelCls}>Is there a specific timeline or deadline? *</label>
-                  <select className={selectCls} value={form.timeline} onChange={(e) => update("timeline", e.target.value)}>
+                  <select className={inputCls} style={inputStyle} value={form.timeline} onChange={(e) => update("timeline", e.target.value)} {...inputFocusProps}>
                     <option value="">Select...</option>
                     {timelines.map((o) => <option key={o} value={o}>{o}</option>)}
                   </select>
                 </div>
                 <div>
                   <label className={labelCls}>How did you hear about Araska Cyber Core? *</label>
-                  <select className={selectCls} value={form.referral} onChange={(e) => update("referral", e.target.value)}>
+                  <select className={inputCls} style={inputStyle} value={form.referral} onChange={(e) => update("referral", e.target.value)} {...inputFocusProps}>
                     <option value="">Select...</option>
                     {referralSources.map((o) => <option key={o} value={o}>{o}</option>)}
                   </select>
@@ -263,9 +285,11 @@ const GetAQuote = () => {
                   <label className={labelCls}>Anything else you'd like us to know?</label>
                   <textarea
                     className={`${inputCls} min-h-[120px] resize-y`}
+                    style={inputStyle}
                     value={form.notes}
                     onChange={(e) => update("notes", e.target.value)}
                     placeholder="Tell us anything that helps us understand your situation better. There are no wrong answers."
+                    {...inputFocusProps}
                   />
                 </div>
                 <label className="flex items-start gap-3 cursor-pointer">
@@ -283,7 +307,7 @@ const GetAQuote = () => {
             )}
 
             {/* Navigation */}
-            <div className="flex justify-between mt-8 pt-6 border-t border-border">
+            <div className="flex justify-between mt-8 pt-6" style={{ borderTop: '1px solid rgba(200,146,10,0.12)' }}>
               {step > 1 ? (
                 <button
                   onClick={() => setStep(step - 1)}

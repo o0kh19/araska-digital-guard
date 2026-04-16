@@ -50,10 +50,10 @@ const Services = () => (
         >
           <span className="eyebrow">Our Services</span>
           <span className="eyebrow-rule" />
-          <h1 className="font-display text-4xl sm:text-5xl font-extrabold text-foreground mb-4">
+          <h1 className="text-4xl sm:text-5xl font-extrabold text-foreground mb-4 tracking-[-0.02em]">
             What We Do
           </h1>
-          <p className="text-muted-foreground max-w-2xl text-lg leading-relaxed">
+          <p className="text-muted-foreground max-w-2xl text-lg leading-[1.8]">
             End-to-end cybersecurity services tailored to your organisation's size, industry, and risk profile.
           </p>
         </motion.div>
@@ -66,15 +66,23 @@ const Services = () => (
               initial={{ opacity: 0, y: 30 }}
               animate={{ opacity: 1, y: 0 }}
               transition={{ duration: 0.5, delay: i * 0.08 }}
-              className="glass-card rounded-lg p-8 md:p-10 transition-all duration-200 scroll-mt-36 hover:translate-y-[-2px]"
+              className="rounded-lg p-8 md:p-10 transition-all duration-200 scroll-mt-36 hover:translate-y-[-3px]"
+              style={{
+                background: '#152040',
+                border: '1px solid rgba(200,146,10,0.18)',
+                borderRadius: '8px',
+              }}
             >
               <div className="flex items-start gap-6">
-                <div className="hidden sm:flex items-center justify-center w-14 h-14 rounded-lg bg-primary/10 flex-shrink-0">
+                <div
+                  className="hidden sm:flex items-center justify-center w-14 h-14 rounded-md flex-shrink-0"
+                  style={{ background: 'rgba(200,146,10,0.08)', border: '1px solid rgba(200,146,10,0.2)' }}
+                >
                   <svc.icon className="text-primary" size={28} strokeWidth={1.5} />
                 </div>
                 <div className="flex-1">
-                  <h2 className="font-display text-2xl font-bold text-foreground mb-4">{svc.title}</h2>
-                  <p className="text-secondary-foreground leading-relaxed mb-6">{svc.desc}</p>
+                  <h2 className="text-2xl font-bold text-foreground mb-4 tracking-[-0.015em]">{svc.title}</h2>
+                  <p className="text-muted-foreground leading-[1.8] mb-6">{svc.desc}</p>
                   <Link
                     to={`/get-a-quote?service=${encodeURIComponent(svc.title)}`}
                     className="gold-btn text-xs py-2.5 px-6"

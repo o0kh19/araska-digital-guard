@@ -15,8 +15,8 @@ const CTABanner = () => {
         className="max-w-4xl mx-auto text-center rounded-lg p-12 md:p-16 relative overflow-hidden"
         style={{
           background: '#E5E7EB',
-          border: '1px solid rgba(200,146,10,0.3)',
-          boxShadow: '0 0 20px rgba(200,146,10,0.1)',
+          border: '1px solid rgba(31,143,203,0.3)',
+          boxShadow: '0 0 20px rgba(31,143,203,0.1)',
         }}
       >
         {/* Subtle hex watermark */}

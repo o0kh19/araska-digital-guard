@@ -73,8 +73,8 @@ const Resources = () => {
                     : "text-muted-foreground hover:text-foreground"
                 }`}
                 style={{
-                  border: activeCategory === cat ? '1px solid rgba(200,146,10,0.45)' : '1px solid rgba(200,146,10,0.18)',
-                  background: activeCategory === cat ? 'rgba(200,146,10,0.08)' : 'transparent',
+                  border: activeCategory === cat ? '1px solid rgba(31,143,203,0.45)' : '1px solid rgba(31,143,203,0.18)',
+                  background: activeCategory === cat ? 'rgba(31,143,203,0.08)' : 'transparent',
                 }}
               >
                 {cat}
@@ -93,7 +93,7 @@ const Resources = () => {
                 className="rounded-lg p-8 transition-all duration-200 flex flex-col hover:translate-y-[-3px]"
                 style={{
                   background: '#E5E7EB',
-                  border: '1px solid rgba(200,146,10,0.18)',
+                  border: '1px solid rgba(31,143,203,0.18)',
                   borderRadius: '8px',
                 }}
               >

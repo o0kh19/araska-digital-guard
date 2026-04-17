@@ -69,15 +69,15 @@ const ServicesOverview = () => {
               className="rounded-lg p-9 transition-all duration-250 flex flex-col group hover:translate-y-[-3px]"
               style={{
                 background: '#E5E7EB',
-                border: '1px solid rgba(200,146,10,0.18)',
+                border: '1px solid rgba(31,143,203,0.18)',
                 borderRadius: '8px',
               }}
-              onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(200,146,10,0.45)'; }}
-              onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(200,146,10,0.18)'; }}
+              onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(31,143,203,0.45)'; }}
+              onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(31,143,203,0.18)'; }}
             >
               <div
                 className="w-[52px] h-[52px] rounded-md flex items-center justify-center mb-5"
-                style={{ background: 'rgba(200,146,10,0.08)', border: '1px solid rgba(200,146,10,0.2)' }}
+                style={{ background: 'rgba(31,143,203,0.08)', border: '1px solid rgba(31,143,203,0.2)' }}
               >
                 <svc.icon className="text-primary" size={22} strokeWidth={1.5} />
               </div>

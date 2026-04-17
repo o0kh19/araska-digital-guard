@@ -58,8 +58,8 @@ const WhyUsSection = () => {
                 borderRadius: '8px',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = '#C8920A';
-                e.currentTarget.style.boxShadow = '0 4px 20px rgba(200,146,10,0.12)';
+                e.currentTarget.style.borderColor = '#1F8FCB';
+                e.currentTarget.style.boxShadow = '0 4px 20px rgba(31,143,203,0.12)';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.borderColor = '#E2E8F0';
@@ -68,7 +68,7 @@ const WhyUsSection = () => {
             >
               <div
                 className="w-[52px] h-[52px] rounded-md flex items-center justify-center mb-4"
-                style={{ background: 'rgba(200,146,10,0.08)', border: '1px solid rgba(200,146,10,0.2)' }}
+                style={{ background: 'rgba(31,143,203,0.08)', border: '1px solid rgba(31,143,203,0.2)' }}
               >
                 <p.icon className="text-primary" size={22} strokeWidth={1.5} />
               </div>

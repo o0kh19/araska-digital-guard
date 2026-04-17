@@ -54,17 +54,17 @@ const HowItWorks = () => {
               className="relative"
             >
               {i < steps.length - 1 && (
-                <div className="hidden lg:block absolute top-8 left-full w-full h-px -translate-x-4 z-0" style={{ background: 'rgba(200,146,10,0.15)' }} />
+                <div className="hidden lg:block absolute top-8 left-full w-full h-px -translate-x-4 z-0" style={{ background: 'rgba(31,143,203,0.15)' }} />
               )}
               <div
                 className="rounded-lg p-8 relative z-10 h-full hover:translate-y-[-3px] transition-all duration-200"
                 style={{
                   background: '#E5E7EB',
-                  border: '1px solid rgba(200,146,10,0.18)',
+                  border: '1px solid rgba(31,143,203,0.18)',
                   borderRadius: '8px',
                 }}
               >
-                <span className="text-[64px] font-extrabold block mb-4 leading-none" style={{ color: 'rgba(200,146,10,0.10)' }}>{s.step}</span>
+                <span className="text-[64px] font-extrabold block mb-4 leading-none" style={{ color: 'rgba(31,143,203,0.10)' }}>{s.step}</span>
                 <h3 className="text-lg font-bold mb-3 text-foreground">{s.title}</h3>
                 <p className="text-muted-foreground text-[15px] leading-[1.8]">{s.desc}</p>
               </div>

@@ -9,14 +9,14 @@ const HeroSection = () => (
       <div
         className="absolute inset-0"
         style={{
-          background: 'radial-gradient(ellipse at 80% 20%, rgba(200,146,10,0.07) 0%, transparent 60%)',
+          background: 'radial-gradient(ellipse at 80% 20%, rgba(31,143,203,0.07) 0%, transparent 60%)',
         }}
       />
       {/* Dot grid */}
       <div
         className="absolute inset-0"
         style={{
-          backgroundImage: 'radial-gradient(rgba(200,146,10,0.07) 1px, transparent 1px)',
+          backgroundImage: 'radial-gradient(rgba(31,143,203,0.07) 1px, transparent 1px)',
           backgroundSize: '28px 28px',
         }}
       />
@@ -39,7 +39,7 @@ const HeroSection = () => (
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.05 }}
           className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8"
-          style={{ border: '1px solid rgba(200,146,10,0.3)', background: 'rgba(200,146,10,0.08)' }}
+          style={{ border: '1px solid rgba(31,143,203,0.3)', background: 'rgba(31,143,203,0.08)' }}
         >
           <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
           <span className="text-primary text-xs font-medium tracking-wide">SOC Operations Active — 24/7</span>
@@ -91,7 +91,7 @@ const HeroSection = () => (
       >
         <div className="relative w-[400px] h-[400px]">
           <div className="absolute inset-0 flex items-center justify-center">
-            <div className="w-[300px] h-[300px] rounded-full blur-[80px]" style={{ background: 'rgba(200,146,10,0.10)' }} />
+            <div className="w-[300px] h-[300px] rounded-full blur-[80px]" style={{ background: 'rgba(31,143,203,0.10)' }} />
           </div>
 
           <svg viewBox="0 0 400 400" className="absolute inset-0 w-full h-full">
@@ -106,7 +106,7 @@ const HeroSection = () => (
                   key={i}
                   points={points}
                   fill="none"
-                  stroke="#C8920A"
+                  stroke="#1F8FCB"
                   strokeWidth={i === 2 ? 2 : 1}
                   opacity={i === 0 ? 0.1 : i === 1 ? 0.2 : 0.6}
                 />
@@ -116,14 +116,14 @@ const HeroSection = () => (
             <polyline
               points="130,200 160,200 175,175 195,220 210,180 225,200 270,200"
               fill="none"
-              stroke="#C8920A"
+              stroke="#1F8FCB"
               strokeWidth="2"
               strokeLinecap="round"
               strokeLinejoin="round"
               opacity="0.8"
             />
 
-            <circle cx="200" cy="235" r="5" fill="#C8920A" opacity="0.9" />
+            <circle cx="200" cy="235" r="5" fill="#1F8FCB" opacity="0.9" />
 
             {Array.from({ length: 6 }, (_, j) => {
               const angle = (Math.PI / 3) * j - Math.PI / 2;
@@ -134,7 +134,7 @@ const HeroSection = () => (
                   cx={200 + r * Math.cos(angle)}
                   cy={200 + r * Math.sin(angle)}
                   r="4"
-                  fill="#C8920A"
+                  fill="#1F8FCB"
                   opacity="0.7"
                 />
               );

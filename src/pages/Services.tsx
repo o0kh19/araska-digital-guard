@@ -69,14 +69,14 @@ const Services = () => (
               className="rounded-lg p-8 md:p-10 transition-all duration-200 scroll-mt-36 hover:translate-y-[-3px]"
               style={{
                 background: '#E5E7EB',
-                border: '1px solid rgba(200,146,10,0.18)',
+                border: '1px solid rgba(31,143,203,0.18)',
                 borderRadius: '8px',
               }}
             >
               <div className="flex items-start gap-6">
                 <div
                   className="hidden sm:flex items-center justify-center w-14 h-14 rounded-md flex-shrink-0"
-                  style={{ background: 'rgba(200,146,10,0.08)', border: '1px solid rgba(200,146,10,0.2)' }}
+                  style={{ background: 'rgba(31,143,203,0.08)', border: '1px solid rgba(31,143,203,0.2)' }}
                 >
                   <svc.icon className="text-primary" size={28} strokeWidth={1.5} />
                 </div>

@@ -50,7 +50,7 @@ const Header = () => {
           background: scrolled ? 'rgba(10,14,26,0.92)' : 'rgba(10,14,26,0.80)',
           backdropFilter: 'blur(12px)',
           WebkitBackdropFilter: 'blur(12px)',
-          borderBottom: '1px solid rgba(200,146,10,0.15)',
+          borderBottom: '1px solid rgba(31,143,203,0.15)',
         }}
       >
         <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">

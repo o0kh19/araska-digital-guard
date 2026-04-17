@@ -49,16 +49,16 @@ const GetAQuote = () => {
   const inputCls = "w-full rounded px-4 py-3.5 text-[15px] text-foreground placeholder:text-[#5A6A80] focus:outline-none transition-colors";
   const inputStyle = {
     background: '#F3F4F6',
-    border: '1px solid rgba(200,146,10,0.18)',
+    border: '1px solid rgba(31,143,203,0.18)',
     borderRadius: '4px',
   };
   const inputFocusProps = {
     onFocus: (e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-      e.currentTarget.style.borderColor = '#C8920A';
-      e.currentTarget.style.boxShadow = '0 0 0 3px rgba(200,146,10,0.12)';
+      e.currentTarget.style.borderColor = '#1F8FCB';
+      e.currentTarget.style.boxShadow = '0 0 0 3px rgba(31,143,203,0.12)';
     },
     onBlur: (e: React.FocusEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
-      e.currentTarget.style.borderColor = 'rgba(200,146,10,0.18)';
+      e.currentTarget.style.borderColor = 'rgba(31,143,203,0.18)';
       e.currentTarget.style.boxShadow = 'none';
     },
   };
@@ -121,7 +121,7 @@ const GetAQuote = () => {
             Step {step} of 4 — {["About Your Organisation", "Your Current Security Setup", "What You Need", "Anything Else"][step - 1]}
           </p>
 
-          <div className="rounded-lg p-8 md:p-10" style={{ background: '#E5E7EB', border: '1px solid rgba(200,146,10,0.18)', borderRadius: '8px' }}>
+          <div className="rounded-lg p-8 md:p-10" style={{ background: '#E5E7EB', border: '1px solid rgba(31,143,203,0.18)', borderRadius: '8px' }}>
             {/* Step 1 */}
             {step === 1 && (
               <div className="space-y-5">
@@ -214,7 +214,7 @@ const GetAQuote = () => {
                       <label
                         key={s}
                         className="flex items-center gap-3 p-3 rounded cursor-pointer transition-colors"
-                        style={{ border: form.services.includes(s) ? '1px solid rgba(200,146,10,0.45)' : '1px solid rgba(200,146,10,0.18)' }}
+                        style={{ border: form.services.includes(s) ? '1px solid rgba(31,143,203,0.45)' : '1px solid rgba(31,143,203,0.18)' }}
                       >
                         <input
                           type="checkbox"
@@ -241,7 +241,7 @@ const GetAQuote = () => {
                       <label
                         key={c}
                         className="flex items-center gap-3 p-3 rounded cursor-pointer transition-colors"
-                        style={{ border: form.compliance.includes(c) ? '1px solid rgba(200,146,10,0.45)' : '1px solid rgba(200,146,10,0.18)' }}
+                        style={{ border: form.compliance.includes(c) ? '1px solid rgba(31,143,203,0.45)' : '1px solid rgba(31,143,203,0.18)' }}
                       >
                         <input
                           type="checkbox"
@@ -307,7 +307,7 @@ const GetAQuote = () => {
             )}
 
             {/* Navigation */}
-            <div className="flex justify-between mt-8 pt-6" style={{ borderTop: '1px solid rgba(200,146,10,0.12)' }}>
+            <div className="flex justify-between mt-8 pt-6" style={{ borderTop: '1px solid rgba(31,143,203,0.12)' }}>
               {step > 1 ? (
                 <button
                   onClick={() => setStep(step - 1)}

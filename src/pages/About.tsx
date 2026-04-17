@@ -75,8 +75,8 @@ const About = () => (
                   className="bg-white rounded-lg p-9 transition-all duration-200 hover:translate-y-[-3px]"
                   style={{ border: '1px solid #E2E8F0', borderRadius: '8px' }}
                   onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = '#C8920A';
-                    e.currentTarget.style.boxShadow = '0 4px 20px rgba(200,146,10,0.12)';
+                    e.currentTarget.style.borderColor = '#1F8FCB';
+                    e.currentTarget.style.boxShadow = '0 4px 20px rgba(31,143,203,0.12)';
                   }}
                   onMouseLeave={(e) => {
                     e.currentTarget.style.borderColor = '#E2E8F0';
@@ -121,8 +121,8 @@ const About = () => (
           className="rounded-lg p-12 text-center"
           style={{
             background: '#E5E7EB',
-            border: '1px solid rgba(200,146,10,0.3)',
-            boxShadow: '0 0 20px rgba(200,146,10,0.1)',
+            border: '1px solid rgba(31,143,203,0.3)',
+            boxShadow: '0 0 20px rgba(31,143,203,0.1)',
           }}
         >
           <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-4 tracking-[-0.015em]">

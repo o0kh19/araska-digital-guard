@@ -48,7 +48,7 @@ const GetAQuote = () => {
 
   const inputCls = "w-full rounded px-4 py-3.5 text-[15px] text-foreground placeholder:text-[#5A6A80] focus:outline-none transition-colors";
   const inputStyle = {
-    background: '#0D1526',
+    background: '#F3F4F6',
     border: '1px solid rgba(200,146,10,0.18)',
     borderRadius: '4px',
   };
@@ -121,7 +121,7 @@ const GetAQuote = () => {
             Step {step} of 4 — {["About Your Organisation", "Your Current Security Setup", "What You Need", "Anything Else"][step - 1]}
           </p>
 
-          <div className="rounded-lg p-8 md:p-10" style={{ background: '#152040', border: '1px solid rgba(200,146,10,0.18)', borderRadius: '8px' }}>
+          <div className="rounded-lg p-8 md:p-10" style={{ background: '#E5E7EB', border: '1px solid rgba(200,146,10,0.18)', borderRadius: '8px' }}>
             {/* Step 1 */}
             {step === 1 && (
               <div className="space-y-5">

@@ -14,7 +14,7 @@ const CTABanner = () => {
         transition={{ duration: 0.6 }}
         className="max-w-4xl mx-auto text-center rounded-lg p-12 md:p-16 relative overflow-hidden"
         style={{
-          background: '#152040',
+          background: '#E5E7EB',
           border: '1px solid rgba(200,146,10,0.3)',
           boxShadow: '0 0 20px rgba(200,146,10,0.1)',
         }}

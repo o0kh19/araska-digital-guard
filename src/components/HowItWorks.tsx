@@ -59,7 +59,7 @@ const HowItWorks = () => {
               <div
                 className="rounded-lg p-8 relative z-10 h-full hover:translate-y-[-3px] transition-all duration-200"
                 style={{
-                  background: '#152040',
+                  background: '#E5E7EB',
                   border: '1px solid rgba(200,146,10,0.18)',
                   borderRadius: '8px',
                 }}

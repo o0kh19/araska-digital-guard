@@ -92,7 +92,7 @@ const Resources = () => {
                 transition={{ duration: 0.4, delay: i * 0.08 }}
                 className="rounded-lg p-8 transition-all duration-200 flex flex-col hover:translate-y-[-3px]"
                 style={{
-                  background: '#152040',
+                  background: '#E5E7EB',
                   border: '1px solid rgba(200,146,10,0.18)',
                   borderRadius: '8px',
                 }}

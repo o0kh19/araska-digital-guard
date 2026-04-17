@@ -13,7 +13,7 @@ const Contact = () => {
 
   const inputCls = "w-full rounded px-4 py-3.5 text-[15px] text-foreground placeholder:text-[#5A6A80] focus:outline-none transition-colors";
   const inputStyle = {
-    background: '#0D1526',
+    background: '#F3F4F6',
     border: '1px solid rgba(200,146,10,0.18)',
     borderRadius: '4px',
   };
@@ -66,7 +66,7 @@ const Contact = () => {
               animate={{ opacity: 1, x: 0 }}
               transition={{ delay: 0.1 }}
               className="md:col-span-3 rounded-lg p-8"
-              style={{ background: '#152040', border: '1px solid rgba(200,146,10,0.18)', borderRadius: '8px' }}
+              style={{ background: '#E5E7EB', border: '1px solid rgba(200,146,10,0.18)', borderRadius: '8px' }}
             >
               <div className="space-y-5">
                 <div className="grid sm:grid-cols-2 gap-5">
@@ -100,7 +100,7 @@ const Contact = () => {
                 <div
                   key={item.title}
                   className="rounded-lg p-6"
-                  style={{ background: '#152040', border: '1px solid rgba(200,146,10,0.18)', borderRadius: '8px' }}
+                  style={{ background: '#E5E7EB', border: '1px solid rgba(200,146,10,0.18)', borderRadius: '8px' }}
                 >
                   <div className="flex items-center gap-3 mb-2">
                     <item.icon className="text-primary" size={18} />

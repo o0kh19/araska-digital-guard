@@ -120,7 +120,7 @@ const About = () => (
           transition={{ duration: 0.5, delay: 0.4 }}
           className="rounded-lg p-12 text-center"
           style={{
-            background: '#152040',
+            background: '#E5E7EB',
             border: '1px solid rgba(200,146,10,0.3)',
             boxShadow: '0 0 20px rgba(200,146,10,0.1)',
           }}

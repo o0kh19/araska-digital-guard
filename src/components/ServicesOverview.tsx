@@ -68,7 +68,7 @@ const ServicesOverview = () => {
               transition={{ duration: 0.5, delay: i * 0.1 }}
               className="rounded-lg p-9 transition-all duration-250 flex flex-col group hover:translate-y-[-3px]"
               style={{
-                background: '#152040',
+                background: '#E5E7EB',
                 border: '1px solid rgba(200,146,10,0.18)',
                 borderRadius: '8px',
               }}

@@ -6,7 +6,7 @@
 
 @layer base {
   :root {
-    --background: 220 10% 80%;
+    --background: 0 0% 100%;
     --foreground: 222 60% 7%;
 
     --card: 220 50% 14%;
@@ -151,11 +151,13 @@
   }
 
   .section-dark {
-    background: hsl(var(--background));
+    background: #ffffff;
+    color: hsl(var(--light-foreground));
   }
 
   .section-dark-alt {
-    background: hsl(var(--secondary));
+    background: #ffffff;
+    color: hsl(var(--light-foreground));
   }
 
   .section-light {

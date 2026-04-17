@@ -55,12 +55,12 @@ const Header = () => {
       >
         <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
           <Link to="/" className="flex items-center gap-3">
-            <img src={logo} alt="Araska Cyber Core" className="h-10 w-10" />
+            <img src={logo} alt="Araska Cyber Core" className="h-16 w-16 md:h-20 md:w-20" />
             <div className="hidden sm:flex flex-col leading-tight">
-              <span className="text-sm font-extrabold tracking-[0.06em] text-foreground">
+              <span className="text-xl md:text-2xl font-extrabold tracking-[0.06em] text-foreground">
                 ARASKA
               </span>
-              <span className="text-[10px] font-extrabold tracking-[0.06em]">
+              <span className="text-sm md:text-base font-extrabold tracking-[0.06em]">
                 <span className="text-primary">CYBER</span>{" "}
                 <span className="text-foreground">CORE</span>
               </span>

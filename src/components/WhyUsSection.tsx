@@ -5,23 +5,23 @@ import { Globe, HandshakeIcon, Monitor, UserCheck } from "lucide-react";
 const pillars = [
   {
     icon: Globe,
-    title: "Global Reach, Local Understanding",
-    desc: "Headquartered in the UK with a global client base, we understand the regulatory, operational, and threat landscapes that matter to your organisation.",
+    title: "Global, but close to you",
+    desc: "We are based in the UK and work with clients around the world. We understand local rules and global threats.",
   },
   {
     icon: HandshakeIcon,
-    title: "No Retainer Lock-in on Assessments",
-    desc: "Every engagement starts with a conversation. We scope our services around your needs, not a fixed package that doesn't fit.",
+    title: "No long contracts to start",
+    desc: "Every project starts with a chat. We shape our service around your needs — not a fixed package that doesn't fit.",
   },
   {
     icon: Monitor,
-    title: "Microsoft-Powered SOC",
-    desc: "Our SOC is built on Microsoft Sentinel and Defender — enterprise-grade tools used by the world's most security-conscious organisations, delivered at a scale that works for you.",
+    title: "Powered by Microsoft",
+    desc: "Our SOC runs on Microsoft Sentinel and Defender — the same enterprise tools used by the world's biggest companies.",
   },
   {
     icon: UserCheck,
-    title: "Analysts, Not Algorithms",
-    desc: "Every alert is reviewed by a human analyst. We don't let automated rules replace expert judgement when your security is at stake.",
+    title: "Real people, not just robots",
+    desc: "Every alert is checked by a human expert. Machines help us go fast — but people make the final call.",
   },
 ];
 

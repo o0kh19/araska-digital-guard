@@ -4,23 +4,23 @@ import { useRef } from "react";
 const steps = [
   {
     step: "01",
-    title: "Discovery",
-    desc: "You tell us about your organisation. We ask the right questions to understand your environment, risks, and goals — before we recommend anything.",
+    title: "We Talk",
+    desc: "You tell us about your business. We ask simple questions to understand your systems, risks, and goals.",
   },
   {
     step: "02",
-    title: "Proposal",
-    desc: "We produce a scoped proposal with clear deliverables, timelines, and service terms. No hidden conditions.",
+    title: "We Plan",
+    desc: "We send you a clear proposal: what we will do, when, and at what cost. No hidden terms.",
   },
   {
     step: "03",
-    title: "Onboarding",
-    desc: "Our team integrates with your environment quickly and carefully. For SOC clients, we target full visibility within days of contract signature.",
+    title: "We Set Up",
+    desc: "Our team connects to your systems quickly and safely. SOC clients are usually fully covered within days.",
   },
   {
     step: "04",
-    title: "Ongoing Partnership",
-    desc: "We don't disappear after deployment. Regular reporting, dedicated communication, and continuous improvement are part of every engagement.",
+    title: "We Stay With You",
+    desc: "We don't disappear after setup. You get regular reports, a real point of contact, and continuous improvement.",
   },
 ];
 

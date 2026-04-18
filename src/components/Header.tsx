@@ -8,6 +8,7 @@ const navLinks = [
   { label: "Services", href: "/services" },
   { label: "About", href: "/about" },
   { label: "Resources", href: "/resources" },
+  { label: "Free Health Check", href: "/cyber-health-check" },
   { label: "Contact", href: "/contact" },
 ];
 

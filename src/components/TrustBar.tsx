@@ -1,10 +1,10 @@
 const tools = [
-  "Microsoft Sentinel",
+  "Microsoft Azure",
+  "Microsoft 365",
+  "Microsoft SIEM",
+  "Microsoft Cloud",
   "Microsoft Defender",
-  "Azure",
-  "TheHive",
-  "MISP",
-  "Velociraptor",
+  "Microsoft XDR & EDR",
 ];
 
 const TrustBar = () => (

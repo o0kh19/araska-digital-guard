@@ -2,6 +2,7 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
 import { ShieldCheck, Radar, FileSearch, Zap, GraduationCap } from "lucide-react";
+import cyberShield from "@/assets/cyber-shield.jpg";
 
 const services = [
   {
@@ -57,6 +58,30 @@ const ServicesOverview = () => {
           <p className="text-muted-foreground max-w-2xl leading-[1.8]">
             Tailored to your organisation's size, industry, and risk profile.
           </p>
+        </motion.div>
+
+        <motion.div
+          initial={{ opacity: 0, y: 30 }}
+          animate={inView ? { opacity: 1, y: 0 } : {}}
+          transition={{ duration: 0.6, delay: 0.1 }}
+          className="relative rounded-xl overflow-hidden mb-10"
+          style={{
+            border: '1px solid rgba(31,143,203,0.25)',
+            boxShadow: '0 20px 60px -20px rgba(31,143,203,0.35)',
+          }}
+        >
+          <img
+            src={cyberShield}
+            alt="Digital shield protecting a network of connected systems"
+            loading="lazy"
+            width={1280}
+            height={800}
+            className="w-full h-[260px] sm:h-[340px] object-cover block"
+          />
+          <div
+            className="absolute inset-0 pointer-events-none"
+            style={{ background: 'linear-gradient(90deg, rgba(5,10,20,0.6) 0%, rgba(5,10,20,0) 50%, rgba(5,10,20,0.6) 100%)' }}
+          />
         </motion.div>
 
         <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">

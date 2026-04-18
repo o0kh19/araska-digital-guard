@@ -1,6 +1,7 @@
 import { Link } from "react-router-dom";
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
+import socTeam from "@/assets/soc-team.jpg";
 
 const CTABanner = () => {
   const ref = useRef(null);
@@ -12,9 +13,11 @@ const CTABanner = () => {
         initial={{ opacity: 0, y: 20 }}
         animate={inView ? { opacity: 1, y: 0 } : {}}
         transition={{ duration: 0.6 }}
-        className="max-w-4xl mx-auto text-center rounded-lg p-12 md:p-16 relative overflow-hidden"
+        className="max-w-5xl mx-auto text-center rounded-lg p-12 md:p-16 relative overflow-hidden"
         style={{
-          background: '#E5E7EB',
+          backgroundImage: `linear-gradient(rgba(229,231,235,0.88), rgba(229,231,235,0.92)), url(${socTeam})`,
+          backgroundSize: 'cover',
+          backgroundPosition: 'center',
           border: '1px solid rgba(31,143,203,0.3)',
           boxShadow: '0 0 20px rgba(31,143,203,0.1)',
         }}

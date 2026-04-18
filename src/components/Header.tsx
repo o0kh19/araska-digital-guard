@@ -29,7 +29,7 @@ const Header = () => {
   return (
     <>
       {/* Utility Bar */}
-      <div className="fixed top-0 left-0 right-0 z-[60] bg-[#070B14] border-b" style={{ borderColor: 'rgba(255,255,255,0.08)' }}>
+      <div className="fixed top-0 left-0 right-0 z-[60] bg-[#2A2F3A] border-b" style={{ borderColor: 'rgba(255,255,255,0.08)' }}>
         <div className="max-w-7xl mx-auto flex items-center justify-end px-6 py-2 gap-6">
           <Link to="/contact" className="text-xs text-muted-foreground hover:text-foreground transition-colors">
             Support
@@ -47,7 +47,7 @@ const Header = () => {
       <header
         className="fixed top-[36px] left-0 right-0 z-50 transition-all duration-300"
         style={{
-          background: scrolled ? 'rgba(10,14,26,0.92)' : 'rgba(10,14,26,0.80)',
+          background: scrolled ? 'rgba(58,63,74,0.92)' : 'rgba(58,63,74,0.85)',
           backdropFilter: 'blur(12px)',
           WebkitBackdropFilter: 'blur(12px)',
           borderBottom: '1px solid rgba(31,143,203,0.15)',

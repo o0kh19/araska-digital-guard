@@ -62,9 +62,36 @@ const HeroSection = () => (
           transition={{ duration: 0.5, delay: 0.2 }}
           className="text-muted-foreground text-lg sm:text-xl max-w-xl mb-10 leading-relaxed"
         >
-          Araska Cyber Core delivers enterprise-grade security operations, threat intelligence, and
-          cyber resilience services to organisations across the globe — so you can focus on your
-          business while we protect it.
+          At <span className="text-foreground font-semibold">Araska Cyber Core</span>, we keep your business safe from cyber attacks — every hour, every day.
+          <br /><br />
+          We help companies around the world with:
+        </motion.p>
+
+        <motion.ul
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.25 }}
+          className="space-y-3 mb-10 max-w-xl"
+        >
+          {[
+            { b: "24/7 Security Monitoring", t: "we watch your systems all the time." },
+            { b: "Threat Intelligence", t: "we find risks before they hurt you." },
+            { b: "Cyber Resilience", t: "we keep you running, even under attack." },
+          ].map((item) => (
+            <li key={item.b} className="flex items-start gap-3 text-muted-foreground text-base sm:text-lg leading-relaxed">
+              <span className="mt-2 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
+              <span><span className="text-foreground font-semibold">{item.b}</span> — {item.t}</span>
+            </li>
+          ))}
+        </motion.ul>
+
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.28 }}
+          className="text-muted-foreground text-base sm:text-lg max-w-xl mb-10 leading-relaxed"
+        >
+          You focus on your business. We protect it.
         </motion.p>
 
         <motion.div

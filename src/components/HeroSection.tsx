@@ -62,7 +62,7 @@ const HeroSection = () => (
           transition={{ duration: 0.5, delay: 0.2 }}
           className="text-muted-foreground text-lg sm:text-xl max-w-xl mb-10 leading-relaxed"
         >
-          At <span className="text-foreground font-semibold">Araska Cyber Core</span>, we keep your business safe from cyber attacks — every hour, every day.
+          <span className="text-foreground font-semibold">Araska Cyber Core</span> protects your business from cyber attacks — every hour, every day.
           <br /><br />
           We help companies around the world with:
         </motion.p>
@@ -74,9 +74,10 @@ const HeroSection = () => (
           className="space-y-3 mb-10 max-w-xl"
         >
           {[
-            { b: "24/7 Security Monitoring", t: "we watch your systems all the time." },
-            { b: "Threat Intelligence", t: "we find risks before they hurt you." },
+            { b: "24/7 Security Monitoring", t: "we watch your systems day and night." },
+            { b: "Threat Intelligence", t: "we spot risks before they reach you." },
             { b: "Cyber Resilience", t: "we keep you running, even under attack." },
+            { b: "Free Health Check", t: "see your security score in 2 minutes." },
           ].map((item) => (
             <li key={item.b} className="flex items-start gap-3 text-muted-foreground text-base sm:text-lg leading-relaxed">
               <span className="mt-2 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
@@ -100,12 +101,12 @@ const HeroSection = () => (
           transition={{ duration: 0.5, delay: 0.3 }}
           className="flex flex-col sm:flex-row gap-4"
         >
-          <Link to="/get-a-quote" className="gold-btn text-sm">
+          <Link to="/cyber-health-check" className="gold-btn text-sm">
+            Free Health Check
+          </Link>
+          <Link to="/get-a-quote" className="outline-btn text-sm">
             Get a Quote
           </Link>
-          <a href="#services" className="outline-btn text-sm">
-            Explore Our Services
-          </a>
         </motion.div>
       </div>
 

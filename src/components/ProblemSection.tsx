@@ -15,14 +15,13 @@ const ProblemSection = () => {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-foreground tracking-[-0.015em] mb-6">
-            Cyber threats don't keep business hours.{" "}
-            <span className="text-primary">Most organisations aren't ready.</span>
+            Cyber attacks don't wait for office hours.{" "}
+            <span className="text-primary">Most businesses are not ready.</span>
           </h2>
           <p className="text-muted-foreground text-lg leading-[1.8]">
-            The average time to detect a breach is 194 days. By then, the damage is done.
-            Araska Cyber Core closes that gap — with continuous monitoring, expert analysts,
-            and response capabilities that activate the moment a threat emerges. We don't just
-            report problems. We stop them.
+            On average, it takes companies <span className="text-foreground font-semibold">194 days</span> to notice they have been hacked. By then, the damage is already done.
+            <br /><br />
+            We close that gap. Our team watches your systems around the clock, spots problems early, and stops attacks before they grow. We don't just send reports — we take action.
           </p>
         </motion.div>
 

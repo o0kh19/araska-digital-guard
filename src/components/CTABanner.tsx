@@ -37,15 +37,20 @@ const CTABanner = () => {
 
         <div className="relative z-10">
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4 tracking-[-0.015em]">
-            Ready to take your security seriously?
+            Ready to take cyber security seriously?
           </h2>
           <p className="text-muted-foreground text-lg max-w-xl mx-auto mb-8 leading-[1.8]">
-            Tell us about your organisation and we'll put together a tailored proposal.
-            No obligation. No generic packages.
+            Tell us about your business and we will send you a clear, tailored proposal.
+            No pressure. No generic packages.
           </p>
-          <Link to="/get-a-quote" className="gold-btn text-sm">
-            Get a Quote
-          </Link>
+          <div className="flex flex-col sm:flex-row gap-4 justify-center">
+            <Link to="/cyber-health-check" className="outline-btn text-sm">
+              Take the Free Health Check
+            </Link>
+            <Link to="/get-a-quote" className="gold-btn text-sm">
+              Get a Quote
+            </Link>
+          </div>
         </div>
       </motion.div>
     </section>

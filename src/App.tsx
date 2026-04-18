@@ -9,6 +9,7 @@ import About from "./pages/About";
 import Resources from "./pages/Resources";
 import GetAQuote from "./pages/GetAQuote";
 import Contact from "./pages/Contact";
+import CyberHealthCheck from "./pages/CyberHealthCheck";
 import NotFound from "./pages/NotFound";
 
 const queryClient = new QueryClient();
@@ -26,6 +27,7 @@ const App = () => (
           <Route path="/resources" element={<Resources />} />
           <Route path="/get-a-quote" element={<GetAQuote />} />
           <Route path="/contact" element={<Contact />} />
+          <Route path="/cyber-health-check" element={<CyberHealthCheck />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
       </BrowserRouter>

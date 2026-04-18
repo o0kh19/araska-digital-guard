@@ -1,39 +1,47 @@
 import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Link } from "react-router-dom";
-import { ShieldCheck, Radar, FileSearch, Zap, GraduationCap } from "lucide-react";
+import { ShieldCheck, Radar, FileSearch, Zap, GraduationCap, ClipboardCheck } from "lucide-react";
 import cyberShield from "@/assets/cyber-shield.jpg";
 
 const services = [
   {
     icon: ShieldCheck,
     title: "SOC as a Service",
-    desc: "Round-the-clock monitoring of your environment by certified analysts. We detect, triage, and respond to threats before they become incidents.",
+    desc: "Our experts watch your systems 24/7. We find threats, stop them fast, and tell you what happened — in plain language.",
     slug: "soc-as-a-service",
   },
   {
     icon: Radar,
     title: "Threat Intelligence",
-    desc: "Actionable intelligence on the threats targeting your sector and region. We turn raw data into decisions your team can act on immediately.",
+    desc: "We track the attackers who target your industry, so you know what to defend against — before they strike.",
     slug: "threat-intelligence",
   },
   {
     icon: FileSearch,
     title: "Cyber Risk Assessment",
-    desc: "A structured review of your organisation's security posture, gaps, and risk exposure. Every assessment is scoped to your size and context — no two are the same.",
+    desc: "We review your security from top to bottom and give you a clear list of what to fix first. Built around your business size and needs.",
     slug: "cyber-risk-assessment",
   },
   {
     icon: Zap,
     title: "Incident Response Retainer",
-    desc: "When an incident strikes, every minute counts. Our retainer clients get immediate access to our response team with pre-agreed SLAs and escalation paths.",
+    desc: "When an attack hits, every minute matters. Our team is ready to step in immediately, with response times agreed in advance.",
     slug: "incident-response-retainer",
   },
   {
     icon: GraduationCap,
     title: "Security Awareness Training",
-    desc: "Your people are your first line of defence. Our training programmes equip staff at every level to recognise and respond to real-world threats.",
+    desc: "Your staff are your first line of defence. We train them to spot phishing emails and risky behaviour — in simple, practical sessions.",
     slug: "security-awareness-training",
+  },
+  {
+    icon: ClipboardCheck,
+    title: "Cyber Consulting & Health Check",
+    desc: "Not sure where you stand? Start with our free 2-minute Cyber Health Check, then book a deep consultation tailored to your business.",
+    slug: "cyber-consulting",
+    href: "/cyber-health-check",
+    badge: "Free",
   },
 ];
 
@@ -106,13 +114,20 @@ const ServicesOverview = () => {
               >
                 <svc.icon className="text-primary" size={22} strokeWidth={1.5} />
               </div>
-              <h3 className="text-[19px] font-semibold mb-3 text-foreground">{svc.title}</h3>
+              <div className="flex items-center gap-2 mb-3">
+                <h3 className="text-[19px] font-semibold text-foreground">{svc.title}</h3>
+                {(svc as any).badge && (
+                  <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/30">
+                    {(svc as any).badge}
+                  </span>
+                )}
+              </div>
               <p className="text-muted-foreground text-[15px] leading-[1.8] mb-6 flex-1">{svc.desc}</p>
               <Link
-                to={`/services#${svc.slug}`}
+                to={(svc as any).href ?? `/services#${svc.slug}`}
                 className="text-primary text-sm font-medium hover:underline hover:text-primary-light inline-flex items-center gap-1 group-hover:gap-2 transition-all"
               >
-                Learn More →
+                {(svc as any).href ? "Start Now →" : "Learn More →"}
               </Link>
             </motion.div>
           ))}

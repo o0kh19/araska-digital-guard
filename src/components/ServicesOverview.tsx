@@ -114,13 +114,20 @@ const ServicesOverview = () => {
               >
                 <svc.icon className="text-primary" size={22} strokeWidth={1.5} />
               </div>
-              <h3 className="text-[19px] font-semibold mb-3 text-foreground">{svc.title}</h3>
+              <div className="flex items-center gap-2 mb-3">
+                <h3 className="text-[19px] font-semibold text-foreground">{svc.title}</h3>
+                {(svc as any).badge && (
+                  <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/30">
+                    {(svc as any).badge}
+                  </span>
+                )}
+              </div>
               <p className="text-muted-foreground text-[15px] leading-[1.8] mb-6 flex-1">{svc.desc}</p>
               <Link
-                to={`/services#${svc.slug}`}
+                to={(svc as any).href ?? `/services#${svc.slug}`}
                 className="text-primary text-sm font-medium hover:underline hover:text-primary-light inline-flex items-center gap-1 group-hover:gap-2 transition-all"
               >
-                Learn More →
+                {(svc as any).href ? "Start Now →" : "Learn More →"}
               </Link>
             </motion.div>
           ))}

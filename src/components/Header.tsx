@@ -54,10 +54,22 @@ const Header = () => {
         }}
       >
         <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
-          <Link to="/" className="flex items-center">
-            <span className="font-display text-xl md:text-2xl font-bold tracking-wide text-foreground">
-              Araska Cyber Core
-            </span>
+          <Link to="/" className="flex items-center group">
+            <div className="relative flex flex-col items-center leading-none">
+              {/* Line + dot accent above */}
+              <div className="flex items-center gap-1 mb-1">
+                <span className="block h-[2px] w-10 bg-primary rounded-full" />
+                <span className="block w-[3px] h-[3px] rounded-full bg-primary" />
+              </div>
+              {/* Brand name */}
+              <span className="font-display text-2xl md:text-3xl font-semibold tracking-tight text-primary">
+                Arask<span className="uppercase">A</span>
+              </span>
+              {/* Tagline */}
+              <span className="text-[10px] md:text-[11px] tracking-[0.35em] text-muted-foreground mt-1 uppercase">
+                Cyber Core
+              </span>
+            </div>
           </Link>
 
           <nav className="hidden lg:flex items-center gap-8">

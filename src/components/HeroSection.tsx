@@ -19,16 +19,15 @@ const HeroSection = () => (
       }}
     />
 
-    <div className="relative z-10 max-w-4xl mx-auto px-6 py-32 w-full">
-      {/* Left — Text */}
+    <div className="relative z-10 max-w-4xl mx-auto px-6 py-32 w-full text-white">
       <div>
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
         >
-          <span className="eyebrow">Global Cybersecurity Operations</span>
-          <span className="eyebrow-rule" />
+          <span className="text-xs tracking-[0.2em] uppercase font-medium mb-3 text-emerald-300 block">Global Cybersecurity Operations</span>
+          <span className="block w-12 h-0.5 mt-2 mb-4 bg-emerald-300" />
         </motion.div>
 
         <motion.div
@@ -36,30 +35,30 @@ const HeroSection = () => (
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.05 }}
           className="inline-flex items-center gap-2 px-4 py-2 rounded-full mb-8"
-          style={{ border: '1px solid rgba(31,143,203,0.3)', background: 'rgba(31,143,203,0.08)' }}
+          style={{ border: '1px solid rgba(255,255,255,0.3)', background: 'rgba(255,255,255,0.10)' }}
         >
-          <span className="w-2 h-2 rounded-full bg-primary animate-pulse" />
-          <span className="text-primary text-xs font-medium tracking-wide">SOC Operations Active — 24/7</span>
+          <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse" />
+          <span className="text-white text-xs font-medium tracking-wide">SOC Operations Active — 24/7</span>
         </motion.div>
 
         <motion.h1
           initial={{ opacity: 0, y: 30 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-4xl sm:text-5xl lg:text-7xl font-extrabold leading-[1.05] mb-6 text-foreground tracking-[-0.02em]"
+          className="text-4xl sm:text-5xl lg:text-7xl font-extrabold leading-[1.05] mb-6 text-white tracking-[-0.02em]"
         >
           Your Threat Is Real.
           <br />
-          <span className="gold-glow-text">So Is Our Response.</span>
+          <span className="bg-gradient-to-r from-cyan-300 to-emerald-300 bg-clip-text text-transparent">So Is Our Response.</span>
         </motion.h1>
 
         <motion.p
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-muted-foreground text-lg sm:text-xl max-w-xl mb-10 leading-relaxed"
+          className="text-white/85 text-lg sm:text-xl max-w-xl mb-10 leading-relaxed"
         >
-          <span className="text-foreground font-semibold">Araska Cyber Core</span> protects your business from cyber attacks — every hour, every day.
+          <span className="text-white font-semibold">Araska Cyber Core</span> protects your business from cyber attacks — every hour, every day.
           <br /><br />
           We help companies around the world with:
         </motion.p>
@@ -76,9 +75,9 @@ const HeroSection = () => (
             { b: "Cyber Resilience", t: "we keep you running, even under attack." },
             { b: "Free Health Check", t: "see your security score in 2 minutes." },
           ].map((item) => (
-            <li key={item.b} className="flex items-start gap-3 text-muted-foreground text-base sm:text-lg leading-relaxed">
-              <span className="mt-2 w-1.5 h-1.5 rounded-full bg-primary flex-shrink-0" />
-              <span><span className="text-foreground font-semibold">{item.b}</span> — {item.t}</span>
+            <li key={item.b} className="flex items-start gap-3 text-white/85 text-base sm:text-lg leading-relaxed">
+              <span className="mt-2 w-1.5 h-1.5 rounded-full bg-emerald-300 flex-shrink-0" />
+              <span><span className="text-white font-semibold">{item.b}</span> — {item.t}</span>
             </li>
           ))}
         </motion.ul>
@@ -87,7 +86,7 @@ const HeroSection = () => (
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.28 }}
-          className="text-muted-foreground text-base sm:text-lg max-w-xl mb-10 leading-relaxed"
+          className="text-white/85 text-base sm:text-lg max-w-xl mb-10 leading-relaxed"
         >
           You focus on your business. We protect it.
         </motion.p>
@@ -98,15 +97,14 @@ const HeroSection = () => (
           transition={{ duration: 0.5, delay: 0.3 }}
           className="flex flex-col sm:flex-row gap-4"
         >
-          <Link to="/cyber-health-check" className="gold-btn text-sm">
+          <Link to="/cyber-health-check" className="inline-flex items-center justify-center px-8 py-4 font-bold text-sm uppercase tracking-[0.08em] rounded bg-white text-primary hover:bg-white/90 transition-all">
             Free Health Check
           </Link>
-          <Link to="/get-a-quote" className="outline-btn text-sm">
+          <Link to="/get-a-quote" className="inline-flex items-center justify-center px-8 py-4 font-bold text-sm uppercase tracking-[0.08em] rounded border-2 border-white text-white hover:bg-white/10 transition-all">
             Get a Quote
           </Link>
         </motion.div>
       </div>
-
     </div>
   </section>
 );

@@ -75,11 +75,11 @@ const Header = () => {
                 to={link.href}
                 className={`text-sm font-medium tracking-[0.04em] relative pb-1 transition-all duration-200 ${
                   location.pathname === link.href
-                    ? "text-primary-light"
-                    : "text-[#D0D8E4] hover:text-primary-light"
+                    ? "text-primary"
+                    : "text-foreground/80 hover:text-primary"
                 }`}
                 style={{
-                  borderBottom: location.pathname === link.href ? '2px solid hsl(40 86% 41%)' : '2px solid transparent',
+                  borderBottom: location.pathname === link.href ? '2px solid hsl(var(--primary))' : '2px solid transparent',
                 }}
               >
                 {link.label}
@@ -100,15 +100,15 @@ const Header = () => {
         </div>
 
         {mobileOpen && (
-          <nav className="lg:hidden bg-background px-6 py-6 flex flex-col gap-4" style={{ borderTop: '1px solid rgba(255,255,255,0.08)' }}>
+          <nav className="lg:hidden bg-white px-6 py-6 flex flex-col gap-4 border-t border-border">
             {navLinks.map((link) => (
               <Link
                 key={link.href}
                 to={link.href}
                 className={`text-sm transition-colors font-medium ${
                   location.pathname === link.href
-                    ? "text-primary-light"
-                    : "text-[#D0D8E4] hover:text-primary-light"
+                    ? "text-primary"
+                    : "text-foreground/80 hover:text-primary"
                 }`}
               >
                 {link.label}

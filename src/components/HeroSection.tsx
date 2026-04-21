@@ -2,25 +2,22 @@ import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 
 const HeroSection = () => (
-  <section className="relative min-h-screen flex items-center overflow-hidden section-dark">
-    {/* Background textures */}
-    <div className="absolute inset-0">
-      {/* Radial gold glow top-right */}
-      <div
-        className="absolute inset-0"
-        style={{
-          background: 'radial-gradient(ellipse at 80% 20%, rgba(31,143,203,0.07) 0%, transparent 60%)',
-        }}
-      />
-      {/* Dot grid */}
-      <div
-        className="absolute inset-0"
-        style={{
-          backgroundImage: 'radial-gradient(rgba(31,143,203,0.07) 1px, transparent 1px)',
-          backgroundSize: '28px 28px',
-        }}
-      />
-    </div>
+  <section className="relative min-h-screen flex items-center overflow-hidden">
+    {/* Trellix-style blue → teal → green hero gradient backdrop */}
+    <div
+      className="absolute inset-0"
+      style={{
+        background: 'linear-gradient(135deg, hsl(232 100% 28%) 0%, hsl(210 100% 35%) 35%, hsl(180 80% 38%) 65%, hsl(142 76% 38%) 100%)',
+      }}
+    />
+    {/* Soft aurora light streaks */}
+    <div
+      className="absolute inset-0 opacity-60"
+      style={{
+        background:
+          'radial-gradient(ellipse at 20% 30%, rgba(255,255,255,0.18) 0%, transparent 50%), radial-gradient(ellipse at 80% 70%, rgba(0,255,170,0.15) 0%, transparent 55%)',
+      }}
+    />
 
     <div className="relative z-10 max-w-4xl mx-auto px-6 py-32 w-full">
       {/* Left — Text */}

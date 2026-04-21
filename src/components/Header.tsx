@@ -56,9 +56,9 @@ const Header = () => {
         <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
           <Link to="/" className="flex items-center group">
             <div className="relative inline-flex flex-col leading-none">
-              {/* Short line + dot on same line, above the name */}
-              <div className="flex items-center gap-1 mb-1 ml-[2px]">
-                <span className="block h-[2px] w-6 bg-primary rounded-full" />
+              {/* Line spanning from A to K, with dot at the end */}
+              <div className="flex items-center gap-1 mb-1">
+                <span className="block h-[2px] w-[60%] bg-primary rounded-full" />
                 <span className="block w-[3px] h-[3px] rounded-full bg-primary" />
               </div>
               {/* Brand name */}

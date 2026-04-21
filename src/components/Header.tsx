@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import logo from "@/assets/araska-logo.png";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -56,7 +55,9 @@ const Header = () => {
       >
         <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
           <Link to="/" className="flex items-center">
-            <img src={logo} alt="Araska Cyber Core" className="h-20 md:h-28 w-auto" />
+            <span className="font-display text-xl md:text-2xl font-bold tracking-wide text-foreground">
+              Araska Cyber Core
+            </span>
           </Link>
 
           <nav className="hidden lg:flex items-center gap-8">

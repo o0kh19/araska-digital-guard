@@ -55,15 +55,15 @@ const Header = () => {
       >
         <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
           <Link to="/" className="flex items-center group">
-            <div className="relative flex flex-col items-center leading-none">
-              {/* Line + dot accent above */}
-              <div className="flex items-center gap-1 mb-1">
-                <span className="block h-[2px] w-10 bg-primary rounded-full" />
-                <span className="block w-[3px] h-[3px] rounded-full bg-primary" />
+            <div className="relative inline-flex flex-col leading-none">
+              {/* Line above starting from A, with dot above the last a */}
+              <div className="relative h-2 mb-1 ml-[2px]">
+                <span className="absolute left-0 top-1/2 -translate-y-1/2 h-[2px] w-[calc(100%-10px)] bg-primary rounded-full" />
+                <span className="absolute right-[2px] top-0 w-[3px] h-[3px] rounded-full bg-primary" />
               </div>
               {/* Brand name */}
               <span className="font-display text-2xl md:text-3xl font-semibold tracking-tight text-primary">
-                Arask<span className="uppercase">A</span>
+                ArasKa
               </span>
               {/* Tagline */}
               <span className="text-[10px] md:text-[11px] tracking-[0.35em] text-muted-foreground mt-1 uppercase">

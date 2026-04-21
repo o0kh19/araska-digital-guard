@@ -28,8 +28,11 @@ const Header = () => {
 
   return (
     <>
+      {/* Trellix-style bright blue top strip */}
+      <div className="fixed top-0 left-0 right-0 z-[60] h-2" style={{ background: 'hsl(var(--primary))' }} />
+
       {/* Utility Bar */}
-      <div className="fixed top-0 left-0 right-0 z-[60] bg-[#2A2F3A] border-b" style={{ borderColor: 'rgba(255,255,255,0.08)' }}>
+      <div className="fixed top-2 left-0 right-0 z-[60] bg-white border-b border-border">
         <div className="max-w-7xl mx-auto flex items-center justify-end px-6 py-2 gap-6">
           <Link to="/contact" className="text-xs text-muted-foreground hover:text-foreground transition-colors">
             Support
@@ -45,12 +48,10 @@ const Header = () => {
 
       {/* Main Nav */}
       <header
-        className="fixed top-[36px] left-0 right-0 z-50 transition-all duration-300"
+        className="fixed top-[44px] left-0 right-0 z-50 transition-all duration-300 bg-white"
         style={{
-          background: scrolled ? 'rgba(58,63,74,0.92)' : 'rgba(58,63,74,0.85)',
-          backdropFilter: 'blur(12px)',
-          WebkitBackdropFilter: 'blur(12px)',
-          borderBottom: '1px solid rgba(31,143,203,0.15)',
+          borderBottom: scrolled ? '1px solid hsl(var(--border))' : '1px solid transparent',
+          boxShadow: scrolled ? '0 2px 12px rgba(0,0,0,0.04)' : 'none',
         }}
       >
         <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">

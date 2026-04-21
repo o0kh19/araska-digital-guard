@@ -1,5 +1,4 @@
 import { Link } from "react-router-dom";
-import logo from "@/assets/araska-logo.png";
 import { Mail, MapPin } from "lucide-react";
 
 const serviceLinks = [
@@ -24,7 +23,6 @@ const Footer = () => (
         {/* Brand */}
         <div>
           <div className="flex items-center gap-3 mb-4">
-            <img src={logo} alt="Araska Cyber Core" className="h-9 w-9" loading="lazy" width={512} height={512} />
             <div className="flex flex-col leading-tight">
               <span className="text-xs font-extrabold tracking-[0.06em] text-foreground">ARASKA</span>
               <span className="text-[9px] font-extrabold tracking-[0.06em]">

@@ -61,7 +61,7 @@ const Header = () => {
                 Aras
               </span>
               <span className="text-[10px] md:text-[11px] tracking-[0.4em] uppercase leading-tight">
-                <span className="text-sky-400">Cyber</span>{" "}
+                <span style={{ color: 'hsl(200 90% 60%)' }}>Cyber</span>{" "}
                 <span className="text-muted-foreground">Core</span>
               </span>
               <span className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground leading-none">

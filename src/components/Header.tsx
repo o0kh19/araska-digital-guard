@@ -56,20 +56,20 @@ const Header = () => {
         <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
           <Link to="/" className="flex items-center group">
             <div className="relative inline-flex flex-col leading-none">
-              {/* Wordmark with diagonal accent slash on the final 'a' */}
+              {/* Wordmark with diagonal accent slash extending from the K */}
               <div className="relative">
                 <span className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground">
-                  ArasK<span className="relative inline-block">
-                    a
-                    {/* Diagonal accent slash (Trellix-style) */}
+                  Aras<span className="relative inline-block">
+                    K
+                    {/* Diagonal accent slash extending from K's leg */}
                     <span
                       aria-hidden="true"
-                      className="absolute -top-1 -right-2 block w-5 h-[3px] rounded-full rotate-[-35deg] origin-right"
+                      className="absolute top-1/2 -right-3 block w-7 h-[3px] rounded-full rotate-[-35deg] origin-left"
                       style={{
                         background: 'linear-gradient(90deg, hsl(var(--primary)) 0%, #4FC3F7 100%)',
                       }}
                     />
-                  </span>
+                  </span>a
                 </span>
               </div>
               {/* Tagline */}

@@ -56,17 +56,24 @@ const Header = () => {
         <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
           <Link to="/" className="flex items-center group">
             <div className="relative inline-flex flex-col leading-none">
-              {/* Line spanning from A to K, with dot at the end */}
-              <div className="flex items-center gap-1 mb-1">
-                <span className="block h-[2px] w-[60%] bg-primary rounded-full" />
-                <span className="block w-[3px] h-[3px] rounded-full bg-primary" />
+              {/* Wordmark with diagonal accent slash on the final 'a' */}
+              <div className="relative">
+                <span className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground">
+                  ArasK<span className="relative inline-block">
+                    a
+                    {/* Diagonal accent slash (Trellix-style) */}
+                    <span
+                      aria-hidden="true"
+                      className="absolute -top-1 -right-2 block w-5 h-[3px] rounded-full rotate-[-35deg] origin-right"
+                      style={{
+                        background: 'linear-gradient(90deg, hsl(var(--primary)) 0%, #4FC3F7 100%)',
+                      }}
+                    />
+                  </span>
+                </span>
               </div>
-              {/* Brand name */}
-              <span className="font-display text-2xl md:text-3xl font-semibold tracking-tight text-primary">
-                ArasKa
-              </span>
               {/* Tagline */}
-              <span className="text-[10px] md:text-[11px] tracking-[0.35em] text-muted-foreground mt-1 uppercase">
+              <span className="text-[10px] md:text-[11px] tracking-[0.4em] text-muted-foreground mt-1.5 uppercase">
                 Cyber Core
               </span>
             </div>

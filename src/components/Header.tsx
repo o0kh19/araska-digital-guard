@@ -56,14 +56,16 @@ const Header = () => {
       >
         <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
           <Link to="/" className="flex items-center group">
-            <div className="relative inline-flex flex-col leading-none">
-              {/* Wordmark */}
+            <div className="relative inline-flex items-center leading-none gap-2">
               <span className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground leading-none">
-                ArasKa
+                Aras
               </span>
-              {/* Tagline */}
-              <span className="text-[10px] md:text-[11px] tracking-[0.4em] text-muted-foreground mt-1.5 uppercase">
-                Cyber Core
+              <span className="text-[10px] md:text-[11px] tracking-[0.4em] uppercase leading-tight">
+                <span className="text-sky-400">Cyber</span>{" "}
+                <span className="text-muted-foreground">Core</span>
+              </span>
+              <span className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground leading-none">
+                Ka
               </span>
             </div>
           </Link>

@@ -2,14 +2,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import {
-  ShieldCheck,
-  Radar,
-  FileSearch,
-  Zap,
-  GraduationCap,
-  HeartPulse,
-} from "lucide-react";
+import { ShieldCheck, Radar, FileSearch, Zap, GraduationCap, HeartPulse } from "lucide-react";
 
 const coreServices = [
   {
@@ -48,7 +41,7 @@ const education = [
   {
     icon: HeartPulse,
     id: "cyber-health-check",
-    title: "Free Cyber Health Check",
+    title: "Cyber Health Check",
     desc: "A 2-minute self-assessment that reveals your security score, the weak spots that need attention, and the next steps to take. No sign-up required — start instantly and get expert recommendations.",
     cta: "Take the Free Check",
     href: "/cyber-health-check",
@@ -102,8 +95,8 @@ const Services = () => (
               Araska Services & Training
             </h1>
             <p className="text-white/80 text-lg sm:text-xl leading-relaxed">
-              Get more from your cybersecurity investment — with expert guidance,
-              managed services, and hands-on training built around your business.
+              Get more from your cybersecurity investment — with expert guidance, managed services, and hands-on
+              training built around your business.
             </p>
           </motion.div>
         </div>
@@ -144,12 +137,8 @@ const Services = () => (
                 <div className="mb-6 flex items-center justify-center w-16 h-16 rounded-full bg-primary/5">
                   <svc.icon className="text-primary" size={32} strokeWidth={1.6} />
                 </div>
-                <h3 className="text-xl font-bold text-foreground mb-3 tracking-[-0.01em]">
-                  {svc.title}
-                </h3>
-                <p className="text-muted-foreground text-sm leading-[1.7] mb-8 flex-1">
-                  {svc.short}
-                </p>
+                <h3 className="text-xl font-bold text-foreground mb-3 tracking-[-0.01em]">{svc.title}</h3>
+                <p className="text-muted-foreground text-sm leading-[1.7] mb-8 flex-1">{svc.short}</p>
                 <Link
                   to={`/get-a-quote?service=${encodeURIComponent(svc.title)}`}
                   className="inline-flex items-center justify-center px-6 py-2.5 font-semibold text-sm text-white bg-primary hover:bg-primary/90 transition-all rounded"
@@ -191,12 +180,8 @@ const Services = () => (
                 <div className="mb-6 flex items-center justify-center w-16 h-16 rounded-full bg-primary/5">
                   <item.icon className="text-primary" size={32} strokeWidth={1.6} />
                 </div>
-                <h3 className="text-2xl font-bold text-foreground mb-4 tracking-[-0.01em]">
-                  {item.title}
-                </h3>
-                <p className="text-muted-foreground leading-[1.8] mb-8 max-w-md">
-                  {item.desc}
-                </p>
+                <h3 className="text-2xl font-bold text-foreground mb-4 tracking-[-0.01em]">{item.title}</h3>
+                <p className="text-muted-foreground leading-[1.8] mb-8 max-w-md">{item.desc}</p>
                 <Link
                   to={item.href || `/get-a-quote?service=${encodeURIComponent(item.title)}`}
                   className="inline-flex items-center justify-center px-6 py-2.5 font-semibold text-sm text-white bg-primary hover:bg-primary/90 transition-all rounded"

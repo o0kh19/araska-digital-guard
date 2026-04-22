@@ -37,11 +37,11 @@ const services = [
   },
   {
     icon: ClipboardCheck,
-    title: "Cyber Consulting & Health Check",
-    desc: "Not sure where you stand? Start with our free 2-minute Cyber Health Check, then book a deep consultation tailored to your business.",
+    title: "Health Check Assessment",
+    desc: "Evaluate your organisation's current security posture and identify the specific requirements you need to address. A structured 2-minute assessment that pinpoints gaps and defines your priorities.",
     slug: "cyber-consulting",
     href: "/cyber-health-check",
-    badge: "Free",
+    badge: "Assessment",
   },
 ];
 
@@ -99,14 +99,21 @@ const ServicesOverview = () => {
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="rounded-lg p-9 transition-all duration-250 flex flex-col group hover:translate-y-[-3px]"
+              className="rounded-lg p-9 transition-all duration-300 flex flex-col group hover:-translate-y-2"
               style={{
                 background: '#E5E7EB',
                 border: '1px solid rgba(31,143,203,0.18)',
                 borderRadius: '8px',
+                boxShadow: '0 1px 3px rgba(0,0,0,0.04)',
               }}
-              onMouseEnter={(e) => { e.currentTarget.style.borderColor = 'rgba(31,143,203,0.45)'; }}
-              onMouseLeave={(e) => { e.currentTarget.style.borderColor = 'rgba(31,143,203,0.18)'; }}
+              onMouseEnter={(e) => {
+                e.currentTarget.style.borderColor = 'rgba(31,143,203,0.55)';
+                e.currentTarget.style.boxShadow = '0 20px 40px -12px rgba(31,143,203,0.35)';
+              }}
+              onMouseLeave={(e) => {
+                e.currentTarget.style.borderColor = 'rgba(31,143,203,0.18)';
+                e.currentTarget.style.boxShadow = '0 1px 3px rgba(0,0,0,0.04)';
+              }}
             >
               <div
                 className="w-[52px] h-[52px] rounded-md flex items-center justify-center mb-5"

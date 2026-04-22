@@ -3,8 +3,8 @@ import { Link } from "react-router-dom";
 import { useLayoutEffect, useRef, useState } from "react";
 import { ShieldCheck, Bug, Siren, GraduationCap } from "lucide-react";
 
-const TEAL = "180 70% 40%";
-const CYAN = "190 90% 50%";
+const TEAL = "232 100% 60%";
+const CYAN = "210 100% 55%";
 
 const services = [
   {

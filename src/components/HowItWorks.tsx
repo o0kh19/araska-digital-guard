@@ -1,4 +1,4 @@
-import { motion, useInView, useScroll, useTransform } from "framer-motion";
+import { useInView } from "framer-motion";
 import { useRef } from "react";
 import { MessageCircle, FileText, Settings, Shield } from "lucide-react";
 
@@ -33,108 +33,97 @@ const HowItWorks = () => {
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
-  const { scrollYProgress } = useScroll({
-    target: ref,
-    offset: ["start 80%", "end 30%"],
-  });
-
-  // Desktop horizontal line draw
-  const lineScaleX = useTransform(scrollYProgress, [0, 1], [0, 1]);
-  // Mobile vertical line draw
-  const lineScaleY = useTransform(scrollYProgress, [0, 1], [0, 1]);
-
   return (
-    <section className="section-padding section-dark" ref={ref}>
-      <div className="max-w-7xl mx-auto">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={inView ? { opacity: 1, y: 0 } : {}}
-          transition={{ duration: 0.5 }}
-          className="mb-14"
-        >
-          <span className="eyebrow">Our Process</span>
+    <section className="section-padding section-dark relative overflow-hidden" ref={ref}>
+      <div className="max-w-7xl mx-auto relative">
+        <div className="mb-14">
+          <span className="eyebrow">// CYBER PROTOCOL</span>
           <span className="eyebrow-rule" />
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground tracking-[-0.015em]">
             How We Work With You
           </h2>
-        </motion.div>
+        </div>
 
         <div className="relative">
-          {/* Desktop: horizontal animated connecting line */}
+          {/* Desktop horizontal data stream */}
           <div className="hidden lg:block absolute top-8 left-0 right-0 px-[12.5%] z-0 pointer-events-none">
-            <div className="relative h-px w-full" style={{ background: 'rgba(31,143,203,0.12)' }}>
-              <motion.div
-                style={{
-                  scaleX: lineScaleX,
-                  transformOrigin: 'left center',
-                  background: 'linear-gradient(90deg, hsl(var(--primary)), hsl(var(--primary) / 0.4))',
-                  boxShadow: '0 0 12px hsl(var(--primary) / 0.7), 0 0 24px hsl(var(--primary) / 0.35)',
-                }}
-                className="absolute inset-0 h-[2px] -top-[0.5px]"
-              />
+            <div className="relative h-[2px] w-full" style={{ background: 'hsl(var(--primary) / 0.1)' }}>
+              {inView && <div className="data-stream-x absolute inset-0" />}
             </div>
           </div>
 
-          {/* Mobile/Tablet: vertical animated connecting line */}
-          <div className="lg:hidden absolute top-0 bottom-0 left-8 w-px z-0 pointer-events-none" style={{ background: 'rgba(31,143,203,0.12)' }}>
-            <motion.div
-              style={{
-                scaleY: lineScaleY,
-                transformOrigin: 'top center',
-                background: 'linear-gradient(180deg, hsl(var(--primary)), hsl(var(--primary) / 0.4))',
-                boxShadow: '0 0 12px hsl(var(--primary) / 0.7), 0 0 24px hsl(var(--primary) / 0.35)',
-              }}
-              className="absolute inset-0 w-[2px] -left-[0.5px]"
-            />
+          {/* Mobile vertical data stream */}
+          <div className="lg:hidden absolute top-0 bottom-0 left-8 w-[2px] z-0 pointer-events-none" style={{ background: 'hsl(var(--primary) / 0.1)' }}>
+            {inView && <div className="data-stream-y absolute inset-0" />}
           </div>
 
           <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 relative">
             {steps.map((s, i) => {
               const { Icon } = s;
               return (
-                <motion.div
+                <div
                   key={s.step}
-                  initial={{ opacity: 0, y: 40 }}
-                  animate={inView ? { opacity: 1, y: 0 } : {}}
-                  transition={{ duration: 0.5, delay: i * 0.18, ease: [0.22, 1, 0.36, 1] }}
-                  whileHover={{ scale: 1.04 }}
-                  className="relative group"
+                  className={`relative group ${inView ? 'cyber-glitch-in' : 'opacity-0'}`}
+                  style={{ animationDelay: inView ? `${i * 0.2}s` : undefined }}
                 >
-                  {/* Node circle on the timeline */}
+                  {/* Node on the timeline */}
                   <div className="absolute lg:left-8 lg:top-8 lg:-translate-y-1/2 left-8 top-8 -translate-x-1/2 -translate-y-1/2 z-20">
                     <span
                       className="block w-4 h-4 rounded-full transition-all duration-300 group-hover:scale-150"
                       style={{
                         background: 'hsl(var(--primary))',
-                        boxShadow: '0 0 0 4px hsl(var(--background)), 0 0 12px hsl(var(--primary) / 0.8)',
+                        boxShadow: '0 0 0 4px #fff, 0 0 14px hsl(var(--primary)), 0 0 28px hsl(var(--primary) / 0.6)',
                       }}
                     />
                   </div>
 
+                  {/* Card */}
                   <div
-                    className="rounded-lg p-8 pl-14 lg:pl-8 lg:pt-14 relative z-10 h-full transition-all duration-300 group-hover:shadow-[0_10px_40px_-10px_hsl(var(--primary)/0.5)]"
+                    className="relative z-10 h-full rounded-lg p-8 pl-14 lg:pl-8 lg:pt-14 overflow-hidden transition-all duration-300 group-hover:-translate-y-1"
                     style={{
-                      background: '#E5E7EB',
-                      border: '1px solid rgba(31,143,203,0.18)',
-                      borderRadius: '8px',
+                      background: '#0a0f14',
+                      border: '1px solid hsl(var(--primary) / 0.35)',
+                      boxShadow: '0 0 0 1px hsl(var(--primary) / 0.15), 0 0 18px hsl(var(--primary) / 0.18)',
+                    }}
+                    onMouseEnter={(e) => {
+                      e.currentTarget.style.boxShadow = '0 0 0 1px hsl(var(--primary) / 0.6), 0 0 30px hsl(var(--primary) / 0.55), 0 0 60px hsl(var(--primary) / 0.25)';
+                    }}
+                    onMouseLeave={(e) => {
+                      e.currentTarget.style.boxShadow = '0 0 0 1px hsl(var(--primary) / 0.15), 0 0 18px hsl(var(--primary) / 0.18)';
                     }}
                   >
+                    {/* Scan line - only on hover */}
+                    <div className="absolute inset-0 pointer-events-none overflow-hidden opacity-0 group-hover:opacity-100 transition-opacity duration-200">
+                      <div
+                        className="scan-line absolute left-0 right-0 h-[2px]"
+                        style={{
+                          background: 'linear-gradient(90deg, transparent, hsl(var(--primary)), transparent)',
+                          boxShadow: '0 0 12px hsl(var(--primary)), 0 0 24px hsl(var(--primary) / 0.6)',
+                        }}
+                      />
+                    </div>
+
+                    {/* Corner brackets */}
+                    <span className="absolute top-2 right-2 w-3 h-3 border-t border-r" style={{ borderColor: 'hsl(var(--primary) / 0.6)' }} />
+                    <span className="absolute bottom-2 left-2 w-3 h-3 border-b border-l" style={{ borderColor: 'hsl(var(--primary) / 0.6)' }} />
+
                     <div
-                      className="inline-flex items-center justify-center w-14 h-14 rounded-xl mb-4 transition-all duration-300 group-hover:rotate-6"
+                      className="inline-flex items-center justify-center w-14 h-14 rounded-xl mb-4 group-hover:icon-pulse"
                       style={{
-                        background: 'hsl(var(--primary) / 0.12)',
-                        border: '1px solid hsl(var(--primary) / 0.3)',
+                        background: 'hsl(var(--primary) / 0.1)',
+                        border: '1px solid hsl(var(--primary) / 0.5)',
+                        boxShadow: 'inset 0 0 12px hsl(var(--primary) / 0.25)',
                       }}
                     >
                       <Icon className="w-7 h-7" style={{ color: 'hsl(var(--primary))' }} strokeWidth={2} />
                     </div>
-                    <span className="text-xs font-semibold tracking-widest block mb-2" style={{ color: 'hsl(var(--primary))' }}>
-                      STEP {s.step}
+                    <span className="text-xs font-mono tracking-widest block mb-2" style={{ color: 'hsl(var(--primary))' }}>
+                      &gt; STEP_{s.step}
                     </span>
-                    <h3 className="text-lg font-bold mb-3 text-foreground">{s.title}</h3>
-                    <p className="text-muted-foreground text-[15px] leading-[1.8]">{s.desc}</p>
+                    <h3 className="text-lg font-bold mb-3 text-white">{s.title}</h3>
+                    <p className="text-[15px] leading-[1.8]" style={{ color: 'rgba(255,255,255,0.65)' }}>{s.desc}</p>
                   </div>
-                </motion.div>
+                </div>
               );
             })}
           </div>

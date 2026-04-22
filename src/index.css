@@ -432,16 +432,16 @@
     background: transparent;
   }
   .glitch-text::before {
-    color: hsl(180 90% 60%);
-    text-shadow: 1px 0 hsl(180 90% 60% / 0.8);
+    color: hsl(180 90% 45%);
+    text-shadow: 1px 0 hsl(180 90% 45% / 0.8);
     animation: glitch-anim-1 2.6s infinite steps(2, jump-end);
-    mix-blend-mode: screen;
+    mix-blend-mode: multiply;
   }
   .glitch-text::after {
-    color: hsl(330 100% 65%);
-    text-shadow: -1px 0 hsl(330 100% 65% / 0.8);
+    color: hsl(190 90% 50%);
+    text-shadow: -1px 0 hsl(190 90% 50% / 0.8);
     animation: glitch-anim-2 3.1s infinite steps(2, jump-end);
-    mix-blend-mode: screen;
+    mix-blend-mode: multiply;
   }
 
   /* === Cyber grid background (teal, low-opacity, drifting) === */
@@ -451,8 +451,15 @@
   }
   .cyber-grid-bg {
     background-image:
-      linear-gradient(hsl(180 80% 55% / 0.18) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(180 80% 55% / 0.18) 1px, transparent 1px);
+      linear-gradient(hsl(180 70% 45% / 0.10) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(180 70% 45% / 0.10) 1px, transparent 1px);
+    background-size: 60px 60px, 60px 60px;
+    animation: cyber-grid-drift 22s linear infinite;
+  }
+  .cyber-grid-bg-light {
+    background-image:
+      linear-gradient(hsl(180 70% 45% / 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(180 70% 45% / 0.08) 1px, transparent 1px);
     background-size: 60px 60px, 60px 60px;
     animation: cyber-grid-drift 22s linear infinite;
   }

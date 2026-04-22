@@ -403,4 +403,85 @@
 
   @keyframes icon-spin-fast { to { transform: rotate(360deg); } }
   .icon-spin-fast { animation: icon-spin-fast 1.2s linear infinite; }
+
+  /* === Hero glitch text === */
+  @keyframes glitch-anim-1 {
+    0%, 100% { clip-path: inset(0 0 0 0); transform: translate(0); }
+    20% { clip-path: inset(20% 0 60% 0); transform: translate(-2px, 1px); }
+    40% { clip-path: inset(50% 0 20% 0); transform: translate(2px, -1px); }
+    60% { clip-path: inset(10% 0 70% 0); transform: translate(-1px, 2px); }
+    80% { clip-path: inset(70% 0 5% 0); transform: translate(1px, -2px); }
+  }
+  @keyframes glitch-anim-2 {
+    0%, 100% { clip-path: inset(0 0 0 0); transform: translate(0); }
+    25% { clip-path: inset(40% 0 40% 0); transform: translate(2px, -1px); }
+    50% { clip-path: inset(15% 0 55% 0); transform: translate(-2px, 1px); }
+    75% { clip-path: inset(65% 0 10% 0); transform: translate(1px, 2px); }
+  }
+  .glitch-text {
+    position: relative;
+    display: inline-block;
+    color: inherit;
+  }
+  .glitch-text::before,
+  .glitch-text::after {
+    content: attr(data-text);
+    position: absolute;
+    inset: 0;
+    pointer-events: none;
+    background: transparent;
+  }
+  .glitch-text::before {
+    color: hsl(180 90% 60%);
+    text-shadow: 1px 0 hsl(180 90% 60% / 0.8);
+    animation: glitch-anim-1 2.6s infinite steps(2, jump-end);
+    mix-blend-mode: screen;
+  }
+  .glitch-text::after {
+    color: hsl(330 100% 65%);
+    text-shadow: -1px 0 hsl(330 100% 65% / 0.8);
+    animation: glitch-anim-2 3.1s infinite steps(2, jump-end);
+    mix-blend-mode: screen;
+  }
+
+  /* === Cyber grid background (teal, low-opacity, drifting) === */
+  @keyframes cyber-grid-drift {
+    from { background-position: 0 0, 0 0; }
+    to   { background-position: 60px 60px, 60px 60px; }
+  }
+  .cyber-grid-bg {
+    background-image:
+      linear-gradient(hsl(180 80% 55% / 0.18) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(180 80% 55% / 0.18) 1px, transparent 1px);
+    background-size: 60px 60px, 60px 60px;
+    animation: cyber-grid-drift 22s linear infinite;
+  }
+
+  @keyframes data-stream-down {
+    0%   { transform: translateY(-100%); opacity: 0; }
+    10%  { opacity: 0.9; }
+    90%  { opacity: 0.9; }
+    100% { transform: translateY(100vh); opacity: 0; }
+  }
+  .data-stream-line {
+    position: absolute;
+    top: 0;
+    width: 1px;
+    height: 30%;
+    background: linear-gradient(to bottom, transparent, hsl(180 80% 55% / 0.6), transparent);
+    animation: data-stream-down 6s linear infinite;
+  }
+
+  /* === Float + 3D tilt for service cards === */
+  @keyframes card-float {
+    0%, 100% { transform: translateY(0); }
+    50%      { transform: translateY(-6px); }
+  }
+  .card-float { animation: card-float 5s ease-in-out infinite; }
+
+  .tilt-card {
+    transform-style: preserve-3d;
+    transition: transform 0.25s ease, box-shadow 0.25s ease, border-color 0.25s ease;
+    will-change: transform;
+  }
 }

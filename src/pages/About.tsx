@@ -146,6 +146,49 @@ const About = () => (
           </div>
         </motion.div>
 
+        {/* Meet the Team */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.35 }}
+          className="mb-20"
+        >
+          <span className="eyebrow">Meet the Team</span>
+          <span className="eyebrow-rule" />
+          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4 tracking-[-0.015em]">
+            The Humans Behind the Firewall
+          </h2>
+          <p className="text-muted-foreground text-lg leading-[1.8] mb-10">
+            Serious about security. Less serious about everything else.
+          </p>
+          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
+            {team.map((m, i) => (
+              <motion.div
+                key={m.name}
+                initial={{ opacity: 0, y: 20 }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ duration: 0.5, delay: 0.4 + i * 0.08 }}
+                className="group bg-card rounded-2xl overflow-hidden border border-border hover:border-primary/60 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_12px_40px_-12px_hsl(var(--primary)/0.4)]"
+              >
+                <div className="relative aspect-square overflow-hidden bg-muted">
+                  <img
+                    src={m.img}
+                    alt={`${m.name} — ${m.role}`}
+                    loading="lazy"
+                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
+                  />
+                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
+                </div>
+                <div className="p-6">
+                  <h3 className="text-xl font-bold text-foreground mb-1">{m.name}</h3>
+                  <p className="text-primary text-sm font-semibold mb-3 tracking-wide">{m.role}</p>
+                  <p className="text-muted-foreground text-[15px] leading-[1.7]">{m.fact}</p>
+                </div>
+              </motion.div>
+            ))}
+          </div>
+        </motion.div>
+
         {/* CTA */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}

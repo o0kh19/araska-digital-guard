@@ -90,25 +90,37 @@ const ServicesOverview = () => {
             className="absolute inset-0 pointer-events-none"
             style={{ background: 'linear-gradient(90deg, rgba(5,10,20,0.6) 0%, rgba(5,10,20,0) 50%, rgba(5,10,20,0.6) 100%)' }}
           />
+          {/* Live monitoring overlays */}
+          <div className="image-scan-line" />
+          <div className="radar-pulse" />
+          <div className="radar-pulse delay-1" />
+          <div className="radar-pulse delay-2" />
+          {/* Live status badge */}
+          <div className="absolute top-4 left-4 flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/55 backdrop-blur-sm border border-primary/40">
+            <span className="status-dot" />
+            <span className="text-[11px] font-semibold uppercase tracking-wider text-white font-mono-label">
+              Live · Monitoring
+            </span>
+          </div>
         </motion.div>
 
-        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
+        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr">
           {services.map((svc, i) => (
             <motion.div
               key={svc.title}
               initial={{ opacity: 0, y: 30 }}
               animate={inView ? { opacity: 1, y: 0 } : {}}
               transition={{ duration: 0.5, delay: i * 0.1 }}
-              className="rounded-lg p-9 transition-all duration-300 flex flex-col group hover:-translate-y-2"
+              className="services-card rounded-lg p-9 transition-all duration-300 flex flex-col group hover:-translate-y-2 h-full"
               style={{
-                background: '#E5E7EB',
+                background: '#FFFFFF',
                 border: '1px solid rgba(31,143,203,0.18)',
                 borderRadius: '8px',
                 boxShadow: '0 1px 3px rgba(0,0,0,0.04)',
               }}
               onMouseEnter={(e) => {
-                e.currentTarget.style.borderColor = 'rgba(31,143,203,0.55)';
-                e.currentTarget.style.boxShadow = '0 20px 40px -12px rgba(31,143,203,0.35)';
+                e.currentTarget.style.borderColor = 'hsl(var(--primary) / 0.6)';
+                e.currentTarget.style.boxShadow = '0 20px 40px -12px hsl(var(--primary) / 0.45), 0 0 0 1px hsl(var(--primary) / 0.35)';
               }}
               onMouseLeave={(e) => {
                 e.currentTarget.style.borderColor = 'rgba(31,143,203,0.18)';
@@ -116,12 +128,13 @@ const ServicesOverview = () => {
               }}
             >
               <div
-                className="w-[52px] h-[52px] rounded-md flex items-center justify-center mb-5"
-                style={{ background: 'rgba(31,143,203,0.08)', border: '1px solid rgba(31,143,203,0.2)' }}
+                className="w-[52px] h-[52px] rounded-md flex items-center justify-center mb-5 transition-transform duration-500 group-hover:scale-110 group-hover:rotate-6"
+                style={{ background: 'hsl(var(--primary) / 0.08)', border: '1px solid hsl(var(--primary) / 0.25)' }}
               >
-                <svc.icon className="text-primary" size={22} strokeWidth={1.5} />
+                <svc.icon className="text-primary transition-transform duration-500" size={22} strokeWidth={1.5} />
               </div>
               <div className="flex items-center gap-2 mb-3">
+                <span className="status-dot" aria-hidden="true" />
                 <h3 className="text-[19px] font-semibold text-foreground">{svc.title}</h3>
                 {(svc as any).badge && (
                   <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/30">

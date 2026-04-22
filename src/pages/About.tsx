@@ -22,6 +22,39 @@ const values = [
   },
 ];
 
+const team = [
+  {
+    name: "Khalid",
+    role: "Chief Chaos Tamer",
+    fact: "Once debugged a SIEM rule mid-flight at 35,000ft — the WiFi never recovered.",
+    img: "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?w=600&h=600&fit=crop",
+  },
+  {
+    name: "Sam",
+    role: "Threat Whisperer",
+    fact: "Can spot a phishing email from three rooms away. Allegedly dreams in KQL.",
+    img: "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=600&h=600&fit=crop",
+  },
+  {
+    name: "Aras",
+    role: "Architect of Mayhem (the good kind)",
+    fact: "Builds tabletop exercises so realistic, his cat once filed an incident report.",
+    img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&h=600&fit=crop",
+  },
+  {
+    name: "Belal",
+    role: "Incident Response Ninja",
+    fact: "Sub-15-minute response times. Also sub-15-minute coffee runs. Coincidence?",
+    img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=600&fit=crop",
+  },
+  {
+    name: "Moh",
+    role: "Compliance Sorcerer",
+    fact: "Reads ISO 27001 for fun. Has strong opinions about Annex A.",
+    img: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&h=600&fit=crop",
+  },
+];
+
 const About = () => (
   <div className="min-h-screen bg-background">
     <Header />

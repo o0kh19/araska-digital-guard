@@ -61,7 +61,35 @@ const team = [
   },
 ];
 
-const About = () => (
+const About = () => {
+  const [editMode, setEditMode] = useState(false);
+  const [draftMode, setDraftMode] = useState(false);
+  const [teamData, setTeamData] = useState(team);
+  const [draftTeam, setDraftTeam] = useState(team);
+
+  const enterEdit = () => {
+    setDraftTeam(teamData);
+    setDraftMode(true);
+    setEditMode(true);
+  };
+
+  const saveChanges = () => {
+    setTeamData(draftTeam);
+    setEditMode(false);
+    setDraftMode(false);
+  };
+
+  const cancelEdit = () => {
+    setDraftTeam(teamData);
+    setEditMode(false);
+    setDraftMode(false);
+  };
+
+  const updateMember = (i: number, field: "name" | "role" | "fact" | "img", value: string) => {
+    setDraftTeam((prev) => prev.map((m, idx) => (idx === i ? { ...m, [field]: value } : m)));
+  };
+
+  return (
   <div className="min-h-screen bg-background">
     <Header />
     <main className="pt-36 pb-16">

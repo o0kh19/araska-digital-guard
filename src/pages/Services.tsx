@@ -129,7 +129,7 @@ const Services = () => (
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.08 }}
-                className="bg-white rounded-lg p-8 flex flex-col items-center text-center transition-all duration-200 hover:-translate-y-1"
+                className="bg-white rounded-lg p-8 flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_40px_-12px_rgba(31,143,203,0.35)]"
                 style={{
                   boxShadow: "0 2px 12px rgba(15,31,74,0.06), 0 8px 32px rgba(15,31,74,0.04)",
                 }}
@@ -172,7 +172,7 @@ const Services = () => (
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true }}
                 transition={{ duration: 0.5, delay: i * 0.08 }}
-                className="bg-white rounded-lg p-10 flex flex-col items-center text-center transition-all duration-200 hover:-translate-y-1"
+                className="bg-white rounded-lg p-10 flex flex-col items-center text-center transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_20px_40px_-12px_rgba(31,143,203,0.35)]"
                 style={{
                   boxShadow: "0 2px 12px rgba(15,31,74,0.06), 0 8px 32px rgba(15,31,74,0.04)",
                 }}

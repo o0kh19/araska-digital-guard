@@ -22,6 +22,7 @@ const values = [
   },
 ];
 
+// Edit team details here
 const team = [
   {
     name: "Khalid",

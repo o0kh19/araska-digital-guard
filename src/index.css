@@ -360,4 +360,47 @@
   }
   .radar-pulse.delay-1 { animation-delay: 1s; }
   .radar-pulse.delay-2 { animation-delay: 2s; }
+
+  /* === Neural Network section === */
+  .hex-grid-bg {
+    background-color: transparent;
+    background-image: url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='56' height='96' viewBox='0 0 56 96'><g fill='none' stroke='%231f8fcb' stroke-opacity='0.10' stroke-width='1'><polygon points='28,2 54,17 54,47 28,62 2,47 2,17'/><polygon points='28,50 54,65 54,95 28,110 2,95 2,65'/></g></svg>");
+    background-size: 56px 96px;
+  }
+
+  @keyframes neural-flow {
+    from { stroke-dashoffset: 40; }
+    to   { stroke-dashoffset: 0; }
+  }
+  .neural-line-base {
+    stroke: hsl(var(--primary));
+    stroke-opacity: 0.18;
+    stroke-width: 1.25;
+    fill: none;
+    transition: stroke-opacity 0.3s ease, stroke-width 0.3s ease;
+  }
+  .neural-line-base.is-active {
+    stroke-opacity: 0.85;
+    stroke-width: 1.75;
+    filter: drop-shadow(0 0 6px hsl(var(--primary) / 0.7));
+  }
+  .neural-line-flow {
+    stroke: hsl(var(--primary));
+    stroke-width: 2;
+    fill: none;
+    stroke-dasharray: 6 6;
+    stroke-linecap: round;
+    opacity: 0;
+    transition: opacity 0.25s ease;
+    filter: drop-shadow(0 0 6px hsl(var(--primary) / 0.9));
+  }
+  .neural-line-flow.is-active {
+    opacity: 1;
+    animation: neural-flow 0.6s linear infinite;
+  }
+
+  .status-dot.fast { animation-duration: 0.7s; }
+
+  @keyframes icon-spin-fast { to { transform: rotate(360deg); } }
+  .icon-spin-fast { animation: icon-spin-fast 1.2s linear infinite; }
 }

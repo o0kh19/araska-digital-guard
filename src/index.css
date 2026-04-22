@@ -451,8 +451,15 @@
   }
   .cyber-grid-bg {
     background-image:
-      linear-gradient(hsl(180 80% 55% / 0.18) 1px, transparent 1px),
-      linear-gradient(90deg, hsl(180 80% 55% / 0.18) 1px, transparent 1px);
+      linear-gradient(hsl(180 70% 45% / 0.10) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(180 70% 45% / 0.10) 1px, transparent 1px);
+    background-size: 60px 60px, 60px 60px;
+    animation: cyber-grid-drift 22s linear infinite;
+  }
+  .cyber-grid-bg-light {
+    background-image:
+      linear-gradient(hsl(180 70% 45% / 0.08) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(180 70% 45% / 0.08) 1px, transparent 1px);
     background-size: 60px 60px, 60px 60px;
     animation: cyber-grid-drift 22s linear infinite;
   }

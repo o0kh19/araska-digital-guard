@@ -81,15 +81,15 @@ const HowItWorks = () => {
                   <div
                     className="relative z-10 h-full rounded-lg p-8 pl-14 lg:pl-8 lg:pt-14 overflow-hidden transition-all duration-300 group-hover:-translate-y-1"
                     style={{
-                      background: '#0a0f14',
-                      border: '1px solid hsl(var(--primary) / 0.35)',
-                      boxShadow: '0 0 0 1px hsl(var(--primary) / 0.15), 0 0 18px hsl(var(--primary) / 0.18)',
+                      background: '#ffffff',
+                      border: '1px solid hsl(var(--primary) / 0.3)',
+                      boxShadow: '0 1px 2px rgba(15,23,42,0.04), 0 0 0 1px hsl(var(--primary) / 0.08), 0 0 14px hsl(var(--primary) / 0.12)',
                     }}
                     onMouseEnter={(e) => {
-                      e.currentTarget.style.boxShadow = '0 0 0 1px hsl(var(--primary) / 0.6), 0 0 30px hsl(var(--primary) / 0.55), 0 0 60px hsl(var(--primary) / 0.25)';
+                      e.currentTarget.style.boxShadow = '0 8px 24px -8px hsl(var(--primary) / 0.35), 0 0 0 1px hsl(var(--primary) / 0.5), 0 0 24px hsl(var(--primary) / 0.3)';
                     }}
                     onMouseLeave={(e) => {
-                      e.currentTarget.style.boxShadow = '0 0 0 1px hsl(var(--primary) / 0.15), 0 0 18px hsl(var(--primary) / 0.18)';
+                      e.currentTarget.style.boxShadow = '0 1px 2px rgba(15,23,42,0.04), 0 0 0 1px hsl(var(--primary) / 0.08), 0 0 14px hsl(var(--primary) / 0.12)';
                     }}
                   >
                     {/* Scan line - only on hover */}
@@ -104,15 +104,15 @@ const HowItWorks = () => {
                     </div>
 
                     {/* Corner brackets */}
-                    <span className="absolute top-2 right-2 w-3 h-3 border-t border-r" style={{ borderColor: 'hsl(var(--primary) / 0.6)' }} />
-                    <span className="absolute bottom-2 left-2 w-3 h-3 border-b border-l" style={{ borderColor: 'hsl(var(--primary) / 0.6)' }} />
+                    <span className="absolute top-2 right-2 w-3 h-3 border-t border-r" style={{ borderColor: 'hsl(var(--primary) / 0.7)' }} />
+                    <span className="absolute bottom-2 left-2 w-3 h-3 border-b border-l" style={{ borderColor: 'hsl(var(--primary) / 0.7)' }} />
 
                     <div
                       className="inline-flex items-center justify-center w-14 h-14 rounded-xl mb-4 group-hover:icon-pulse"
                       style={{
-                        background: 'hsl(var(--primary) / 0.1)',
-                        border: '1px solid hsl(var(--primary) / 0.5)',
-                        boxShadow: 'inset 0 0 12px hsl(var(--primary) / 0.25)',
+                        background: 'hsl(var(--primary) / 0.08)',
+                        border: '1px solid hsl(var(--primary) / 0.4)',
+                        boxShadow: 'inset 0 0 10px hsl(var(--primary) / 0.15)',
                       }}
                     >
                       <Icon className="w-7 h-7" style={{ color: 'hsl(var(--primary))' }} strokeWidth={2} />
@@ -120,8 +120,8 @@ const HowItWorks = () => {
                     <span className="text-xs font-mono tracking-widest block mb-2" style={{ color: 'hsl(var(--primary))' }}>
                       &gt; STEP_{s.step}
                     </span>
-                    <h3 className="text-lg font-bold mb-3 text-white">{s.title}</h3>
-                    <p className="text-[15px] leading-[1.8]" style={{ color: 'rgba(255,255,255,0.65)' }}>{s.desc}</p>
+                    <h3 className="text-lg font-bold mb-3 text-foreground">{s.title}</h3>
+                    <p className="text-muted-foreground text-[15px] leading-[1.8]">{s.desc}</p>
                   </div>
                 </div>
               );

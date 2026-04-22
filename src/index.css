@@ -201,4 +201,58 @@
   .font-mono-label {
     font-family: 'Inter', sans-serif;
   }
+
+  /* === Cyber Protocol effects === */
+  @keyframes data-stream-x {
+    from { background-position: 0 0; }
+    to { background-position: 40px 0; }
+  }
+  @keyframes data-stream-y {
+    from { background-position: 0 0; }
+    to { background-position: 0 40px; }
+  }
+  .data-stream-x {
+    background-image: linear-gradient(90deg, hsl(var(--primary)) 50%, transparent 50%);
+    background-size: 20px 2px;
+    background-repeat: repeat-x;
+    animation: data-stream-x 0.6s linear infinite;
+    box-shadow: 0 0 10px hsl(var(--primary) / 0.9), 0 0 22px hsl(var(--primary) / 0.5);
+  }
+  .data-stream-y {
+    background-image: linear-gradient(180deg, hsl(var(--primary)) 50%, transparent 50%);
+    background-size: 2px 20px;
+    background-repeat: repeat-y;
+    animation: data-stream-y 0.6s linear infinite;
+    box-shadow: 0 0 10px hsl(var(--primary) / 0.9), 0 0 22px hsl(var(--primary) / 0.5);
+  }
+
+  @keyframes cyber-glitch {
+    0%   { opacity: 0; transform: translateY(20px) skewX(0deg); filter: hue-rotate(0deg); }
+    20%  { opacity: 0.4; transform: translateY(15px) skewX(8deg); filter: hue-rotate(90deg); clip-path: inset(10% 0 60% 0); }
+    35%  { opacity: 0.7; transform: translateY(8px) skewX(-6deg); clip-path: inset(50% 0 10% 0); }
+    55%  { opacity: 0.5; transform: translateY(4px) skewX(3deg); clip-path: inset(20% 0 40% 0); }
+    75%  { opacity: 1; transform: translateY(0) skewX(-1deg); clip-path: inset(0 0 0 0); }
+    100% { opacity: 1; transform: translateY(0) skewX(0deg); filter: none; clip-path: inset(0 0 0 0); }
+  }
+  .cyber-glitch-in {
+    animation: cyber-glitch 0.9s steps(8, end) both;
+  }
+
+  @keyframes scan-line {
+    0%   { transform: translateY(-100%); opacity: 0; }
+    10%  { opacity: 1; }
+    90%  { opacity: 1; }
+    100% { transform: translateY(100%); opacity: 0; }
+  }
+  .scan-line {
+    animation: scan-line 1.8s linear infinite;
+  }
+
+  @keyframes neon-pulse {
+    0%, 100% { filter: drop-shadow(0 0 2px hsl(var(--primary) / 0.6)); transform: scale(1); }
+    50%      { filter: drop-shadow(0 0 10px hsl(var(--primary))); transform: scale(1.08); }
+  }
+  .icon-pulse {
+    animation: neon-pulse 2s ease-in-out infinite;
+  }
 }

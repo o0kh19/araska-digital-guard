@@ -1,38 +1,29 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState } from "react";
-import { Globe, FileSignature, Monitor, Users, Check, ArrowRight } from "lucide-react";
+import { Globe, FileSignature, Monitor, Users, Check } from "lucide-react";
 
 type IconAnim = "rotate" | "sign" | "pulse" | "people";
 
-const pillars: {
-  title: string;
-  desc: string;
-  anim: IconAnim;
-  className: string;
-}[] = [
+const pillars: { title: string; desc: string; anim: IconAnim }[] = [
   {
     title: "Global, but close to you",
     desc: "We are based in the UK and work with clients around the world. We understand local rules and global threats.",
     anim: "rotate",
-    className: "lg:col-span-1 lg:row-span-1",
   },
   {
     title: "No long contracts to start",
     desc: "Every project starts with a chat. We shape our service around your needs — not a fixed package that doesn't fit.",
     anim: "sign",
-    className: "lg:col-span-1 lg:row-span-1",
   },
   {
     title: "Powered by Microsoft",
-    desc: "Our SOC runs on Microsoft Sentinel and Defender — the same enterprise tools used by the world's biggest companies. Backed by enterprise-grade security infrastructure trusted globally.",
+    desc: "Our SOC runs on Microsoft Sentinel and Defender — the same enterprise tools used by the world's biggest companies.",
     anim: "pulse",
-    className: "lg:col-span-2 lg:row-span-1",
   },
   {
     title: "Real people, not just robots",
     desc: "Every alert is checked by a human expert. Machines help us go fast — but people make the final call.",
     anim: "people",
-    className: "lg:col-span-2 lg:row-span-1",
   },
 ];
 
@@ -115,67 +106,45 @@ const PillarCard = ({
   return (
     <motion.div
       initial={{ opacity: 0, y: 30 }}
-      animate={
-        inView
-          ? {
-              opacity: 1,
-              y: [0, -6, 0], // gentle levitation
-            }
-          : {}
-      }
-      transition={{
-        opacity: { duration: 0.55, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] },
-        y: {
-          duration: 5 + i * 0.4,
-          repeat: Infinity,
-          ease: "easeInOut",
-          delay: i * 0.3,
-        },
-      }}
-      onMouseEnter={() => setHovered(true)}
-      onMouseLeave={() => setHovered(false)}
-      whileHover={{ scale: 1.02 }}
-      className={`group relative ${p.className}`}
+      animate={inView ? { opacity: 1, y: 0 } : {}}
+      transition={{ duration: 0.55, delay: i * 0.12, ease: [0.22, 1, 0.36, 1] }}
+      className="h-full"
     >
+      {/* Floating wrapper - continuous CSS levitation */}
       <div
-        className="relative h-full bg-white rounded-2xl p-8 lg:p-10 transition-all duration-300 overflow-hidden flex flex-col"
+        className="h-full"
         style={{
-          border: "1px solid #E6EAF0",
-          boxShadow: hovered
-            ? "0 24px 50px -20px hsl(var(--primary) / 0.30), 0 8px 18px -10px rgba(15,23,42,0.08)"
-            : "0 1px 2px rgba(15,23,42,0.04), 0 8px 24px -16px rgba(15,23,42,0.10)",
+          animation: `levitate 6s ease-in-out infinite`,
+          animationDelay: `${i * 0.6}s`,
         }}
       >
-        {/* soft corner accent */}
         <div
-          className="pointer-events-none absolute -top-20 -right-20 w-56 h-56 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500"
-          style={{ background: "radial-gradient(circle, hsl(var(--primary) / 0.18), transparent 70%)" }}
-        />
-
-        <div
-          className="w-[52px] h-[52px] rounded-xl flex items-center justify-center mb-5 transition-all duration-300"
+          onMouseEnter={() => setHovered(true)}
+          onMouseLeave={() => setHovered(false)}
+          className="group relative h-full bg-white rounded-2xl p-9 transition-all duration-300 flex flex-col"
           style={{
-            background: "hsl(var(--primary) / 0.08)",
-            border: "1px solid hsl(var(--primary) / 0.25)",
+            border: hovered ? "1px solid hsl(var(--primary) / 0.6)" : "1px solid hsl(var(--primary) / 0.2)",
+            boxShadow: hovered
+              ? "0 28px 50px -20px hsl(var(--primary) / 0.4), 0 10px 20px -10px rgba(15,23,42,0.08)"
+              : "0 1px 2px rgba(15,23,42,0.04), 0 8px 24px -16px rgba(15,23,42,0.10)",
+            transform: hovered ? "translateY(-8px)" : "translateY(0)",
           }}
         >
-          <AnimatedIcon anim={p.anim} hovered={hovered} />
-        </div>
-
-        <h3 className="text-[20px] font-semibold mb-3 text-light-foreground tracking-[-0.01em]">
-          {p.title}
-        </h3>
-        <p className="text-[15px] leading-[1.8] text-[#3A4A5C] flex-1">{p.desc}</p>
-
-        <div className="mt-6 inline-flex items-center gap-2 text-sm font-medium" style={{ color: "hsl(var(--primary))" }}>
-          <span>Learn more</span>
-          <motion.span
-            animate={hovered ? { x: 6 } : { x: 0 }}
-            transition={{ type: "spring", stiffness: 300, damping: 20 }}
-            className="inline-flex"
+          <div
+            className="w-[52px] h-[52px] rounded-xl flex items-center justify-center mb-5 transition-all duration-300"
+            style={{
+              background: "hsl(var(--primary) / 0.08)",
+              border: "1px solid hsl(var(--primary) / 0.3)",
+              transform: hovered ? "scale(1.08)" : "scale(1)",
+            }}
           >
-            <ArrowRight size={16} strokeWidth={2} />
-          </motion.span>
+            <AnimatedIcon anim={p.anim} hovered={hovered} />
+          </div>
+
+          <h3 className="text-[19px] font-semibold mb-3 text-light-foreground tracking-[-0.01em]">
+            {p.title}
+          </h3>
+          <p className="text-[15px] leading-[1.8] text-[#3A4A5C] flex-1">{p.desc}</p>
         </div>
       </div>
     </motion.div>
@@ -188,6 +157,14 @@ const WhyUsSection = () => {
 
   return (
     <section className="section-padding section-light" ref={ref}>
+      {/* Levitation keyframes (scoped) */}
+      <style>{`
+        @keyframes levitate {
+          0%, 100% { transform: translateY(0); }
+          50% { transform: translateY(-8px); }
+        }
+      `}</style>
+
       <div className="max-w-7xl mx-auto">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
@@ -202,7 +179,7 @@ const WhyUsSection = () => {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 auto-rows-fr">
+        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 auto-rows-fr items-stretch">
           {pillars.map((p, i) => (
             <PillarCard key={p.title} p={p} i={i} inView={inView} />
           ))}

@@ -255,4 +255,46 @@
   .icon-pulse {
     animation: neon-pulse 2s ease-in-out infinite;
   }
+
+  /* === Floating HUD effects === */
+  @keyframes hud-grid-drift {
+    from { background-position: 0 0, 0 0; }
+    to   { background-position: 60px 60px, 60px 60px; }
+  }
+  .hud-grid {
+    background-color: #050b14;
+    background-image:
+      linear-gradient(hsl(var(--primary) / 0.10) 1px, transparent 1px),
+      linear-gradient(90deg, hsl(var(--primary) / 0.10) 1px, transparent 1px);
+    background-size: 60px 60px, 60px 60px;
+    animation: hud-grid-drift 30s linear infinite;
+  }
+  .hud-vignette {
+    background: radial-gradient(ellipse at center, transparent 0%, rgba(5,11,20,0.85) 80%);
+  }
+
+  @property --hud-angle {
+    syntax: '<angle>';
+    initial-value: 0deg;
+    inherits: false;
+  }
+  @keyframes hud-border-spin {
+    to { --hud-angle: 360deg; }
+  }
+  .hud-border {
+    position: relative;
+    border-radius: 14px;
+    background:
+      conic-gradient(
+        from var(--hud-angle),
+        hsl(var(--primary) / 0.9),
+        hsl(var(--primary) / 0.05) 25%,
+        hsl(var(--primary) / 0.05) 50%,
+        hsl(var(--primary) / 0.7) 65%,
+        hsl(var(--primary) / 0.05) 90%,
+        hsl(var(--primary) / 0.9)
+      );
+    animation: hud-border-spin 6s linear infinite;
+    padding: 1px;
+  }
 }

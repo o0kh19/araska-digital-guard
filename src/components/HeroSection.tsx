@@ -1,32 +1,33 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useLayoutEffect, useRef, useState } from "react";
-import { Brain, ShieldAlert, Siren, GraduationCap } from "lucide-react";
+import { ShieldCheck, Bug, Siren, GraduationCap } from "lucide-react";
+
+const TEAL = "180 70% 40%";
+const CYAN = "190 90% 50%";
 
 const services = [
   {
     title: "Threat Intelligence",
-    desc: "Proactive insights on emerging risks targeting your industry.",
-    Icon: Brain,
+    desc: "Industry Risk Insight",
+    Icon: ShieldCheck,
   },
   {
     title: "Vulnerability Management",
-    desc: "Continuous discovery and remediation across your attack surface.",
-    Icon: ShieldAlert,
+    desc: "Attack Surface Discovery & Fix",
+    Icon: Bug,
   },
   {
     title: "Incident Response",
-    desc: "Rapid containment and recovery, 24/7, by senior analysts.",
+    desc: "24/7 Senior Analyst Handling",
     Icon: Siren,
   },
   {
     title: "Security Training",
-    desc: "Empower your people to spot and stop social engineering.",
+    desc: "Social Engineering Defense",
     Icon: GraduationCap,
   },
 ];
-
-type Pt = { x: number; y: number };
 
 const HeroSection = () => {
   const gridRef = useRef<HTMLDivElement | null>(null);
@@ -81,20 +82,28 @@ const HeroSection = () => {
   };
 
   const headline = "Your Threat Is Real. So Is Our Response.";
+  const container = {
+    hidden: {},
+    show: { transition: { staggerChildren: 0.08, delayChildren: 0.1 } },
+  };
+  const item = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.5 } },
+  };
 
   return (
-    <section className="relative min-h-screen flex flex-col items-center overflow-hidden bg-[hsl(222_60%_6%)]">
-      {/* Cyber grid backdrop */}
-      <div className="absolute inset-0 cyber-grid-bg opacity-70" />
-      {/* Vignette */}
+    <section className="relative min-h-screen flex flex-col items-center overflow-hidden bg-slate-50">
+      {/* Light cyber grid backdrop */}
+      <div className="absolute inset-0 cyber-grid-bg-light" />
+      {/* Soft vignette to focus content */}
       <div
         className="absolute inset-0"
         style={{
           background:
-            "radial-gradient(ellipse at 50% 30%, transparent 0%, hsl(222 60% 6% / 0.85) 75%)",
+            "radial-gradient(ellipse at 50% 30%, transparent 0%, hsl(220 30% 96% / 0.85) 80%)",
         }}
       />
-      {/* Data stream lines */}
+      {/* Subtle teal data stream lines */}
       <div className="absolute inset-0 pointer-events-none overflow-hidden">
         {[8, 22, 38, 55, 71, 86, 94].map((leftPct, i) => (
           <span
@@ -104,86 +113,108 @@ const HeroSection = () => {
               left: `${leftPct}%`,
               animationDelay: `${i * 0.9}s`,
               animationDuration: `${5 + (i % 3)}s`,
+              background:
+                "linear-gradient(to bottom, transparent, hsl(180 70% 45% / 0.35), transparent)",
             }}
           />
         ))}
       </div>
 
-      <div className="relative z-10 max-w-6xl mx-auto px-6 pt-32 pb-16 w-full text-white text-center">
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <span className="text-xs tracking-[0.25em] uppercase font-medium text-cyan-300 block">
+      <motion.div
+        variants={container}
+        initial="hidden"
+        animate="show"
+        className="relative z-10 max-w-6xl mx-auto px-6 pt-32 pb-16 w-full text-center"
+      >
+        <motion.div variants={item}>
+          <span
+            className="text-xs tracking-[0.25em] uppercase font-semibold block"
+            style={{ color: `hsl(${TEAL})` }}
+          >
             Global Cybersecurity Operations
           </span>
-          <span className="block w-12 h-0.5 mt-3 mb-6 bg-cyan-300 mx-auto" />
+          <span
+            className="block w-12 h-0.5 mt-3 mb-6 mx-auto"
+            style={{ background: `hsl(${TEAL})` }}
+          />
         </motion.div>
 
         <motion.h1
-          initial={{ opacity: 0, y: 30 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.6, delay: 0.1 }}
-          className="text-4xl sm:text-5xl lg:text-7xl font-extrabold leading-[1.05] mb-6 text-white tracking-[-0.02em]"
+          variants={item}
+          className="text-4xl sm:text-5xl lg:text-7xl font-extrabold leading-[1.05] mb-6 text-slate-900 tracking-[-0.02em]"
           aria-label={headline}
         >
           Your Threat Is{" "}
-          <span className="glitch-text" data-text="Real">
+          <span className="glitch-text glitch-teal" data-text="Real">
             Real
           </span>
           .
           <br />
           So Is Our{" "}
-          <span className="glitch-text" data-text="Response">
+          <span className="glitch-text glitch-teal" data-text="Response">
             Response
           </span>
           .
         </motion.h1>
 
         <motion.p
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.2 }}
-          className="text-white/80 text-lg sm:text-xl max-w-2xl mx-auto mb-10 leading-relaxed"
+          variants={item}
+          className="text-slate-600 text-lg sm:text-xl max-w-2xl mx-auto mb-10 leading-relaxed"
         >
           We provide 24/7 security monitoring, threat intelligence, and rapid
           incident response to protect your digital assets.
         </motion.p>
 
         <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
+          variants={item}
           className="flex flex-col sm:flex-row gap-4 justify-center"
         >
           <Link
             to="/cyber-health-check"
-            className="inline-flex items-center justify-center px-8 py-4 font-bold text-sm uppercase tracking-[0.08em] rounded border-2 border-cyan-300/70 text-cyan-100 hover:bg-cyan-300/10 hover:border-cyan-300 transition-all"
+            className="inline-flex items-center justify-center px-8 py-4 font-bold text-sm uppercase tracking-[0.08em] rounded border-2 transition-all"
+            style={{
+              borderColor: `hsl(${TEAL})`,
+              color: `hsl(${TEAL})`,
+              background: "transparent",
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.background = `hsl(${TEAL} / 0.08)`;
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.background = "transparent";
+            }}
           >
             Free Health Check
           </Link>
           <Link
             to="/get-a-quote"
-            className="inline-flex items-center justify-center px-8 py-4 font-bold text-sm uppercase tracking-[0.08em] rounded text-[hsl(222_60%_8%)] transition-all hover:brightness-110"
-            style={{ background: "hsl(180 80% 45%)", boxShadow: "0 0 24px hsl(180 80% 45% / 0.45)" }}
+            className="inline-flex items-center justify-center px-8 py-4 font-bold text-sm uppercase tracking-[0.08em] rounded text-white transition-all hover:brightness-110"
+            style={{
+              background: `hsl(${TEAL})`,
+              boxShadow: `0 0 24px hsl(${TEAL} / 0.45)`,
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.boxShadow = `0 0 36px hsl(${CYAN} / 0.7)`;
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.boxShadow = `0 0 24px hsl(${TEAL} / 0.45)`;
+            }}
           >
             Get a Quote
           </Link>
         </motion.div>
-      </div>
+      </motion.div>
 
       {/* Services grid w/ neural connections */}
-      <div ref={gridRef} className="relative z-10 w-full max-w-6xl mx-auto px-6 pb-24">
-        {/* Hub anchor (visually a glow above the grid) */}
+      <div ref={gridRef} className="relative z-10 w-full max-w-5xl mx-auto px-6 pb-24">
+        {/* Hub anchor */}
         <div className="relative h-10 mb-2 flex items-center justify-center">
           <div
             ref={hubRef}
             className="w-3 h-3 rounded-full"
             style={{
-              background: "hsl(180 80% 60%)",
-              boxShadow:
-                "0 0 12px hsl(180 80% 60% / 0.9), 0 0 28px hsl(180 80% 60% / 0.6)",
+              background: `hsl(${TEAL})`,
+              boxShadow: `0 0 12px hsl(${TEAL} / 0.9), 0 0 28px hsl(${CYAN} / 0.6)`,
             }}
           />
         </div>
@@ -198,28 +229,51 @@ const HeroSection = () => {
               <g key={i}>
                 <path
                   d={d}
-                  className={`neural-line-base ${hover === i ? "is-active" : ""}`}
+                  fill="none"
+                  stroke={`hsl(${TEAL})`}
+                  strokeOpacity={hover === i ? 0.8 : 0.2}
+                  strokeWidth={hover === i ? 1.75 : 1.25}
+                  style={{
+                    filter:
+                      hover === i
+                        ? `drop-shadow(0 0 6px hsl(${CYAN} / 0.7))`
+                        : "none",
+                    transition: "stroke-opacity 0.3s ease, stroke-width 0.3s ease",
+                  }}
                 />
-                <path
-                  d={d}
-                  className={`neural-line-flow ${hover === i ? "is-active" : ""}`}
-                />
+                {hover === i && (
+                  <path
+                    d={d}
+                    fill="none"
+                    stroke={`hsl(${CYAN})`}
+                    strokeWidth={2}
+                    strokeDasharray="6 6"
+                    strokeLinecap="round"
+                    style={{
+                      filter: `drop-shadow(0 0 6px hsl(${CYAN} / 0.9))`,
+                      animation: "neural-flow 0.6s linear infinite",
+                    }}
+                  />
+                )}
               </g>
             ) : null
           )}
         </svg>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 auto-rows-fr relative">
+        <motion.div
+          variants={container}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.2 }}
+          className="grid grid-cols-1 sm:grid-cols-2 gap-6 auto-rows-fr relative"
+        >
           {services.map((s, i) => {
             const isHover = hover === i;
             const { Icon } = s;
             return (
               <motion.div
                 key={s.title}
-                initial={{ opacity: 0, y: 24 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                viewport={{ once: true, amount: 0.3 }}
-                transition={{ duration: 0.5, delay: i * 0.08 }}
+                variants={item}
                 className="card-float"
                 style={{ animationDelay: `${i * 0.4}s`, perspective: 1000 }}
               >
@@ -231,17 +285,16 @@ const HeroSection = () => {
                     setTilt({ rx: 0, ry: 0 });
                   }}
                   onMouseMove={(e) => handleMouseMove(e, i)}
-                  className="tilt-card h-full rounded-xl p-6 backdrop-blur-md"
+                  className="tilt-card h-full rounded-xl p-6 bg-white/70 backdrop-blur-md"
                   style={{
-                    background: "hsl(0 0% 100% / 0.06)",
                     border: `1px solid ${
                       isHover
-                        ? "hsl(180 80% 55% / 0.85)"
-                        : "hsl(180 80% 55% / 0.30)"
+                        ? `hsl(${TEAL} / 0.85)`
+                        : `hsl(${TEAL} / 0.30)`
                     }`,
                     boxShadow: isHover
-                      ? "0 18px 50px -10px hsl(180 80% 45% / 0.55), inset 0 0 0 1px hsl(180 80% 55% / 0.25)"
-                      : "0 8px 24px -10px hsl(180 80% 45% / 0.25)",
+                      ? `0 18px 50px -10px hsl(${CYAN} / 0.45), inset 0 0 0 1px hsl(${TEAL} / 0.25)`
+                      : `0 8px 24px -12px hsl(${TEAL} / 0.25)`,
                     transform: isHover
                       ? `rotateX(${tilt.rx}deg) rotateY(${tilt.ry}deg) translateZ(0)`
                       : "rotateX(0) rotateY(0)",
@@ -250,26 +303,26 @@ const HeroSection = () => {
                   <div
                     className="w-12 h-12 rounded-lg flex items-center justify-center mb-4"
                     style={{
-                      background: "hsl(180 80% 55% / 0.12)",
-                      border: "1px solid hsl(180 80% 55% / 0.4)",
+                      background: `hsl(${TEAL} / 0.10)`,
+                      border: `1px solid hsl(${TEAL} / 0.35)`,
                     }}
                   >
                     <Icon
                       className="w-6 h-6"
-                      style={{ color: "hsl(180 90% 70%)" }}
+                      style={{ color: `hsl(${TEAL})` }}
                     />
                   </div>
-                  <h3 className="text-white font-semibold text-base mb-2">
+                  <h3 className="text-slate-900 font-semibold text-base mb-2">
                     {s.title}
                   </h3>
-                  <p className="text-white/70 text-sm leading-relaxed">
+                  <p className="text-slate-600 text-sm leading-relaxed">
                     {s.desc}
                   </p>
                 </div>
               </motion.div>
             );
           })}
-        </div>
+        </motion.div>
       </div>
     </section>
   );

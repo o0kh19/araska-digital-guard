@@ -297,4 +297,67 @@
     animation: hud-border-spin 6s linear infinite;
     padding: 1px;
   }
+
+  /* === Live monitoring dashboard effects === */
+  @keyframes status-dot-pulse {
+    0%, 100% {
+      box-shadow: 0 0 0 0 hsl(142 76% 42% / 0.7), 0 0 6px hsl(142 76% 42% / 0.8);
+      transform: scale(1);
+    }
+    50% {
+      box-shadow: 0 0 0 6px hsl(142 76% 42% / 0), 0 0 10px hsl(142 76% 42% / 1);
+      transform: scale(1.1);
+    }
+  }
+  .status-dot {
+    width: 8px;
+    height: 8px;
+    border-radius: 9999px;
+    background: hsl(142 76% 42%);
+    animation: status-dot-pulse 1.8s ease-in-out infinite;
+    flex-shrink: 0;
+  }
+
+  @keyframes image-scan {
+    0%   { transform: translateY(-10%); opacity: 0; }
+    10%  { opacity: 1; }
+    90%  { opacity: 1; }
+    100% { transform: translateY(110%); opacity: 0; }
+  }
+  .image-scan-line {
+    position: absolute;
+    left: 0;
+    right: 0;
+    height: 80px;
+    background: linear-gradient(
+      to bottom,
+      transparent 0%,
+      hsl(var(--primary) / 0.0) 0%,
+      hsl(var(--primary) / 0.25) 50%,
+      hsl(var(--primary) / 0.0) 100%
+    );
+    border-bottom: 1px solid hsl(var(--primary) / 0.7);
+    box-shadow: 0 0 18px hsl(var(--primary) / 0.5);
+    animation: image-scan 4s linear infinite;
+    pointer-events: none;
+    mix-blend-mode: screen;
+  }
+
+  @keyframes radar-pulse {
+    0%   { transform: translate(-50%, -50%) scale(0.4); opacity: 0.6; }
+    100% { transform: translate(-50%, -50%) scale(2.4); opacity: 0; }
+  }
+  .radar-pulse {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 120px;
+    height: 120px;
+    border-radius: 9999px;
+    border: 2px solid hsl(var(--primary) / 0.7);
+    animation: radar-pulse 3s ease-out infinite;
+    pointer-events: none;
+  }
+  .radar-pulse.delay-1 { animation-delay: 1s; }
+  .radar-pulse.delay-2 { animation-delay: 2s; }
 }

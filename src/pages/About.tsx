@@ -187,18 +187,40 @@ const About = () => {
           transition={{ duration: 0.5, delay: 0.35 }}
           className="mb-20"
         >
-          <span className="eyebrow">Meet the Team</span>
-          <span className="eyebrow-rule" />
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4 tracking-[-0.015em]">
-            The Humans Behind the Firewall
-          </h2>
-          <p className="text-muted-foreground text-lg leading-[1.8] mb-10">
-            Serious about security. Less serious about everything else.
-          </p>
+          <div className="flex items-start justify-between gap-4 flex-wrap">
+            <div>
+              <span className="eyebrow">Meet the Team</span>
+              <span className="eyebrow-rule" />
+              <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4 tracking-[-0.015em]">
+                The Humans Behind the Firewall
+              </h2>
+              <p className="text-muted-foreground text-lg leading-[1.8] mb-10">
+                Serious about security. Less serious about everything else.
+              </p>
+            </div>
+            <div className="flex items-center gap-3 mt-2">
+              {editMode ? (
+                <>
+                  <Button variant="outline" size="sm" onClick={cancelEdit}>Cancel</Button>
+                  <Button size="sm" onClick={saveChanges} className="gap-2">
+                    <Check className="h-4 w-4" /> Save Changes
+                  </Button>
+                </>
+              ) : (
+                <button
+                  onClick={enterEdit}
+                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-card hover:border-primary/60 hover:shadow-[0_4px_20px_-4px_hsl(var(--primary)/0.4)] transition-all text-sm font-semibold text-foreground"
+                >
+                  <Pencil className="h-4 w-4 text-primary" />
+                  Edit Mode
+                </button>
+              )}
+            </div>
+          </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {team.map((m, i) => (
+            {(draftMode ? draftTeam : teamData).map((m, i) => (
               <motion.div
-                key={m.name}
+                key={i}
                 initial={{ opacity: 0, y: 20 }}
                 animate={{ opacity: 1, y: 0 }}
                 transition={{ duration: 0.5, delay: 0.4 + i * 0.08 }}
@@ -213,10 +235,42 @@ const About = () => {
                   />
                   <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
                 </div>
-                <div className="p-6">
-                  <h3 className="text-xl font-bold text-foreground mb-1">{m.name}</h3>
-                  <p className="text-primary text-sm font-semibold mb-3 tracking-wide">{m.role}</p>
-                  <p className="text-muted-foreground text-[15px] leading-[1.7]">{m.fact}</p>
+                <div className="p-6 space-y-2">
+                  {editMode ? (
+                    <>
+                      <Input
+                        value={m.img}
+                        onChange={(e) => updateMember(i, "img", e.target.value)}
+                        placeholder="Image URL"
+                        className="text-xs mb-2"
+                      />
+                      <Input
+                        value={m.name}
+                        onChange={(e) => updateMember(i, "name", e.target.value)}
+                        placeholder="Name"
+                        className="text-xl font-bold"
+                      />
+                      <Input
+                        value={m.role}
+                        onChange={(e) => updateMember(i, "role", e.target.value)}
+                        placeholder="Role"
+                        className="text-sm font-semibold"
+                      />
+                      <Textarea
+                        value={m.fact}
+                        onChange={(e) => updateMember(i, "fact", e.target.value)}
+                        placeholder="Fun fact"
+                        rows={3}
+                        className="text-[15px] leading-[1.7] resize-none"
+                      />
+                    </>
+                  ) : (
+                    <>
+                      <h3 className="text-xl font-bold text-foreground mb-1">{m.name}</h3>
+                      <p className="text-primary text-sm font-semibold mb-3 tracking-wide">{m.role}</p>
+                      <p className="text-muted-foreground text-[15px] leading-[1.7]">{m.fact}</p>
+                    </>
+                  )}
                 </div>
               </motion.div>
             ))}

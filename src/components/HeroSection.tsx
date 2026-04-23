@@ -1,10 +1,11 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
-import { useLayoutEffect, useRef, useState } from "react";
+import { useLayoutEffect, useRef, useState, MouseEvent } from "react";
 import { GraduationCap, ShieldCheck, ZoomIn } from "lucide-react";
 
 const BLUE = "232 100% 60%";
 const RED = "0 84% 60%";
+const TEAL = "180 70% 45%";
 
 const services = [
   {
@@ -33,12 +34,30 @@ const services = [
   },
 ];
 
+// Glitch word: layered duplicates with color-channel offset
+const GlitchWord = ({
+  text,
+  color,
+}: {
+  text: string;
+  color: string;
+}) => (
+  <span
+    className="glitch-text"
+    data-text={text}
+    style={{ color: `hsl(${color})` }}
+  >
+    {text}
+  </span>
+);
+
 const HeroSection = () => {
   const gridRef = useRef<HTMLDivElement | null>(null);
   const cardRefs = useRef<Array<HTMLDivElement | null>>([]);
   const hubRef = useRef<HTMLDivElement | null>(null);
   const [paths, setPaths] = useState<string[]>([]);
   const [hover, setHover] = useState<number | null>(null);
+  const [tilts, setTilts] = useState<Record<number, { rx: number; ry: number }>>({});
 
   useLayoutEffect(() => {
     const compute = () => {
@@ -71,6 +90,20 @@ const HeroSection = () => {
     };
   }, []);
 
+  const handleTilt = (i: number) => (e: MouseEvent<HTMLDivElement>) => {
+    const el = e.currentTarget;
+    const r = el.getBoundingClientRect();
+    const px = (e.clientX - r.left) / r.width;
+    const py = (e.clientY - r.top) / r.height;
+    const ry = (px - 0.5) * 12; // rotateY
+    const rx = -(py - 0.5) * 12; // rotateX
+    setTilts((t) => ({ ...t, [i]: { rx, ry } }));
+  };
+  const resetTilt = (i: number) => () => {
+    setTilts((t) => ({ ...t, [i]: { rx: 0, ry: 0 } }));
+    setHover((h) => (h === i ? null : h));
+  };
+
   const container = {
     hidden: {},
     show: { transition: { staggerChildren: 0.08, delayChildren: 0.1 } },
@@ -82,8 +115,23 @@ const HeroSection = () => {
 
   return (
     <section className="relative min-h-screen flex flex-col items-center overflow-hidden bg-slate-50">
-      {/* Light cyber grid backdrop */}
+      {/* Animated teal cyber grid */}
       <div className="absolute inset-0 cyber-grid-bg-light" />
+      {/* Vertical data-stream lines (teal, low opacity) */}
+      <div className="absolute inset-0 overflow-hidden pointer-events-none" aria-hidden="true">
+        {[8, 22, 38, 55, 71, 86].map((leftPct, idx) => (
+          <span
+            key={leftPct}
+            className="data-stream-line"
+            style={{
+              left: `${leftPct}%`,
+              animationDelay: `${idx * 0.9}s`,
+              animationDuration: `${5 + (idx % 3)}s`,
+            }}
+          />
+        ))}
+      </div>
+      {/* Soft vignette so text reads cleanly */}
       <div
         className="absolute inset-0"
         style={{
@@ -113,12 +161,9 @@ const HeroSection = () => {
           variants={item}
           className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.1] mb-8 text-slate-900 tracking-[-0.02em]"
         >
-          We{" "}
-          <span style={{ color: `hsl(${BLUE})` }}>See</span>{" "}
-          What
+          We <GlitchWord text="See" color={BLUE} /> What
           <br />
-          Others{" "}
-          <span style={{ color: `hsl(${RED})` }}>Miss!</span>
+          Others <GlitchWord text="Miss!" color={RED} />
         </motion.h1>
 
         <motion.p
@@ -169,17 +214,32 @@ const HeroSection = () => {
         >
           {paths.map((d, i) =>
             d ? (
-              <path
-                key={i}
-                d={d}
-                fill="none"
-                stroke={`hsl(${BLUE})`}
-                strokeOpacity={hover === i ? 0.7 : 0.25}
-                strokeWidth={hover === i ? 1.5 : 1}
-                style={{
-                  transition: "stroke-opacity 0.3s ease, stroke-width 0.3s ease",
-                }}
-              />
+              <g key={i}>
+                {/* base faint line */}
+                <path
+                  d={d}
+                  fill="none"
+                  stroke={`hsl(${TEAL})`}
+                  strokeOpacity={hover === i ? 0.55 : 0.18}
+                  strokeWidth={hover === i ? 1.5 : 1}
+                  style={{ transition: "stroke-opacity 0.3s ease, stroke-width 0.3s ease" }}
+                />
+                {/* glowing flow on hover */}
+                {hover === i && (
+                  <path
+                    d={d}
+                    fill="none"
+                    stroke={`hsl(${TEAL})`}
+                    strokeWidth={2}
+                    strokeLinecap="round"
+                    strokeDasharray="6 6"
+                    style={{
+                      filter: `drop-shadow(0 0 6px hsl(${TEAL} / 0.9))`,
+                      animation: "neural-flow 0.6s linear infinite",
+                    }}
+                  />
+                )}
+              </g>
             ) : null
           )}
         </svg>
@@ -190,10 +250,12 @@ const HeroSection = () => {
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
           className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-fr relative"
+          style={{ perspective: "1200px" }}
         >
           {services.map((s, i) => {
             const isHover = hover === i;
             const { Icon } = s;
+            const tilt = tilts[i] ?? { rx: 0, ry: 0 };
             return (
               <motion.div
                 key={s.title}
@@ -204,30 +266,38 @@ const HeroSection = () => {
                 <div
                   ref={(el) => (cardRefs.current[i] = el)}
                   onMouseEnter={() => setHover(i)}
-                  onMouseLeave={() => setHover(null)}
-                  className="h-full rounded-xl p-6 bg-white transition-all duration-300"
+                  onMouseMove={handleTilt(i)}
+                  onMouseLeave={resetTilt(i)}
+                  className="tilt-card h-full rounded-xl p-6 backdrop-blur-md"
                   style={{
+                    background: isHover
+                      ? "hsl(0 0% 100% / 0.85)"
+                      : "hsl(0 0% 100% / 0.65)",
                     border: `1px solid ${
-                      isHover ? `hsl(${BLUE} / 0.7)` : "hsl(215 20% 88%)"
+                      isHover ? `hsl(${TEAL} / 0.7)` : `hsl(${TEAL} / 0.25)`
                     }`,
                     boxShadow: isHover
-                      ? `0 18px 40px -10px hsl(${BLUE} / 0.30)`
+                      ? `0 18px 40px -10px hsl(${TEAL} / 0.35), 0 0 0 1px hsl(${TEAL} / 0.2)`
                       : `0 4px 14px -8px hsl(222 30% 8% / 0.12)`,
-                    transform: isHover ? "translateY(-4px)" : "translateY(0)",
+                    transform: `perspective(1000px) rotateX(${tilt.rx}deg) rotateY(${tilt.ry}deg) translateY(${isHover ? -4 : 0}px)`,
                   }}
                 >
                   <div
                     className="w-11 h-11 rounded-lg flex items-center justify-center mb-5"
                     style={{
-                      background: `hsl(${BLUE} / 0.10)`,
+                      background: `hsl(${TEAL} / 0.12)`,
+                      transform: "translateZ(20px)",
                     }}
                   >
                     <Icon
                       className="w-5 h-5"
-                      style={{ color: `hsl(${BLUE})` }}
+                      style={{ color: `hsl(${TEAL})` }}
                     />
                   </div>
-                  <h3 className="text-slate-900 font-bold text-base mb-4 leading-snug">
+                  <h3
+                    className="text-slate-900 font-bold text-base mb-4 leading-snug"
+                    style={{ transform: "translateZ(15px)" }}
+                  >
                     {s.title}
                   </h3>
                   <ul className="space-y-2">
@@ -238,7 +308,7 @@ const HeroSection = () => {
                       >
                         <span
                           className="mt-[7px] w-1.5 h-1.5 rounded-full flex-shrink-0"
-                          style={{ background: `hsl(${BLUE})` }}
+                          style={{ background: `hsl(${TEAL})` }}
                         />
                         <span>{it}</span>
                       </li>

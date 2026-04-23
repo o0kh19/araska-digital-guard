@@ -1,31 +1,35 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useLayoutEffect, useRef, useState } from "react";
-import { ShieldCheck, Bug, Siren, GraduationCap } from "lucide-react";
+import { GraduationCap, ShieldCheck, ZoomIn } from "lucide-react";
 
-const TEAL = "232 100% 60%";
-const CYAN = "210 100% 55%";
+const BLUE = "232 100% 60%";
+const RED = "0 84% 60%";
 
 const services = [
   {
-    title: "Threat Intelligence",
-    desc: "Industry Risk Insight",
-    Icon: ShieldCheck,
-  },
-  {
-    title: "Vulnerability Management",
-    desc: "Attack Surface Discovery & Fix",
-    Icon: Bug,
-  },
-  {
-    title: "Incident Response",
-    desc: "24/7 Senior Analyst Handling",
-    Icon: Siren,
-  },
-  {
-    title: "Security Training",
-    desc: "Social Engineering Defense",
+    title: "Consultancy & Training Awareness",
     Icon: GraduationCap,
+    items: [
+      "Expert Advisory",
+      "Risk Assessment Gap",
+      "Health Check Assessment",
+      "Staff Training",
+    ],
+  },
+  {
+    title: "Cyber Defence",
+    Icon: ShieldCheck,
+    items: [
+      "SOC 24/7 & Incident Response",
+      "Threat Intelligence",
+      "Vulnerability Management",
+    ],
+  },
+  {
+    title: "Cyber Offensive",
+    Icon: ZoomIn,
+    items: ["Penetration Testing", "Red Teaming", "Attack Surface Discovery"],
   },
 ];
 
@@ -35,7 +39,6 @@ const HeroSection = () => {
   const hubRef = useRef<HTMLDivElement | null>(null);
   const [paths, setPaths] = useState<string[]>([]);
   const [hover, setHover] = useState<number | null>(null);
-  const [tilt, setTilt] = useState<{ rx: number; ry: number }>({ rx: 0, ry: 0 });
 
   useLayoutEffect(() => {
     const compute = () => {
@@ -51,9 +54,7 @@ const HeroSection = () => {
         const r = c.getBoundingClientRect();
         const cx = r.left + r.width / 2 - gRect.left;
         const cy = r.top - gRect.top;
-        const mx = (hub_x + cx) / 2;
-        const my = (hub_y + cy) / 2 - 30;
-        return `M ${hub_x} ${hub_y} Q ${mx} ${my} ${cx} ${cy}`;
+        return `M ${hub_x} ${hub_y} L ${cx} ${cy}`;
       });
       setPaths(next);
     };
@@ -70,18 +71,6 @@ const HeroSection = () => {
     };
   }, []);
 
-  const handleMouseMove = (e: React.MouseEvent<HTMLDivElement>, idx: number) => {
-    const el = cardRefs.current[idx];
-    if (!el) return;
-    const r = el.getBoundingClientRect();
-    const x = e.clientX - r.left;
-    const y = e.clientY - r.top;
-    const ry = ((x / r.width) - 0.5) * 14;
-    const rx = -((y / r.height) - 0.5) * 14;
-    setTilt({ rx, ry });
-  };
-
-  const headline = "Your Threat Is Real. So Is Our Response.";
   const container = {
     hidden: {},
     show: { transition: { staggerChildren: 0.08, delayChildren: 0.1 } },
@@ -95,7 +84,6 @@ const HeroSection = () => {
     <section className="relative min-h-screen flex flex-col items-center overflow-hidden bg-slate-50">
       {/* Light cyber grid backdrop */}
       <div className="absolute inset-0 cyber-grid-bg-light" />
-      {/* Soft vignette to focus content */}
       <div
         className="absolute inset-0"
         style={{
@@ -103,101 +91,58 @@ const HeroSection = () => {
             "radial-gradient(ellipse at 50% 30%, transparent 0%, hsl(220 30% 96% / 0.85) 80%)",
         }}
       />
-      {/* Subtle teal data stream lines */}
-      <div className="absolute inset-0 pointer-events-none overflow-hidden">
-        {[8, 22, 38, 55, 71, 86, 94].map((leftPct, i) => (
-          <span
-            key={i}
-            className="data-stream-line"
-            style={{
-              left: `${leftPct}%`,
-              animationDelay: `${i * 0.9}s`,
-              animationDuration: `${5 + (i % 3)}s`,
-              background:
-                "linear-gradient(to bottom, transparent, hsl(180 70% 45% / 0.35), transparent)",
-            }}
-          />
-        ))}
-      </div>
 
       <motion.div
         variants={container}
         initial="hidden"
         animate="show"
-        className="relative z-10 max-w-6xl mx-auto px-6 pt-32 pb-16 w-full text-center"
+        className="relative z-10 max-w-4xl mx-auto px-6 pt-24 pb-10 w-full text-center"
       >
-        <motion.div variants={item}>
+        <motion.div variants={item} className="flex items-center justify-center gap-3 mb-6">
+          <span className="h-px w-10 bg-slate-300" />
           <span
-            className="text-xs tracking-[0.25em] uppercase font-semibold block"
-            style={{ color: `hsl(${TEAL})` }}
+            className="text-xs tracking-[0.25em] uppercase font-semibold"
+            style={{ color: `hsl(${BLUE})` }}
           >
             Global Cybersecurity Operations
           </span>
-          <span
-            className="block w-12 h-0.5 mt-3 mb-6 mx-auto"
-            style={{ background: `hsl(${TEAL})` }}
-          />
+          <span className="h-px w-10 bg-slate-300" />
         </motion.div>
 
         <motion.h1
           variants={item}
-          className="text-4xl sm:text-5xl lg:text-7xl font-extrabold leading-[1.05] mb-6 text-slate-900 tracking-[-0.02em]"
-          aria-label={headline}
+          className="text-4xl sm:text-5xl lg:text-6xl font-extrabold leading-[1.1] mb-8 text-slate-900 tracking-[-0.02em]"
         >
-          Your Threat Is{" "}
-          <span className="glitch-text glitch-teal" data-text="Real">
-            Real
-          </span>
-          .
+          We{" "}
+          <span style={{ color: `hsl(${BLUE})` }}>See</span>{" "}
+          What
           <br />
-          So Is Our{" "}
-          <span className="glitch-text glitch-teal" data-text="Response">
-            Response
-          </span>
-          .
+          Others{" "}
+          <span style={{ color: `hsl(${RED})` }}>Miss!</span>
         </motion.h1>
 
         <motion.p
           variants={item}
-          className="text-slate-600 text-lg sm:text-xl max-w-2xl mx-auto mb-10 leading-relaxed"
+          className="text-slate-600 text-base sm:text-lg max-w-2xl mx-auto mb-3 leading-relaxed"
         >
-          We provide 24/7 security monitoring, threat intelligence, and rapid
-          incident response to protect your digital assets.
+          We help organisations identify the security gaps, build cyber resilience,
+          and stay ahead of threats. Whether it's expert advisory, 24/7 SOC
+          monitoring, vulnerability management, or even red teaming.
+        </motion.p>
+        <motion.p
+          variants={item}
+          className="text-slate-600 text-base sm:text-lg max-w-2xl mx-auto mb-10 leading-relaxed"
+        >
+          Our three core services are designed to protect you at every stage.
         </motion.p>
 
-        <motion.div
-          variants={item}
-          className="flex flex-col sm:flex-row gap-4 justify-center"
-        >
-          <Link
-            to="/cyber-health-check"
-            className="inline-flex items-center justify-center px-8 py-4 font-bold text-sm uppercase tracking-[0.08em] rounded border-2 transition-all"
-            style={{
-              borderColor: `hsl(${TEAL})`,
-              color: `hsl(${TEAL})`,
-              background: "transparent",
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.background = `hsl(${TEAL} / 0.08)`;
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.background = "transparent";
-            }}
-          >
-            Free Health Check
-          </Link>
+        <motion.div variants={item} className="flex justify-center">
           <Link
             to="/get-a-quote"
             className="inline-flex items-center justify-center px-8 py-4 font-bold text-sm uppercase tracking-[0.08em] rounded text-white transition-all hover:brightness-110"
             style={{
-              background: `hsl(${TEAL})`,
-              boxShadow: `0 0 24px hsl(${TEAL} / 0.45)`,
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.boxShadow = `0 0 36px hsl(${CYAN} / 0.7)`;
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.boxShadow = `0 0 24px hsl(${TEAL} / 0.45)`;
+              background: `hsl(${BLUE})`,
+              boxShadow: `0 0 24px hsl(${BLUE} / 0.45)`,
             }}
           >
             Get a Quote
@@ -205,57 +150,36 @@ const HeroSection = () => {
         </motion.div>
       </motion.div>
 
-      {/* Services grid w/ neural connections */}
-      <div ref={gridRef} className="relative z-10 w-full max-w-5xl mx-auto px-6 pb-24">
-        {/* Hub anchor */}
+      {/* Services with neural connections */}
+      <div ref={gridRef} className="relative z-10 w-full max-w-6xl mx-auto px-6 pb-24">
         <div className="relative h-10 mb-2 flex items-center justify-center">
           <div
             ref={hubRef}
             className="w-3 h-3 rounded-full"
             style={{
-              background: `hsl(${TEAL})`,
-              boxShadow: `0 0 12px hsl(${TEAL} / 0.9), 0 0 28px hsl(${CYAN} / 0.6)`,
+              background: `hsl(${BLUE})`,
+              boxShadow: `0 0 12px hsl(${BLUE} / 0.9)`,
             }}
           />
         </div>
 
-        {/* SVG connection layer */}
         <svg
           className="absolute inset-0 w-full h-full pointer-events-none"
           aria-hidden="true"
         >
           {paths.map((d, i) =>
             d ? (
-              <g key={i}>
-                <path
-                  d={d}
-                  fill="none"
-                  stroke={`hsl(${TEAL})`}
-                  strokeOpacity={hover === i ? 0.8 : 0.2}
-                  strokeWidth={hover === i ? 1.75 : 1.25}
-                  style={{
-                    filter:
-                      hover === i
-                        ? `drop-shadow(0 0 6px hsl(${CYAN} / 0.7))`
-                        : "none",
-                    transition: "stroke-opacity 0.3s ease, stroke-width 0.3s ease",
-                  }}
-                />
-                {hover === i && (
-                  <path
-                    d={d}
-                    fill="none"
-                    stroke={`hsl(${CYAN})`}
-                    strokeWidth={2}
-                    strokeDasharray="6 6"
-                    strokeLinecap="round"
-                    style={{
-                      filter: `drop-shadow(0 0 6px hsl(${CYAN} / 0.9))`,
-                      animation: "neural-flow 0.6s linear infinite",
-                    }}
-                  />
-                )}
-              </g>
+              <path
+                key={i}
+                d={d}
+                fill="none"
+                stroke={`hsl(${BLUE})`}
+                strokeOpacity={hover === i ? 0.7 : 0.25}
+                strokeWidth={hover === i ? 1.5 : 1}
+                style={{
+                  transition: "stroke-opacity 0.3s ease, stroke-width 0.3s ease",
+                }}
+              />
             ) : null
           )}
         </svg>
@@ -265,7 +189,7 @@ const HeroSection = () => {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
-          className="grid grid-cols-1 sm:grid-cols-2 gap-6 auto-rows-fr relative"
+          className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-fr relative"
         >
           {services.map((s, i) => {
             const isHover = hover === i;
@@ -275,49 +199,51 @@ const HeroSection = () => {
                 key={s.title}
                 variants={item}
                 className="card-float"
-                style={{ animationDelay: `${i * 0.4}s`, perspective: 1000 }}
+                style={{ animationDelay: `${i * 0.4}s` }}
               >
                 <div
                   ref={(el) => (cardRefs.current[i] = el)}
                   onMouseEnter={() => setHover(i)}
-                  onMouseLeave={() => {
-                    setHover(null);
-                    setTilt({ rx: 0, ry: 0 });
-                  }}
-                  onMouseMove={(e) => handleMouseMove(e, i)}
-                  className="tilt-card h-full rounded-xl p-6 bg-white/70 backdrop-blur-md"
+                  onMouseLeave={() => setHover(null)}
+                  className="h-full rounded-xl p-6 bg-white transition-all duration-300"
                   style={{
                     border: `1px solid ${
-                      isHover
-                        ? `hsl(${TEAL} / 0.85)`
-                        : `hsl(${TEAL} / 0.30)`
+                      isHover ? `hsl(${BLUE} / 0.7)` : "hsl(215 20% 88%)"
                     }`,
                     boxShadow: isHover
-                      ? `0 18px 50px -10px hsl(${CYAN} / 0.45), inset 0 0 0 1px hsl(${TEAL} / 0.25)`
-                      : `0 8px 24px -12px hsl(${TEAL} / 0.25)`,
-                    transform: isHover
-                      ? `rotateX(${tilt.rx}deg) rotateY(${tilt.ry}deg) translateZ(0)`
-                      : "rotateX(0) rotateY(0)",
+                      ? `0 18px 40px -10px hsl(${BLUE} / 0.30)`
+                      : `0 4px 14px -8px hsl(222 30% 8% / 0.12)`,
+                    transform: isHover ? "translateY(-4px)" : "translateY(0)",
                   }}
                 >
                   <div
-                    className="w-12 h-12 rounded-lg flex items-center justify-center mb-4"
+                    className="w-11 h-11 rounded-lg flex items-center justify-center mb-5"
                     style={{
-                      background: `hsl(${TEAL} / 0.10)`,
-                      border: `1px solid hsl(${TEAL} / 0.35)`,
+                      background: `hsl(${BLUE} / 0.10)`,
                     }}
                   >
                     <Icon
-                      className="w-6 h-6"
-                      style={{ color: `hsl(${TEAL})` }}
+                      className="w-5 h-5"
+                      style={{ color: `hsl(${BLUE})` }}
                     />
                   </div>
-                  <h3 className="text-slate-900 font-semibold text-base mb-2">
+                  <h3 className="text-slate-900 font-bold text-base mb-4 leading-snug">
                     {s.title}
                   </h3>
-                  <p className="text-slate-600 text-sm leading-relaxed">
-                    {s.desc}
-                  </p>
+                  <ul className="space-y-2">
+                    {s.items.map((it) => (
+                      <li
+                        key={it}
+                        className="flex items-start gap-2 text-slate-600 text-sm leading-relaxed"
+                      >
+                        <span
+                          className="mt-[7px] w-1.5 h-1.5 rounded-full flex-shrink-0"
+                          style={{ background: `hsl(${BLUE})` }}
+                        />
+                        <span>{it}</span>
+                      </li>
+                    ))}
+                  </ul>
                 </div>
               </motion.div>
             );

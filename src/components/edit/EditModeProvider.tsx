@@ -1,26 +1,20 @@
-import { useEffect, useLayoutEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState } from "react";
 import { Pencil, Plus, X } from "lucide-react";
 import { cardStore, pathFor, textStore } from "./editStore";
 import ToastHost, { showToast } from "./Toast";
 
 const EDIT_KEY = "lov_edit_mode_v1";
 
-// Tags whose direct text content we treat as editable.
 const TEXT_TAGS = new Set([
   "H1","H2","H3","H4","H5","H6",
   "P","SPAN","A","BUTTON","LI","STRONG","EM","SMALL","LABEL","BLOCKQUOTE",
 ]);
 
-// Skip our own UI + nav controls we don't want broken.
 function isInEditUI(el: Element) {
   return !!el.closest("[data-edit-ui]");
 }
 
-// Heuristic for "card grids": a container whose children are sibling card-like blocks.
-// We mark them with data-card-grid via a manual list of selectors below.
-const CARD_GRID_SELECTORS = [
-  "[data-card-grid]", // explicit opt-in if components add it
-];
+const CARD_GRID_SELECTORS = ["[data-card-grid]"];
 
 function getEditableTextEls(root: HTMLElement): HTMLElement[] {
   const out: HTMLElement[] = [];
@@ -29,14 +23,11 @@ function getEditableTextEls(root: HTMLElement): HTMLElement[] {
       const el = n as HTMLElement;
       if (isInEditUI(el)) return NodeFilter.FILTER_REJECT;
       if (!TEXT_TAGS.has(el.tagName)) return NodeFilter.FILTER_SKIP;
-      // must contain meaningful direct text (not just nested elements)
       const hasDirectText = Array.from(el.childNodes).some(
         (c) => c.nodeType === Node.TEXT_NODE && (c.textContent || "").trim().length > 0,
       );
-      // For SPAN/A/BUTTON allow even if all text is nested as long as text content exists & no editable child of same kind
       const text = (el.textContent || "").trim();
       if (!text) return NodeFilter.FILTER_SKIP;
-      // Avoid double-marking: prefer leaf-most element with text
       const hasEditableChild = Array.from(el.querySelectorAll("*")).some((c) =>
         TEXT_TAGS.has((c as HTMLElement).tagName) && (c.textContent || "").trim() === text,
       );
@@ -52,26 +43,24 @@ function getEditableTextEls(root: HTMLElement): HTMLElement[] {
   return out;
 }
 
+// One-time application of stored texts to the DOM. Never run during typing.
 function applyStoredTexts(root: HTMLElement) {
   const map = textStore.getAll();
   if (!Object.keys(map).length) return;
   const els = getEditableTextEls(root);
   els.forEach((el) => {
+    if (el.isContentEditable && document.activeElement === el) return; // never touch focused
     const key = pathFor(el);
     const stored = map[key];
-    if (stored != null && el.innerText !== stored) {
-      // Replace only direct text nodes, keep child elements intact when possible.
-      const hasOnlyText = Array.from(el.childNodes).every((c) => c.nodeType === Node.TEXT_NODE);
-      if (hasOnlyText) {
-        el.textContent = stored;
-      } else {
-        // Fallback: replace innerText (loses children) only if structure is purely text.
-        const directTextNodes = Array.from(el.childNodes).filter((c) => c.nodeType === Node.TEXT_NODE);
-        if (directTextNodes.length === 1 && el.children.length === 0) {
-          directTextNodes[0].textContent = stored;
-        } else {
-          // skip — too risky to alter mixed nodes
-        }
+    if (stored == null) return;
+    if (el.innerText === stored) return;
+    const hasOnlyText = Array.from(el.childNodes).every((c) => c.nodeType === Node.TEXT_NODE);
+    if (hasOnlyText) {
+      el.textContent = stored;
+    } else {
+      const directTextNodes = Array.from(el.childNodes).filter((c) => c.nodeType === Node.TEXT_NODE);
+      if (directTextNodes.length === 1 && el.children.length === 0) {
+        directTextNodes[0].textContent = stored;
       }
     }
   });
@@ -80,12 +69,10 @@ function applyStoredTexts(root: HTMLElement) {
 function applyCardOps(root: HTMLElement) {
   const all = cardStore.getAll();
   Object.keys(all).forEach((gridKey) => {
-    // find grid by key
     const grids = root.querySelectorAll<HTMLElement>(CARD_GRID_SELECTORS.join(","));
     grids.forEach((g) => {
       if (pathFor(g) !== gridKey) return;
       const state = all[gridKey];
-      // Hide deleted cards
       const cards = Array.from(g.children) as HTMLElement[];
       cards.forEach((c, i) => {
         const cid = c.getAttribute("data-card-id") || `idx:${i}`;
@@ -94,7 +81,6 @@ function applyCardOps(root: HTMLElement) {
           c.setAttribute("data-edit-deleted", "1");
         }
       });
-      // Append added cards (clones of last visible card with placeholder text)
       state.added.forEach((entry) => {
         if (g.querySelector(`[data-added-id="${entry.id}"]`)) return;
         const tmpl = (Array.from(g.children).find(
@@ -104,7 +90,6 @@ function applyCardOps(root: HTMLElement) {
         const clone = tmpl.cloneNode(true) as HTMLElement;
         clone.setAttribute("data-added-id", entry.id);
         clone.setAttribute("data-card-id", `added:${entry.id}`);
-        // Replace text nodes with placeholders
         const texts = clone.querySelectorAll("h1,h2,h3,h4,h5,h6,p,span,li,a,button");
         let titleSet = false;
         texts.forEach((t) => {
@@ -127,25 +112,53 @@ export default function EditModeProvider({ children }: { children: React.ReactNo
   const [editMode, setEditMode] = useState<boolean>(() => {
     try { return localStorage.getItem(EDIT_KEY) === "1"; } catch { return false; }
   });
-  const [, force] = useState(0);
+  // Bumped only by intentional structural changes (add/delete card, route change),
+  // NOT by typing or DOM mutations.
+  const [tick, setTick] = useState(0);
   const overlayRef = useRef<HTMLDivElement>(null);
-  const rerender = () => force((n) => n + 1);
+  const rafRef = useRef<number | null>(null);
 
+  // Persist edit mode toggle.
   useEffect(() => {
     try { localStorage.setItem(EDIT_KEY, editMode ? "1" : "0"); } catch { /* */ }
   }, [editMode]);
 
-  // Apply stored texts + card ops after each render.
-  useLayoutEffect(() => {
-    const root = document.body;
-    applyStoredTexts(root);
-    applyCardOps(root);
-  });
+  // Apply stored texts/cards ONCE on mount, and on intentional ticks.
+  // Never on every render and never tied to characterData mutations.
+  useEffect(() => {
+    applyStoredTexts(document.body);
+    applyCardOps(document.body);
+  }, [tick]);
 
-  // Wire up contentEditable + outlines whenever editMode changes or DOM updates.
+  // Re-apply when route content swaps (childList changes outside of typing).
+  // We listen to childList only (not characterData), so typing into contentEditable
+  // does not trigger this.
+  useEffect(() => {
+    let scheduled = false;
+    const obs = new MutationObserver((muts) => {
+      // Ignore mutations that are purely from our overlay or contenteditable text.
+      const meaningful = muts.some((m) => {
+        if (m.type !== "childList") return false;
+        const target = m.target as Element;
+        if (target && (target as HTMLElement).isContentEditable) return false;
+        if (target && target.closest && target.closest("[data-edit-ui]")) return false;
+        return m.addedNodes.length > 0 || m.removedNodes.length > 0;
+      });
+      if (!meaningful || scheduled) return;
+      scheduled = true;
+      requestAnimationFrame(() => {
+        scheduled = false;
+        applyStoredTexts(document.body);
+        applyCardOps(document.body);
+      });
+    });
+    obs.observe(document.body, { childList: true, subtree: true });
+    return () => obs.disconnect();
+  }, []);
+
+  // Wire/unwire contentEditable when edit mode changes (or after structural ticks).
   useEffect(() => {
     const root = document.body;
-
     const els = getEditableTextEls(root);
     const cleanups: Array<() => void> = [];
 
@@ -158,10 +171,10 @@ export default function EditModeProvider({ children }: { children: React.ReactNo
         const onFocus = () => el.classList.add("lov-editable-focus");
         const onBlur = () => {
           el.classList.remove("lov-editable-focus");
-          const val = el.innerText.replace(/\\u00A0/g, " ");
+          // Save ONLY on blur — never on input/keystroke.
+          const val = el.innerText.replace(/\u00A0/g, " ");
           textStore.set(key, val);
         };
-        // Prevent <a> navigation while editing
         const onClick = (e: MouseEvent) => {
           if (el.tagName === "A" || el.tagName === "BUTTON") e.preventDefault();
         };
@@ -188,28 +201,41 @@ export default function EditModeProvider({ children }: { children: React.ReactNo
     });
 
     return () => cleanups.forEach((fn) => fn());
-  });
+  }, [editMode, tick]);
 
-  // Card overlay buttons (delete + add) — render as portals positioned over each card/grid.
-  const cards = editMode ? Array.from(document.querySelectorAll<HTMLElement>("[data-card-grid] > *")).filter(
-    (c) => c.style.display !== "none",
-  ) : [];
-  const grids = editMode ? Array.from(document.querySelectorAll<HTMLElement>("[data-card-grid]")) : [];
-
-  // Re-render overlay positions on scroll/resize
+  // Overlay positions: snapshot on tick + scroll/resize, throttled with rAF.
+  // Does NOT use MutationObserver, so typing never triggers it.
+  const [overlayTick, setOverlayTick] = useState(0);
   useEffect(() => {
     if (!editMode) return;
-    const onChange = () => rerender();
-    window.addEventListener("scroll", onChange, true);
-    window.addEventListener("resize", onChange);
-    const obs = new MutationObserver(onChange);
-    obs.observe(document.body, { childList: true, subtree: true, characterData: true });
+    const schedule = () => {
+      if (rafRef.current != null) return;
+      rafRef.current = requestAnimationFrame(() => {
+        rafRef.current = null;
+        setOverlayTick((n) => n + 1);
+      });
+    };
+    window.addEventListener("scroll", schedule, true);
+    window.addEventListener("resize", schedule);
     return () => {
-      window.removeEventListener("scroll", onChange, true);
-      window.removeEventListener("resize", onChange);
-      obs.disconnect();
+      window.removeEventListener("scroll", schedule, true);
+      window.removeEventListener("resize", schedule);
+      if (rafRef.current != null) cancelAnimationFrame(rafRef.current);
+      rafRef.current = null;
     };
   }, [editMode]);
+
+  // Compute overlay items only when in edit mode and overlayTick/tick changes.
+  const cards = editMode
+    ? Array.from(document.querySelectorAll<HTMLElement>("[data-card-grid] > *")).filter(
+        (c) => c.style.display !== "none",
+      )
+    : [];
+  const grids = editMode
+    ? Array.from(document.querySelectorAll<HTMLElement>("[data-card-grid]"))
+    : [];
+  // Reference overlayTick so the render reads it.
+  void overlayTick;
 
   const handleDelete = (gridKey: string, cardId: string, el: HTMLElement) => {
     const grid = el.parentElement!;
@@ -224,7 +250,6 @@ export default function EditModeProvider({ children }: { children: React.ReactNo
     el.style.opacity = "0";
     el.style.transform = "scale(0.95)";
     setTimeout(() => {
-      // Persist
       if (cardId.startsWith("added:")) {
         const id = cardId.slice("added:".length);
         const state = cardStore.get(gridKey);
@@ -235,7 +260,7 @@ export default function EditModeProvider({ children }: { children: React.ReactNo
       }
       el.style.display = "none";
       showToast("Card deleted");
-      rerender();
+      setTick((n) => n + 1);
     }, 300);
   };
 
@@ -244,7 +269,7 @@ export default function EditModeProvider({ children }: { children: React.ReactNo
     const state = cardStore.get(gridKey);
     cardStore.setAdded(gridKey, [...state.added, { id, html: "" }]);
     showToast("Card added");
-    rerender();
+    setTick((n) => n + 1);
   };
 
   return (
@@ -252,7 +277,6 @@ export default function EditModeProvider({ children }: { children: React.ReactNo
       {children}
       <ToastHost />
 
-      {/* Floating Edit Mode toggle */}
       <button
         data-edit-ui
         onClick={() => setEditMode((v) => !v)}
@@ -271,7 +295,6 @@ export default function EditModeProvider({ children }: { children: React.ReactNo
         <span>{editMode ? "Editing" : "Edit Mode"}</span>
       </button>
 
-      {/* Overlay UI for cards */}
       {editMode && (
         <div ref={overlayRef} data-edit-ui className="pointer-events-none fixed inset-0 z-[9998]">
           {cards.map((card, i) => {

@@ -5,7 +5,8 @@ import { GraduationCap, ShieldCheck, ZoomIn } from "lucide-react";
 
 const BLUE = "232 100% 60%";
 const RED = "0 84% 60%";
-const TEAL = "180 70% 45%";
+// Use brand blue for accents (lines, icons, borders) for a professional look
+const TEAL = BLUE;
 
 const services = [
   {

@@ -164,7 +164,18 @@ const HeroSection = () => {
         >
           We <GlitchWord text="See" color={BLUE} /> What
           <br />
-          Others <GlitchWord text="Miss!" color={RED} />
+          Others{" "}
+          <span
+            className="glitch-text"
+            data-text="Miss!"
+            style={{
+              color: "#ef4444",
+              textShadow:
+                "0 0 6px rgba(0,0,0,0.9), 0 0 14px rgba(0,0,0,0.8), 0 0 24px rgba(0,0,0,0.6), 0 2px 2px rgba(0,0,0,0.7)",
+            }}
+          >
+            Miss!
+          </span>
         </motion.h1>
 
         <motion.p

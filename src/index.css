@@ -492,3 +492,71 @@
     will-change: transform;
   }
 }
+
+/* ===== Inline editor styles ===== */
+.inline-editable {
+  outline: none;
+  transition: box-shadow 0.15s ease, background-color 0.15s ease;
+  border-radius: 3px;
+}
+body[data-edit-mode="true"] .inline-editable {
+  box-shadow: 0 0 0 1px rgba(31, 143, 203, 0.45);
+  background-color: rgba(31, 143, 203, 0.04);
+  cursor: text;
+}
+body[data-edit-mode="true"] .inline-editable:hover {
+  box-shadow: 0 0 0 1px rgba(31, 143, 203, 0.7);
+}
+.inline-editable:focus {
+  box-shadow: 0 0 0 2px rgba(31, 143, 203, 0.85) !important;
+  background-color: rgba(31, 143, 203, 0.06);
+}
+
+body[data-edit-mode="true"] .edit-card-host {
+  position: relative;
+}
+.edit-card-delete {
+  position: absolute;
+  top: -8px;
+  right: -8px;
+  width: 22px;
+  height: 22px;
+  border-radius: 9999px;
+  background: #dc2626;
+  color: #fff;
+  font-size: 14px;
+  line-height: 1;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border: 2px solid #fff;
+  box-shadow: 0 2px 6px rgba(0,0,0,0.2);
+  opacity: 0;
+  transition: opacity 0.15s ease, transform 0.15s ease;
+  z-index: 50;
+  cursor: pointer;
+}
+.edit-card-host:hover .edit-card-delete {
+  opacity: 1;
+}
+.edit-card-delete:hover {
+  transform: scale(1.1);
+}
+.edit-card-add {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 120px;
+  border: 2px dashed rgba(31, 143, 203, 0.5);
+  border-radius: 12px;
+  background: rgba(31, 143, 203, 0.04);
+  color: rgba(31, 143, 203, 0.9);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.15s ease, border-color 0.15s ease;
+}
+.edit-card-add:hover {
+  background: rgba(31, 143, 203, 0.1);
+  border-color: rgba(31, 143, 203, 0.8);
+}

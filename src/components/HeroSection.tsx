@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import { Link } from "react-router-dom";
 import { useLayoutEffect, useRef, useState, MouseEvent } from "react";
-import { GraduationCap, ShieldCheck, ZoomIn } from "lucide-react";
+import { Briefcase, GraduationCap, ShieldCheck, ZoomIn } from "lucide-react";
 
 const BLUE = "232 100% 60%";
 const RED = "0 84% 60%";
@@ -10,13 +10,17 @@ const TEAL = BLUE;
 
 const services = [
   {
-    title: "Consultancy & Training Awareness",
+    title: "Consultancy",
+    Icon: Briefcase,
+    items: ["Security Strategy", "Compliance Advisory", "Risk Assessment"],
+  },
+  {
+    title: "Security Training",
     Icon: GraduationCap,
     items: [
-      "Expert Advisory",
-      "Risk Assessment Gap",
-      "Health Check Assessment",
-      "Staff Training",
+      "Awareness Training",
+      "Technical Workshops",
+      "Executive Security Training",
     ],
   },
   {
@@ -250,7 +254,7 @@ const HeroSection = () => {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
-          className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-fr relative"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 auto-rows-fr relative"
           style={{ perspective: "1200px" }}
         >
           {services.map((s, i) => {

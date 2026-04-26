@@ -258,7 +258,7 @@ const HeroSection = () => {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.2 }}
-          data-card-grid className="grid grid-cols-1 md:grid-cols-3 gap-6 auto-rows-fr relative"
+          data-card-grid className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 auto-rows-fr relative"
           style={{ perspective: "1200px" }}
         >
           {services.map((s, i) => {

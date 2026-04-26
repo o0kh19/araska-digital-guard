@@ -164,7 +164,7 @@ const HeroSection = () => {
         >
           We <GlitchWord text="See" color={BLUE} /> What
           <br />
-          Others <GlitchWord text="Miss!" color={BLUE} />
+          Others <GlitchWord text="Miss!" color="0 84% 60%" />
         </motion.h1>
 
         <motion.p

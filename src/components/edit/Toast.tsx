@@ -1,4 +1,4 @@
-import { useEffect, useState } from "react";
+import { forwardRef, useEffect, useState } from "react";
 
 type Toast = { id: number; msg: string };
 let pushExternal: ((msg: string) => void) | null = null;
@@ -7,7 +7,7 @@ export function showToast(msg: string) {
   pushExternal?.(msg);
 }
 
-export default function ToastHost() {
+const ToastHost = forwardRef<HTMLDivElement>((_, ref) => {
   const [toasts, setToasts] = useState<Toast[]>([]);
 
   useEffect(() => {
@@ -22,7 +22,10 @@ export default function ToastHost() {
   }, []);
 
   return (
-    <div className="fixed bottom-5 right-5 z-[10000] flex flex-col gap-2 pointer-events-none">
+    <div
+      ref={ref}
+      className="fixed bottom-5 right-5 z-[10000] flex flex-col gap-2 pointer-events-none"
+    >
       {toasts.map((t) => (
         <div
           key={t.id}
@@ -38,4 +41,7 @@ export default function ToastHost() {
       ))}
     </div>
   );
-}
+});
+ToastHost.displayName = "ToastHost";
+
+export default ToastHost;

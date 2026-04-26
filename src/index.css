@@ -492,3 +492,15 @@
     will-change: transform;
   }
 }
+
+/* Inline editing styles */
+.lov-editable {
+  outline: none;
+  cursor: text;
+  transition: box-shadow 0.15s ease;
+  border-radius: 3px;
+}
+.lov-editable-focus {
+  box-shadow: 0 0 0 2px rgba(31,143,203,0.55);
+  background: rgba(31,143,203,0.06);
+}

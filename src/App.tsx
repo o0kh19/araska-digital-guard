@@ -11,6 +11,9 @@ import GetAQuote from "./pages/GetAQuote";
 import Contact from "./pages/Contact";
 import CyberHealthCheck from "./pages/CyberHealthCheck";
 import NotFound from "./pages/NotFound";
+import { EditModeProvider } from "./components/EditModeProvider";
+import EditModeToggle from "./components/EditModeToggle";
+import InlineEditorEngine from "./components/InlineEditorEngine";
 
 const queryClient = new QueryClient();
 
@@ -19,7 +22,10 @@ const App = () => (
     <TooltipProvider>
       <Toaster />
       <Sonner />
-      <BrowserRouter>
+      <EditModeProvider>
+        <EditModeToggle />
+        <InlineEditorEngine />
+        <BrowserRouter>
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/services" element={<Services />} />

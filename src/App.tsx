@@ -3,6 +3,7 @@ import { BrowserRouter, Route, Routes } from "react-router-dom";
 import { Toaster as Sonner } from "@/components/ui/sonner";
 import { Toaster } from "@/components/ui/toaster";
 import { TooltipProvider } from "@/components/ui/tooltip";
+import EditModeProvider from "@/components/edit/EditModeProvider";
 import Index from "./pages/Index";
 import Services from "./pages/Services";
 import About from "./pages/About";
@@ -20,6 +21,7 @@ const App = () => (
       <Toaster />
       <Sonner />
       <BrowserRouter>
+        <EditModeProvider>
         <Routes>
           <Route path="/" element={<Index />} />
           <Route path="/services" element={<Services />} />
@@ -30,6 +32,7 @@ const App = () => (
           <Route path="/cyber-health-check" element={<CyberHealthCheck />} />
           <Route path="*" element={<NotFound />} />
         </Routes>
+        </EditModeProvider>
       </BrowserRouter>
     </TooltipProvider>
   </QueryClientProvider>

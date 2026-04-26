@@ -57,7 +57,7 @@ const HowItWorks = () => {
             {inView && <div className="data-stream-y absolute inset-0" />}
           </div>
 
-          <div className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 relative">
+          <div data-card-grid className="grid sm:grid-cols-2 lg:grid-cols-4 gap-6 relative">
             {steps.map((s, i) => {
               const { Icon } = s;
               return (

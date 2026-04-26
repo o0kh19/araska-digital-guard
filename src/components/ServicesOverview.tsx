@@ -181,7 +181,7 @@ const ServicesOverview = () => {
           </motion.div>
 
           {/* Cards grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr relative" style={{ zIndex: 2 }}>
+          <div data-card-grid className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr relative" style={{ zIndex: 2 }}>
             {services.map((svc, i) => {
               const isActive = hoveredIdx === i;
               return (

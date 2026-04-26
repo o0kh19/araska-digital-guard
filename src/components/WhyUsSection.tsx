@@ -179,7 +179,7 @@ const WhyUsSection = () => {
           </h2>
         </motion.div>
 
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 auto-rows-fr items-stretch">
+        <div data-card-grid className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 auto-rows-fr items-stretch">
           {pillars.map((p, i) => (
             <PillarCard key={p.title} p={p} i={i} inView={inView} />
           ))}

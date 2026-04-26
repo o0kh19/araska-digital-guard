@@ -242,7 +242,7 @@ const StatsSection = () => {
           </p>
         </motion.div>
 
-        <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" style={{ perspective: 1200 }}>
+        <div data-card-grid className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6" style={{ perspective: 1200 }}>
           {stats.map((s, i) => (
             <TiltCard key={s.label} index={i} inView={inView}>
               <div

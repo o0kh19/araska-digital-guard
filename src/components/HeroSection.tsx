@@ -10,13 +10,21 @@ const TEAL = BLUE;
 
 const services = [
   {
-    title: "Consultancy & Training Awareness",
+    title: "Consultancy",
+    Icon: ShieldCheck,
+    items: [
+      "Security Strategy",
+      "Compliance Advisory",
+      "Risk Assessment",
+    ],
+  },
+  {
+    title: "Security Training",
     Icon: GraduationCap,
     items: [
-      "Expert Advisory",
-      "Risk Assessment Gap",
-      "Health Check Assessment",
-      "Staff Training",
+      "Awareness Training",
+      "Technical Workshops",
+      "Executive Security Training",
     ],
   },
   {

@@ -51,6 +51,24 @@ export const cardStore = {
   },
 };
 
+export const styleStore = {
+  getAll: () => read<StyleMap>(STYLES_KEY, {}),
+  get: (k: string): Record<string, string> => read<StyleMap>(STYLES_KEY, {})[k] || {},
+  setProp: (k: string, prop: string, value: string) => {
+    const all = read<StyleMap>(STYLES_KEY, {});
+    const cur = { ...(all[k] || {}) };
+    if (value === "" || value == null) delete cur[prop];
+    else cur[prop] = value;
+    all[k] = cur;
+    write(STYLES_KEY, all);
+  },
+  clear: (k: string) => {
+    const all = read<StyleMap>(STYLES_KEY, {});
+    delete all[k];
+    write(STYLES_KEY, all);
+  },
+};
+
 // Build a stable path for an element relative to <main> or <body>.
 export function pathFor(el: Element): string {
   const parts: string[] = [];

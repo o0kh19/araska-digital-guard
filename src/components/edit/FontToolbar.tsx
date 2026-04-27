@@ -81,6 +81,7 @@ export default function FontToolbar({ enabled }: Props) {
   if (!enabled || !target || !pos) return null;
 
   const apply = (prop: string, value: string, cssProp?: string) => {
+    if (!target) return;
     const key = pathFor(target);
     const css = cssProp || prop;
     if (value === "") {
@@ -90,7 +91,6 @@ export default function FontToolbar({ enabled }: Props) {
     }
     styleStore.setProp(key, prop, value);
     force((n) => n + 1);
-    target.focus();
   };
 
   const cs = window.getComputedStyle(target);
@@ -107,7 +107,6 @@ export default function FontToolbar({ enabled }: Props) {
       ref={toolbarRef}
       data-edit-ui
       tabIndex={-1}
-      onMouseDown={(e) => e.preventDefault()}
       style={{
         position: "fixed",
         top: pos.top,
@@ -311,12 +310,14 @@ function ToolBtn({
 }) {
   return (
     <button
+      type="button"
+      onMouseDown={(e) => e.preventDefault()}
       onClick={onClick}
       title={title}
       style={{
         ...btnStyle,
         background: active ? "rgba(31,143,203,0.5)" : btnStyle.background,
-        borderColor: active ? "rgba(31,143,203,0.8)" : btnStyle.border as string,
+        borderColor: active ? "rgba(31,143,203,0.8)" : (btnStyle.border as string),
         display: "inline-flex",
         alignItems: "center",
         justifyContent: "center",

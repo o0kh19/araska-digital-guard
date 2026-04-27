@@ -67,7 +67,26 @@ function applyStoredTexts(root: HTMLElement) {
   });
 }
 
-function applyCardOps(root: HTMLElement) {
+function toCssProp(prop: string) {
+  return prop.replace(/[A-Z]/g, (m) => "-" + m.toLowerCase());
+}
+
+function applyStoredStyles(root: HTMLElement) {
+  const all = styleStore.getAll();
+  const keys = Object.keys(all);
+  if (!keys.length) return;
+  const els = getEditableTextEls(root);
+  els.forEach((el) => {
+    const k = pathFor(el);
+    const styles = all[k];
+    if (!styles) return;
+    Object.entries(styles).forEach(([prop, value]) => {
+      el.style.setProperty(toCssProp(prop), value, "important");
+    });
+  });
+}
+
+
   const all = cardStore.getAll();
   Object.keys(all).forEach((gridKey) => {
     const grids = root.querySelectorAll<HTMLElement>(CARD_GRID_SELECTORS.join(","));

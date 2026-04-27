@@ -107,7 +107,6 @@ export default function FontToolbar({ enabled }: Props) {
       ref={toolbarRef}
       data-edit-ui
       tabIndex={-1}
-      onMouseDown={(e) => e.preventDefault()}
       style={{
         position: "fixed",
         top: pos.top,

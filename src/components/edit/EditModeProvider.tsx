@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { Pencil, Plus, X } from "lucide-react";
-import { cardStore, pathFor, textStore } from "./editStore";
+import { cardStore, pathFor, styleStore, textStore } from "./editStore";
 import ToastHost, { showToast } from "./Toast";
+import FontToolbar from "./FontToolbar";
 
 const EDIT_KEY = "lov_edit_mode_v1";
 
@@ -66,6 +67,24 @@ function applyStoredTexts(root: HTMLElement) {
   });
 }
 
+function toCssProp(prop: string) {
+  return prop.replace(/[A-Z]/g, (m) => "-" + m.toLowerCase());
+}
+
+function applyStoredStyles(root: HTMLElement) {
+  const all = styleStore.getAll();
+  const keys = Object.keys(all);
+  if (!keys.length) return;
+  const els = getEditableTextEls(root);
+  els.forEach((el) => {
+    const k = pathFor(el);
+    const styles = all[k];
+    if (!styles) return;
+    Object.entries(styles).forEach(([prop, value]) => {
+      el.style.setProperty(toCssProp(prop), value, "important");
+    });
+  });
+}
 function applyCardOps(root: HTMLElement) {
   const all = cardStore.getAll();
   Object.keys(all).forEach((gridKey) => {
@@ -127,6 +146,7 @@ export default function EditModeProvider({ children }: { children: React.ReactNo
   // Never on every render and never tied to characterData mutations.
   useEffect(() => {
     applyStoredTexts(document.body);
+    applyStoredStyles(document.body);
     applyCardOps(document.body);
   }, [tick]);
 
@@ -149,6 +169,7 @@ export default function EditModeProvider({ children }: { children: React.ReactNo
       requestAnimationFrame(() => {
         scheduled = false;
         applyStoredTexts(document.body);
+        applyStoredStyles(document.body);
         applyCardOps(document.body);
       });
     });
@@ -276,6 +297,7 @@ export default function EditModeProvider({ children }: { children: React.ReactNo
     <>
       {children}
       <ToastHost />
+      <FontToolbar enabled={editMode} />
 
       <button
         data-edit-ui

@@ -3,10 +3,12 @@
 
 const TEXT_KEY = "lov_edit_texts_v1";
 const CARDS_KEY = "lov_edit_cards_v1"; // { [gridKey]: { added: Array<{id,html}>, deletedIds: string[] } }
+const STYLES_KEY = "lov_edit_styles_v1"; // { [elKey]: Partial<CSSStyleDeclaration> }
 
 type TextMap = Record<string, string>;
 type CardState = { added: { id: string; html: string }[]; deletedIds: string[] };
 type CardMap = Record<string, CardState>;
+export type StyleMap = Record<string, Record<string, string>>;
 
 function read<T>(key: string, fallback: T): T {
   try {
@@ -46,6 +48,24 @@ export const cardStore = {
     const all = read<CardMap>(CARDS_KEY, {});
     all[k] = { ...(all[k] || { added: [], deletedIds: [] }), deletedIds };
     write(CARDS_KEY, all);
+  },
+};
+
+export const styleStore = {
+  getAll: () => read<StyleMap>(STYLES_KEY, {}),
+  get: (k: string): Record<string, string> => read<StyleMap>(STYLES_KEY, {})[k] || {},
+  setProp: (k: string, prop: string, value: string) => {
+    const all = read<StyleMap>(STYLES_KEY, {});
+    const cur = { ...(all[k] || {}) };
+    if (value === "" || value == null) delete cur[prop];
+    else cur[prop] = value;
+    all[k] = cur;
+    write(STYLES_KEY, all);
+  },
+  clear: (k: string) => {
+    const all = read<StyleMap>(STYLES_KEY, {});
+    delete all[k];
+    write(STYLES_KEY, all);
   },
 };
 

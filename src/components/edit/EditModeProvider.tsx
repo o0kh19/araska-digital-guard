@@ -169,6 +169,7 @@ export default function EditModeProvider({ children }: { children: React.ReactNo
       requestAnimationFrame(() => {
         scheduled = false;
         applyStoredTexts(document.body);
+        applyStoredStyles(document.body);
         applyCardOps(document.body);
       });
     });

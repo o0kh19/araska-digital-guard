@@ -85,8 +85,7 @@ function applyStoredStyles(root: HTMLElement) {
     });
   });
 }
-
-
+function applyCardOps(root: HTMLElement) {
   const all = cardStore.getAll();
   Object.keys(all).forEach((gridKey) => {
     const grids = root.querySelectorAll<HTMLElement>(CARD_GRID_SELECTORS.join(","));

@@ -146,6 +146,7 @@ export default function EditModeProvider({ children }: { children: React.ReactNo
   // Never on every render and never tied to characterData mutations.
   useEffect(() => {
     applyStoredTexts(document.body);
+    applyStoredStyles(document.body);
     applyCardOps(document.body);
   }, [tick]);
 

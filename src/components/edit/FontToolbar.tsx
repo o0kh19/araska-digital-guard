@@ -81,6 +81,7 @@ export default function FontToolbar({ enabled }: Props) {
   if (!enabled || !target || !pos) return null;
 
   const apply = (prop: string, value: string, cssProp?: string) => {
+    if (!target) return;
     const key = pathFor(target);
     const css = cssProp || prop;
     if (value === "") {
@@ -90,7 +91,6 @@ export default function FontToolbar({ enabled }: Props) {
     }
     styleStore.setProp(key, prop, value);
     force((n) => n + 1);
-    target.focus();
   };
 
   const cs = window.getComputedStyle(target);

@@ -3,10 +3,12 @@
 
 const TEXT_KEY = "lov_edit_texts_v1";
 const CARDS_KEY = "lov_edit_cards_v1"; // { [gridKey]: { added: Array<{id,html}>, deletedIds: string[] } }
+const STYLES_KEY = "lov_edit_styles_v1"; // { [elKey]: Partial<CSSStyleDeclaration> }
 
 type TextMap = Record<string, string>;
 type CardState = { added: { id: string; html: string }[]; deletedIds: string[] };
 type CardMap = Record<string, CardState>;
+export type StyleMap = Record<string, Record<string, string>>;
 
 function read<T>(key: string, fallback: T): T {
   try {

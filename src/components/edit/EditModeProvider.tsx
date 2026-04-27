@@ -1,7 +1,8 @@
 import { useEffect, useRef, useState } from "react";
 import { Pencil, Plus, X } from "lucide-react";
-import { cardStore, pathFor, textStore } from "./editStore";
+import { cardStore, pathFor, styleStore, textStore } from "./editStore";
 import ToastHost, { showToast } from "./Toast";
+import FontToolbar from "./FontToolbar";
 
 const EDIT_KEY = "lov_edit_mode_v1";
 

@@ -297,6 +297,7 @@ export default function EditModeProvider({ children }: { children: React.ReactNo
     <>
       {children}
       <ToastHost />
+      <FontToolbar enabled={editMode} />
 
       <button
         data-edit-ui

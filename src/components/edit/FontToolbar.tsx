@@ -310,12 +310,14 @@ function ToolBtn({
 }) {
   return (
     <button
+      type="button"
+      onMouseDown={(e) => e.preventDefault()}
       onClick={onClick}
       title={title}
       style={{
         ...btnStyle,
         background: active ? "rgba(31,143,203,0.5)" : btnStyle.background,
-        borderColor: active ? "rgba(31,143,203,0.8)" : btnStyle.border as string,
+        borderColor: active ? "rgba(31,143,203,0.8)" : (btnStyle.border as string),
         display: "inline-flex",
         alignItems: "center",
         justifyContent: "center",

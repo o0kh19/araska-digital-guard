@@ -14,14 +14,14 @@ const ProblemSection = () => {
           animate={inView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
+          <span className="eyebrow text-xl font-bold">Why we do it</span>
+          <span className="eyebrow-rule mb-6" />
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-foreground tracking-[-0.015em] mb-6">
             The cybersecurity partner that understands your business, speaks your language, and{" "}
             <span className="text-primary">protects what matters.</span>
           </h2>
           <p className="text-muted-foreground text-lg leading-[1.8]">
-            We're not just another security vendor selling tools and reports. We take the time to understand <span className="text-foreground font-semibold">how your business actually runs</span> — your people, your systems, your risks — so the protection we build fits you, not a template.
-            <br /><br />
-            No jargon, no fear tactics. We translate complex threats into plain language your team can act on, while our SOC works around the clock to defend the things that truly matter: your data, your customers, and your reputation.
+            We protect what matters because our job is not to impress you with technical language, it is to keep your business running, your data safe, your people informed, and your operations protected from the threats that are growing every day across our region.
           </p>
         </motion.div>
 

@@ -14,7 +14,7 @@ const stats = [
   },
   {
     icon: Users,
-    value: 180,
+    value: 10,
     suffix: "+",
     label: "Happy Clients",
     desc: "Organisations trusting us with their cyber resilience.",

@@ -160,7 +160,6 @@ export default function EditModeProvider({ children }: { children: React.ReactNo
   useEffect(() => {
     let scheduled = false;
     const obs = new MutationObserver((muts) => {
-      // Ignore mutations that are purely from our overlay or contenteditable text.
       const meaningful = muts.some((m) => {
         if (m.type !== "childList") return false;
         const target = m.target as Element;
@@ -172,14 +171,14 @@ export default function EditModeProvider({ children }: { children: React.ReactNo
       scheduled = true;
       requestAnimationFrame(() => {
         scheduled = false;
-        applyStoredTexts(document.body);
+        if (editMode) applyStoredTexts(document.body);
         applyStoredStyles(document.body);
         applyCardOps(document.body);
       });
     });
     obs.observe(document.body, { childList: true, subtree: true });
     return () => obs.disconnect();
-  }, []);
+  }, [editMode]);
 
   // Wire/unwire contentEditable when edit mode changes (or after structural ticks).
   useEffect(() => {

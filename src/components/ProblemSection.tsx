@@ -19,9 +19,9 @@ const ProblemSection = () => {
             <span className="text-primary">protects what matters.</span>
           </h2>
           <p className="text-muted-foreground text-lg leading-[1.8]">
-            On average, it takes companies <span className="text-foreground font-semibold">194 days</span> to notice they have been hacked. By then, the damage is already done.
+            We're not just another security vendor selling tools and reports. We take the time to understand <span className="text-foreground font-semibold">how your business actually runs</span> — your people, your systems, your risks — so the protection we build fits you, not a template.
             <br /><br />
-            We close that gap. Our team watches your systems around the clock, spots problems early, and stops attacks before they grow. We don't just send reports — we take action.
+            No jargon, no fear tactics. We translate complex threats into plain language your team can act on, while our SOC works around the clock to defend the things that truly matter: your data, your customers, and your reputation.
           </p>
         </motion.div>
 

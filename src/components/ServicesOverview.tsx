@@ -113,7 +113,7 @@ const ServicesOverview = () => {
           transition={{ duration: 0.5 }}
           className="mb-14"
         >
-          <span className="eyebrow">What We Do</span>
+          <span className="eyebrow text-xl">What We Do</span>
           <span className="eyebrow-rule" />
           <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-foreground tracking-[-0.015em]">
             End-to-End Cybersecurity Services

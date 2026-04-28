@@ -232,7 +232,7 @@ const StatsSection = () => {
           transition={{ duration: 0.5 }}
           className="mb-14 text-center"
         >
-          <span className="eyebrow">By the Numbers</span>
+          <span className="eyebrow text-xl">By the Numbers</span>
           <span className="eyebrow-rule mx-auto" />
           <h2 className="text-3xl sm:text-4xl font-bold text-light-foreground tracking-[-0.015em]">
             Why Choose ArasKa Cyber Core?

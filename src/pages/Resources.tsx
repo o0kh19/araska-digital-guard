@@ -51,7 +51,7 @@ const Resources = () => {
             transition={{ duration: 0.5 }}
             className="mb-10"
           >
-            <span className="eyebrow">Insights</span>
+            <span className="eyebrow text-xl">Insights</span>
             <span className="eyebrow-rule" />
             <h1 className="text-4xl sm:text-5xl font-extrabold text-foreground mb-4 tracking-[-0.02em]">
               Resources

@@ -85,9 +85,7 @@ const ServicesOverview = () => {
       clearTimeout(t);
     };
   }, [recalcLines]);
-
   const anyHovered = hoveredIdx !== null;
-
   return (
     <section id="services" className="section-padding section-dark relative overflow-hidden" ref={ref}>
       {/* Subtle hexagonal tech-honeycomb background */}
@@ -113,11 +111,7 @@ const ServicesOverview = () => {
         {/* Neural network container: image + lines + cards */}
         <div ref={containerRef} className="relative" style={{ perspective: "1200px" }}>
           {/* SVG connection layer */}
-          <svg
-            className="absolute inset-0 w-full h-full pointer-events-none"
-            style={{ zIndex: 1 }}
-            aria-hidden="true"
-          >
+          <svg className="absolute inset-0 w-full h-full pointer-events-none" style={{ zIndex: 1 }} aria-hidden="true">
             {paths.map((p, i) => (
               <g key={i}>
                 <path d={p.d} className={`neural-line-base ${hoveredIdx === i ? "is-active" : ""}`} />
@@ -151,8 +145,7 @@ const ServicesOverview = () => {
             <div
               className="absolute inset-0 pointer-events-none"
               style={{
-                background:
-                  "linear-gradient(90deg, rgba(5,10,20,0.6) 0%, rgba(5,10,20,0) 50%, rgba(5,10,20,0.6) 100%)",
+                background: "linear-gradient(90deg, rgba(5,10,20,0.6) 0%, rgba(5,10,20,0) 50%, rgba(5,10,20,0.6) 100%)",
               }}
             />
             <div className="image-scan-line" />
@@ -168,7 +161,11 @@ const ServicesOverview = () => {
           </motion.div>
 
           {/* Primary services grid - 3 large cards */}
-          <div data-card-grid className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr relative" style={{ zIndex: 2 }}>
+          <div
+            data-card-grid
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr relative"
+            style={{ zIndex: 2 }}
+          >
             {primaryServices.map((svc, i) => {
               const isActive = hoveredIdx === i;
               return (
@@ -207,7 +204,9 @@ const ServicesOverview = () => {
                       strokeWidth={1.5}
                     />
                   </div>
-                  <h3 className="text-[18px] font-bold uppercase tracking-wide text-foreground mb-3 leading-tight">{svc.title}</h3>
+                  <h3 className="text-[18px] font-bold uppercase tracking-wide text-foreground mb-3 leading-tight">
+                    {svc.title}
+                  </h3>
                   <p className="text-muted-foreground text-[15px] leading-[1.7] mb-6 flex-1">{svc.desc}</p>
                   <Link
                     to={`/services#${svc.slug}`}
@@ -266,7 +265,8 @@ const ServicesOverview = () => {
               Health Check Assessment
             </h3>
             <p className="text-muted-foreground max-w-2xl mx-auto leading-[1.7] mb-6">
-              Evaluate your organisation's current security posture and identify the specific requirements you need to address. A structured assessment that pinpoints gaps and defines your priorities.
+              Evaluate your organisation's current security posture and identify the specific requirements you need to
+              address. A structured assessment that pinpoints gaps and defines your priorities.
             </p>
             <Link
               to="/cyber-health-check"

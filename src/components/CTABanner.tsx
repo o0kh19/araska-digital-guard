@@ -45,7 +45,7 @@ const CTABanner = () => {
           </p>
           <div className="flex flex-col sm:flex-row gap-4 justify-center">
             <Link to="/cyber-health-check" className="outline-btn text-sm">
-              Take the Free Health Check
+              Take The Health Check
             </Link>
             <Link to="/get-a-quote" className="gold-btn text-sm">
               Get a Quote

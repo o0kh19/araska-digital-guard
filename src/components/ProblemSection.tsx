@@ -14,7 +14,7 @@ const ProblemSection = () => {
           animate={inView ? { opacity: 1, x: 0 } : {}}
           transition={{ duration: 0.6 }}
         >
-          <span className="eyebrow text-xl font-bold">Why we do it</span>
+          <span className="eyebrow text-xl">Why we do it</span>
           <span className="eyebrow-rule mb-6" />
           <h2 className="text-3xl sm:text-4xl font-bold leading-tight text-foreground tracking-[-0.015em] mb-6 font-sans mx-px my-0 px-0 lg:text-5xl">
             The cybersecurity partner that understands your business, speaks your language, and{" "}

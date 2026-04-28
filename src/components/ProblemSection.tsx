@@ -25,10 +25,13 @@ const ProblemSection = () => {
               Cybersecurity has a reputation for being complex, expensive, and difficult to understand and for too long, that has left businesses in our region without the protection they deserve.
             </p>
             <p>
-              At Araska Cyber Core, we built this company to change that. We understand your business because we are here not advising remotely from another country, not sending generic reports written for a different market. We sit with you, we learn how your organisation works, and we build our services around your reality. We speak your language because security advice that you cannot fully understand is security advice you cannot fully act on so every conversation, every report, and every training session we deliver is available in Kurdish, Arabic, and English, whichever works best for you and your team.
+              At ArasKa Cyber Core, we built this company to change that. We understand your business because we are here not advising remotely from another country, not sending generic reports written for a different market. We sit with you, we learn how your organisation works, and we build our services around your reality. We speak your language because security advice that you cannot fully understand is security advice you cannot fully act on so every conversation, every report, and every training session we deliver is available in Kurdish, Arabic, and English, whichever works best for you and your team.
             </p>
             <p>
-              We protect what matters because our job is not to impress you with technical language it is to keep your business running, your data safe, your people informed, and your operations protected from the threats that are growing every day across our region. When something goes wrong and in today's environment, the question is when, not if you need a partner who picks up the phone, who already knows your environment, and who responds with urgency. That is what Araska Cyber Core is here to be.
+              We protect what matters because our job is not to impress you with technical language it is to keep your business running, your data safe, your people informed, and your operations protected from the threats that are growing every day across our region.
+            </p>
+            <p>
+              When something goes wrong and in today's environment, the question is when, not if you need a partner who picks up the phone, who already knows your environment, and who responds with urgency. That is what ArasKa Cyber Core is here to be.
             </p>
           </div>
         </motion.div>

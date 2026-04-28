@@ -172,7 +172,7 @@ const WhyUsSection = () => {
           transition={{ duration: 0.5 }}
           className="mb-14"
         >
-          <span className="eyebrow text-xl">Why Us</span>
+          <span className="eyebrow text-xl text-blue-500">Why Us</span>
           <span className="eyebrow-rule" />
           <h2 className="text-3xl sm:text-4xl font-bold text-light-foreground tracking-[-0.015em]">
             Why Organisations Choose Us

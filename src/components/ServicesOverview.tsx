@@ -1,48 +1,35 @@
 import { motion, useInView } from "framer-motion";
 import { useRef, useState, useEffect, useLayoutEffect, useCallback } from "react";
 import { Link } from "react-router-dom";
-import { ShieldCheck, Radar, FileSearch, Zap, GraduationCap, ClipboardCheck } from "lucide-react";
+import { Key, ShieldCheck, Siren, Radar, FileSearch, Zap, GraduationCap } from "lucide-react";
 import cyberShield from "@/assets/cyber-shield.jpg";
 
-const services = [
+const primaryServices = [
   {
-    icon: ShieldCheck,
-    title: "SOC as a Service",
+    icon: Key,
+    title: "24/7 Proactive Monitoring (SOC)",
     desc: "Our experts watch your systems 24/7. We find threats, stop them fast, and tell you what happened — in plain language.",
     slug: "soc-as-a-service",
   },
   {
-    icon: Radar,
-    title: "Threat Intelligence",
+    icon: ShieldCheck,
+    title: "Threat & Risk Analysis (Intel & Assessment)",
     desc: "We track the attackers who target your industry, so you know what to defend against — before they strike.",
     slug: "threat-intelligence",
   },
   {
-    icon: FileSearch,
-    title: "Cyber Risk Assessment",
-    desc: "We review your security from top to bottom and give you a clear list of what to fix first. Built around your business size and needs.",
-    slug: "cyber-risk-assessment",
-  },
-  {
-    icon: Zap,
-    title: "Incident Response Retainer",
-    desc: "When an attack hits, every minute matters. Our team is ready to step in immediately, with response times agreed in advance.",
+    icon: Siren,
+    title: "Emergency Response & Culture (Incident & Training)",
+    desc: "We review your security from top to bottom and give a clear plan of what to fix first, built around your business size and needs.",
     slug: "incident-response-retainer",
   },
-  {
-    icon: GraduationCap,
-    title: "Security Awareness Training",
-    desc: "Your staff are your first line of defence. We train them to spot phishing emails and risky behaviour — in simple, practical sessions.",
-    slug: "security-awareness-training",
-  },
-  {
-    icon: ClipboardCheck,
-    title: "Health Check Assessment",
-    desc: "Evaluate your organisation's current security posture and identify the specific requirements you need to address. A structured 2-minute assessment that pinpoints gaps and defines your priorities.",
-    slug: "cyber-consulting",
-    href: "/cyber-health-check",
-    badge: "Assessment",
-  },
+];
+
+const secondaryServices = [
+  { icon: Radar, title: "Threat Intelligence", slug: "threat-intelligence" },
+  { icon: FileSearch, title: "Cyber Risk Assessment", slug: "cyber-risk-assessment" },
+  { icon: Zap, title: "Incident Response", slug: "incident-response-retainer" },
+  { icon: GraduationCap, title: "Security Awareness Training", slug: "security-awareness-training" },
 ];
 
 type LinePath = { d: string };

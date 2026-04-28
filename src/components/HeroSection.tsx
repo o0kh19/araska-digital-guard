@@ -161,7 +161,7 @@ const HeroSection = () => {
             className="text-xs tracking-[0.25em] uppercase font-semibold"
             style={{ color: `hsl(${BLUE})` }}
           >
-            Global Cybersecurity Operations
+            Cyber Security Operations
           </span>
           <span className="h-px w-10 bg-slate-300" />
         </motion.div>

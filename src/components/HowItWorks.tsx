@@ -5,25 +5,25 @@ import { MessageCircle, FileText, Settings, Shield } from "lucide-react";
 const steps = [
   {
     step: "01",
-    title: "We Talk",
+    title: "Talk",
     desc: "You tell us about your business. We ask simple questions to understand your systems, risks, and goals.",
     Icon: MessageCircle,
   },
   {
     step: "02",
-    title: "We Plan",
+    title: "Plan",
     desc: "We send you a clear proposal: what we will do, when, and at what cost. No hidden terms.",
     Icon: FileText,
   },
   {
     step: "03",
-    title: "We Set Up",
+    title: "Set Up",
     desc: "Our team connects to your systems quickly and safely. SOC clients are usually fully covered within days.",
     Icon: Settings,
   },
   {
     step: "04",
-    title: "We Stay With You",
+    title: "Stay With You",
     desc: "We don't disappear after setup. You get regular reports, a real point of contact, and continuous improvement.",
     Icon: Shield,
   },
@@ -37,7 +37,7 @@ const HowItWorks = () => {
     <section className="section-padding section-dark relative overflow-hidden" ref={ref}>
       <div className="max-w-7xl mx-auto relative">
         <div className="mb-14">
-          <span className="eyebrow text-xl">// CYBER PROTOCOL</span>
+          <span className="eyebrow text-xl">CYBER PROTOCOL</span>
           <span className="eyebrow-rule" />
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground tracking-[-0.015em]">
             How We Work With You

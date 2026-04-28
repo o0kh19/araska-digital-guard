@@ -6,25 +6,25 @@ const steps = [
   {
     step: "01",
     title: "Talk",
-    desc: "You tell us about your business. We ask simple questions to understand your systems, risks, and goals.",
+    desc: "We begin by understanding your organisation, assessing your current environment, and identifying the security priorities that matter most to your business.",
     Icon: MessageCircle,
   },
   {
     step: "02",
     title: "Plan",
-    desc: "We send you a clear proposal: what we will do, when, and at what cost. No hidden terms.",
+    desc: "Based on your requirements, we design a tailored cybersecurity solution with clear scope, defined outcomes, and complete transparency from the start.",
     Icon: FileText,
   },
   {
     step: "03",
     title: "Set Up",
-    desc: "Our team connects to your systems quickly and safely. SOC clients are usually fully covered within days.",
+    desc: "Our specialists deploy and configure your security environment efficiently, ensuring protection is implemented with minimal disruption to your operations.",
     Icon: Settings,
   },
   {
     step: "04",
     title: "Stay With You",
-    desc: "We don't disappear after setup. You get regular reports, a real point of contact, and continuous improvement.",
+    desc: "We provide ongoing monitoring, expert support, and continuous optimisation to ensure your organisation stays protected against evolving cyber threats.",
     Icon: Shield,
   },
 ];

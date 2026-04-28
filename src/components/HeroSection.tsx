@@ -187,7 +187,7 @@ const HeroSection = () => {
           variants={item}
           className="text-slate-600 text-base sm:text-lg max-w-2xl mx-auto mb-10 leading-relaxed"
         >
-          Our three core services are designed to protect you at every stage.
+          Our Four core services are designed to protect you at every stage.
         </motion.p>
 
         <motion.div variants={item} className="flex justify-center">

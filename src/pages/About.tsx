@@ -101,7 +101,7 @@ const About = () => {
           transition={{ duration: 0.5 }}
           className="mb-20"
         >
-          <span className="eyebrow">About Us</span>
+          <span className="eyebrow text-xl">About Us</span>
           <span className="eyebrow-rule" />
           <h1 className="text-4xl sm:text-5xl font-extrabold text-foreground mb-8 tracking-[-0.02em]">
             Built to Protect. Built to Last.
@@ -127,7 +127,7 @@ const About = () => {
             transition={{ duration: 0.5, delay: 0.15 }}
             className="max-w-4xl mx-auto"
           >
-            <span className="eyebrow">Our Values</span>
+            <span className="eyebrow text-xl">Our Values</span>
             <span className="eyebrow-rule" />
             <h2 className="text-3xl sm:text-4xl font-bold text-light-foreground mb-8 tracking-[-0.015em]">
               What Drives Us
@@ -165,7 +165,7 @@ const About = () => {
           transition={{ duration: 0.5, delay: 0.3 }}
           className="mb-20"
         >
-          <span className="eyebrow">Our Approach</span>
+          <span className="eyebrow text-xl">Our Approach</span>
           <span className="eyebrow-rule" />
           <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-6 tracking-[-0.015em]">
             How We Deliver Security
@@ -189,7 +189,7 @@ const About = () => {
         >
           <div className="flex items-start justify-between gap-4 flex-wrap">
             <div>
-              <span className="eyebrow">Meet the Team</span>
+              <span className="eyebrow text-xl">Meet the Team</span>
               <span className="eyebrow-rule" />
               <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4 tracking-[-0.015em]">
                 The Humans Behind the Firewall

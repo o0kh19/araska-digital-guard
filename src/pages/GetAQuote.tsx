@@ -98,7 +98,7 @@ const GetAQuote = () => {
       <main className="pt-36 pb-16">
         <div className="max-w-3xl mx-auto px-6">
           <motion.div initial={{ opacity: 0, y: 20 }} animate={{ opacity: 1, y: 0 }} className="mb-10">
-            <span className="eyebrow">Request a Proposal</span>
+            <span className="eyebrow text-xl">Request a Proposal</span>
             <span className="eyebrow-rule" />
             <h1 className="text-4xl sm:text-5xl font-extrabold text-foreground mb-4 tracking-[-0.02em]">
               Get a Tailored Quote

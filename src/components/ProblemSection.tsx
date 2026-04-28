@@ -22,19 +22,21 @@ const ProblemSection = () => {
           </h2>
           <div className="text-muted-foreground text-lg leading-[1.8] space-y-6">
             <p>
-              Cybersecurity is often seen as complex, costly, and hard to understand leaving many businesses without the protection they need. {"\n"}
+              Cybersecurity is often seen as complex, costly, and hard to understand leaving many businesses without the
+              protection they need. {"\n"}
               At ArasKa Cyber Core, we’re changing that.
             </p>
             <p>
-              We work closely with you, taking the time to understand how your organisation operates so we can deliver solutions tailored to your reality not generic advice from afar. Every conversation, report, and training session is delivered in Kurdish, Arabic, or English, ensuring clarity and real impact.
+              We work closely with you, taking the time to understand how your organisation operates so we can deliver
+              solutions tailored to your reality not generic advice from afar. Every conversation, report, and training
+              session is delivered in Kurdish, Arabic, or English, ensuring clarity and real impact.
               {"\n\n"}
-              Our focus is simple: keep your business running, your data secure, and your people prepared against evolving threats.{"\n"}
+              Our focus is simple: keep your business running, your data secure, and your people prepared against
+              evolving threats.{"\n"}
             </p>
             <p>
-              ​​
-            </p>
-            <p>
-              And when something goes wrong because it’s a matter of when, not if you have a partner who responds swiftly, knows your environment, and acts when it matters most.
+              And when something goes wrong because it’s a matter of when, not if you have a partner who responds
+              swiftly, knows your environment, and acts when it matters most.
             </p>
           </div>
         </motion.div>
@@ -45,8 +47,8 @@ const ProblemSection = () => {
           transition={{ duration: 0.6, delay: 0.15 }}
           className="relative rounded-xl overflow-hidden"
           style={{
-            border: '1px solid rgba(31,143,203,0.25)',
-            boxShadow: '0 20px 60px -20px rgba(31,143,203,0.35)',
+            border: "1px solid rgba(31,143,203,0.25)",
+            boxShadow: "0 20px 60px -20px rgba(31,143,203,0.35)",
           }}
         >
           <img
@@ -61,23 +63,24 @@ const ProblemSection = () => {
           {/* Animated threat dots over the big SIEM screen map */}
           <div
             className="absolute pointer-events-none"
-            style={{ top: '18%', left: '24%', width: '52%', height: '28%' }}
+            style={{ top: "18%", left: "24%", width: "52%", height: "28%" }}
           >
             {[
-              { top: '38%', left: '20%', color: 'hsl(0 95% 60%)', delay: 0 },
-              { top: '28%', left: '32%', color: 'hsl(140 90% 50%)', delay: 0.9 },
-              { top: '30%', left: '50%', color: 'hsl(45 100% 55%)', delay: 0.5 },
-              { top: '44%', left: '56%', color: 'hsl(0 95% 60%)', delay: 1.3 },
-              { top: '34%', left: '64%', color: 'hsl(140 90% 50%)', delay: 0.3 },
-              { top: '40%', left: '74%', color: 'hsl(140 90% 50%)', delay: 1.6 },
-              { top: '58%', left: '82%', color: 'hsl(45 100% 55%)', delay: 1.0 },
-              { top: '54%', left: '38%', color: 'hsl(0 95% 60%)', delay: 1.9 },
+              { top: "38%", left: "20%", color: "hsl(0 95% 60%)", delay: 0 },
+              { top: "28%", left: "32%", color: "hsl(140 90% 50%)", delay: 0.9 },
+              { top: "30%", left: "50%", color: "hsl(45 100% 55%)", delay: 0.5 },
+              { top: "44%", left: "56%", color: "hsl(0 95% 60%)", delay: 1.3 },
+              { top: "34%", left: "64%", color: "hsl(140 90% 50%)", delay: 0.3 },
+              { top: "40%", left: "74%", color: "hsl(140 90% 50%)", delay: 1.6 },
+              { top: "58%", left: "82%", color: "hsl(45 100% 55%)", delay: 1.0 },
+              { top: "54%", left: "38%", color: "hsl(0 95% 60%)", delay: 1.9 },
             ].map((d, i) => (
               <div key={i} className="absolute" style={{ top: d.top, left: d.left }}>
                 <span
                   className="absolute -translate-x-1/2 -translate-y-1/2 rounded-full"
                   style={{
-                    width: 22, height: 22,
+                    width: 22,
+                    height: 22,
                     border: `2px solid ${d.color}`,
                     boxShadow: `0 0 10px ${d.color}`,
                     animation: `threat-ping 2.4s cubic-bezier(0,0,0.2,1) ${d.delay}s infinite`,
@@ -86,7 +89,8 @@ const ProblemSection = () => {
                 <span
                   className="absolute -translate-x-1/2 -translate-y-1/2 rounded-full"
                   style={{
-                    width: 6, height: 6,
+                    width: 6,
+                    height: 6,
                     background: d.color,
                     boxShadow: `0 0 10px ${d.color}, 0 0 20px ${d.color}`,
                     animation: `threat-glow 2s ease-in-out ${d.delay}s infinite`,
@@ -99,14 +103,13 @@ const ProblemSection = () => {
           {/* Scanline sweeping across the SIEM screen */}
           <div
             className="absolute pointer-events-none overflow-hidden"
-            style={{ top: '15%', left: '22%', width: '56%', height: '34%' }}
+            style={{ top: "15%", left: "22%", width: "56%", height: "34%" }}
           >
             <div
               className="absolute inset-y-0 w-1/3"
               style={{
-                background:
-                  'linear-gradient(90deg, transparent, hsl(140 90% 50% / 0.18), transparent)',
-                animation: 'scan-sweep 4.5s linear infinite',
+                background: "linear-gradient(90deg, transparent, hsl(140 90% 50% / 0.18), transparent)",
+                animation: "scan-sweep 4.5s linear infinite",
               }}
             />
           </div>
@@ -115,16 +118,15 @@ const ProblemSection = () => {
           <div
             className="absolute inset-0 pointer-events-none mix-blend-screen"
             style={{
-              background:
-                'radial-gradient(ellipse 55% 32% at 50% 30%, hsl(140 90% 50% / 0.22), transparent 70%)',
-              animation: 'ambient-pulse 5s ease-in-out infinite',
+              background: "radial-gradient(ellipse 55% 32% at 50% 30%, hsl(140 90% 50% / 0.22), transparent 70%)",
+              animation: "ambient-pulse 5s ease-in-out infinite",
             }}
           />
 
           {/* Bottom vignette */}
           <div
             className="absolute inset-0 pointer-events-none"
-            style={{ background: 'linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(5,10,20,0.5) 100%)' }}
+            style={{ background: "linear-gradient(180deg, rgba(0,0,0,0) 60%, rgba(5,10,20,0.5) 100%)" }}
           />
 
           <style>{`

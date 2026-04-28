@@ -37,7 +37,7 @@ const ProblemSection = () => {
         >
           <img
             src={socDashboard}
-            alt="Live SOC threat monitoring dashboard with global attack map"
+            alt="Modern 24/7 SOC team in office with large SIEM dashboard wall display"
             loading="lazy"
             width={1280}
             height={800}

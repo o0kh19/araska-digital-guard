@@ -6,23 +6,23 @@ type IconAnim = "rotate" | "sign" | "pulse" | "people";
 
 const pillars: { title: string; desc: string; anim: IconAnim }[] = [
   {
-    title: "Global, but close to you",
-    desc: "We are based in the UK and work with clients around the world. We understand local rules and global threats.",
+    title: "Global Expertise, Local Commitment",
+    desc: "Based in the UK and supporting organisations worldwide, we combine global cybersecurity expertise with local understanding to deliver protection that fits your business environment.",
     anim: "rotate",
   },
   {
-    title: "No long contracts to start",
-    desc: "Every project starts with a chat. We shape our service around your needs — not a fixed package that doesn't fit.",
+    title: "Flexible Engagement Models",
+    desc: "Our services are designed around your needs, with flexible engagement options that let your organisation scale security without unnecessary commitments.",
     anim: "sign",
   },
   {
-    title: "Powered by Microsoft",
-    desc: "Our SOC runs on Microsoft Sentinel and Defender — the same enterprise tools used by the world's biggest companies.",
+    title: "Built on Trusted Microsoft Security",
+    desc: "We leverage Microsoft Sentinel and Defender to provide enterprise-grade security monitoring, detection, and response powered by trusted industry-leading technology.",
     anim: "pulse",
   },
   {
-    title: "Real people, not just robots",
-    desc: "Every alert is checked by a human expert. Machines help us go fast — but people make the final call.",
+    title: "Expert-Led Security Operations",
+    desc: "Every alert is reviewed by experienced security specialists, combining intelligent automation with expert human oversight for accurate and rapid response.",
     anim: "people",
   },
 ];

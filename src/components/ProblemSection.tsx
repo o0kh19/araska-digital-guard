@@ -15,8 +15,8 @@ const ProblemSection = () => {
           transition={{ duration: 0.6 }}
         >
           <h2 className="text-3xl sm:text-4xl lg:text-5xl font-bold leading-tight text-foreground tracking-[-0.015em] mb-6">
-            Cyber attacks don't wait for office hours.{" "}
-            <span className="text-primary">Most businesses are not ready.</span>
+            The cybersecurity partner that understands your business, speaks your language, and{" "}
+            <span className="text-primary">protects what matters.</span>
           </h2>
           <p className="text-muted-foreground text-lg leading-[1.8]">
             On average, it takes companies <span className="text-foreground font-semibold">194 days</span> to notice they have been hacked. By then, the damage is already done.

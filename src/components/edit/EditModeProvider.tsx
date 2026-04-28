@@ -143,12 +143,16 @@ export default function EditModeProvider({ children }: { children: React.ReactNo
   }, [editMode]);
 
   // Apply stored texts/cards ONCE on mount, and on intentional ticks.
-  // Never on every render and never tied to characterData mutations.
+  // Only apply text overrides while in edit mode to avoid clobbering
+  // React-managed text nodes during normal viewing (which causes
+  // "removeChild" errors on unmount).
   useEffect(() => {
-    applyStoredTexts(document.body);
+    if (editMode) {
+      applyStoredTexts(document.body);
+    }
     applyStoredStyles(document.body);
     applyCardOps(document.body);
-  }, [tick]);
+  }, [tick, editMode]);
 
   // Re-apply when route content swaps (childList changes outside of typing).
   // We listen to childList only (not characterData), so typing into contentEditable

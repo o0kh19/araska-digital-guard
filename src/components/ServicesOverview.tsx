@@ -261,7 +261,7 @@ const ServicesOverview = () => {
               zIndex: 2,
             }}
           >
-            <span className="eyebrow text-primary">Free Diagnostic</span>
+            <span className="eyebrow text-primary">Diagnostic</span>
             <h3 className="text-2xl sm:text-3xl font-bold text-foreground mt-3 mb-3 tracking-[-0.01em]">
               Health Check Assessment
             </h3>

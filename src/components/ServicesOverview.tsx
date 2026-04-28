@@ -167,9 +167,9 @@ const ServicesOverview = () => {
             </div>
           </motion.div>
 
-          {/* Cards grid */}
+          {/* Primary services grid - 3 large cards */}
           <div data-card-grid className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr relative" style={{ zIndex: 2 }}>
-            {services.map((svc, i) => {
+            {primaryServices.map((svc, i) => {
               const isActive = hoveredIdx === i;
               return (
                 <motion.div
@@ -181,7 +181,7 @@ const ServicesOverview = () => {
                   onMouseEnter={() => setHoveredIdx(i)}
                   onMouseLeave={() => setHoveredIdx((cur) => (cur === i ? null : cur))}
                   whileHover={{ rotateX: -4, rotateY: 6, translateY: -8, scale: 1.02 }}
-                  className="services-card rounded-lg p-9 flex flex-col group h-full"
+                  className="services-card rounded-lg p-9 flex flex-col items-center text-center group h-full"
                   style={{
                     background: "#FFFFFF",
                     border: `1px solid ${isActive ? "hsl(var(--primary) / 0.7)" : "hsl(var(--primary) / 0.18)"}`,
@@ -207,26 +207,74 @@ const ServicesOverview = () => {
                       strokeWidth={1.5}
                     />
                   </div>
-                  <div className="flex items-center gap-2 mb-3">
-                    <span className={`status-dot ${isActive ? "fast" : ""}`} aria-hidden="true" />
-                    <h3 className="text-[19px] font-semibold text-foreground">{svc.title}</h3>
-                    {(svc as any).badge && (
-                      <span className="text-[10px] font-bold uppercase tracking-wider px-2 py-0.5 rounded-full bg-primary/10 text-primary border border-primary/30">
-                        {(svc as any).badge}
-                      </span>
-                    )}
-                  </div>
-                  <p className="text-muted-foreground text-[15px] leading-[1.8] mb-6 flex-1">{svc.desc}</p>
+                  <h3 className="text-[18px] font-bold uppercase tracking-wide text-foreground mb-3 leading-tight">{svc.title}</h3>
+                  <p className="text-muted-foreground text-[15px] leading-[1.7] mb-6 flex-1">{svc.desc}</p>
                   <Link
-                    to={(svc as any).href ?? `/services#${svc.slug}`}
-                    className="text-primary text-sm font-medium hover:underline hover:text-primary-light inline-flex items-center gap-1 group-hover:gap-2 transition-all"
+                    to={`/services#${svc.slug}`}
+                    className="inline-flex items-center justify-center px-5 py-2 text-xs font-bold uppercase tracking-wider rounded border border-primary/40 text-primary hover:bg-primary hover:text-primary-foreground transition-all"
                   >
-                    {(svc as any).href ? "Start Now →" : "Learn More →"}
+                    Learn More
                   </Link>
                 </motion.div>
               );
             })}
           </div>
+
+          {/* Secondary services row - 4 compact cards */}
+          <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mt-6 relative" style={{ zIndex: 2 }}>
+            {secondaryServices.map((svc, i) => (
+              <motion.div
+                key={svc.title}
+                initial={{ opacity: 0, y: 20 }}
+                animate={inView ? { opacity: 1, y: 0 } : {}}
+                transition={{ duration: 0.4, delay: 0.3 + i * 0.08 }}
+              >
+                <Link
+                  to={`/services#${svc.slug}`}
+                  className="bg-white rounded-lg p-5 flex flex-col items-start gap-3 h-full transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_12px_28px_-12px_hsl(var(--primary)/0.4)]"
+                  style={{ border: "1px solid hsl(var(--primary) / 0.18)" }}
+                >
+                  <div
+                    className="w-10 h-10 rounded-md flex items-center justify-center"
+                    style={{
+                      background: "hsl(var(--primary) / 0.08)",
+                      border: "1px solid hsl(var(--primary) / 0.25)",
+                    }}
+                  >
+                    <svc.icon className="text-primary" size={18} strokeWidth={1.6} />
+                  </div>
+                  <h4 className="text-sm font-semibold text-foreground leading-snug">{svc.title}</h4>
+                </Link>
+              </motion.div>
+            ))}
+          </div>
+
+          {/* Health Check Assessment banner */}
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={inView ? { opacity: 1, y: 0 } : {}}
+            transition={{ duration: 0.5, delay: 0.6 }}
+            className="mt-8 rounded-xl p-10 text-center relative overflow-hidden"
+            style={{
+              background: "linear-gradient(135deg, hsl(var(--primary) / 0.18) 0%, hsl(var(--primary) / 0.08) 100%)",
+              border: "1px solid hsl(var(--primary) / 0.35)",
+              zIndex: 2,
+            }}
+          >
+            <span className="eyebrow text-primary">Free Diagnostic</span>
+            <h3 className="text-2xl sm:text-3xl font-bold text-foreground mt-3 mb-3 tracking-[-0.01em]">
+              Health Check Assessment
+            </h3>
+            <p className="text-muted-foreground max-w-2xl mx-auto leading-[1.7] mb-6">
+              Evaluate your organisation's current security posture and identify the specific requirements you need to address. A structured assessment that pinpoints gaps and defines your priorities.
+            </p>
+            <Link
+              to="/cyber-health-check"
+              className="inline-flex items-center justify-center px-7 py-3 text-sm font-bold uppercase tracking-wider rounded bg-primary text-primary-foreground hover:bg-primary/90 transition-all shadow-[0_8px_24px_-8px_hsl(var(--primary)/0.6)]"
+            >
+              Start Your Free Cyber Health Check Now!
+            </Link>
+          </motion.div>
         </div>
       </div>
     </section>

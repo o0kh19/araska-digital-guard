@@ -272,7 +272,7 @@ const ServicesOverview = () => {
               to="/cyber-health-check"
               className="inline-flex items-center justify-center px-7 py-3 text-sm font-bold uppercase tracking-wider rounded bg-primary text-primary-foreground hover:bg-primary/90 transition-all shadow-[0_8px_24px_-8px_hsl(var(--primary)/0.6)]"
             >
-              Start Your Free Cyber Health Check Now!
+              Start Your Cyber Health Check Now!
             </Link>
           </motion.div>
         </div>

@@ -14,35 +14,27 @@ const RED = "0 84% 60%";
 const services = [
   {
     title: "Cyber Defence",
-    subtitle: "Proactive Monitoring & Response",
     Icon: ShieldCheck,
-    items: [
-      "24/7 SOC & Incident Response",
-      "Threat Intelligence",
-      "Vulnerability Management",
-    ],
+    desc: "Our experts watch your systems 24/7. We find threats, stop them fast, and tell you what happened — in plain language.",
+    slug: "soc-as-a-service",
   },
   {
     title: "Cyber Offensive",
-    subtitle: "Identify & Exploit Weaknesses",
     Icon: Crosshair,
-    items: ["Penetration Testing", "Red Teaming", "Attack Surface Discovery"],
+    desc: "We safely simulate real-world attacks — penetration testing, red teaming, and attack surface discovery — so you find weaknesses before attackers do.",
+    slug: "penetration-testing",
   },
   {
     title: "Consultancy",
-    subtitle: "Strategic Advisory & Guidance",
     Icon: Briefcase,
-    items: ["Security Strategy", "Compliance Advisory", "Risk Assessment"],
+    desc: "Strategic advisory, compliance guidance, and risk assessments — a clear plan tailored to your business size, sector, and priorities.",
+    slug: "cyber-risk-assessment",
   },
   {
     title: "Cyber Training",
-    subtitle: "Build Cyber Resilience & Awareness",
     Icon: GraduationCap,
-    items: [
-      "Awareness Training",
-      "Technical Workshops",
-      "Executive Security Training",
-    ],
+    desc: "Awareness training, technical workshops, and executive sessions that build a security-first culture across your whole organisation.",
+    slug: "security-awareness-training",
   },
 ];
 

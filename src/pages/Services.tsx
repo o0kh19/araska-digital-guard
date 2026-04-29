@@ -173,20 +173,20 @@ const Services = () => {
         }}
       >
         {/* Animated hex-network background, right half on desktop */}
-        <div className="absolute inset-y-0 right-0 w-full md:w-[58%] pointer-events-none">
+        <div className="absolute inset-y-0 right-0 w-full md:w-[60%] pointer-events-none">
           <ServicesHexNetwork />
-          {/* Left fade so text stays readable */}
+          {/* Soft left edge fade only — keeps every node fully visible */}
           <div
-            className="absolute inset-0 hidden md:block"
+            className="absolute inset-y-0 left-0 w-24 hidden md:block"
             style={{
               background:
-                "linear-gradient(90deg, #0A1635 0%, rgba(10,22,53,0.85) 25%, rgba(10,22,53,0.0) 60%)",
+                "linear-gradient(90deg, #0A1635 0%, rgba(10,22,53,0) 100%)",
             }}
           />
-          {/* Mobile dim overlay */}
+          {/* Mobile light dim only */}
           <div
             className="absolute inset-0 md:hidden"
-            style={{ background: "rgba(10,22,53,0.6)" }}
+            style={{ background: "rgba(10,22,53,0.35)" }}
           />
         </div>
 

@@ -26,10 +26,10 @@ const primaryServices = [
 ];
 
 const secondaryServices = [
-  { icon: Radar, title: "Threat Intelligence", slug: "threat-intelligence" },
-  { icon: FileSearch, title: "Cyber Risk Assessment", slug: "cyber-risk-assessment" },
-  { icon: Zap, title: "Incident Response", slug: "incident-response-retainer" },
-  { icon: GraduationCap, title: "Security Awareness Training", slug: "security-awareness-training" },
+  { icon: Radar, title: "Vulnerability Management\n\n", slug: "threat-intelligence" },
+  { icon: FileSearch, title: "vCISO Advisory", slug: "cyber-risk-assessment" },
+  { icon: Zap, title: "M365 Security Hardening", slug: "incident-response-retainer" },
+  { icon: GraduationCap, title: "Security Policy Development", slug: "security-awareness-training" },
 ];
 
 type LinePath = { d: string };

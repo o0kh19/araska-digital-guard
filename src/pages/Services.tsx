@@ -190,7 +190,7 @@ const Services = () => {
           />
         </div>
 
-        <div className="relative max-w-7xl mx-auto px-6 py-24 md:py-28">
+        <div className="relative max-w-7xl mx-auto pl-2 sm:pl-4 md:pl-6 pr-6 py-24 md:py-28">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

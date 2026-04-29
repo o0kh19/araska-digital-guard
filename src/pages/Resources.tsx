@@ -5,16 +5,16 @@ import { useState } from "react";
 
 const categories = [
   "All",
-  "Threat Intelligence",
+  "Vulnerability Management\n\n",
   "SOC & Monitoring",
   "Compliance",
-  "Incident Response",
+  "M365 Security Hardening",
   "Awareness Training",
 ];
 
 const posts = [
   {
-    category: "Threat Intelligence",
+    category: "Vulnerability Management\n\n",
     title: "Why Sector-Specific Threat Intelligence Matters More Than Generic Feeds",
     excerpt: "Not all threats are relevant to your organisation. Here is why tailored intelligence produces better security outcomes than broad-spectrum data.",
     date: "12 March 2025",

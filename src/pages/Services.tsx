@@ -14,19 +14,19 @@ const coreServices = [
   {
     icon: Radar,
     id: "threat-intelligence",
-    title: "Threat Intelligence",
+    title: "Vulnerability Management\n\n",
     short: "Sector-specific intel on adversaries, IOCs, and active campaigns — delivered with action.",
   },
   {
     icon: FileSearch,
     id: "cyber-risk-assessment",
-    title: "Cyber Risk Assessment",
+    title: "vCISO Advisory",
     short: "Review your people, process, and tech against ISO 27001 and NIST with a clear roadmap.",
   },
   {
     icon: Zap,
     id: "incident-response-retainer",
-    title: "Incident Response",
+    title: "M365 Security Hardening",
     short: "When something breaks, we are already briefed. Priority response, agreed in advance.",
   },
 ];
@@ -35,7 +35,7 @@ const education = [
   {
     icon: GraduationCap,
     id: "security-awareness-training",
-    title: "Security Awareness Training",
+    title: "Security Policy Development",
     desc: "Hands-on training that changes behaviour — not just a tick-box. We cover phishing, social engineering, safe data handling, and incident reporting, adapted to your audience from executive leadership to operational staff.",
   },
   {

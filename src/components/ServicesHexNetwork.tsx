@@ -23,30 +23,34 @@ type Node = {
   Icon: React.ComponentType<{ className?: string }>;
 };
 
-// Layout: 3 hexes top row, 4 hexes bottom row (matches reference image)
+// Layout: balanced 4-3 staggered honeycomb (top: 4 nodes, bottom: 3 nodes
+// offset between them) — fits the right panel evenly without overlap.
 const NODES: Node[] = [
-  { id: "soc", label: "24/7 SOC\nMonitoring", x: 22, y: 30, Icon: MonitorCheck },
-  { id: "tra", label: "Threat & Risk\nAnalysis", x: 44, y: 30, Icon: Target },
-  { id: "ir", label: "Incident Response\n& Training", x: 66, y: 30, Icon: BellRing },
-  { id: "vm", label: "Vulnerability\nManagement", x: 11, y: 70, Icon: ShieldAlert },
-  { id: "vciso", label: "vCISO\nAdvisory", x: 33, y: 70, Icon: UserCog },
-  { id: "m365", label: "M365 Security\nHardening", x: 55, y: 70, Icon: AppWindow },
-  { id: "policy", label: "Security Policy\nDevelopment", x: 77, y: 70, Icon: FileCheck2 },
+  { id: "soc", label: "24/7 SOC\nMonitoring", x: 16, y: 32, Icon: MonitorCheck },
+  { id: "tra", label: "Threat & Risk\nAnalysis", x: 39, y: 32, Icon: Target },
+  { id: "ir", label: "Incident Response\n& Training", x: 62, y: 32, Icon: BellRing },
+  { id: "policy", label: "Security Policy\nDevelopment", x: 85, y: 32, Icon: FileCheck2 },
+  { id: "vm", label: "Vulnerability\nManagement", x: 27, y: 70, Icon: ShieldAlert },
+  { id: "vciso", label: "vCISO\nAdvisory", x: 50, y: 70, Icon: UserCog },
+  { id: "m365", label: "M365 Security\nHardening", x: 73, y: 70, Icon: AppWindow },
 ];
 
-// Connections (edges between node ids)
+// Symmetrical honeycomb connections
 const EDGES: [string, string][] = [
+  // top row
   ["soc", "tra"],
   ["tra", "ir"],
-  ["soc", "vm"],
-  ["soc", "vciso"],
-  ["tra", "vciso"],
-  ["tra", "m365"],
-  ["ir", "m365"],
   ["ir", "policy"],
+  // bottom row
   ["vm", "vciso"],
   ["vciso", "m365"],
-  ["m365", "policy"],
+  // diagonals (each bottom connects to two adjacent top nodes)
+  ["soc", "vm"],
+  ["tra", "vm"],
+  ["tra", "vciso"],
+  ["ir", "vciso"],
+  ["ir", "m365"],
+  ["policy", "m365"],
 ];
 
 const VB_W = 1000;

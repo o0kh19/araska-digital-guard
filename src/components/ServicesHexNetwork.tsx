@@ -20,7 +20,7 @@ type Node = {
   label: string;
   x: number; // % of viewBox
   y: number; // % of viewBox
-  Icon: React.ComponentType<{ className?: string }>;
+  Icon: React.ComponentType<React.SVGProps<SVGSVGElement> & { className?: string; size?: number | string }>;
 };
 
 // Layout: balanced 4-3 staggered honeycomb (top: 4 nodes, bottom: 3 nodes

@@ -281,19 +281,23 @@ const ServicesHexNetwork = () => {
               }}
             >
               <motion.div
-                animate={{ opacity: [0.75, 1, 0.75] }}
+                animate={{ opacity: [0.92, 1, 0.92] }}
                 transition={{
-                  duration: 3 + (i % 3),
+                  duration: 3 + (i % 3) * 0.4,
                   repeat: Infinity,
                   ease: "easeInOut",
                 }}
                 style={{
-                  filter: "drop-shadow(0 0 10px rgba(96,165,250,0.65))",
+                  filter:
+                    "drop-shadow(0 0 8px rgba(125,184,255,0.9)) drop-shadow(0 0 16px rgba(59,130,246,0.5))",
                 }}
               >
-                <Icon className="w-7 h-7 text-sky-300" />
+                <Icon className="w-6 h-6 text-white" strokeWidth={1.8} />
               </motion.div>
-              <div className="mt-2 text-[11px] leading-tight text-sky-100/90 font-medium whitespace-pre-line">
+              <div
+                className="mt-2 text-[11px] leading-tight font-semibold whitespace-pre-line text-white"
+                style={{ textShadow: "0 1px 6px rgba(10,22,53,0.95)" }}
+              >
                 {n.label}
               </div>
             </motion.div>

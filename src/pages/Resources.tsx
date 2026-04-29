@@ -69,8 +69,8 @@ const Resources = () => {
                 onClick={() => setActiveCategory(cat)}
                 className={`text-xs font-medium px-4 py-2 rounded transition-all duration-200 ${
                   activeCategory === cat
-                    ? "text-primary"
-                    : "text-muted-foreground hover:text-foreground"
+                    ? "text-primary font-bold"
+                    : "text-muted-foreground hover:text-foreground font-bold"
                 }`}
                 style={{
                   border: activeCategory === cat ? '1px solid rgba(31,143,203,0.45)' : '1px solid rgba(31,143,203,0.18)',

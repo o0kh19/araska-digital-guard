@@ -5,17 +5,18 @@ import { ShieldAlert, Users, Activity } from "lucide-react";
 const stats = [
   {
     icon: ShieldAlert,
-    value: 1250000,
-    suffix: "+",
-    label: "Threats Blocked",
-    desc: "Malicious events neutralised across our client estates.",
-    format: (n: number) => Math.round(n).toLocaleString("en-GB"),
+    value: 1,
+    suffix: " Hour",
+    prefix: "< ",
+    label: "Mean Time to Respond",
+    desc: "SLA-backed commitment from the moment an alert is raised",
+    format: (n: number) => Math.round(n).toString(),
     decimals: 0,
   },
   {
     icon: Users,
     value: 10,
-    suffix: "+",
+    suffix: "​",
     label: "Happy Clients",
     desc: "Organisations trusting us with their cyber resilience.",
     format: (n: number) => Math.round(n).toLocaleString("en-GB"),
@@ -275,6 +276,7 @@ const StatsSection = () => {
                   className="text-4xl sm:text-5xl font-extrabold text-primary tracking-[-0.02em] mb-2 font-mono"
                   style={{ transform: "translateZ(30px)" }}
                 >
+                  {s.prefix && <span>{s.prefix}</span>}
                   <GlitchCounter
                     to={s.value}
                     format={s.format}

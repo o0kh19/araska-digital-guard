@@ -19,7 +19,6 @@ const services = [
     items: [
       "24/7 SOC & M365 Security Hardening",
       "Vulnerability Management\n\n",
-      "Vulnerability Management",
     ],
   },
   {

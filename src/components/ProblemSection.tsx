@@ -16,7 +16,7 @@ const ProblemSection = () => {
         >
           <span className="eyebrow text-xl">Why we do it</span>
           <span className="eyebrow-rule mb-6" />
-          <h2 className="text-primary-light bg-primary-foreground font-medium text-3xl">
+          <h2 className="text-primary-light bg-primary-foreground font-medium text-2xl text-justify">
             Your cybersecurity partner that understands your business, speaks your language, and protects what matters.
             {"\n\n\n\n"}
           </h2>

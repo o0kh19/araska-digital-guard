@@ -8,7 +8,7 @@ const stats = [
     value: 0,
     suffix: "​",
     label: "Mean Time to Respond",
-    desc: "Malicious events neutralised across our client estates.",
+    desc: "SLA-backed commitment from the moment an alert is raised",
     format: () => "< 1 Hour",
     decimals: 0,
   },

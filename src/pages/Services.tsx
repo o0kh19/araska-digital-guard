@@ -14,6 +14,7 @@ import {
   Briefcase,
   CheckCircle2,
 } from "lucide-react";
+import ServicesHexNetwork from "@/components/ServicesHexNetwork";
 
 type Service = {
   id: string;
@@ -171,22 +172,22 @@ const Services = () => {
           background: "linear-gradient(135deg, #0A1635 0%, #0F1F4A 50%, #112555 100%)",
         }}
       >
-        <div className="absolute inset-y-0 right-0 w-1/2 hidden md:block opacity-90 pointer-events-none">
-          <svg viewBox="0 0 600 400" className="w-full h-full">
-            {Array.from({ length: 60 }).map((_, i) => {
-              const colors = ["#3D5BFF", "#00D4FF", "#00E676", "#FFD600", "#FF1F8E", "#FF6D00", "#B388FF"];
-              const color = colors[i % colors.length];
-              const x = 30 + i * 9;
-              const h = 60 + Math.abs(Math.sin(i * 0.7)) * 250 + (i % 5) * 8;
-              const y = 380 - h;
-              return (
-                <g key={i}>
-                  <line x1={x} y1={380} x2={x} y2={y + 10} stroke={color} strokeWidth="1.5" opacity="0.6" />
-                  <circle cx={x} cy={y} r={3 + (i % 4)} fill={color} />
-                </g>
-              );
-            })}
-          </svg>
+        {/* Animated hex-network background, right half on desktop */}
+        <div className="absolute inset-y-0 right-0 w-full md:w-[58%] pointer-events-none">
+          <ServicesHexNetwork />
+          {/* Left fade so text stays readable */}
+          <div
+            className="absolute inset-0 hidden md:block"
+            style={{
+              background:
+                "linear-gradient(90deg, #0A1635 0%, rgba(10,22,53,0.85) 25%, rgba(10,22,53,0.0) 60%)",
+            }}
+          />
+          {/* Mobile dim overlay */}
+          <div
+            className="absolute inset-0 md:hidden"
+            style={{ background: "rgba(10,22,53,0.6)" }}
+          />
         </div>
 
         <div className="relative max-w-7xl mx-auto px-6 py-24 md:py-28">
@@ -194,7 +195,7 @@ const Services = () => {
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.6 }}
-            className="max-w-3xl"
+            className="max-w-2xl"
           >
             <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-[-0.02em] leading-tight mb-6">
               Cybersecurity Services Built Around Your Business

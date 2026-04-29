@@ -5,11 +5,11 @@ import { ShieldAlert, Users, Activity } from "lucide-react";
 const stats = [
   {
     icon: ShieldAlert,
-    value: 0,
-    suffix: "​",
-    label: "Mean Time to Respond",
-    desc: "SLA-backed commitment from the moment an alert is raised",
-    format: () => "< 1 Hour",
+    value: 1250000,
+    suffix: "+",
+    label: "Threats Blocked",
+    desc: "Malicious events neutralised across our client estates.",
+    format: (n: number) => Math.round(n).toLocaleString("en-GB"),
     decimals: 0,
   },
   {

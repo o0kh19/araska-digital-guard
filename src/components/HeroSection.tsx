@@ -14,27 +14,35 @@ const RED = "0 84% 60%";
 const services = [
   {
     title: "Cyber Defence",
+    subtitle: "Proactive Monitoring & Response",
     Icon: ShieldCheck,
-    desc: "Our experts watch your systems 24/7. We find threats, stop them fast, and tell you what happened — in plain language.",
-    slug: "soc-as-a-service",
+    items: [
+      "24/7 SOC & Incident Response",
+      "Threat Intelligence",
+      "Vulnerability Management",
+    ],
   },
   {
     title: "Cyber Offensive",
+    subtitle: "Identify & Exploit Weaknesses",
     Icon: Crosshair,
-    desc: "We safely simulate real-world attacks — penetration testing, red teaming, and attack surface discovery — so you find weaknesses before attackers do.",
-    slug: "penetration-testing",
+    items: ["Penetration Testing", "Red Teaming", "Attack Surface Discovery"],
   },
   {
     title: "Consultancy",
+    subtitle: "Strategic Advisory & Guidance",
     Icon: Briefcase,
-    desc: "Strategic advisory, compliance guidance, and risk assessments — a clear plan tailored to your business size, sector, and priorities.",
-    slug: "cyber-risk-assessment",
+    items: ["Security Strategy", "Compliance Advisory", "Risk Assessment"],
   },
   {
     title: "Cyber Training",
+    subtitle: "Build Cyber Resilience & Awareness",
     Icon: GraduationCap,
-    desc: "Awareness training, technical workshops, and executive sessions that build a security-first culture across your whole organisation.",
-    slug: "security-awareness-training",
+    items: [
+      "Awareness Training",
+      "Technical Workshops",
+      "Executive Security Training",
+    ],
   },
 ];
 
@@ -141,14 +149,15 @@ const HeroSection = () => {
               <motion.div
                 key={s.title}
                 variants={item}
-                className="rounded-2xl p-8 bg-white flex flex-col items-center text-center transition-all hover:-translate-y-1"
+                className="rounded-2xl p-8 bg-white transition-all hover:-translate-y-1"
                 style={{
                   border: "1px solid hsl(220 20% 90%)",
-                  boxShadow: "0 4px 20px -8px hsl(222 30% 8% / 0.08)",
+                  boxShadow:
+                    "0 4px 20px -8px hsl(222 30% 8% / 0.08)",
                 }}
               >
                 <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center mb-5"
+                  className="w-12 h-12 rounded-xl flex items-center justify-center mb-6"
                   style={{ background: `hsl(${BLUE} / 0.1)` }}
                 >
                   <Icon
@@ -156,30 +165,26 @@ const HeroSection = () => {
                     style={{ color: `hsl(${BLUE})` }}
                   />
                 </div>
-                <h3 className="text-slate-900 font-bold text-base uppercase tracking-wide mb-3 leading-tight">
+                <h3 className="text-slate-900 font-bold text-xl mb-1.5">
                   {s.title}
                 </h3>
-                <p className="text-slate-600 text-sm leading-[1.7] mb-6 flex-1">
-                  {s.desc}
+                <p className="text-slate-700 font-medium text-sm mb-5">
+                  {s.subtitle}
                 </p>
-                <Link
-                  to={`/services#${s.slug}`}
-                  className="inline-flex items-center justify-center px-5 py-2 text-xs font-bold uppercase tracking-wider rounded border text-slate-700 hover:text-white transition-all"
-                  style={{
-                    borderColor: `hsl(${BLUE} / 0.4)`,
-                    color: `hsl(${BLUE})`,
-                  }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.background = `hsl(${BLUE})`;
-                    e.currentTarget.style.color = "#fff";
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.background = "transparent";
-                    e.currentTarget.style.color = `hsl(${BLUE})`;
-                  }}
-                >
-                  Learn More
-                </Link>
+                <ul className="space-y-2.5">
+                  {s.items.map((it) => (
+                    <li
+                      key={it}
+                      className="flex items-start gap-2.5 text-slate-600 text-sm"
+                    >
+                      <span
+                        className="mt-[7px] w-1.5 h-1.5 rounded-full flex-shrink-0"
+                        style={{ background: `hsl(${BLUE})` }}
+                      />
+                      <span>{it}</span>
+                    </li>
+                  ))}
+                </ul>
               </motion.div>
             );
           })}

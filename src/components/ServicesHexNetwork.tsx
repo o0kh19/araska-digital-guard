@@ -55,7 +55,7 @@ const EDGES: [string, string][] = [
 
 const VB_W = 1000;
 const VB_H = 600;
-const HEX_R = 70; // hex "radius" (center to vertex)
+const HEX_R = 56; // hex "radius" (center to vertex) — sized to fit 4-up row
 
 // Pointy-top hexagon points centered at (cx, cy) with radius r
 const hexPoints = (cx: number, cy: number, r: number) => {

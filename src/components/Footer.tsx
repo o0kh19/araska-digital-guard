@@ -30,7 +30,7 @@ const Footer = () => (
               </span>
             </div>
           </div>
-          <p className="text-xs leading-relaxed text-secondary-foreground text-center">
+          <p className="text-xs leading-relaxed text-secondary-foreground text-left">
             Identify Security Gaps
             Before Attackers Do
           </p>

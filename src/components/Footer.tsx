@@ -3,10 +3,10 @@ import { Mail, MapPin } from "lucide-react";
 
 const serviceLinks = [
   { label: "SOC as a Service", href: "/services#soc-as-a-service" },
-  { label: "Threat Intelligence", href: "/services#threat-intelligence" },
-  { label: "Cyber Risk Assessment", href: "/services#cyber-risk-assessment" },
-  { label: "Incident Response Retainer", href: "/services#incident-response-retainer" },
-  { label: "Security Awareness Training", href: "/services#security-awareness-training" },
+  { label: "Vulnerability Management\n\n", href: "/services#threat-intelligence" },
+  { label: "vCISO Advisory", href: "/services#cyber-risk-assessment" },
+  { label: "M365 Security Hardening", href: "/services#incident-response-retainer" },
+  { label: "Security Policy Development", href: "/services#security-awareness-training" },
 ];
 
 const companyLinks = [

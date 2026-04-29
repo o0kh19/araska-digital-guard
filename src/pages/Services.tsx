@@ -200,7 +200,7 @@ const Services = () => {
               Cybersecurity Services Built Around Your Business
             </h1>
             <p className="text-white/80 text-lg sm:text-xl leading-relaxed mb-4">
-              Your organisation faces cyber threats every day — from phishing attacks and ransomware to
+              Your organisation faces cyber threats every day from phishing attacks and ransomware to
               misconfigurations and insider risks. Our services are designed to help you reduce those risks,
               strengthen your security posture, and respond quickly when threats arise.
             </p>

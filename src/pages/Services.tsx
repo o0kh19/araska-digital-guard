@@ -197,15 +197,15 @@ const Services = () => {
             transition={{ duration: 0.6 }}
             className="max-w-2xl"
           >
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-white tracking-[-0.02em] leading-tight mb-6">
+            <h1 className="text-4xl sm:text-5xl text-white tracking-[-0.02em] leading-tight mb-6 lg:text-4xl font-bold text-justify">
               Cybersecurity Services Built Around Your Business
             </h1>
-            <p className="text-white/80 text-lg sm:text-xl leading-relaxed mb-4">
+            <p className="text-white/80 text-lg leading-relaxed mb-4 sm:text-lg text-justify">
               Your organisation faces cyber threats every day from phishing attacks and ransomware to
               misconfigurations and insider risks. Our services are designed to help you reduce those risks,
               strengthen your security posture, and respond quickly when threats arise.
             </p>
-            <p className="text-white/70 text-base sm:text-lg leading-relaxed">
+            <p className="text-white/70 text-base sm:text-lg leading-relaxed text-justify">
               Whether you need continuous monitoring, strategic security leadership, or support improving your
               Microsoft 365 security, we provide practical cybersecurity solutions tailored to your business needs.
             </p>

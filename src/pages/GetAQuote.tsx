@@ -8,7 +8,7 @@ import { CheckCircle } from "lucide-react";
 const orgSizes = ["1–10 employees", "11–50 employees", "51–200 employees", "201–1,000 employees", "1,000+ employees"];
 const industries = ["Financial Services", "Healthcare", "Legal", "Energy & Utilities", "Retail & E-commerce", "Manufacturing", "Government & Public Sector", "Technology", "Education", "Other"];
 const maturityLevels = ["Just getting started", "Basic controls in place", "Moderate — some formal processes", "Advanced — structured security programme"];
-const serviceOptions = ["SOC as a Service", "Threat Intelligence", "Cyber Risk Assessment", "Incident Response Retainer", "Security Awareness Training", "Not sure — I need advice"];
+const serviceOptions = ["SOC as a Service", "Vulnerability Management\n\n", "vCISO Advisory", "M365 Security Hardening", "Security Policy Development", "Not sure — I need advice"];
 const endpointRanges = ["Fewer than 25", "25–100", "101–500", "501–2,000", "More than 2,000"];
 const complianceOptions = ["ISO 27001", "GDPR", "NIS2", "SOC 2", "PCI DSS", "HIPAA", "None currently", "Not sure"];
 const motivations = ["We've had an incident or near miss", "We are preparing for a compliance audit", "We are growing and need to formalise security", "A client or partner has asked us to demonstrate security maturity", "We want to understand our current risk", "Other"];

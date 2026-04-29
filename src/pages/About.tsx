@@ -49,7 +49,7 @@ const team = [
   },
   {
     name: "Belal",
-    role: "Incident Response Ninja",
+    role: "M365 Security Hardening Ninja",
     fact: "Sub-15-minute response times. Also sub-15-minute coffee runs. Coincidence?",
     img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=600&fit=crop",
   },

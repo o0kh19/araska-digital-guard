@@ -21,12 +21,12 @@ const ProblemSection = () => {
             {"\n\n\n\n"}
           </h2>
           <div className="text-muted-foreground text-lg leading-[1.8] space-y-6">
-            <p className="font-thin text-justify">
+            <p className="font-thin text-justify text-secondary-foreground">
               Cybersecurity is often seen as complex, costly, and hard to understand leaving many businesses without the
               protection they need. {"\n"}
               At ArasKa Cyber Core, we’re changing that.
             </p>
-            <p className="text-justify font-thin">
+            <p className="text-justify font-thin text-secondary-foreground">
               We work closely with you, taking the time to understand how your organisation operates so we can deliver
               solutions tailored to your reality not generic advice from afar. Every conversation, report, and training
               session is delivered in Kurdish, Arabic, or English, ensuring clarity and real impact.
@@ -34,7 +34,7 @@ const ProblemSection = () => {
               Our focus is simple: keep your business running, your data secure, and your people prepared against
               evolving threats.{"\n"}
             </p>
-            <p className="text-justify font-thin">
+            <p className="text-justify font-thin text-secondary-foreground">
               And when something goes wrong because it’s a matter of when, not if you have a partner who responds
               swiftly, knows your environment, and acts when it matters most.
             </p>

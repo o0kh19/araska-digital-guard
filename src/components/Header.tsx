@@ -73,8 +73,8 @@ const Header = () => {
                 <Link
                   key={link.href}
                   to={link.href}
-                  className={`text-sm font-semibold tracking-[0.04em] relative pb-1 transition-all duration-200 ${
-                    active ? "text-primary" : "text-foreground/80 hover:text-primary"
+                  className={`text-sm font-bold tracking-[0.04em] relative pb-1 transition-all duration-200 ${
+                    active ? "text-primary" : "text-foreground hover:text-primary font-bold"
                   }`}
                   style={{
                     borderBottom: active

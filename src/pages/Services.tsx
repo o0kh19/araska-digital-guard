@@ -197,7 +197,7 @@ const Services = () => {
             transition={{ duration: 0.6 }}
             className="max-w-2xl"
           >
-            <h1 className="text-4xl sm:text-5xl text-white tracking-[-0.02em] leading-tight mb-6 font-bold text-justify lg:text-7xl">
+            <h1 className="text-4xl sm:text-5xl text-white tracking-[-0.02em] leading-tight mb-6 text-left font-extrabold lg:text-6xl">
               Cybersecurity Services Built Around Your Business
             </h1>
             <p className="text-white/80 text-lg leading-relaxed mb-4 sm:text-lg text-justify">

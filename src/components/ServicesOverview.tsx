@@ -207,7 +207,7 @@ const ServicesOverview = () => {
                   <h3 className="text-[18px] font-bold uppercase tracking-wide text-foreground mb-3 leading-tight">
                     {svc.title}
                   </h3>
-                  <p className="text-muted-foreground text-[15px] leading-[1.7] mb-6 flex-1">{svc.desc}</p>
+                  <p className="text-muted-foreground text-[15px] leading-[1.7] mb-6 flex-1 font-bold">{svc.desc}</p>
                   <Link
                     to={`/services#${svc.slug}`}
                     className="inline-flex items-center justify-center px-5 py-2 text-xs font-bold uppercase tracking-wider rounded border border-primary/40 text-primary hover:bg-primary hover:text-primary-foreground transition-all"

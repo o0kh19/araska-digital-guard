@@ -147,7 +147,20 @@ const services: Service[] = [
   },
 ];
 
-const Services = () => (
+const Services = () => {
+  const location = useLocation();
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.slice(1);
+      // Wait a tick for content to render
+      const t = setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 50);
+      return () => clearTimeout(t);
+    }
+  }, [location]);
+
+  return (
   <div className="min-h-screen bg-white">
     <Header />
     <main className="pt-32 pb-24">

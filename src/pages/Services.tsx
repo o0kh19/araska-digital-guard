@@ -1,6 +1,7 @@
+import { useEffect } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
-import { Link } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { motion } from "framer-motion";
 import {
   ShieldCheck,
@@ -12,16 +13,15 @@ import {
   Eye,
   Briefcase,
   CheckCircle2,
-  ArrowRight,
 } from "lucide-react";
 
 type Service = {
   id: string;
   icon: typeof ShieldCheck;
   title: string;
-  intro: string[];
-  includes: string[];
-  benefits: string[];
+  whatItIs: string;
+  whyItMatters: string;
+  whatYouGet: string[];
   cta: string;
 };
 
@@ -30,166 +30,137 @@ const services: Service[] = [
     id: "soc-as-a-service",
     icon: Eye,
     title: "24/7 Proactive Monitoring (SOC)",
-    intro: [
+    whatItIs:
       "Our Security Operations Centre (SOC) provides continuous monitoring of your systems, networks, and security alerts to identify suspicious activity as it happens.",
+    whyItMatters:
       "Cyber threats do not wait for business hours. Without active monitoring, attacks can go unnoticed until they cause disruption, data loss, or reputational damage. Our team watches for threats around the clock, investigates alerts, and responds quickly to reduce the impact on your business.",
-    ],
-    includes: [
+    whatYouGet: [
       "24/7 monitoring of security alerts and events",
       "Real-time threat detection and investigation",
       "Rapid escalation of critical incidents",
       "Expert analyst review and response actions",
       "Regular reporting and security recommendations",
     ],
-    benefits: [
-      "Detect threats before they escalate",
-      "Reduce downtime and business disruption",
-      "Improve visibility across your environment",
-      "Gain expert security oversight at all times",
-    ],
-    cta: "Talk to our team about 24/7 monitoring for your business.",
+    cta: "Talk to our team about 24/7 monitoring",
   },
   {
     id: "threat-risk-analysis",
     icon: ShieldCheck,
     title: "Threat & Risk Analysis (Intel & Assessment)",
-    intro: [
-      "Effective security starts with understanding your risks. Our Threat & Risk Analysis service helps identify the threats most relevant to your organisation and prioritises the vulnerabilities that need immediate attention.",
-      "We assess your environment, review possible attack paths, and provide practical recommendations so you can focus resources where they matter most.",
-    ],
-    includes: [
+    whatItIs:
+      "Our Threat & Risk Analysis service helps identify the threats most relevant to your organisation and prioritises the vulnerabilities that need immediate attention.",
+    whyItMatters:
+      "Effective security starts with understanding your risks. We assess your environment, review possible attack paths, and provide practical recommendations so you can focus resources where they matter most — and reduce exposure to targeted threats.",
+    whatYouGet: [
       "Threat landscape assessment",
       "Risk identification and prioritisation",
       "Vulnerability analysis",
       "Security gap assessments",
       "Actionable mitigation recommendations",
     ],
-    benefits: [
-      "Understand where your greatest risks exist",
-      "Prioritise security improvements effectively",
-      "Reduce exposure to targeted threats",
-      "Make informed security decisions",
-    ],
-    cta: "Discover the risks affecting your business today.",
+    cta: "Discover the risks affecting your business",
   },
   {
     id: "emergency-response-training",
     icon: Siren,
     title: "Emergency Response & Security Training",
-    intro: [
-      "When a security incident happens, speed matters. Our Emergency Response service helps your organisation contain threats quickly, minimise damage, and recover faster.",
-      "We also provide practical security awareness training to help your staff recognise threats and respond appropriately, reducing the chance of human error becoming a security incident.",
-    ],
-    includes: [
+    whatItIs:
+      "Our Emergency Response service helps your organisation contain threats quickly, minimise damage, and recover faster. We also deliver practical security awareness training for your staff.",
+    whyItMatters:
+      "When a security incident happens, speed matters. A slow or unprepared response multiplies the cost of an attack — both financially and operationally. Trained staff and a tested response plan reduce the chance of human error becoming a security incident.",
+    whatYouGet: [
       "Incident response planning and support",
       "Threat containment assistance",
       "Recovery guidance",
       "Security awareness training for staff",
       "Incident review and improvement planning",
     ],
-    benefits: [
-      "Respond faster to security incidents",
-      "Minimise operational disruption",
-      "Improve staff readiness against cyber threats",
-      "Strengthen long-term resilience",
-    ],
-    cta: "Prepare your team before the next incident occurs.",
+    cta: "Prepare your team before the next incident",
   },
   {
     id: "vulnerability-management",
     icon: Radar,
     title: "Vulnerability Management",
-    intro: [
-      "Unpatched vulnerabilities are one of the most common ways attackers gain access to business systems. Our Vulnerability Management service helps identify weaknesses early and ensures they are prioritised for remediation.",
-      "Through regular scanning and expert review, we help your organisation reduce its attack surface and improve overall security hygiene.",
-    ],
-    includes: [
+    whatItIs:
+      "Our Vulnerability Management service identifies weaknesses in your systems early and ensures they are prioritised for remediation through regular scanning and expert review.",
+    whyItMatters:
+      "Unpatched vulnerabilities are one of the most common ways attackers gain access to business systems. Reducing your attack surface improves overall security hygiene and supports compliance requirements.",
+    whatYouGet: [
       "Scheduled vulnerability scans",
       "Vulnerability prioritisation",
       "Remediation recommendations",
       "Security posture reviews",
       "Progress tracking and reporting",
     ],
-    benefits: [
-      "Identify weaknesses before attackers do",
-      "Reduce exposure to known threats",
-      "Improve system security posture",
-      "Support compliance requirements",
-    ],
-    cta: "Start reducing your attack surface today.",
+    cta: "Start reducing your attack surface",
   },
   {
     id: "vciso-advisory",
     icon: Briefcase,
     title: "vCISO Advisory",
-    intro: [
+    whatItIs:
       "Our Virtual Chief Information Security Officer (vCISO) service provides expert cybersecurity leadership without the cost of a full-time executive hire.",
-      "We help align your cybersecurity strategy with your business goals, strengthen governance, and guide your organisation toward better security maturity.",
-    ],
-    includes: [
+    whyItMatters:
+      "Many organisations need senior security guidance but can't justify a full-time CISO. We help align your cybersecurity strategy with your business goals, strengthen governance, and guide your organisation toward better security maturity.",
+    whatYouGet: [
       "Security strategy planning",
       "Governance and policy oversight",
       "Risk management guidance",
       "Compliance readiness support",
       "Executive security reporting",
     ],
-    benefits: [
-      "Gain strategic security leadership",
-      "Improve governance and accountability",
-      "Support business growth securely",
-      "Strengthen executive decision-making",
-    ],
-    cta: "Get strategic security leadership for your organisation.",
+    cta: "Get strategic security leadership",
   },
   {
     id: "m365-hardening",
     icon: Zap,
     title: "Microsoft 365 Security Hardening",
-    intro: [
-      "Microsoft 365 is essential for many organisations, but default settings often leave security gaps. Our Microsoft 365 Security Hardening service strengthens your environment to reduce risk and improve resilience.",
-      "We review your Microsoft 365 configuration and implement best-practice security controls to help protect users, data, and collaboration tools.",
-    ],
-    includes: [
+    whatItIs:
+      "Our Microsoft 365 Security Hardening service reviews your M365 configuration and implements best-practice security controls to protect users, data, and collaboration tools.",
+    whyItMatters:
+      "Microsoft 365 is essential for many organisations, but default settings often leave security gaps. Hardening your environment reduces identity, email, and data risks before they can be exploited.",
+    whatYouGet: [
       "Security configuration review",
       "Identity and access hardening",
       "Conditional access improvements",
       "Email and collaboration protection",
       "Security recommendations and implementation",
     ],
-    benefits: [
-      "Reduce Microsoft 365 security risks",
-      "Improve identity protection",
-      "Strengthen email security",
-      "Protect business data more effectively",
-    ],
-    cta: "Secure your Microsoft 365 environment with confidence.",
+    cta: "Secure your Microsoft 365 environment",
   },
   {
     id: "security-policy-development",
     icon: FileSearch,
     title: "Security Policy Development",
-    intro: [
-      "Strong security requires clear policies and consistent governance. Our Security Policy Development service helps your organisation build practical policies that guide secure behaviour, support compliance, and reduce operational risk.",
-      "We create tailored policies that reflect your business operations and security requirements.",
-    ],
-    includes: [
+    whatItIs:
+      "Our Security Policy Development service helps your organisation build practical, tailored policies that guide secure behaviour, support compliance, and reduce operational risk.",
+    whyItMatters:
+      "Strong security requires clear policies and consistent governance. Without them, expectations are unclear, accountability suffers, and operational risk grows.",
+    whatYouGet: [
       "Security policy development",
       "Governance framework guidance",
       "Acceptable use policies",
       "Access control policies",
       "Policy review and updates",
     ],
-    benefits: [
-      "Establish clear security expectations",
-      "Improve organisational accountability",
-      "Support compliance requirements",
-      "Reduce operational risk",
-    ],
-    cta: "Build stronger security foundations with clear policies.",
+    cta: "Build stronger security foundations",
   },
 ];
 
-const Services = () => (
+const Services = () => {
+  const location = useLocation();
+  useEffect(() => {
+    if (location.hash) {
+      const id = location.hash.slice(1);
+      // Wait a tick for content to render
+      const t = setTimeout(() => {
+        document.getElementById(id)?.scrollIntoView({ behavior: "smooth", block: "start" });
+      }, 50);
+      return () => clearTimeout(t);
+    }
+  }, [location]);
+
+  return (
   <div className="min-h-screen bg-white">
     <Header />
     <main className="pt-32 pb-24">
@@ -241,14 +212,14 @@ const Services = () => (
         </div>
       </section>
 
-      {/* SERVICE CARDS */}
+      {/* SERVICE SECTIONS */}
       <section
         className="py-24"
         style={{
           background: "linear-gradient(180deg, #FFFFFF 0%, #F3F5FA 100%)",
         }}
       >
-        <div className="max-w-7xl mx-auto px-6">
+        <div className="max-w-5xl mx-auto px-6">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
             whileInView={{ opacity: 1, y: 0 }}
@@ -262,7 +233,7 @@ const Services = () => (
             Practical, expert-led cybersecurity tailored to your size, industry, and risk profile.
           </p>
 
-          <div className="grid lg:grid-cols-2 gap-8">
+          <div className="space-y-10">
             {services.map((svc, i) => (
               <motion.article
                 key={svc.id}
@@ -270,66 +241,60 @@ const Services = () => (
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}
                 viewport={{ once: true, margin: "-60px" }}
-                transition={{ duration: 0.5, delay: (i % 2) * 0.08 }}
-                className="bg-white rounded-xl p-8 lg:p-10 flex flex-col transition-all duration-300 hover:-translate-y-1 hover:shadow-[0_24px_48px_-16px_rgba(31,143,203,0.35)] scroll-mt-32"
+                transition={{ duration: 0.5, delay: 0.05 }}
+                className="bg-white rounded-xl p-8 lg:p-12 transition-all duration-300 hover:shadow-[0_24px_48px_-16px_rgba(31,143,203,0.35)] scroll-mt-32"
                 style={{
                   boxShadow: "0 2px 12px rgba(15,31,74,0.06), 0 8px 32px rgba(15,31,74,0.04)",
                   border: "1px solid hsl(var(--primary) / 0.10)",
                 }}
               >
-                <div className="flex items-start gap-4 mb-6">
+                {/* Title */}
+                <div className="flex items-start gap-4 mb-8 pb-6 border-b border-foreground/5">
                   <div className="flex-shrink-0 flex items-center justify-center w-14 h-14 rounded-full bg-primary/5 border border-primary/15">
                     <svc.icon className="text-primary" size={28} strokeWidth={1.6} />
                   </div>
-                  <h3 className="text-2xl sm:text-[26px] font-bold text-foreground tracking-[-0.01em] leading-tight pt-2">
-                    {svc.title}
-                  </h3>
-                </div>
-
-                <div className="space-y-4 mb-8">
-                  {svc.intro.map((p, idx) => (
-                    <p key={idx} className="text-muted-foreground leading-[1.75]">
-                      {p}
-                    </p>
-                  ))}
-                </div>
-
-                <div className="grid sm:grid-cols-2 gap-6 mb-8">
                   <div>
-                    <h4 className="text-xs font-bold uppercase tracking-[0.1em] text-primary mb-3">
-                      What's included
-                    </h4>
-                    <ul className="space-y-2">
-                      {svc.includes.map((item) => (
-                        <li key={item} className="flex items-start gap-2 text-sm text-foreground/80 leading-snug">
-                          <CheckCircle2 className="text-primary flex-shrink-0 mt-0.5" size={16} strokeWidth={2} />
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
-                  </div>
-                  <div>
-                    <h4 className="text-xs font-bold uppercase tracking-[0.1em] text-primary mb-3">
-                      Business benefits
-                    </h4>
-                    <ul className="space-y-2">
-                      {svc.benefits.map((item) => (
-                        <li key={item} className="flex items-start gap-2 text-sm text-foreground/80 leading-snug">
-                          <ArrowRight className="text-primary flex-shrink-0 mt-0.5" size={16} strokeWidth={2} />
-                          <span>{item}</span>
-                        </li>
-                      ))}
-                    </ul>
+                    <span className="text-xs font-bold uppercase tracking-[0.15em] text-primary">
+                      Service {String(i + 1).padStart(2, "0")}
+                    </span>
+                    <h3 className="text-2xl sm:text-3xl font-bold text-foreground tracking-[-0.01em] leading-tight mt-1">
+                      {svc.title}
+                    </h3>
                   </div>
                 </div>
 
-                <div className="mt-auto pt-6 border-t border-foreground/5 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-4">
-                  <p className="text-sm font-semibold text-foreground/90 italic">{svc.cta}</p>
+                {/* What it is */}
+                <div className="mb-7">
+                  <h4 className="text-xs font-bold uppercase tracking-[0.12em] text-primary mb-3">What it is</h4>
+                  <p className="text-foreground/80 leading-[1.75]">{svc.whatItIs}</p>
+                </div>
+
+                {/* Why it matters */}
+                <div className="mb-7">
+                  <h4 className="text-xs font-bold uppercase tracking-[0.12em] text-primary mb-3">Why it matters</h4>
+                  <p className="text-foreground/80 leading-[1.75]">{svc.whyItMatters}</p>
+                </div>
+
+                {/* What you get */}
+                <div className="mb-8">
+                  <h4 className="text-xs font-bold uppercase tracking-[0.12em] text-primary mb-3">What you get</h4>
+                  <ul className="grid sm:grid-cols-2 gap-x-6 gap-y-2.5">
+                    {svc.whatYouGet.map((item) => (
+                      <li key={item} className="flex items-start gap-2 text-sm text-foreground/85 leading-snug">
+                        <CheckCircle2 className="text-primary flex-shrink-0 mt-0.5" size={16} strokeWidth={2} />
+                        <span>{item}</span>
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+
+                {/* CTA */}
+                <div className="pt-6 border-t border-foreground/5">
                   <Link
                     to={`/get-a-quote?service=${encodeURIComponent(svc.title)}`}
-                    className="inline-flex items-center justify-center px-6 py-2.5 font-semibold text-sm text-white bg-primary hover:bg-primary/90 transition-all rounded whitespace-nowrap"
+                    className="inline-flex items-center justify-center px-7 py-3 font-bold text-sm uppercase tracking-[0.08em] text-white bg-primary hover:bg-primary/90 transition-all rounded"
                   >
-                    Get a Quote
+                    {svc.cta}
                   </Link>
                 </div>
               </motion.article>
@@ -338,7 +303,7 @@ const Services = () => (
         </div>
       </section>
 
-      {/* EDUCATION/TRAINING accent */}
+      {/* FINAL CTA */}
       <section className="py-20 bg-white">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-primary/5 border border-primary/15 mb-6">
@@ -362,6 +327,7 @@ const Services = () => (
     </main>
     <Footer />
   </div>
-);
+  );
+};
 
 export default Services;

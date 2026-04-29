@@ -15,21 +15,21 @@ const primaryServices = [
     icon: ShieldCheck,
     title: "Threat & Risk Analysis (Intel & Assessment)",
     desc: "We track the attackers who target your industry, so you know what to defend against — before they strike.",
-    slug: "threat-intelligence",
+    slug: "threat-risk-analysis",
   },
   {
     icon: Siren,
-    title: "Emergency Response & Culture (Incident & Training)",
-    desc: "We review your security from top to bottom and give a clear plan of what to fix first, built around your business size and needs.",
-    slug: "incident-response-retainer",
+    title: "Emergency Response & Security Training",
+    desc: "Fast incident containment plus practical staff training to reduce human error and recover faster.",
+    slug: "emergency-response-training",
   },
 ];
 
 const secondaryServices = [
-  { icon: Radar, title: "Vulnerability Management\n\n", slug: "threat-intelligence" },
-  { icon: FileSearch, title: "vCISO Advisory", slug: "cyber-risk-assessment" },
-  { icon: Zap, title: "M365 Security Hardening", slug: "incident-response-retainer" },
-  { icon: GraduationCap, title: "Security Policy Development", slug: "security-awareness-training" },
+  { icon: Radar, title: "Vulnerability Management", slug: "vulnerability-management" },
+  { icon: FileSearch, title: "vCISO Advisory", slug: "vciso-advisory" },
+  { icon: Zap, title: "M365 Security Hardening", slug: "m365-hardening" },
+  { icon: GraduationCap, title: "Security Policy Development", slug: "security-policy-development" },
 ];
 
 type LinePath = { d: string };

@@ -276,6 +276,7 @@ const StatsSection = () => {
                   className="text-4xl sm:text-5xl font-extrabold text-primary tracking-[-0.02em] mb-2 font-mono"
                   style={{ transform: "translateZ(30px)" }}
                 >
+                  {s.prefix && <span>{s.prefix}</span>}
                   <GlitchCounter
                     to={s.value}
                     format={s.format}

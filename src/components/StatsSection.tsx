@@ -16,7 +16,7 @@ const stats = [
   {
     icon: Users,
     value: 10,
-    suffix: "+",
+    suffix: "​",
     label: "Happy Clients",
     desc: "Organisations trusting us with their cyber resilience.",
     format: (n: number) => Math.round(n).toLocaleString("en-GB"),

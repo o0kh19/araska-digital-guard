@@ -247,34 +247,6 @@ const ServicesOverview = () => {
               </motion.div>
             ))}
           </div>
-
-          {/* Health Check Assessment banner */}
-          <motion.div
-            initial={{ opacity: 0, y: 20 }}
-            animate={inView ? { opacity: 1, y: 0 } : {}}
-            transition={{ duration: 0.5, delay: 0.6 }}
-            className="mt-8 rounded-xl p-10 text-center relative overflow-hidden"
-            style={{
-              background: "linear-gradient(135deg, hsl(var(--primary) / 0.18) 0%, hsl(var(--primary) / 0.08) 100%)",
-              border: "1px solid hsl(var(--primary) / 0.35)",
-              zIndex: 2,
-            }}
-          >
-            <span className="eyebrow text-primary">Diagnostic</span>
-            <h3 className="text-2xl sm:text-3xl font-bold text-foreground mt-3 mb-3 tracking-[-0.01em]">
-              Health Check Assessment
-            </h3>
-            <p className="text-muted-foreground max-w-2xl mx-auto leading-[1.7] mb-6">
-              Evaluate your organisation's current security posture and identify the specific requirements you need to
-              address. A structured assessment that pinpoints gaps and defines your priorities.
-            </p>
-            <Link
-              to="/cyber-health-check"
-              className="inline-flex items-center justify-center px-7 py-3 text-sm font-bold uppercase tracking-wider rounded bg-primary text-primary-foreground hover:bg-primary/90 transition-all shadow-[0_8px_24px_-8px_hsl(var(--primary)/0.6)]"
-            >
-              Start Your Cyber Health Check Now!
-            </Link>
-          </motion.div>
         </div>
       </div>
     </section>

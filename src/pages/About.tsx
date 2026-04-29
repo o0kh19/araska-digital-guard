@@ -198,24 +198,6 @@ const About = () => {
                 Serious about security. Less serious about everything else.
               </p>
             </div>
-            <div className="flex items-center gap-3 mt-2">
-              {editMode ? (
-                <>
-                  <Button variant="outline" size="sm" onClick={cancelEdit}>Cancel</Button>
-                  <Button size="sm" onClick={saveChanges} className="gap-2">
-                    <Check className="h-4 w-4" /> Save Changes
-                  </Button>
-                </>
-              ) : (
-                <button
-                  onClick={enterEdit}
-                  className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-border bg-card hover:border-primary/60 hover:shadow-[0_4px_20px_-4px_hsl(var(--primary)/0.4)] transition-all text-sm font-semibold text-foreground"
-                >
-                  <Pencil className="h-4 w-4 text-primary" />
-                  Edit Mode
-                </button>
-              )}
-            </div>
           </div>
           <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
             {(draftMode ? draftTeam : teamData).map((m, i) => (

@@ -14,6 +14,7 @@ import {
   Briefcase,
   CheckCircle2,
 } from "lucide-react";
+import ServicesHexNetwork from "@/components/ServicesHexNetwork";
 
 type Service = {
   id: string;

@@ -327,6 +327,7 @@ const Services = () => {
     </main>
     <Footer />
   </div>
-);
+  );
+};
 
 export default Services;

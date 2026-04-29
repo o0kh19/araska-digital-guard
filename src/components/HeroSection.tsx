@@ -18,7 +18,7 @@ const services = [
     Icon: ShieldCheck,
     items: [
       "24/7 SOC & Incident Response",
-      "Threat Intelligence",
+      "Vulnerability Management\n\n",
       "Vulnerability Management",
     ],
   },

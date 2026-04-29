@@ -30,8 +30,9 @@ const Footer = () => (
               </span>
             </div>
           </div>
-          <p className="text-muted-foreground text-xs leading-relaxed">
-            Your Threat Is Real. So Is Our Response.
+          <p className="text-xs leading-relaxed text-secondary-foreground text-center">
+            Identify Security Gaps
+            Before Attackers Do
           </p>
         </div>
 

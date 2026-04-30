@@ -67,7 +67,7 @@ const Header = () => {
                 </span>
                 <span className="text-[10px] md:text-[11px] tracking-[0.4em] mt-1.5 uppercase">
                   <span className="text-primary font-bold">Cyber</span>{" "}
-                  <span className="text-secondary-foreground font-bold" style={{ color: "hsl(220 9% 55%)" }}>Core</span>
+                  <span className="text-secondary-foreground font-bold">Core</span>
                 </span>
               </div>
             </div>

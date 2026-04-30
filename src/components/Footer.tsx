@@ -22,11 +22,19 @@ const Footer = () => (
       <div className="grid md:grid-cols-4 gap-10">
         {/* Brand */}
         <div>
-          <div className="flex items-center gap-3 mb-4">
-            <div className="flex flex-col leading-tight">
-              <span className="text-xs font-extrabold tracking-[0.06em] text-foreground">ARASKA</span>
-              <span className="text-[9px] font-extrabold tracking-[0.06em]">
-                <span className="text-primary">CYBER</span> <span className="text-foreground">CORE</span>
+          <div className="flex items-stretch gap-3 mb-4">
+            {/* Vertical blue bar */}
+            <div className="w-[2.5px] self-stretch rounded-sm bg-primary" />
+            <div className="relative inline-flex flex-col items-start leading-none">
+              <span
+                className="font-bold italic tracking-tight text-foreground leading-none"
+                style={{ fontFamily: "'Playfair Display', serif" }}
+              >
+                <span className="text-2xl md:text-3xl">A</span><span className="text-base md:text-lg">ras</span><span className="text-2xl md:text-3xl">K</span><span className="text-base md:text-lg">a</span>
+              </span>
+              <span className="text-[9px] font-extrabold tracking-[0.2em] mt-1 uppercase">
+                <span className="text-primary">CYBER</span>{" "}
+                <span style={{ color: "hsl(220 9% 55%)" }}>CORE</span>
               </span>
             </div>
           </div>

@@ -77,7 +77,7 @@ const HeroSection = () => {
           >
             <motion.h1
               variants={item}
-              className="text-4xl sm:text-5xl font-extrabold leading-[1.05] mb-6 text-primary tracking-[-0.02em] text-center lg:text-6xl"
+              className="text-4xl sm:text-5xl font-extrabold leading-[1.05] mb-6 text-primary tracking-[-0.02em] text-center lg:text-5xl"
             >
               Identify Security Gaps
               <br />

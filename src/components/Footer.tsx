@@ -18,7 +18,7 @@ const companyLinks = [
 
 const Footer = () => (
   <footer className="section-dark" style={{ borderTop: '1px solid rgba(31,143,203,0.12)' }}>
-    <div className="max-w-7xl mx-auto px-6 py-20">
+    <div className="max-w-7xl mx-auto px-6 py-14">
       <div className="grid md:grid-cols-4 gap-10">
         {/* Brand */}
         <div>

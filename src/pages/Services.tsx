@@ -190,7 +190,7 @@ const Services = () => {
           />
         </div>
 
-        <div className="relative max-w-7xl mr-auto pl-2 sm:pl-4 pr-6 py-24 md:py-28">
+        <div className="relative max-w-7xl mr-auto pl-2 sm:pl-4 pr-6 py-16 md:py-20">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}
@@ -214,7 +214,7 @@ const Services = () => {
       </section>
 
       {/* SERVICE SECTIONS */}
-      <section className="py-24 bg-transparent">
+      <section className="py-20 bg-transparent">
         <div className="max-w-5xl mx-auto px-6">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -300,7 +300,7 @@ const Services = () => {
       </section>
 
       {/* FINAL CTA */}
-      <section className="py-20 bg-transparent">
+      <section className="py-16 bg-transparent">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-primary/5 border border-primary/15 mb-6">
             <GraduationCap className="text-primary" size={28} strokeWidth={1.6} />

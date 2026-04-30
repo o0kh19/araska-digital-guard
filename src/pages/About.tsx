@@ -120,7 +120,7 @@ const About = () => {
         </motion.div>
 
         {/* Values — Light Section */}
-        <div className="section-light -mx-6 px-6 py-20 md:-mx-12 md:px-12 lg:-mx-24 lg:px-24 mb-20 rounded-none">
+        <div className="section-light -mx-6 px-6 py-16 md:-mx-12 md:px-12 lg:-mx-24 lg:px-24 mb-12 rounded-none">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
             animate={{ opacity: 1, y: 0 }}

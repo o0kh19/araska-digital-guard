@@ -7,7 +7,7 @@ import { ShieldCheck, Clock, Lock } from "lucide-react";
 const CyberHealthCheck = () => (
   <div className="min-h-screen bg-transparent">
     <Header />
-    <main className="pt-36 pb-20 section-light">
+    <main className="pt-28 pb-16 section-light">
       <div className="max-w-5xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}

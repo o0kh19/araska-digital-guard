@@ -8,6 +8,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Switch } from "@/components/ui/switch";
 import { Button } from "@/components/ui/button";
 import { Pencil, Check } from "lucide-react";
+import aboutSoc from "@/assets/about-soc.jpg";
+import aboutHq from "@/assets/about-hq.jpg";
 
 const values = [
   {
@@ -94,11 +96,40 @@ const About = () => {
     <Header />
     <main className="pt-36 pb-16">
       <div className="max-w-4xl mx-auto px-6">
-        {/* Who We Are */}
+        {/* Visual Pair */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
+          className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12"
+        >
+          {[
+            { src: aboutSoc, alt: "Araska Cyber Core SOC analyst monitoring a UK threat intelligence dashboard" },
+            { src: aboutHq, alt: "Araska Cyber Core UK headquarters entrance with hexagonal feature wall" },
+          ].map((img, i) => (
+            <div
+              key={i}
+              className="group relative overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:border-primary/60 hover:shadow-[0_12px_40px_-12px_hsl(var(--primary)/0.4)]"
+            >
+              <div className="aspect-[4/3] overflow-hidden">
+                <img
+                  src={img.src}
+                  alt={img.alt}
+                  loading="lazy"
+                  width={1024}
+                  height={768}
+                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+                />
+              </div>
+            </div>
+          ))}
+        </motion.div>
+
+        {/* Who We Are */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.1 }}
           className="mb-20"
         >
           <span className="eyebrow text-xl">About Us</span>
@@ -108,13 +139,39 @@ const About = () => {
           </h1>
           <div className="space-y-6 text-muted-foreground text-lg leading-[1.8]">
             <p>
-              Araska Cyber Core was founded on a straightforward belief: organisations of every size deserve access to serious cybersecurity capability. For too long, enterprise-grade security has been the preserve of large corporations with large budgets. We exist to change that.
+              Araska Cyber Core was founded on a straightforward belief: organizations of every size deserve access to serious cybersecurity capability. For too long, enterprise-grade security has been the preserve of large corporations with large budgets. We exist to change that.
+            </p>
+
+            <h2 className="text-2xl sm:text-3xl font-bold text-foreground pt-4 tracking-[-0.015em]">
+              Our Expertise
+            </h2>
+            <p>
+              Headquartered in the United Kingdom, we work with clients across multiple sectors and geographies. Our team brings together elite experience in:
+            </p>
+            <ul className="space-y-3 pl-0 list-none">
+              {[
+                "Security Operations & Threat Intelligence",
+                "Incident Response",
+                "Compliance & Risk Management",
+              ].map((item) => (
+                <li key={item} className="flex items-start gap-3">
+                  <span className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-primary shadow-[0_0_10px_hsl(var(--primary)/0.6)]" />
+                  <span className="text-foreground font-medium">{item}</span>
+                </li>
+              ))}
+            </ul>
+            <p>
+              This expertise is applied through a service model built specifically around your organization, not a rigid, one-size-fits-all product catalogue.
+            </p>
+
+            <h2 className="text-2xl sm:text-3xl font-bold text-foreground pt-4 tracking-[-0.015em]">
+              The Araska Mission
+            </h2>
+            <p>
+              Every engagement starts with listening. We ask the right questions before we recommend solutions, ensuring we scope every project honestly.
             </p>
             <p>
-              Headquartered in the United Kingdom, we work with clients across multiple sectors and geographies. Our team brings together experience from security operations, threat intelligence, incident response, and compliance — applied through a service model built around your organisation, not a rigid product catalogue.
-            </p>
-            <p>
-              Every engagement starts with listening. We ask questions before we recommend solutions. We scope work honestly. And we measure our success by whether your organisation is genuinely more secure — not by the length of our reports.
+              We don't measure success by the length of our reports; we measure it by whether your organization is genuinely more secure.
             </p>
           </div>
         </motion.div>

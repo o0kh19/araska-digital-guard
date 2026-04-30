@@ -66,7 +66,7 @@ const Header = () => {
                   <span className="text-4xl md:text-5xl">A</span><span className="text-2xl md:text-3xl">ras</span><span className="text-4xl md:text-5xl">K</span><span className="text-2xl md:text-3xl">a</span>
                 </span>
                 <span className="text-[10px] md:text-[11px] tracking-[0.4em] mt-1.5 uppercase">
-                  <span style={{ color: "hsl(200 90% 55%)" }}>Cyber</span>{" "}
+                  <span className="text-primary">Cyber</span>{" "}
                   <span style={{ color: "hsl(220 9% 55%)" }}>Core</span>
                 </span>
               </div>

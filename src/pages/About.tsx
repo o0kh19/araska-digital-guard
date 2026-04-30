@@ -1,13 +1,8 @@
-import { useState } from "react";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Input } from "@/components/ui/input";
-import { Textarea } from "@/components/ui/textarea";
-import { Switch } from "@/components/ui/switch";
-import { Button } from "@/components/ui/button";
-import { Pencil, Check, Shield, Sword, ClipboardCheck, GraduationCap, MapPin, Languages, Layers, Handshake, Target } from "lucide-react";
+import { Shield, Sword, ClipboardCheck, GraduationCap, MapPin, Languages, Layers, Handshake, Target } from "lucide-react";
 import aboutSoc from "@/assets/about-soc.png";
 import aboutHq from "@/assets/about-hq.png";
 
@@ -44,87 +39,7 @@ const differentiators = [
   { icon: Handshake, text: "Long-term security partnerships, not one-off engagements" },
 ];
 
-
-const values = [
-  {
-    title: "Honesty before sales",
-    desc: "We will tell you what you need, not what makes us the most money. If a service is not right for your situation, we will say so.",
-  },
-  {
-    title: "Precision over volume",
-    desc: "We do not flood clients with alerts and reports that require no action. Every communication we send is relevant and actionable.",
-  },
-  {
-    title: "Partnership, not vendor",
-    desc: "We integrate with your team, your tools, and your way of working. Our goal is to make your organisation stronger, not to create dependency.",
-  },
-  {
-    title: "Continuous improvement",
-    desc: "The threat landscape changes. Our services evolve with it. We invest in our team's skills and our tooling so that our clients are always defended against what is current — not what was relevant three years ago.",
-  },
-];
-
-const team = [
-  {
-    name: "Khalid",
-    role: "Chief Chaos Tamer",
-    fact: "Once debugged a SIEM rule mid-flight at 35,000ft — the WiFi never recovered.",
-    img: "https://images.unsplash.com/photo-1531427186611-ecfd6d936c79?w=600&h=600&fit=crop",
-  },
-  {
-    name: "Sam",
-    role: "Threat Whisperer",
-    fact: "Can spot a phishing email from three rooms away. Allegedly dreams in KQL.",
-    img: "https://images.unsplash.com/photo-1568602471122-7832951cc4c5?w=600&h=600&fit=crop",
-  },
-  {
-    name: "Aras",
-    role: "Architect of Mayhem (the good kind)",
-    fact: "Builds tabletop exercises so realistic, his cat once filed an incident report.",
-    img: "https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=600&h=600&fit=crop",
-  },
-  {
-    name: "Belal",
-    role: "M365 Security Hardening Ninja",
-    fact: "Sub-15-minute response times. Also sub-15-minute coffee runs. Coincidence?",
-    img: "https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=600&h=600&fit=crop",
-  },
-  {
-    name: "Moh",
-    role: "Compliance Sorcerer",
-    fact: "Reads ISO 27001 for fun. Has strong opinions about Annex A.",
-    img: "https://images.unsplash.com/photo-1519085360753-af0119f7cbe7?w=600&h=600&fit=crop",
-  },
-];
-
 const About = () => {
-  const [editMode, setEditMode] = useState(false);
-  const [draftMode, setDraftMode] = useState(false);
-  const [teamData, setTeamData] = useState(team);
-  const [draftTeam, setDraftTeam] = useState(team);
-
-  const enterEdit = () => {
-    setDraftTeam(teamData);
-    setDraftMode(true);
-    setEditMode(true);
-  };
-
-  const saveChanges = () => {
-    setTeamData(draftTeam);
-    setEditMode(false);
-    setDraftMode(false);
-  };
-
-  const cancelEdit = () => {
-    setDraftTeam(teamData);
-    setEditMode(false);
-    setDraftMode(false);
-  };
-
-  const updateMember = (i: number, field: "name" | "role" | "fact" | "img", value: string) => {
-    setDraftTeam((prev) => prev.map((m, idx) => (idx === i ? { ...m, [field]: value } : m)));
-  };
-
   return (
   <div className="min-h-screen bg-transparent">
     <Header />

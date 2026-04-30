@@ -8,8 +8,8 @@ import { Textarea } from "@/components/ui/textarea";
 import { Switch } from "@/components/ui/switch";
 import { Button } from "@/components/ui/button";
 import { Pencil, Check } from "lucide-react";
-import aboutSoc from "@/assets/about-soc.jpg";
-import aboutHq from "@/assets/about-hq.jpg";
+import aboutSoc from "@/assets/about-soc.png";
+import aboutHq from "@/assets/about-hq.png";
 
 const values = [
   {

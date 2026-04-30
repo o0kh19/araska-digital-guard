@@ -2,13 +2,33 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
-import { X } from "lucide-react";
+import {
+  X,
+  ShieldAlert,
+  KeyRound,
+  Activity,
+  Cloud,
+  Bug,
+  GraduationCap,
+  Search,
+  FileText,
+} from "lucide-react";
 
 type Article = {
   category: string;
   title: string;
   summary: string;
   body: string;
+};
+
+const categoryIcons: Record<string, typeof ShieldAlert> = {
+  Awareness: ShieldAlert,
+  "Identity Protection": KeyRound,
+  "SOC & Monitoring": Activity,
+  "M365 Security": Cloud,
+  "Cyber Threats": Bug,
+  "Awareness Training": GraduationCap,
+  "Incident Response": Search,
 };
 
 const articles: Article[] = [
@@ -272,6 +292,7 @@ const renderBody = (body: string) => {
 const Resources = () => {
   const [activeCategory, setActiveCategory] = useState("All");
   const [openArticle, setOpenArticle] = useState<Article | null>(null);
+  const [hoveredIdx, setHoveredIdx] = useState<number | null>(null);
 
   const filtered =
     activeCategory === "All"
@@ -339,38 +360,75 @@ const Resources = () => {
             ))}
           </div>
 
-          {/* Posts Grid */}
-          <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {filtered.map((article, i) => (
-              <motion.article
-                key={article.title}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.4, delay: i * 0.08 }}
-                onClick={() => setOpenArticle(article)}
-                className="rounded-lg p-8 transition-all duration-200 flex flex-col hover:translate-y-[-3px] cursor-pointer text-left"
-                style={{
-                  background: "#E5E7EB",
-                  border: "1px solid rgba(31,143,203,0.18)",
-                  borderRadius: "8px",
-                }}
-              >
-                <span className="text-xs text-primary font-medium tracking-wide mb-3">
-                  {article.category}
-                </span>
-                <h3 className="text-lg font-semibold text-foreground mb-3 leading-snug">
-                  {article.title}
-                </h3>
-                <p className="text-muted-foreground text-sm leading-[1.8] mb-6 flex-1">
-                  {article.summary}
-                </p>
-                <div className="flex items-center justify-end">
-                  <span className="text-primary text-sm font-medium hover:underline hover:text-primary-light">
-                    Read More →
+          {/* Posts Grid — matches Home "What We Do" card style */}
+          <div
+            className="grid md:grid-cols-2 lg:grid-cols-3 gap-6 auto-rows-fr"
+            style={{ perspective: "1200px" }}
+          >
+            {filtered.map((article, i) => {
+              const Icon = categoryIcons[article.category] ?? FileText;
+              const isActive = hoveredIdx === i;
+              return (
+                <motion.article
+                  key={article.title}
+                  initial={{ opacity: 0, y: 30 }}
+                  animate={{ opacity: 1, y: 0 }}
+                  transition={{ duration: 0.5, delay: i * 0.08 }}
+                  onMouseEnter={() => setHoveredIdx(i)}
+                  onMouseLeave={() =>
+                    setHoveredIdx((cur) => (cur === i ? null : cur))
+                  }
+                  onClick={() => setOpenArticle(article)}
+                  whileHover={{ rotateX: -4, rotateY: 6, translateY: -8, scale: 1.02 }}
+                  className="services-card rounded-lg p-9 flex flex-col items-center text-center group h-full cursor-pointer"
+                  style={{
+                    background: "#FFFFFF",
+                    border: `1px solid ${
+                      isActive
+                        ? "hsl(var(--primary) / 0.7)"
+                        : "hsl(var(--primary) / 0.18)"
+                    }`,
+                    borderRadius: "8px",
+                    boxShadow: isActive
+                      ? "0 24px 50px -14px hsl(var(--primary) / 0.5), 0 0 0 1px hsl(var(--primary) / 0.45), 0 0 24px hsl(var(--primary) / 0.35)"
+                      : "0 1px 3px rgba(0,0,0,0.04)",
+                    transformStyle: "preserve-3d",
+                    transition: "border-color 0.3s ease, box-shadow 0.3s ease",
+                  }}
+                >
+                  <div
+                    className="w-[52px] h-[52px] rounded-md flex items-center justify-center mb-5 transition-transform duration-500"
+                    style={{
+                      background: "hsl(var(--primary) / 0.08)",
+                      border: "1px solid hsl(var(--primary) / 0.25)",
+                      transform: isActive
+                        ? "translateZ(20px) scale(1.1)"
+                        : "translateZ(0) scale(1)",
+                    }}
+                  >
+                    <Icon
+                      className={`text-primary ${isActive ? "icon-spin-fast" : ""}`}
+                      size={22}
+                      strokeWidth={1.5}
+                    />
+                  </div>
+                  <span className="text-xs text-primary font-bold tracking-wider uppercase mb-3">
+                    {article.category}
                   </span>
-                </div>
-              </motion.article>
-            ))}
+                  <h3 className="text-[18px] font-bold uppercase tracking-wide text-foreground mb-3 leading-tight">
+                    {article.title}
+                  </h3>
+                  <p className="text-muted-foreground text-[15px] leading-[1.7] mb-6 flex-1 font-bold">
+                    {article.summary}
+                  </p>
+                  <span
+                    className="inline-flex items-center justify-center px-5 py-2 text-xs font-bold uppercase tracking-wider rounded border border-primary/40 text-primary group-hover:bg-primary group-hover:text-primary-foreground transition-all"
+                  >
+                    Read More
+                  </span>
+                </motion.article>
+              );
+            })}
           </div>
 
           {filtered.length === 0 && (

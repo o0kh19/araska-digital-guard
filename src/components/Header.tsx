@@ -1,7 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X } from "lucide-react";
-import araskaLogo from "@/assets/araska-logo.png";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -55,12 +54,16 @@ const Header = () => {
         }}
       >
         <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
-          <Link to="/" className="flex items-center group" aria-label="Araska Cyber Core home">
-            <img
-              src={araskaLogo}
-              alt="Araska Cyber Core"
-              className="h-12 md:h-14 w-auto object-contain"
-            />
+          <Link to="/" className="flex items-center group">
+            <div className="relative inline-flex flex-col items-start leading-none">
+              <span className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground leading-none">
+                ArasKa
+              </span>
+              <span className="text-[10px] md:text-[11px] tracking-[0.4em] mt-1.5 uppercase">
+                <span style={{ color: "hsl(200 90% 55%)" }}>Cyber</span>{" "}
+                <span className="text-foreground">Core</span>
+              </span>
+            </div>
           </Link>
 
           <nav className="hidden lg:flex items-center gap-10">

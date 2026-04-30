@@ -1,6 +1,5 @@
 import { Link } from "react-router-dom";
 import { Mail, MapPin } from "lucide-react";
-import araskaLogo from "@/assets/araska-logo.png";
 
 const serviceLinks = [
   { label: "SOC as a Service", href: "/services#soc-as-a-service" },
@@ -24,7 +23,12 @@ const Footer = () => (
         {/* Brand */}
         <div>
           <div className="flex items-center gap-3 mb-4">
-            <img src={araskaLogo} alt="Araska Cyber Core" className="h-12 w-auto object-contain" />
+            <div className="flex flex-col leading-tight">
+              <span className="text-xs font-extrabold tracking-[0.06em] text-foreground">ARASKA</span>
+              <span className="text-[9px] font-extrabold tracking-[0.06em]">
+                <span className="text-primary">CYBER</span> <span className="text-foreground">CORE</span>
+              </span>
+            </div>
           </div>
           <p className="text-xs leading-relaxed text-secondary-foreground text-left">
             Identify Security Gaps

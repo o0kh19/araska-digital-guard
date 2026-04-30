@@ -55,14 +55,21 @@ const Header = () => {
       >
         <div className="max-w-7xl mx-auto flex items-center justify-between px-6 py-4">
           <Link to="/" className="flex items-center group">
-            <div className="relative inline-flex flex-col items-start leading-none">
-              <span className="font-display text-3xl md:text-4xl font-bold tracking-tight text-foreground leading-none">
-                ArasKa
-              </span>
-              <span className="text-[10px] md:text-[11px] tracking-[0.4em] mt-1.5 uppercase">
-                <span style={{ color: "hsl(200 90% 55%)" }}>Cyber</span>{" "}
-                <span className="text-foreground">Core</span>
-              </span>
+            <div className="flex items-stretch gap-3">
+              {/* Vertical blue bar */}
+              <div className="w-[3px] self-stretch rounded-sm" style={{ background: "hsl(215 75% 45%)" }} />
+              <div className="relative inline-flex flex-col items-start leading-none">
+                <span
+                  className="font-bold italic tracking-tight text-foreground leading-none"
+                  style={{ fontFamily: "'Playfair Display', serif" }}
+                >
+                  <span className="text-4xl md:text-5xl">A</span><span className="text-2xl md:text-3xl">ras</span><span className="text-4xl md:text-5xl">K</span><span className="text-2xl md:text-3xl">a</span>
+                </span>
+                <span className="text-[10px] md:text-[11px] tracking-[0.4em] mt-1.5 uppercase">
+                  <span style={{ color: "hsl(200 90% 55%)" }}>Cyber</span>{" "}
+                  <span style={{ color: "hsl(220 9% 55%)" }}>Core</span>
+                </span>
+              </div>
             </div>
           </Link>
 

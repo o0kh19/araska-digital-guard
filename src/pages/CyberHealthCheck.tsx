@@ -15,7 +15,7 @@ const CyberHealthCheck = () => (
           transition={{ duration: 0.5 }}
           className="mb-12 text-center"
         >
-          <span className="eyebrow text-xl">Free Cyber Health Check</span>
+          <span className="eyebrow text-xl">Cyber Health Check</span>
           <span className="eyebrow-rule mx-auto" />
           <h1 className="text-4xl sm:text-5xl font-extrabold text-light-foreground mb-4 tracking-[-0.02em]">
             How safe is your business — really?

@@ -1,6 +1,6 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
-import { Menu, X, AlertTriangle } from "lucide-react";
+import { Menu, X, AlertTriangle, Globe } from "lucide-react";
 
 const navLinks = [
   { label: "Home", href: "/" },
@@ -10,9 +10,13 @@ const navLinks = [
   { label: "About", href: "/about" },
 ];
 
+const LANGS = ["EN", "AR", "KU"] as const;
+type Lang = (typeof LANGS)[number];
+
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
+  const [lang, setLang] = useState<Lang>("EN");
   const location = useLocation();
 
   useEffect(() => {
@@ -106,6 +110,31 @@ const Header = () => {
             })}
           </nav>
 
+          {/* Language switcher — desktop */}
+          <div className="hidden lg:flex items-center gap-2 ml-2">
+            <Globe size={15} className="text-muted-foreground" />
+            <div className="inline-flex items-center bg-slate-50/60 border border-slate-200/70 rounded-full p-1">
+              {LANGS.map((l) => {
+                const active = lang === l;
+                return (
+                  <button
+                    key={l}
+                    type="button"
+                    onClick={() => setLang(l)}
+                    aria-pressed={active}
+                    className={`text-[11px] font-bold uppercase tracking-[0.14em] px-2.5 py-1 rounded-full transition-all duration-200 ${
+                      active
+                        ? "bg-primary text-primary-foreground shadow-[0_2px_10px_hsl(var(--primary)/0.4)]"
+                        : "text-foreground/60 hover:text-primary"
+                    }`}
+                  >
+                    {l}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
           <button
             className="lg:hidden text-foreground p-2 rounded-md hover:bg-slate-100 transition-colors"
             onClick={() => setMobileOpen(!mobileOpen)}
@@ -134,6 +163,32 @@ const Header = () => {
                 </Link>
               );
             })}
+            {/* Language switcher — mobile */}
+            <div className="mt-4 pt-4 border-t border-slate-200 flex items-center justify-between">
+              <span className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.14em] text-muted-foreground">
+                <Globe size={14} /> Language
+              </span>
+              <div className="inline-flex items-center bg-slate-50 border border-slate-200 rounded-full p-1">
+                {LANGS.map((l) => {
+                  const active = lang === l;
+                  return (
+                    <button
+                      key={l}
+                      type="button"
+                      onClick={() => setLang(l)}
+                      className={`text-[11px] font-bold uppercase tracking-[0.14em] px-2.5 py-1 rounded-full transition-all ${
+                        active
+                          ? "bg-primary text-primary-foreground"
+                          : "text-foreground/60 hover:text-primary"
+                      }`}
+                    >
+                      {l}
+                    </button>
+                  );
+                })}
+              </div>
+            </div>
+
             <div className="mt-4 pt-4 border-t border-slate-200 flex gap-3">
               <Link
                 to="/contact"

@@ -7,9 +7,43 @@ import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
 import { Switch } from "@/components/ui/switch";
 import { Button } from "@/components/ui/button";
-import { Pencil, Check } from "lucide-react";
+import { Pencil, Check, Shield, Sword, ClipboardCheck, GraduationCap, MapPin, Languages, Layers, Handshake, Target } from "lucide-react";
 import aboutSoc from "@/assets/about-soc.png";
 import aboutHq from "@/assets/about-hq.png";
+
+const services = [
+  {
+    icon: Shield,
+    title: "Cyber Defence",
+    desc: "Proactive monitoring, incident response, vulnerability management, managed security monitoring, and SOC services.",
+  },
+  {
+    icon: Sword,
+    title: "Cyber Offensive",
+    desc: "Penetration testing, attack surface discovery, and offensive security assessments designed to identify weaknesses before attackers do.",
+  },
+  {
+    icon: ClipboardCheck,
+    title: "Consultancy",
+    desc: "Cybersecurity risk assessments, compliance advisory, security strategy, and governance support tailored to business needs.",
+  },
+  {
+    icon: GraduationCap,
+    title: "Cyber Training",
+    desc: "Security awareness training, executive briefings, and technical workshops delivered in Kurdish, Arabic, and English.",
+  },
+];
+
+const sectors = ["Energy", "Healthcare", "Financial Services", "Education", "Technology"];
+
+const differentiators = [
+  { icon: MapPin, text: "Local market understanding with international standards" },
+  { icon: Languages, text: "Security delivered in Kurdish, Arabic, and English" },
+  { icon: Shield, text: "Microsoft-first security expertise across Microsoft security technologies" },
+  { icon: Layers, text: "Structured security lifecycle approach" },
+  { icon: Handshake, text: "Long-term security partnerships, not one-off engagements" },
+];
+
 
 const values = [
   {

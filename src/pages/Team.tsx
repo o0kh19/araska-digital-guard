@@ -1,0 +1,212 @@
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import { Link } from "react-router-dom";
+import { motion } from "framer-motion";
+import { Linkedin, Mail, Award, Shield, Sword, ClipboardCheck, GraduationCap, Cpu } from "lucide-react";
+
+type Member = {
+  name: string;
+  role: string;
+  bio: string;
+  initials: string;
+  accentIcon: typeof Shield;
+  credentials: string[];
+};
+
+const team: Member[] = [
+  {
+    name: "Aram Tahir",
+    role: "Founder & Chief Executive Officer",
+    initials: "AT",
+    accentIcon: Shield,
+    bio: "Cybersecurity strategist with 15+ years leading security programs across energy, finance, and government. Founded Araska Cyber Core to bring enterprise-grade defense to the Kurdistan Region.",
+    credentials: ["CISSP", "CISM", "ISO 27001 LA", "Microsoft Security Expert"],
+  },
+  {
+    name: "Lana Hassan",
+    role: "Director of Security Operations",
+    initials: "LH",
+    accentIcon: Cpu,
+    bio: "Runs the 24/7 SOC, leading detection engineering, threat hunting, and incident response. Former Microsoft Sentinel architect with deep expertise in Defender XDR.",
+    credentials: ["GCIA", "GCIH", "MS-500", "Sentinel Ninja"],
+  },
+  {
+    name: "Karwan Ali",
+    role: "Head of Offensive Security",
+    initials: "KA",
+    accentIcon: Sword,
+    bio: "Leads red team, penetration testing, and adversary emulation engagements. Specializes in Active Directory exploitation and cloud attack paths across Azure and M365.",
+    credentials: ["OSCP", "OSEP", "CRTO", "Azure Red Team"],
+  },
+  {
+    name: "Shanya Karim",
+    role: "GRC & Consultancy Lead",
+    initials: "SK",
+    accentIcon: ClipboardCheck,
+    bio: "Guides clients through risk assessments, ISO 27001 implementations, and regulatory readiness. Trusted advisor to boards across healthcare and financial services.",
+    credentials: ["ISO 27001 LI", "CRISC", "PCI-QSA", "NIST CSF"],
+  },
+  {
+    name: "Diyar Mahmood",
+    role: "Cyber Training & Awareness Manager",
+    initials: "DM",
+    accentIcon: GraduationCap,
+    bio: "Designs and delivers technical workshops and executive simulations in Kurdish, Arabic, and English. Builds human firewalls inside organizations of every size.",
+    credentials: ["CEH", "CompTIA Security+", "Certified Trainer", "Phishing Simulation Expert"],
+  },
+];
+
+const Team = () => {
+  return (
+    <div className="min-h-screen bg-transparent">
+      <Header />
+      <main className="pt-36 pb-16">
+        {/* HERO */}
+        <section className="relative max-w-6xl mx-auto px-6 mb-20">
+          <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-[70%] h-72 bg-primary/10 blur-[120px] rounded-full pointer-events-none" />
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ duration: 0.6 }}
+            className="relative text-center max-w-3xl mx-auto"
+          >
+            <span className="inline-block text-xs font-bold uppercase tracking-[0.3em] text-primary mb-4">
+              Our People
+            </span>
+            <h1 className="text-4xl sm:text-5xl font-extrabold text-foreground mb-6 tracking-[-0.02em]">
+              Meet the Team Behind Araska Cyber Core
+            </h1>
+            <p className="text-lg text-muted-foreground leading-relaxed">
+              Certified practitioners, engineers, and strategists united by one mission — making
+              cybersecurity practical, accessible, and effective for every organization we serve.
+            </p>
+          </motion.div>
+        </section>
+
+        {/* TEAM GRID */}
+        <section className="max-w-7xl mx-auto px-6 mb-24">
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {team.map((m, idx) => {
+              const Icon = m.accentIcon;
+              return (
+                <motion.article
+                  key={m.name}
+                  initial={{ opacity: 0, y: 24 }}
+                  whileInView={{ opacity: 1, y: 0 }}
+                  viewport={{ once: true, margin: "-50px" }}
+                  transition={{ duration: 0.5, delay: idx * 0.08 }}
+                  className="group relative overflow-hidden rounded-2xl bg-card/60 backdrop-blur-sm border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-[0_10px_40px_-10px_hsl(var(--primary)/0.35)]"
+                >
+                  {/* Accent gradient bar */}
+                  <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary/0 via-primary to-primary/0 opacity-60 group-hover:opacity-100 transition-opacity" />
+
+                  {/* Photo placeholder */}
+                  <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-primary/15 via-card to-primary/5">
+                    <div className="absolute inset-0 flex items-center justify-center">
+                      <span className="text-7xl font-extrabold text-primary/30 tracking-tight select-none">
+                        {m.initials}
+                      </span>
+                    </div>
+                    {/* Decorative grid */}
+                    <div
+                      className="absolute inset-0 opacity-[0.07]"
+                      style={{
+                        backgroundImage:
+                          "linear-gradient(hsl(var(--primary)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--primary)) 1px, transparent 1px)",
+                        backgroundSize: "24px 24px",
+                      }}
+                    />
+                    {/* Role icon chip */}
+                    <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-background/80 backdrop-blur-md border border-primary/30 flex items-center justify-center shadow-[0_0_16px_hsl(var(--primary)/0.3)]">
+                      <Icon size={18} className="text-primary" />
+                    </div>
+                    {/* Bottom fade */}
+                    <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-card to-transparent" />
+                  </div>
+
+                  {/* Body */}
+                  <div className="relative p-6">
+                    <h3 className="text-xl font-bold text-foreground tracking-tight">{m.name}</h3>
+                    <p className="text-sm font-semibold text-primary mt-1 uppercase tracking-[0.08em]">
+                      {m.role}
+                    </p>
+                    <p className="text-sm text-muted-foreground leading-relaxed mt-4">{m.bio}</p>
+
+                    {/* Credentials */}
+                    <div className="mt-5 pt-5 border-t border-border/60">
+                      <div className="flex items-center gap-2 mb-3">
+                        <Award size={14} className="text-primary" />
+                        <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-foreground/70">
+                          Credentials
+                        </span>
+                      </div>
+                      <div className="flex flex-wrap gap-1.5">
+                        {m.credentials.map((c) => (
+                          <span
+                            key={c}
+                            className="text-[11px] font-semibold px-2.5 py-1 rounded-full bg-primary/10 text-primary border border-primary/20"
+                          >
+                            {c}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Socials */}
+                    <div className="flex items-center gap-2 mt-5">
+                      <button
+                        type="button"
+                        aria-label={`Email ${m.name}`}
+                        className="w-9 h-9 rounded-full border border-border hover:border-primary hover:text-primary text-muted-foreground flex items-center justify-center transition-colors"
+                      >
+                        <Mail size={15} />
+                      </button>
+                      <button
+                        type="button"
+                        aria-label={`${m.name} on LinkedIn`}
+                        className="w-9 h-9 rounded-full border border-border hover:border-primary hover:text-primary text-muted-foreground flex items-center justify-center transition-colors"
+                      >
+                        <Linkedin size={15} />
+                      </button>
+                    </div>
+                  </div>
+                </motion.article>
+              );
+            })}
+          </div>
+        </section>
+
+        {/* CTA */}
+        <section className="relative max-w-5xl mx-auto px-6">
+          <div className="relative overflow-hidden rounded-3xl border border-primary/30 bg-gradient-to-br from-card via-card to-primary/10 p-10 sm:p-14 text-center">
+            <div className="absolute inset-0 bg-[radial-gradient(circle_at_top,hsl(var(--primary)/0.15),transparent_60%)] pointer-events-none" />
+            <h2 className="relative text-3xl sm:text-4xl font-extrabold text-foreground tracking-[-0.02em] mb-4">
+              Want to work with our team?
+            </h2>
+            <p className="relative text-muted-foreground max-w-xl mx-auto mb-8">
+              Get in touch today to schedule your cybersecurity consultation and take the first step
+              toward stronger protection.
+            </p>
+            <div className="relative flex flex-wrap items-center justify-center gap-3">
+              <Link
+                to="/get-a-quote"
+                className="inline-flex items-center px-7 py-3 rounded-full bg-primary text-primary-foreground font-bold text-sm uppercase tracking-[0.12em] shadow-[0_8px_30px_hsl(var(--primary)/0.4)] hover:brightness-110 transition-all"
+              >
+                Schedule Consultation
+              </Link>
+              <Link
+                to="/contact"
+                className="inline-flex items-center px-7 py-3 rounded-full border border-border hover:border-primary text-foreground hover:text-primary font-bold text-sm uppercase tracking-[0.12em] transition-all"
+              >
+                Contact Us
+              </Link>
+            </div>
+          </div>
+        </section>
+      </main>
+      <Footer />
+    </div>
+  );
+};
+
+export default Team;

@@ -77,7 +77,7 @@ const HeroSection = () => {
           >
             <motion.h1
               variants={item}
-              className="text-4xl sm:text-5xl font-extrabold leading-[1.05] mb-6 text-primary tracking-[-0.02em] lg:text-6xl"
+              className="text-4xl sm:text-5xl font-extrabold leading-[1.05] mb-6 text-primary tracking-[-0.02em] text-center lg:text-7xl"
             >
               Identify Security Gaps
               <br />
@@ -87,7 +87,7 @@ const HeroSection = () => {
 
             <motion.p
               variants={item}
-              className="text-slate-600 text-base sm:text-lg max-w-xl mb-8 leading-relaxed"
+              className="text-slate-600 text-base sm:text-lg max-w-xl mb-8 leading-relaxed text-center"
             >
               Protect your business through proactive defence, offensive
               testing, strategic consultancy, and practical cyber training.

@@ -95,60 +95,45 @@ const About = () => {
   <div className="min-h-screen bg-transparent">
     <Header />
     <main className="pt-36 pb-16">
-      <div className="max-w-4xl mx-auto px-6">
-        {/* Visual Pair */}
+      {/* Hero — alternating image/text rows (matches reference) */}
+      <div className="max-w-6xl mx-auto px-6 mb-20">
+        {/* Row 1: Image left, About text right */}
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-6 mb-12"
+          className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-14 items-center mb-16 md:mb-24"
         >
-          {[
-            { src: aboutSoc, alt: "Araska Cyber Core SOC analyst monitoring a UK threat intelligence dashboard" },
-            { src: aboutHq, alt: "Araska Cyber Core UK headquarters entrance with hexagonal feature wall" },
-          ].map((img, i) => (
-            <div
-              key={i}
-              className="group relative overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:-translate-y-1 hover:border-primary/60 hover:shadow-[0_12px_40px_-12px_hsl(var(--primary)/0.4)]"
-            >
-              <div className="aspect-[4/3] overflow-hidden">
-                <img
-                  src={img.src}
-                  alt={img.alt}
-                  loading="lazy"
-                  width={1024}
-                  height={768}
-                  className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
-                />
-              </div>
+          <div className="group relative overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:border-primary/60 hover:shadow-[0_12px_40px_-12px_hsl(var(--primary)/0.4)] order-1">
+            <div className="aspect-[4/5] overflow-hidden">
+              <img
+                src={aboutHq}
+                alt="Araska Cyber Core UK headquarters entrance with hexagonal feature wall"
+                loading="lazy"
+                width={1024}
+                height={1280}
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
             </div>
-          ))}
-        </motion.div>
+          </div>
 
-        {/* Who We Are */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.1 }}
-          className="mb-20"
-        >
-          <span className="eyebrow text-xl">About Us</span>
-          <span className="eyebrow-rule" />
-          <h1 className="text-4xl sm:text-5xl font-extrabold text-foreground mb-8 tracking-[-0.02em]">
-            Built to Protect. Built to Last.
-          </h1>
-          <div className="space-y-6 text-muted-foreground text-lg leading-[1.8]">
-            <p>
+          <div className="order-2">
+            <span className="eyebrow text-xl">About Us</span>
+            <span className="eyebrow-rule" />
+            <h1 className="text-4xl sm:text-5xl font-extrabold text-foreground mb-6 tracking-[-0.02em]">
+              Built to Protect. Built to Last.
+            </h1>
+            <p className="text-muted-foreground text-lg leading-[1.8] mb-6">
               Araska Cyber Core was founded on a straightforward belief: organizations of every size deserve access to serious cybersecurity capability. For too long, enterprise-grade security has been the preserve of large corporations with large budgets. We exist to change that.
             </p>
 
-            <h2 className="text-2xl sm:text-3xl font-bold text-foreground pt-4 tracking-[-0.015em]">
+            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-4 tracking-[-0.015em]">
               Our Expertise
             </h2>
-            <p>
+            <p className="text-muted-foreground text-lg leading-[1.8] mb-4">
               Headquartered in the United Kingdom, we work with clients across multiple sectors and geographies. Our team brings together elite experience in:
             </p>
-            <ul className="space-y-3 pl-0 list-none">
+            <ul className="space-y-3 mb-4 list-none pl-0">
               {[
                 "Security Operations & Threat Intelligence",
                 "Incident Response",
@@ -160,21 +145,53 @@ const About = () => {
                 </li>
               ))}
             </ul>
-            <p>
+            <p className="text-muted-foreground text-lg leading-[1.8]">
               This expertise is applied through a service model built specifically around your organization, not a rigid, one-size-fits-all product catalogue.
-            </p>
-
-            <h2 className="text-2xl sm:text-3xl font-bold text-foreground pt-4 tracking-[-0.015em]">
-              The Araska Mission
-            </h2>
-            <p>
-              Every engagement starts with listening. We ask the right questions before we recommend solutions, ensuring we scope every project honestly.
-            </p>
-            <p>
-              We don't measure success by the length of our reports; we measure it by whether your organization is genuinely more secure.
             </p>
           </div>
         </motion.div>
+
+        {/* Row 2: Mission text left, Image right */}
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.15 }}
+          className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-14 items-center"
+        >
+          <div className="order-2 md:order-1">
+            <span className="eyebrow text-xl">The Araska Mission</span>
+            <span className="eyebrow-rule" />
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-6 tracking-[-0.015em]">
+              Our Mission
+            </h2>
+            <p className="text-muted-foreground text-lg leading-[1.8] mb-5">
+              Every engagement starts with listening. We ask the right questions before we recommend solutions, ensuring we scope every project honestly.
+            </p>
+            <p className="text-muted-foreground text-lg leading-[1.8] mb-8">
+              We don't measure success by the length of our reports; we measure it by whether your organization is genuinely more secure.
+            </p>
+            <Link to="/contact" className="gold-btn text-sm">
+              Talk to Our Team
+            </Link>
+          </div>
+
+          <div className="group relative overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:border-primary/60 hover:shadow-[0_12px_40px_-12px_hsl(var(--primary)/0.4)] order-1 md:order-2">
+            <div className="aspect-[4/5] overflow-hidden">
+              <img
+                src={aboutSoc}
+                alt="Araska Cyber Core SOC analyst monitoring a UK threat intelligence dashboard"
+                loading="lazy"
+                width={1024}
+                height={1280}
+                className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-105"
+              />
+            </div>
+          </div>
+        </motion.div>
+      </div>
+
+      <div className="max-w-4xl mx-auto px-6">
+
 
         {/* Values — Light Section */}
         <div className="section-light -mx-6 px-6 py-16 md:-mx-12 md:px-12 lg:-mx-24 lg:px-24 mb-12 rounded-none">

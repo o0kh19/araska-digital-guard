@@ -30,11 +30,11 @@ const Footer = () => (
                 className="font-bold italic tracking-tight text-foreground leading-none"
                 style={{ fontFamily: "'Playfair Display', serif" }}
               >
-                <span className="text-2xl md:text-3xl">A</span><span className="text-base md:text-lg">ras</span><span className="text-2xl md:text-3xl">K</span><span className="text-base md:text-lg">a</span>
+                <span className="text-2xl md:text-2xl">A</span><span className="text-base md:text-lg">ras</span><span className="text-2xl md:text-2xl">K</span><span className="text-base md:text-lg">a</span>
               </span>
               <span className="text-[9px] font-extrabold tracking-[0.2em] mt-1 uppercase">
-                <span className="text-primary">CYBER</span>{" "}
-                <span style={{ color: "hsl(220 9% 55%)" }}>CORE</span>
+                <span className="text-primary font-bold">CYBER</span>{" "}
+                <span className="text-secondary-foreground font-bold">CORE</span>
               </span>
             </div>
           </div>

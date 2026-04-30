@@ -63,11 +63,11 @@ const Header = () => {
                   className="font-bold italic tracking-tight text-foreground leading-none"
                   style={{ fontFamily: "'Playfair Display', serif" }}
                 >
-                  <span className="text-4xl md:text-5xl">A</span><span className="text-2xl md:text-3xl">ras</span><span className="text-4xl md:text-5xl">K</span><span className="text-2xl md:text-3xl">a</span>
+                  <span className="text-4xl md:text-4xl">A</span><span className="text-2xl md:text-3xl">ras</span><span className="text-4xl md:text-4xl">K</span><span className="text-2xl md:text-3xl">a</span>
                 </span>
                 <span className="text-[10px] md:text-[11px] tracking-[0.4em] mt-1.5 uppercase">
-                  <span className="text-primary">Cyber</span>{" "}
-                  <span style={{ color: "hsl(220 9% 55%)" }}>Core</span>
+                  <span className="text-primary font-bold">Cyber</span>{" "}
+                  <span className="text-secondary-foreground font-bold" style={{ color: "hsl(220 9% 55%)" }}>Core</span>
                 </span>
               </div>
             </div>

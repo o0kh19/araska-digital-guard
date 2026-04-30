@@ -10,7 +10,7 @@ import CTABanner from "@/components/CTABanner";
 import Footer from "@/components/Footer";
 
 const Index = () => (
-  <div className="min-h-screen bg-background">
+  <div className="min-h-screen bg-transparent">
     <Header />
     <main className="pt-[110px]">
       <HeroSection />

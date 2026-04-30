@@ -88,8 +88,6 @@ const ServicesOverview = () => {
   const anyHovered = hoveredIdx !== null;
   return (
     <section id="services" className="section-padding section-dark relative overflow-hidden" ref={ref}>
-      {/* Subtle hexagonal tech-honeycomb background */}
-      <div className="hex-grid-bg absolute inset-0 pointer-events-none" aria-hidden="true" />
 
       <div className="max-w-7xl mx-auto relative">
         <motion.div

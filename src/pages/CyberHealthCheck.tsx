@@ -5,7 +5,7 @@ import { motion } from "framer-motion";
 import { ShieldCheck, Clock, Lock } from "lucide-react";
 
 const CyberHealthCheck = () => (
-  <div className="min-h-screen bg-background">
+  <div className="min-h-screen bg-transparent">
     <Header />
     <main className="pt-36 pb-20 section-light">
       <div className="max-w-5xl mx-auto px-6">

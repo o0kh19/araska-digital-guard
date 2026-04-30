@@ -56,14 +56,14 @@ const HeroSection = () => {
   };
 
   return (
-    <section className="relative overflow-hidden bg-slate-50">
+    <section className="relative overflow-hidden bg-transparent">
       {/* Subtle grid background */}
       <div className="absolute inset-0 cyber-grid-bg-light opacity-60" />
       <div
         className="absolute inset-0 pointer-events-none"
         style={{
           background:
-            "radial-gradient(ellipse at 50% 20%, transparent 0%, hsl(220 30% 96% / 0.85) 80%)",
+            "radial-gradient(ellipse at 50% 20%, transparent 0%, rgba(255,255,255,0.35) 80%)",
         }}
       />
 

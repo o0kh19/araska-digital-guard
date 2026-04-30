@@ -162,7 +162,7 @@ const Services = () => {
   }, [location]);
 
   return (
-  <div className="min-h-screen bg-white">
+  <div className="min-h-screen bg-transparent">
     <Header />
     <main className="pt-32 pb-24">
       {/* HERO */}
@@ -214,12 +214,7 @@ const Services = () => {
       </section>
 
       {/* SERVICE SECTIONS */}
-      <section
-        className="py-24"
-        style={{
-          background: "linear-gradient(180deg, #FFFFFF 0%, #F3F5FA 100%)",
-        }}
-      >
+      <section className="py-24 bg-transparent">
         <div className="max-w-5xl mx-auto px-6">
           <motion.h2
             initial={{ opacity: 0, y: 20 }}
@@ -305,7 +300,7 @@ const Services = () => {
       </section>
 
       {/* FINAL CTA */}
-      <section className="py-20 bg-white">
+      <section className="py-20 bg-transparent">
         <div className="max-w-4xl mx-auto px-6 text-center">
           <div className="inline-flex items-center justify-center w-14 h-14 rounded-full bg-primary/5 border border-primary/15 mb-6">
             <GraduationCap className="text-primary" size={28} strokeWidth={1.6} />

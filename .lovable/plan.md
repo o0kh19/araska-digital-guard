@@ -1,57 +1,36 @@
-## Goal
+# Reorder Nav + Modernize Header Style
 
-1. Add two on-brand AI-generated images side-by-side at the top of the About page, matching the reference layout (two rounded cards).
-2. Replace the existing "Who We Are" intro copy with the new structured copy you provided ("Built to Protect. Built to Last." → "Our Expertise" → "The Araska Mission").
+## Nav order
+Update `navLinks` in `src/components/Header.tsx` to:
+**Home → Services → Resources → Team → About**
 
-## Layout
+(Add the new "Team" entry in this position, matching what you described.)
 
-```text
-┌──────────────────────────────────────────────────┐
-│  [ Image 1: SOC analyst   ][ Image 2: Araska HQ ]│
-│  [ at workstation, UK     ][ hex wall + brand   ]│
-│  [ threat dashboard       ][ welcome panel      ]│
-└──────────────────────────────────────────────────┘
+## Modern style upgrade for the header
 
-  ABOUT US
-  Built to Protect. Built to Last.
-  <intro paragraph>
+Refresh the main navigation visual to feel more polished and modern, while keeping the existing white header / red "Breached?" / blue Araska wordmark identity intact.
 
-  Our Expertise
-  <paragraph>
-   • Security Operations & Threat Intelligence
-   • Incident Response
-   • Compliance & Risk Management
-  <closing line about service model>
+### Desktop nav links
+- Replace the current static underline-on-active with a **pill-style hover indicator**: each link sits inside a rounded-full hover background (`hover:bg-slate-100`) with smooth transition.
+- Active link gets a **filled pill** in primary color tint (`bg-primary/10 text-primary`) plus a subtle 2px primary underline for clarity.
+- Slightly tighter gap (`gap-2`) since links now have padding, and uppercase tracking for a sharper feel (`text-xs uppercase tracking-[0.12em] font-semibold`).
+- Add a soft animated dot/indicator under hovered link (using a `::after` pseudo or a span that scales in).
 
-  The Araska Mission
-  <two paragraphs>
-```
+### Top utility bar
+- Keep light gray, but increase contrast: darker text, the **Contact** button becomes outlined-on-hover, and **Breached?** gets a subtle pulsing red glow ring to draw the eye (CSS `animate-pulse` on a ring layer, not the button itself, so it stays readable).
 
-Two equal columns on desktop, stacked on mobile, rounded-2xl, subtle neon-green hover glow matching the existing team-card style.
+### Header container
+- On scroll: switch to a **frosted glass effect** (`bg-white/80 backdrop-blur-md`) instead of plain white, with a slightly stronger shadow. At top of page, stays solid white.
+- Smooth height transition (slightly more compact when scrolled).
 
-## Images to generate
+### Mobile menu
+- Slide-down panel with the same pill-style links, larger tap targets, and a divider above the **Breached?** / **Contact** buttons which are pinned at the bottom of the panel for quick access.
 
-Two custom 1024×1024 images via the AI gateway (Nano banana pro), saved to `src/assets/`:
+## Files touched
+- `src/components/Header.tsx` — nav array reorder + add Team, restyle desktop & mobile nav, scroll glass effect.
 
-1. **`about-soc.jpg`** — Focused security analyst at a dark workstation, monitor showing a Sentinel-style threat dashboard with a UK map and neon-green data points. Matte-black room, blue/green ambient lighting. On-brand, not the reference.
-2. **`about-hq.jpg`** — Modern corporate entrance with sculpted hexagonal wall, sleek monitor displaying "ARASKA CYBER CORE — WELCOME", neon-green edge lighting, "Built to Protect. Built to Last." plaque, "UK H.Q." subtext. Dark/matte palette.
+## Out of scope
+- Creating the `/team` page itself (already covered separately — let me know if you want it built in this same step).
+- Footer nav (can mirror the new order in a follow-up if you want).
 
-Both styled to fit the dark-theme + neon-green #39FF14 brand language.
-
-## Technical changes
-
-- **Generate 2 images** via AI gateway → save as `src/assets/about-soc.jpg` and `src/assets/about-hq.jpg`.
-- **`src/pages/About.tsx`**:
-  - Import both image assets.
-  - Insert a new `motion.div` block at the top of `<main>` (above the "Who We Are" section) containing a `grid grid-cols-1 md:grid-cols-2 gap-6 mb-12` with two image cards (rounded-2xl, border, hover glow).
-  - Replace the body of the existing "Who We Are" block (lines 109–119) with the new structured copy:
-    - Lead paragraph (founding belief).
-    - `<h2>` "Our Expertise" + intro line + bulleted list of the 3 capability areas + closing line about the service model.
-    - `<h2>` "The Araska Mission" + the two final paragraphs.
-  - Keep existing eyebrow ("About Us"), H1 ("Built to Protect. Built to Last."), typography classes, and animations.
-
-No other sections (Values, Approach, Team, CTA) are touched. No spacing regressions.
-
-## Result
-
-The About page opens with a strong branded visual pair, then flows into a clearer, better-structured intro that highlights expertise areas and mission — using the exact copy you provided.
+Approve and I'll implement.

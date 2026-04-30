@@ -120,8 +120,8 @@ const About = () => {
           <div className="order-2">
             <span className="eyebrow text-xl">About Us</span>
             <span className="eyebrow-rule" />
-            <h1 className="text-4xl sm:text-5xl font-extrabold text-foreground mb-6 tracking-[-0.02em]">
-              Built to Protect. Built to Last.
+            <h1 className="text-4xl font-extrabold text-foreground mb-6 tracking-[-0.02em] sm:text-4xl">
+              Cybersecurity Made Practical, Accessible, and Effective.
             </h1>
             <p className="text-muted-foreground text-lg leading-[1.8] mb-6">
               Araska Cyber Core was founded on a straightforward belief: organizations of every size deserve access to serious cybersecurity capability. For too long, enterprise-grade security has been the preserve of large corporations with large budgets. We exist to change that.

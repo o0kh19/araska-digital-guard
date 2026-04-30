@@ -31,7 +31,7 @@ const Contact = () => {
 
   if (submitted) {
     return (
-      <div className="min-h-screen bg-background">
+      <div className="min-h-screen bg-transparent">
         <Header />
         <main className="pt-36 pb-16 flex items-center justify-center">
           <motion.div initial={{ opacity: 0, scale: 0.95 }} animate={{ opacity: 1, scale: 1 }} className="text-center px-6">
@@ -46,7 +46,7 @@ const Contact = () => {
   }
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-transparent">
       <Header />
       <main className="pt-36 pb-16">
         <div className="max-w-5xl mx-auto px-6">

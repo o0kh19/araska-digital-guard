@@ -294,7 +294,7 @@ const Resources = () => {
   }, [openArticle]);
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-transparent">
       <Header />
       <main className="pt-36 pb-16">
         <div className="max-w-7xl mx-auto px-6">

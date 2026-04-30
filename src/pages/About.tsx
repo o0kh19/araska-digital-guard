@@ -129,20 +129,39 @@ const About = () => {
   <div className="min-h-screen bg-transparent">
     <Header />
     <main className="pt-36 pb-16">
-      {/* Hero — alternating image/text rows (matches reference) */}
-      <div className="max-w-6xl mx-auto px-6 mb-20">
-        {/* Row 1: Image left, About text right */}
+      {/* HERO */}
+      <section className="relative max-w-6xl mx-auto px-6 mb-24">
+        <div className="absolute -top-10 left-1/2 -translate-x-1/2 w-[80%] h-72 bg-primary/10 blur-[120px] rounded-full pointer-events-none" />
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-14 items-center mb-16 md:mb-24"
+          className="relative text-center max-w-3xl mx-auto"
         >
-          <div className="group relative overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:border-primary/60 hover:shadow-[0_12px_40px_-12px_hsl(var(--primary)/0.4)] order-1">
+          <span className="eyebrow text-xl">About Us</span>
+          <span className="eyebrow-rule mx-auto" />
+          <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground mb-6 tracking-[-0.02em] leading-[1.1]">
+            Cybersecurity Made <span className="text-primary">Practical</span>, Accessible, and Effective.
+          </h1>
+          <p className="text-muted-foreground text-lg sm:text-xl leading-[1.7]">
+            At Araska Cyber Core, we help businesses strengthen their security posture through practical, structured, and business-focused cybersecurity services.
+          </p>
+        </motion.div>
+      </section>
+
+      {/* WHO WE ARE — image + text */}
+      <section className="max-w-6xl mx-auto px-6 mb-24">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5 }}
+          className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-14 items-center"
+        >
+          <div className="group relative overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:border-primary/60 hover:shadow-[0_12px_40px_-12px_hsl(var(--primary)/0.4)]">
             <div className="aspect-[4/5] overflow-hidden">
               <img
                 src={aboutHq}
-                alt="Araska Cyber Core UK headquarters entrance with hexagonal feature wall"
+                alt="Araska Cyber Core headquarters"
                 loading="lazy"
                 width={1024}
                 height={1280}
@@ -151,69 +170,156 @@ const About = () => {
             </div>
           </div>
 
-          <div className="order-2">
-            <span className="eyebrow text-xl">About Us</span>
+          <div>
+            <span className="eyebrow text-xl">Who We Are</span>
             <span className="eyebrow-rule" />
-            <h1 className="text-4xl font-extrabold text-foreground mb-6 tracking-[-0.02em] sm:text-4xl">
-              Cybersecurity Made Practical, Accessible, and Effective.
-            </h1>
-            <p className="text-muted-foreground text-lg leading-[1.8] mb-6">
-              Araska Cyber Core was founded on a straightforward belief: organizations of every size deserve access to serious cybersecurity capability. For too long, enterprise-grade security has been the preserve of large corporations with large budgets. We exist to change that.
-            </p>
-
-            <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-4 tracking-[-0.015em]">
-              Our Expertise
+            <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-6 tracking-[-0.015em]">
+              Built to close a critical gap.
             </h2>
-            <p className="text-muted-foreground text-lg leading-[1.8] mb-4">
-              Headquartered in the United Kingdom, we work with clients across multiple sectors and geographies. Our team brings together elite experience in:
+            <p className="text-muted-foreground text-lg leading-[1.8] mb-5">
+              Founded by experienced cybersecurity professionals, Araska Cyber Core was built to close a critical gap in the Kurdistan Region market — where many organisations face growing cyber threats but lack access to dedicated, affordable, and locally understood security expertise.
             </p>
-            <ul className="space-y-3 mb-4 list-none pl-0">
-              {[
-                "Security Operations & Threat Intelligence",
-                "Incident Response",
-                "Compliance & Risk Management",
-              ].map((item) => (
-                <li key={item} className="flex items-start gap-3">
-                  <span className="mt-2 h-2 w-2 flex-shrink-0 rounded-full bg-primary shadow-[0_0_10px_hsl(var(--primary)/0.6)]" />
-                  <span className="text-foreground font-medium">{item}</span>
-                </li>
-              ))}
-            </ul>
-            <p className="text-muted-foreground text-lg leading-[1.8]">
-              This expertise is applied through a service model built specifically around your organization, not a rigid, one-size-fits-all product catalogue.
+            <p className="text-muted-foreground text-lg leading-[1.8] mb-8">
+              With a registered entity in the United Kingdom and operational delivery in Erbil, we combine international credibility with local market understanding to deliver cybersecurity that is practical, accessible, and effective.
             </p>
+            <div className="flex flex-wrap gap-3">
+              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 text-foreground text-sm font-medium">
+                <MapPin className="w-4 h-4 text-primary" /> Registered in the UK
+              </span>
+              <span className="inline-flex items-center gap-2 px-4 py-2 rounded-full border border-primary/30 bg-primary/5 text-foreground text-sm font-medium">
+                <MapPin className="w-4 h-4 text-primary" /> Delivered from Erbil
+              </span>
+            </div>
           </div>
         </motion.div>
+      </section>
 
-        {/* Row 2: Mission text left, Image right */}
+      {/* WHAT WE DO — 4 service cards */}
+      <section className="max-w-6xl mx-auto px-6 mb-24">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
           animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.15 }}
+          transition={{ duration: 0.5 }}
+          className="text-center max-w-2xl mx-auto mb-12"
+        >
+          <span className="eyebrow text-xl">What We Do</span>
+          <span className="eyebrow-rule mx-auto" />
+          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4 tracking-[-0.015em]">
+            Cybersecurity across four core areas.
+          </h2>
+          <p className="text-muted-foreground text-lg leading-[1.7]">
+            A full-spectrum service model designed around how modern businesses actually operate.
+          </p>
+        </motion.div>
+
+        <div className="grid grid-cols-1 sm:grid-cols-2 gap-6">
+          {services.map((s, i) => {
+            const Icon = s.icon;
+            return (
+              <motion.div
+                key={s.title}
+                initial={{ opacity: 0, y: 20 }}
+                whileInView={{ opacity: 1, y: 0 }}
+                viewport={{ once: true }}
+                transition={{ duration: 0.5, delay: i * 0.08 }}
+                className="group relative bg-card border border-border rounded-2xl p-8 transition-all duration-300 hover:border-primary/60 hover:-translate-y-1 hover:shadow-[0_12px_40px_-12px_hsl(var(--primary)/0.4)]"
+              >
+                <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/30 flex items-center justify-center mb-5 transition-all duration-300 group-hover:bg-primary/20 group-hover:shadow-[0_0_20px_hsl(var(--primary)/0.4)]">
+                  <Icon className="w-6 h-6 text-primary" />
+                </div>
+                <h3 className="text-xl font-bold text-foreground mb-3">{s.title}</h3>
+                <p className="text-muted-foreground text-[15px] leading-[1.75]">{s.desc}</p>
+              </motion.div>
+            );
+          })}
+        </div>
+      </section>
+
+      {/* WHO WE SERVE */}
+      <section className="max-w-6xl mx-auto px-6 mb-24">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="relative overflow-hidden rounded-3xl border border-border bg-gradient-to-br from-card via-card to-background p-10 md:p-14"
+        >
+          <div className="absolute -right-20 -top-20 w-72 h-72 bg-primary/10 blur-[100px] rounded-full pointer-events-none" />
+          <div className="relative grid grid-cols-1 md:grid-cols-2 gap-10 items-center">
+            <div>
+              <span className="eyebrow text-xl">Who We Serve</span>
+              <span className="eyebrow-rule" />
+              <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-6 tracking-[-0.015em]">
+                From SMBs to sector-focused enterprises.
+              </h2>
+              <p className="text-muted-foreground text-lg leading-[1.8]">
+                We work with small and medium-sized businesses, growing enterprises, and sector-focused organisations across the Kurdistan Region and wider Iraq — industries where cyber resilience is no longer optional.
+              </p>
+            </div>
+            <div>
+              <p className="text-sm font-semibold tracking-wider text-primary uppercase mb-4">Priority Sectors</p>
+              <div className="flex flex-wrap gap-3">
+                {sectors.map((sector) => (
+                  <span
+                    key={sector}
+                    className="px-5 py-2.5 rounded-full bg-background/60 border border-primary/30 text-foreground font-medium backdrop-blur-sm transition-all duration-300 hover:bg-primary/10 hover:border-primary/60 hover:shadow-[0_0_20px_hsl(var(--primary)/0.3)]"
+                  >
+                    {sector}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </motion.div>
+      </section>
+
+      {/* WHY ARASKA — text + image */}
+      <section className="max-w-6xl mx-auto px-6 mb-24">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
           className="grid grid-cols-1 md:grid-cols-2 gap-10 lg:gap-14 items-center"
         >
           <div className="order-2 md:order-1">
-            <span className="eyebrow text-xl">The Araska Mission</span>
+            <span className="eyebrow text-xl">Why Araska Cyber Core</span>
             <span className="eyebrow-rule" />
             <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-6 tracking-[-0.015em]">
-              Our Mission
+              What makes us different is simple.
             </h2>
-            <p className="text-muted-foreground text-lg leading-[1.8] mb-5">
-              Every engagement starts with listening. We ask the right questions before we recommend solutions, ensuring we scope every project honestly.
+            <ul className="space-y-4 mb-8">
+              {differentiators.map((d, i) => {
+                const Icon = d.icon;
+                return (
+                  <motion.li
+                    key={d.text}
+                    initial={{ opacity: 0, x: -10 }}
+                    whileInView={{ opacity: 1, x: 0 }}
+                    viewport={{ once: true }}
+                    transition={{ duration: 0.4, delay: i * 0.06 }}
+                    className="flex items-start gap-4"
+                  >
+                    <div className="flex-shrink-0 w-10 h-10 rounded-lg bg-primary/10 border border-primary/30 flex items-center justify-center">
+                      <Icon className="w-5 h-5 text-primary" />
+                    </div>
+                    <span className="text-foreground text-[15px] md:text-base leading-[1.7] pt-1.5 font-medium">
+                      {d.text}
+                    </span>
+                  </motion.li>
+                );
+              })}
+            </ul>
+            <p className="text-muted-foreground text-lg leading-[1.8] italic border-l-2 border-primary/60 pl-5">
+              We don't believe cybersecurity should be complicated, overpriced, or disconnected from business reality. We believe it should be clear, actionable, and built around the client.
             </p>
-            <p className="text-muted-foreground text-lg leading-[1.8] mb-8">
-              We don't measure success by the length of our reports; we measure it by whether your organization is genuinely more secure.
-            </p>
-            <Link to="/contact" className="gold-btn text-sm">
-              Talk to Our Team
-            </Link>
           </div>
 
-          <div className="group relative overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:border-primary/60 hover:shadow-[0_12px_40px_-12px_hsl(var(--primary)/0.4)] order-1 md:order-2">
+          <div className="order-1 md:order-2 group relative overflow-hidden rounded-2xl border border-border bg-card transition-all duration-300 hover:border-primary/60 hover:shadow-[0_12px_40px_-12px_hsl(var(--primary)/0.4)]">
             <div className="aspect-[4/5] overflow-hidden">
               <img
                 src={aboutSoc}
-                alt="Araska Cyber Core SOC analyst monitoring a UK threat intelligence dashboard"
+                alt="Araska Cyber Core SOC analyst"
                 loading="lazy"
                 width={1024}
                 height={1280}
@@ -222,171 +328,68 @@ const About = () => {
             </div>
           </div>
         </motion.div>
-      </div>
+      </section>
 
-      <div className="max-w-4xl mx-auto px-6">
-
-
-        {/* Values — Light Section */}
-        <div className="section-light -mx-6 px-6 py-16 md:-mx-12 md:px-12 lg:-mx-24 lg:px-24 mb-12 rounded-none">
+      {/* MISSION & VISION */}
+      <section className="max-w-6xl mx-auto px-6 mb-24">
+        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
           <motion.div
             initial={{ opacity: 0, y: 20 }}
-            animate={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.5, delay: 0.15 }}
-            className="max-w-4xl mx-auto"
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5 }}
+            className="relative bg-card border border-border rounded-2xl p-10 overflow-hidden hover:border-primary/60 transition-all duration-300"
           >
-            <span className="eyebrow text-xl">Our Values</span>
+            <div className="absolute -top-10 -right-10 w-40 h-40 bg-primary/10 blur-3xl rounded-full" />
+            <Target className="w-10 h-10 text-primary mb-5" />
+            <span className="eyebrow text-xl">Our Mission</span>
             <span className="eyebrow-rule" />
-            <h2 className="text-3xl sm:text-4xl font-bold text-light-foreground mb-8 tracking-[-0.015em]">
-              What Drives Us
-            </h2>
-            <div className="grid sm:grid-cols-2 gap-6">
-              {values.map((v, i) => (
-                <motion.div
-                  key={v.title}
-                  initial={{ opacity: 0, y: 20 }}
-                  animate={{ opacity: 1, y: 0 }}
-                  transition={{ duration: 0.5, delay: 0.2 + i * 0.08 }}
-                  className="bg-white rounded-lg p-9 transition-all duration-200 hover:translate-y-[-3px]"
-                  style={{ border: '1px solid #E2E8F0', borderRadius: '8px' }}
-                  onMouseEnter={(e) => {
-                    e.currentTarget.style.borderColor = '#1F8FCB';
-                    e.currentTarget.style.boxShadow = '0 4px 20px rgba(31,143,203,0.12)';
-                  }}
-                  onMouseLeave={(e) => {
-                    e.currentTarget.style.borderColor = '#E2E8F0';
-                    e.currentTarget.style.boxShadow = 'none';
-                  }}
-                >
-                  <h3 className="text-[19px] font-semibold mb-3 text-light-foreground">{v.title}</h3>
-                  <p className="text-[#3A4A5C] text-[15px] leading-[1.8]">{v.desc}</p>
-                </motion.div>
-              ))}
-            </div>
+            <p className="text-foreground text-lg leading-[1.8] mt-2">
+              To make cybersecurity practical, accessible, and understandable for businesses across the Kurdistan Region and Iraq.
+            </p>
+          </motion.div>
+
+          <motion.div
+            initial={{ opacity: 0, y: 20 }}
+            whileInView={{ opacity: 1, y: 0 }}
+            viewport={{ once: true }}
+            transition={{ duration: 0.5, delay: 0.1 }}
+            className="relative bg-card border border-border rounded-2xl p-10 overflow-hidden hover:border-primary/60 transition-all duration-300"
+          >
+            <div className="absolute -top-10 -right-10 w-40 h-40 bg-primary/10 blur-3xl rounded-full" />
+            <Shield className="w-10 h-10 text-primary mb-5" />
+            <span className="eyebrow text-xl">Our Vision</span>
+            <span className="eyebrow-rule" />
+            <p className="text-foreground text-lg leading-[1.8] mt-2">
+              To become the most trusted cybersecurity partner in the Kurdistan Region and expand across Iraq and future international markets.
+            </p>
           </motion.div>
         </div>
+      </section>
 
-        {/* Approach */}
+      {/* CTA */}
+      <section className="max-w-6xl mx-auto px-6">
         <motion.div
           initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.3 }}
-          className="mb-20"
+          whileInView={{ opacity: 1, y: 0 }}
+          viewport={{ once: true }}
+          transition={{ duration: 0.5 }}
+          className="relative overflow-hidden rounded-3xl border border-primary/30 bg-gradient-to-br from-card via-background to-card p-10 md:p-16 text-center"
         >
-          <span className="eyebrow text-xl">Our Approach</span>
-          <span className="eyebrow-rule" />
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-6 tracking-[-0.015em]">
-            How We Deliver Security
-          </h2>
-          <div className="space-y-6 text-muted-foreground text-lg leading-[1.8]">
-            <p>
-              Araska Cyber Core operates on a co-managed model. This means we work alongside your existing IT or security team rather than replacing them. Our analysts integrate with your environment, your communication channels, and your incident management processes. For organisations without a dedicated security team, we act as that function entirely.
+          <div className="absolute inset-0 bg-[radial-gradient(circle_at_50%_0%,hsl(var(--primary)/0.15),transparent_60%)] pointer-events-none" />
+          <div className="relative">
+            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-extrabold text-foreground mb-5 tracking-[-0.02em]">
+              Secure your business with confidence.
+            </h2>
+            <p className="text-muted-foreground text-lg leading-[1.7] mb-8 max-w-2xl mx-auto">
+              Get in touch today to schedule your cybersecurity consultation and take the first step toward stronger protection.
             </p>
-            <p>
-              We are technology-agnostic in our consulting and assessment work, but our SOC is built on Microsoft's enterprise security stack — Sentinel, Defender, and Azure — because it is the most capable, scalable, and well-supported platform available for the organisations we serve.
-            </p>
+            <Link to="/contact" className="gold-btn text-sm">
+              Schedule Your Consultation
+            </Link>
           </div>
         </motion.div>
-
-        {/* Meet the Team */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.35 }}
-          className="mb-20"
-        >
-          <div className="flex items-start justify-between gap-4 flex-wrap">
-            <div>
-              <span className="eyebrow text-xl">Meet the Team</span>
-              <span className="eyebrow-rule" />
-              <h2 className="text-3xl sm:text-4xl font-bold text-foreground mb-4 tracking-[-0.015em]">
-                The Humans Behind the Firewall
-              </h2>
-              <p className="text-muted-foreground text-lg leading-[1.8] mb-10">
-                Serious about security. Less serious about everything else.
-              </p>
-            </div>
-          </div>
-          <div className="grid sm:grid-cols-2 lg:grid-cols-3 gap-6">
-            {(draftMode ? draftTeam : teamData).map((m, i) => (
-              <motion.div
-                key={i}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: 0.4 + i * 0.08 }}
-                className="group bg-card rounded-2xl overflow-hidden border border-border hover:border-primary/60 transition-all duration-300 hover:-translate-y-2 hover:shadow-[0_12px_40px_-12px_hsl(var(--primary)/0.4)]"
-              >
-                <div className="relative aspect-square overflow-hidden bg-muted">
-                  <img
-                    src={m.img}
-                    alt={`${m.name} — ${m.role}`}
-                    loading="lazy"
-                    className="w-full h-full object-cover transition-transform duration-500 group-hover:scale-110"
-                  />
-                  <div className="absolute inset-0 bg-gradient-to-t from-background/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300" />
-                </div>
-                <div className="p-6 space-y-2">
-                  {editMode ? (
-                    <>
-                      <Input
-                        value={m.img}
-                        onChange={(e) => updateMember(i, "img", e.target.value)}
-                        placeholder="Image URL"
-                        className="text-xs mb-2"
-                      />
-                      <Input
-                        value={m.name}
-                        onChange={(e) => updateMember(i, "name", e.target.value)}
-                        placeholder="Name"
-                        className="text-xl font-bold"
-                      />
-                      <Input
-                        value={m.role}
-                        onChange={(e) => updateMember(i, "role", e.target.value)}
-                        placeholder="Role"
-                        className="text-sm font-semibold"
-                      />
-                      <Textarea
-                        value={m.fact}
-                        onChange={(e) => updateMember(i, "fact", e.target.value)}
-                        placeholder="Fun fact"
-                        rows={3}
-                        className="text-[15px] leading-[1.7] resize-none"
-                      />
-                    </>
-                  ) : (
-                    <>
-                      <h3 className="text-xl font-bold text-foreground mb-1">{m.name}</h3>
-                      <p className="text-primary text-sm font-semibold mb-3 tracking-wide">{m.role}</p>
-                      <p className="text-muted-foreground text-[15px] leading-[1.7]">{m.fact}</p>
-                    </>
-                  )}
-                </div>
-              </motion.div>
-            ))}
-          </div>
-        </motion.div>
-
-        {/* CTA */}
-        <motion.div
-          initial={{ opacity: 0, y: 20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5, delay: 0.4 }}
-          className="rounded-lg p-12 text-center"
-          style={{
-            background: '#E5E7EB',
-            border: '1px solid rgba(31,143,203,0.3)',
-            boxShadow: '0 0 20px rgba(31,143,203,0.1)',
-          }}
-        >
-          <h2 className="text-2xl sm:text-3xl font-bold text-foreground mb-4 tracking-[-0.015em]">
-            Want to know more about how we work?
-          </h2>
-          <Link to="/contact" className="gold-btn text-sm">
-            Get in Touch
-          </Link>
-        </motion.div>
-      </div>
+      </section>
     </main>
     <Footer />
   </div>

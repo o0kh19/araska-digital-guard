@@ -24,9 +24,9 @@ const team: Member[] = [
     credentials: ["CISSP", "CISM", "ISO 27001 LA", "Microsoft Security Expert"],
   },
   {
-    name: "Dr Belal Asad",
-    role: "SOC Lead",
-    initials: "BA",
+    name: "Lana Hassan",
+    role: "Director of Security Operations",
+    initials: "LH",
     accentIcon: Cpu,
     bio: "Runs the 24/7 SOC, leading detection engineering, threat hunting, and incident response. Former Microsoft Sentinel architect with deep expertise in Defender XDR.",
     credentials: ["GCIA", "GCIH", "MS-500", "Sentinel Ninja"],
@@ -41,7 +41,7 @@ const team: Member[] = [
   },
   {
     name: "Sam Wheeler",
-    role: "Founder",
+    role: "GRC & Consultancy Lead",
     initials: "SK",
     accentIcon: ClipboardCheck,
     bio: "Guides clients through risk assessments, ISO 27001 implementations, and regulatory readiness. Trusted advisor to boards across healthcare and financial services.",

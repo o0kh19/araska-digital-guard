@@ -43,7 +43,7 @@ const team: Member[] = [
   },
   {
     name: "Sam Wheeler",
-    role: "Chief Information Security Officer (CISO)",
+    role: "vCISO & Security Advisory Lead",
     initials: "SK",
     accentIcon: ClipboardCheck,
     bio: "​",

@@ -248,7 +248,7 @@ const Team = () => {
                       {m.linkedin ? (
                         <a
                           href={m.linkedin}
-                          target="_blank"
+                          target={typeof window !== "undefined" && window.self !== window.top ? "_top" : "_blank"}
                           rel="noopener noreferrer"
                           aria-label={`${m.name} on LinkedIn`}
                           className="w-9 h-9 rounded-full border border-border hover:border-primary hover:text-primary text-muted-foreground flex items-center justify-center transition-colors"

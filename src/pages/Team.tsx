@@ -34,7 +34,7 @@ const team: Member[] = [
   },
   {
     name: "Dr Belal Asad",
-    role: "Head of Offensive Security",
+    role: "Director of Cyber Defense & Threat Operations",
     initials: "BA",
     accentIcon: Sword,
     bio: "​",

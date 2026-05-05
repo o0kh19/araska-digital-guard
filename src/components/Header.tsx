@@ -74,8 +74,8 @@ const Header = () => {
               <div className="w-[3px] self-stretch rounded-sm" style={{ background: "hsl(215 75% 45%)" }} />
               <div className="relative inline-flex flex-col items-start leading-none">
                 <span
-                  className="font-bold italic tracking-tight text-foreground leading-none"
-                  style={{ fontFamily: "'Playfair Display', serif" }}
+                  className="font-bold tracking-tight text-foreground leading-none"
+                  style={{ fontFamily: "'Space Grotesk', sans-serif", letterSpacing: "-0.04em" }}
                 >
                   <span className="text-4xl md:text-4xl">A</span>
                   <span className="text-2xl md:text-3xl">ras</span>

@@ -18,7 +18,8 @@ const services = [
     Icon: ShieldCheck,
     items: [
       "24/7 SOC & M365 Security Hardening",
-      "Vulnerability Management\n\n",
+      "Vulnerability Management",
+      "Incident Detection & Response",
     ],
   },
   {
@@ -44,6 +45,7 @@ const services = [
     ],
   },
 ];
+
 
 const HeroSection = () => {
   const container = {
@@ -140,47 +142,68 @@ const HeroSection = () => {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true, amount: 0.15 }}
-          className="grid grid-cols-1 sm:grid-cols-2 gap-6"
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5"
         >
-          {services.map((s) => {
+          {services.map((s, idx) => {
             const { Icon } = s;
             return (
               <motion.div
                 key={s.title}
                 variants={item}
-                className="rounded-2xl p-8 bg-white transition-all hover:-translate-y-1"
+                whileHover={{ y: -6 }}
+                className="group relative rounded-2xl p-7 bg-white overflow-hidden transition-all duration-300"
                 style={{
                   border: "1px solid hsl(220 20% 90%)",
-                  boxShadow:
-                    "0 4px 20px -8px hsl(222 30% 8% / 0.08)",
+                  boxShadow: "0 4px 20px -8px hsl(222 30% 8% / 0.08)",
                 }}
               >
-                <div
-                  className="w-12 h-12 rounded-xl flex items-center justify-center mb-6"
-                  style={{ background: `hsl(${BLUE} / 0.1)` }}
+                {/* Top accent bar */}
+                <span
+                  className="absolute inset-x-0 top-0 h-[3px] origin-left scale-x-0 group-hover:scale-x-100 transition-transform duration-500"
+                  style={{ background: `linear-gradient(90deg, hsl(${BLUE}), hsl(${BLUE} / 0.4))` }}
+                />
+                {/* Corner glow */}
+                <span
+                  className="absolute -top-16 -right-16 w-40 h-40 rounded-full opacity-0 group-hover:opacity-100 transition-opacity duration-500 blur-3xl pointer-events-none"
+                  style={{ background: `hsl(${BLUE} / 0.18)` }}
+                />
+                {/* Step number */}
+                <span
+                  className="absolute top-5 right-5 text-xs font-mono font-bold tracking-widest text-slate-300 group-hover:text-[hsl(222_89%_55%)] transition-colors"
                 >
-                  <Icon
-                    className="w-6 h-6"
-                    style={{ color: `hsl(${BLUE})` }}
-                  />
+                  0{idx + 1}
+                </span>
+
+                <div
+                  className="relative w-12 h-12 rounded-xl flex items-center justify-center mb-5 transition-all duration-300 group-hover:scale-110 group-hover:rotate-3"
+                  style={{
+                    background: `linear-gradient(135deg, hsl(${BLUE} / 0.14), hsl(${BLUE} / 0.04))`,
+                    border: `1px solid hsl(${BLUE} / 0.2)`,
+                  }}
+                >
+                  <Icon className="w-6 h-6" style={{ color: `hsl(${BLUE})` }} />
                 </div>
-                <h3 className="text-slate-900 font-bold text-xl mb-1.5">
+                <h3 className="text-slate-900 font-bold text-lg mb-1.5 tracking-[-0.01em]">
                   {s.title}
                 </h3>
-                <p className="text-slate-700 font-medium text-sm mb-5">
+                <p className="text-slate-600 font-medium text-[13px] mb-5 leading-snug">
                   {s.subtitle}
                 </p>
+                <div
+                  className="h-px w-full mb-4"
+                  style={{ background: "linear-gradient(90deg, hsl(220 20% 90%), transparent)" }}
+                />
                 <ul className="space-y-2.5">
                   {s.items.map((it) => (
                     <li
                       key={it}
-                      className="flex items-start gap-2.5 text-slate-600 text-sm"
+                      className="flex items-start gap-2.5 text-slate-700 text-sm"
                     >
                       <span
                         className="mt-[7px] w-1.5 h-1.5 rounded-full flex-shrink-0"
-                        style={{ background: `hsl(${BLUE})` }}
+                        style={{ background: `hsl(${BLUE})`, boxShadow: `0 0 8px hsl(${BLUE} / 0.6)` }}
                       />
-                      <span>{it}</span>
+                      <span className="leading-snug">{it}</span>
                     </li>
                   ))}
                 </ul>
@@ -188,6 +211,7 @@ const HeroSection = () => {
             );
           })}
         </motion.div>
+
       </div>
     </section>
   );

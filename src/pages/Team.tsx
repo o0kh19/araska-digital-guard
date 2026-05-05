@@ -41,7 +41,7 @@ const team: Member[] = [
   },
   {
     name: "Sam Wheeler",
-    role: "GRC & Consultancy Lead",
+    role: "Chief Information Security Officer (CISO)",
     initials: "SK",
     accentIcon: ClipboardCheck,
     bio: "Guides clients through risk assessments, ISO 27001 implementations, and regulatory readiness. Trusted advisor to boards across healthcare and financial services.",

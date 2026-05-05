@@ -40,7 +40,7 @@ const team: Member[] = [
     credentials: ["OSCP", "OSEP", "CRTO", "Azure Red Team"],
   },
   {
-    name: "Shanya Karim",
+    name: "Sam Wheeler",
     role: "GRC & Consultancy Lead",
     initials: "SK",
     accentIcon: ClipboardCheck,

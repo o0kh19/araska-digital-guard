@@ -46,8 +46,8 @@ const ProblemSection = () => {
         >
           <span className="eyebrow text-xl">Why we do it</span>
           <span className="eyebrow-rule mb-6" />
-          <h2 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-foreground tracking-[-0.02em] leading-[1.05] mb-6">
-            Cybersecurity that <span className="text-primary">speaks your language</span> — and protects what matters.
+          <h2 className="text-4xl sm:text-5xl font-extrabold text-foreground tracking-[-0.02em] leading-[1.05] mb-6 lg:text-4xl">
+            Cybersecurity that <span className="text-primary">speaks your language</span> and protects what matters.
           </h2>
           <p className="text-muted-foreground text-lg sm:text-xl leading-[1.7]">
             Cybersecurity is too often complex, costly, and hard to understand — leaving many businesses without the

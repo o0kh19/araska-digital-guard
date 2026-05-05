@@ -93,7 +93,7 @@ const Contact = () => {
               className="md:col-span-2 space-y-6"
             >
               {[
-                { icon: Mail, title: "Email", content: <a href="mailto:info@araskacybercore.com" className="text-sm text-muted-foreground hover:text-primary transition-colors">info@araskacybercore.com</a> },
+                { icon: Mail, title: "Email", content: <a href="mailto:info@araskacyber.com" className="text-sm text-muted-foreground hover:text-primary transition-colors">info@araskacyber.com</a> },
                 { icon: MapPin, title: "Headquarters", content: <p className="text-sm text-muted-foreground">United Kingdom</p> },
                 { icon: Clock, title: "Response Time", content: <p className="text-sm text-muted-foreground">We aim to respond to all enquiries within one business day.</p> },
               ].map((item) => (

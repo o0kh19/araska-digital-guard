@@ -20,7 +20,7 @@ const team: Member[] = [
     role: "Founder & Chief Executive Officer",
     initials: "AT",
     accentIcon: Shield,
-    bio: "Cybersecurity strategist with a decade leading security programs across energy, finance, and government. Founded Araska Cyber Core to bring enterprise-grade defense to the Kurdistan Region.",
+    bio: "",
     credentials: ["CISSP", "CISM", "ISO 27001 LA", "Microsoft Security Expert"],
   },
   {

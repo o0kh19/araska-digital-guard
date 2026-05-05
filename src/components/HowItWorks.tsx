@@ -39,7 +39,7 @@ const HowItWorks = () => {
         <div className="mb-14">
           <span className="eyebrow text-xl">How We Work With You</span>
           <span className="eyebrow-rule" />
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground tracking-[-0.015em]">&nbsp;</h2>
+          
         </div>
 
         <div className="relative">

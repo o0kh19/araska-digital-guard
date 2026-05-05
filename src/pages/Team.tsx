@@ -255,15 +255,7 @@ const Team = () => {
                         >
                           <Linkedin size={15} />
                         </a>
-                      ) : (
-                        <button
-                          type="button"
-                          aria-label={`${m.name} on LinkedIn`}
-                          className="w-9 h-9 rounded-full border border-border hover:border-primary hover:text-primary text-muted-foreground flex items-center justify-center transition-colors"
-                        >
-                          <Linkedin size={15} />
-                        </button>
-                      )}
+                      ) : null}
                     </div>
                   </div>
                 </motion.article>

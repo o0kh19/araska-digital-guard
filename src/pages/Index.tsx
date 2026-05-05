@@ -5,7 +5,6 @@ import ProblemSection from "@/components/ProblemSection";
 import ServicesOverview from "@/components/ServicesOverview";
 import StatsSection from "@/components/StatsSection";
 import WhyUsSection from "@/components/WhyUsSection";
-import HowItWorks from "@/components/HowItWorks";
 import CTABanner from "@/components/CTABanner";
 import Footer from "@/components/Footer";
 
@@ -19,7 +18,6 @@ const Index = () => (
       <ServicesOverview />
       <StatsSection />
       <WhyUsSection />
-      <HowItWorks />
       <CTABanner />
     </main>
     <Footer />

@@ -12,6 +12,7 @@ type Member = {
   initials: string;
   accentIcon: typeof Shield;
   credentials: string[];
+  linkedin?: string;
 };
 
 const team: Member[] = [
@@ -38,6 +39,7 @@ const team: Member[] = [
     accentIcon: Sword,
     bio: "Leads red team, penetration testing, and adversary emulation engagements. Specializes in Active Directory exploitation and cloud attack paths across Azure and M365.",
     credentials: ["OSCP", "OSEP", "CRTO", "Azure Red Team"],
+    linkedin: "https://www.linkedin.com/in/belal-ea/",
   },
   {
     name: "Sam Wheeler",
@@ -243,13 +245,25 @@ const Team = () => {
                       >
                         <Mail size={15} />
                       </button>
-                      <button
-                        type="button"
-                        aria-label={`${m.name} on LinkedIn`}
-                        className="w-9 h-9 rounded-full border border-border hover:border-primary hover:text-primary text-muted-foreground flex items-center justify-center transition-colors"
-                      >
-                        <Linkedin size={15} />
-                      </button>
+                      {m.linkedin ? (
+                        <a
+                          href={m.linkedin}
+                          target="_blank"
+                          rel="noopener noreferrer"
+                          aria-label={`${m.name} on LinkedIn`}
+                          className="w-9 h-9 rounded-full border border-border hover:border-primary hover:text-primary text-muted-foreground flex items-center justify-center transition-colors"
+                        >
+                          <Linkedin size={15} />
+                        </a>
+                      ) : (
+                        <button
+                          type="button"
+                          aria-label={`${m.name} on LinkedIn`}
+                          className="w-9 h-9 rounded-full border border-border hover:border-primary hover:text-primary text-muted-foreground flex items-center justify-center transition-colors"
+                        >
+                          <Linkedin size={15} />
+                        </button>
+                      )}
                     </div>
                   </div>
                 </motion.article>

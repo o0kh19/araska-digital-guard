@@ -233,25 +233,6 @@ const Team = () => {
                     </p>
                     <p className="text-sm text-muted-foreground leading-relaxed mt-4">{m.bio}</p>
 
-                    {/* Credentials */}
-                    <div className="mt-5 pt-5 border-t border-border/60">
-                      <div className="flex items-center gap-2 mb-3">
-                        <Award size={14} className="text-primary" />
-                        <span className="text-[11px] font-bold uppercase tracking-[0.18em] text-foreground/70">
-                          Credentials
-                        </span>
-                      </div>
-                      <div className="flex flex-wrap gap-1.5">
-                        {m.credentials.map((c) => (
-                          <span
-                            key={c}
-                            className="text-[11px] font-semibold px-2.5 py-1 rounded-full bg-primary/10 text-primary border border-primary/20"
-                          >
-                            {c}
-                          </span>
-                        ))}
-                      </div>
-                    </div>
 
                     {/* Socials */}
                     <div className="flex items-center gap-2 mt-5">

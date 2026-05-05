@@ -246,14 +246,15 @@ const Team = () => {
                         <Mail size={15} />
                       </button>
                       {m.linkedin ? (
-                        <button
-                          type="button"
-                          onClick={() => window.open(m.linkedin, "_blank", "noopener,noreferrer")}
+                        <a
+                          href={m.linkedin}
+                          target={typeof window !== "undefined" && window.self !== window.top ? "_top" : "_blank"}
+                          rel="noopener noreferrer"
                           aria-label={`${m.name} on LinkedIn`}
                           className="w-9 h-9 rounded-full border border-border hover:border-primary hover:text-primary text-muted-foreground flex items-center justify-center transition-colors"
                         >
                           <Linkedin size={15} />
-                        </button>
+                        </a>
                       ) : (
                         <button
                           type="button"

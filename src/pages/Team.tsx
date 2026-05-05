@@ -134,8 +134,11 @@ const Team = () => {
 
         {/* TEAM GRID */}
         <section className="max-w-7xl mx-auto px-6 mb-24">
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-            {team.map((m, idx) => {
+          {(() => {
+            const founders = team.filter((m) => m.role.toLowerCase().includes("co-founder"));
+            const others = team.filter((m) => !m.role.toLowerCase().includes("co-founder"));
+
+            const renderCard = (m: Member, idx: number, featured = false) => {
               const Icon = m.accentIcon;
               const photo = photos[m.name];
               return (
@@ -145,13 +148,23 @@ const Team = () => {
                   whileInView={{ opacity: 1, y: 0 }}
                   viewport={{ once: true, margin: "-50px" }}
                   transition={{ duration: 0.5, delay: idx * 0.08 }}
-                  className="group relative overflow-hidden rounded-2xl bg-card/60 backdrop-blur-sm border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-[0_10px_40px_-10px_hsl(var(--primary)/0.35)]"
+                  className={`group relative overflow-hidden rounded-2xl bg-card/60 backdrop-blur-sm border transition-all duration-300 ${
+                    featured
+                      ? "border-primary/40 hover:border-primary shadow-[0_10px_40px_-10px_hsl(var(--primary)/0.4)] hover:shadow-[0_20px_60px_-10px_hsl(var(--primary)/0.55)]"
+                      : "border-border hover:border-primary/50 hover:shadow-[0_10px_40px_-10px_hsl(var(--primary)/0.35)]"
+                  }`}
                 >
-                  {/* Accent gradient bar */}
+                  {featured && (
+                    <div className="absolute top-4 left-4 z-10 inline-flex items-center gap-1.5 px-3 py-1 rounded-full bg-primary/15 border border-primary/40 backdrop-blur-md">
+                      <Award size={12} className="text-primary" />
+                      <span className="text-[10px] font-bold uppercase tracking-[0.18em] text-primary">
+                        Founder
+                      </span>
+                    </div>
+                  )}
                   <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary/0 via-primary to-primary/0 opacity-60 group-hover:opacity-100 transition-opacity" />
 
-                  {/* Photo area */}
-                  <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-primary/15 via-card to-primary/5">
+                  <div className={`relative overflow-hidden bg-gradient-to-br from-primary/15 via-card to-primary/5 ${featured ? "aspect-[16/10]" : "aspect-[4/3]"}`}>
                     {photo ? (
                       <img
                         src={photo}
@@ -162,7 +175,7 @@ const Team = () => {
                     ) : (
                       <>
                         <div className="absolute inset-0 flex items-center justify-center">
-                          <span className="text-7xl font-extrabold text-primary/30 tracking-tight select-none">
+                          <span className={`font-extrabold text-primary/30 tracking-tight select-none ${featured ? "text-8xl" : "text-7xl"}`}>
                             {m.initials}
                           </span>
                         </div>
@@ -177,13 +190,11 @@ const Team = () => {
                       </>
                     )}
 
-                    {/* Role icon chip */}
                     <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-background/80 backdrop-blur-md border border-primary/30 flex items-center justify-center shadow-[0_0_16px_hsl(var(--primary)/0.3)]">
                       <Icon size={18} className="text-primary" />
                     </div>
 
-                    {/* Photo controls (visible on hover) */}
-                    <div className="absolute top-4 left-4 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                    <div className={`absolute ${featured ? "bottom-4" : "top-4"} left-4 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity`}>
                       <input
                         ref={(el) => (fileInputs.current[m.name] = el)}
                         type="file"
@@ -223,20 +234,16 @@ const Team = () => {
                       )}
                     </div>
 
-                    {/* Bottom fade */}
                     <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-card to-transparent pointer-events-none" />
                   </div>
 
-                  {/* Body */}
                   <div className="relative p-6">
-                    <h3 className="text-xl font-bold text-foreground tracking-tight">{m.name}</h3>
+                    <h3 className={`font-bold text-foreground tracking-tight ${featured ? "text-2xl" : "text-xl"}`}>{m.name}</h3>
                     <p className="text-sm font-semibold text-primary mt-1 uppercase tracking-[0.08em]">
                       {m.role}
                     </p>
                     <p className="text-sm text-muted-foreground leading-relaxed mt-4">{m.bio}</p>
 
-
-                    {/* Socials */}
                     <div className="flex items-center gap-2 mt-5">
                       <button
                         type="button"
@@ -269,10 +276,42 @@ const Team = () => {
                   </div>
                 </motion.article>
               );
-            })}
-          </div>
+            };
 
-          <p className="text-center text-xs text-muted-foreground mt-6">
+            return (
+              <>
+                {/* Founders row */}
+                <div className="mb-10">
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/40" />
+                    <span className="text-xs font-bold uppercase tracking-[0.3em] text-primary">
+                      Founders
+                    </span>
+                    <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/40" />
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto">
+                    {founders.map((m, i) => renderCard(m, i, true))}
+                  </div>
+                </div>
+
+                {/* Leadership row */}
+                <div>
+                  <div className="flex items-center gap-3 mb-6">
+                    <div className="h-px flex-1 bg-gradient-to-r from-transparent to-primary/40" />
+                    <span className="text-xs font-bold uppercase tracking-[0.3em] text-primary">
+                      Leadership
+                    </span>
+                    <div className="h-px flex-1 bg-gradient-to-l from-transparent to-primary/40" />
+                  </div>
+                  <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                    {others.map((m, i) => renderCard(m, i, false))}
+                  </div>
+                </div>
+              </>
+            );
+          })()}
+
+          <p className="text-center text-xs text-muted-foreground mt-8">
             Hover any card to upload a photo from your computer or paste an image URL. Photos are
             saved in your browser.
           </p>

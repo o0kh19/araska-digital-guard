@@ -37,9 +37,9 @@ const HowItWorks = () => {
     <section className="section-padding section-dark relative overflow-hidden" ref={ref}>
       <div className="max-w-7xl mx-auto relative">
         <div className="mb-14">
-          <span className="eyebrow text-xl">CYBER PROTOCOL</span>
+          <span className="eyebrow text-xl">How We Work With You</span>
           <span className="eyebrow-rule" />
-          <h2 className="text-3xl sm:text-4xl font-bold text-foreground tracking-[-0.015em]">How We Work With You</h2>
+          <h2 className="text-3xl sm:text-4xl font-bold text-foreground tracking-[-0.015em]">&nbsp;</h2>
         </div>
 
         <div className="relative">

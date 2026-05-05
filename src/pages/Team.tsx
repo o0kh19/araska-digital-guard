@@ -24,9 +24,9 @@ const team: Member[] = [
     credentials: ["CISSP", "CISM", "ISO 27001 LA", "Microsoft Security Expert"],
   },
   {
-    name: "Lana Hassan",
-    role: "Director of Security Operations",
-    initials: "LH",
+    name: "Aras Sulaiman",
+    role: "Founder",
+    initials: "AS",
     accentIcon: Cpu,
     bio: "Runs the 24/7 SOC, leading detection engineering, threat hunting, and incident response. Former Microsoft Sentinel architect with deep expertise in Defender XDR.",
     credentials: ["GCIA", "GCIH", "MS-500", "Sentinel Ninja"],

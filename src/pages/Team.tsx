@@ -32,14 +32,6 @@ const team: Member[] = [
     credentials: ["GCIA", "GCIH", "MS-500", "Sentinel Ninja"],
   },
   {
-    name: "Dr Belal Asad",
-    role: "Director of Security Operations",
-    initials: "BA",
-    accentIcon: Cpu,
-    bio: "Runs the 24/7 SOC, leading detection engineering, threat hunting, and incident response. Former Microsoft Sentinel architect with deep expertise in Defender XDR.",
-    credentials: ["GCIA", "GCIH", "MS-500", "Sentinel Ninja"],
-  },
-  {
     name: "Karwan Ali",
     role: "Head of Offensive Security",
     initials: "KA",

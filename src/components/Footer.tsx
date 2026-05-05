@@ -83,11 +83,11 @@ const Footer = () => (
           <h4 className="text-xs font-medium uppercase tracking-[0.18em] text-primary mb-4">Contact</h4>
           <div className="space-y-3">
             <a
-              href="mailto:info@araskacybercore.com"
+              href="mailto:info@araskacyber.com"
               className="flex items-center gap-2 text-sm text-muted-foreground hover:text-primary transition-colors"
             >
               <Mail size={14} />
-              info@araskacybercore.com
+              info@araskacyber.com
             </a>
             <div className="flex items-center gap-2 text-sm text-muted-foreground">
               <MapPin size={14} />

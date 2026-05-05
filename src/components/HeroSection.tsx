@@ -17,7 +17,7 @@ const services = [
     subtitle: "Proactive Monitoring & Response",
     Icon: ShieldCheck,
     items: [
-      "24/7 SOC & M365 Security Hardening",
+      "24/7 Security Operation Center (SOC)",
       "Vulnerability Management",
       "Incident Detection & Response",
     ],

@@ -26,7 +26,7 @@ const team: Member[] = [
   },
   {
     name: "Aras Sulaiman",
-    role: "CO- Founder",
+    role: "CO- Founder & Chief Technology Officer (CTO)",
     initials: "AS",
     accentIcon: Cpu,
     bio: "",

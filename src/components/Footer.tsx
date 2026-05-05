@@ -2,18 +2,24 @@ import { Link } from "react-router-dom";
 import { Mail, MapPin } from "lucide-react";
 
 const serviceLinks = [
-  { label: "SOC as a Service", href: "/services#soc-as-a-service" },
-  { label: "Vulnerability Management\n\n", href: "/services#threat-intelligence" },
-  { label: "vCISO Advisory", href: "/services#cyber-risk-assessment" },
-  { label: "M365 Security Hardening", href: "/services#incident-response-retainer" },
-  { label: "Security Policy Development", href: "/services#security-awareness-training" },
+  { label: "24/7 Proactive Monitoring (SOC)", href: "/services#soc-as-a-service" },
+  { label: "Threat & Risk Analysis", href: "/services#threat-risk-analysis" },
+  { label: "Emergency Response & Training", href: "/services#emergency-response-training" },
+  { label: "Vulnerability Management", href: "/services#vulnerability-management" },
+  { label: "vCISO Advisory", href: "/services#vciso-advisory" },
+  { label: "Microsoft 365 Security Hardening", href: "/services#m365-hardening" },
+  { label: "Security Policy Development", href: "/services#security-policy-development" },
 ];
 
 const companyLinks = [
+  { label: "Home", href: "/" },
   { label: "About", href: "/about" },
+  { label: "Services", href: "/services" },
+  { label: "Team", href: "/team" },
   { label: "Resources", href: "/resources" },
-  { label: "Contact", href: "/contact" },
+  { label: "Cyber Health Check", href: "/cyber-health-check" },
   { label: "Get a Quote", href: "/get-a-quote" },
+  { label: "Contact", href: "/contact" },
 ];
 
 const Footer = () => (

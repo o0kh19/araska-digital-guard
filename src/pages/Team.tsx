@@ -18,7 +18,7 @@ type Member = {
 const team: Member[] = [
   {
     name: "Khalid Alkhtemi",
-    role: "CO-Founder & Chief Technology Officer (CTO)",
+    role: "CO-Founder & Chief Executive Officer (CEO)",
     initials: "AT",
     accentIcon: Shield,
     bio: "",

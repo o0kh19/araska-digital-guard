@@ -166,12 +166,24 @@ const Team = () => {
 
                   <div className={`relative overflow-hidden bg-gradient-to-br from-primary/15 via-card to-primary/5 ${featured ? "aspect-[16/10]" : "aspect-[4/3]"}`}>
                     {photo ? (
-                      <img
-                        src={photo}
-                        alt={`${m.name} — ${m.role}`}
-                        className="absolute inset-0 w-full h-full object-contain p-2"
-                        loading="lazy"
-                      />
+                      <>
+                        {/* Blurred fill background */}
+                        <img
+                          src={photo}
+                          alt=""
+                          aria-hidden="true"
+                          className="absolute inset-0 w-full h-full object-cover scale-110 blur-2xl opacity-50"
+                          loading="lazy"
+                        />
+                        <div className="absolute inset-0 bg-gradient-to-b from-background/30 via-transparent to-card/70" />
+                        {/* Foreground contained portrait */}
+                        <img
+                          src={photo}
+                          alt={`${m.name} — ${m.role}`}
+                          className="relative z-[1] w-full h-full object-contain drop-shadow-[0_10px_30px_hsl(var(--primary)/0.25)]"
+                          loading="lazy"
+                        />
+                      </>
                     ) : (
                       <>
                         <div className="absolute inset-0 flex items-center justify-center">

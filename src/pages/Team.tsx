@@ -28,7 +28,7 @@ const team: Member[] = [
     role: "Founder",
     initials: "AS",
     accentIcon: Cpu,
-    bio: "Runs the 24/7 SOC, leading detection engineering, threat hunting, and incident response. Former Microsoft Sentinel architect with deep expertise in Defender XDR.",
+    bio: "",
     credentials: ["GCIA", "GCIH", "MS-500", "Sentinel Ninja"],
   },
   {

@@ -18,7 +18,8 @@ const services = [
     Icon: ShieldCheck,
     items: [
       "24/7 SOC & M365 Security Hardening",
-      "Vulnerability Management\n\n",
+      "Vulnerability Management",
+      "Incident Detection & Response",
     ],
   },
   {
@@ -44,6 +45,7 @@ const services = [
     ],
   },
 ];
+
 
 const HeroSection = () => {
   const container = {

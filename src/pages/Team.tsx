@@ -206,7 +206,7 @@ const Team = () => {
                       <Icon size={18} className="text-primary" />
                     </div>
 
-                    <div className={`absolute ${featured ? "bottom-4" : "top-4"} left-4 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity`}>
+                    <div className={`absolute ${featured ? "bottom-4" : "top-4"} left-4 z-10 flex items-center gap-2 transition-opacity`}>
                       <input
                         ref={(el) => (fileInputs.current[m.name] = el)}
                         type="file"

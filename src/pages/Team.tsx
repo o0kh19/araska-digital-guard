@@ -245,17 +245,26 @@ const Team = () => {
                       >
                         <Mail size={15} />
                       </button>
-                      {m.linkedin ? (
-                        <a
-                          href={m.linkedin}
-                          target={typeof window !== "undefined" && window.self !== window.top ? "_top" : "_blank"}
-                          rel="noopener noreferrer"
-                          aria-label={`${m.name} on LinkedIn`}
-                          className="w-9 h-9 rounded-full border border-border hover:border-primary hover:text-primary text-muted-foreground flex items-center justify-center transition-colors"
-                        >
-                          <Linkedin size={15} />
-                        </a>
-                      ) : null}
+                      {(() => {
+                        const href =
+                          m.linkedin ??
+                          `https://www.linkedin.com/search/results/people/?keywords=${encodeURIComponent(m.name)}`;
+                        return (
+                          <a
+                            href={href}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            onClick={(e) => {
+                              e.preventDefault();
+                              window.open(href, "_blank", "noopener,noreferrer");
+                            }}
+                            aria-label={`${m.name} on LinkedIn`}
+                            className="w-9 h-9 rounded-full border border-border hover:border-primary hover:text-primary text-muted-foreground flex items-center justify-center transition-colors cursor-pointer"
+                          >
+                            <Linkedin size={15} />
+                          </a>
+                        );
+                      })()}
                     </div>
                   </div>
                 </motion.article>

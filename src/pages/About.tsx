@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import HowItWorks from "@/components/HowItWorks";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
 import { Shield, Sword, ClipboardCheck, GraduationCap, MapPin, Languages, Layers, Handshake, Target } from "lucide-react";
@@ -280,6 +281,11 @@ const About = () => {
             </p>
           </motion.div>
         </div>
+      </section>
+
+      {/* HOW WE WORK */}
+      <section className="mb-24">
+        <HowItWorks />
       </section>
 
       {/* CTA */}

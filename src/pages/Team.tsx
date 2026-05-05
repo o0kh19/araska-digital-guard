@@ -169,7 +169,7 @@ const Team = () => {
                       <img
                         src={photo}
                         alt={`${m.name} — ${m.role}`}
-                        className="absolute inset-0 w-full h-full object-cover"
+                        className="absolute inset-0 w-full h-full object-contain p-2"
                         loading="lazy"
                       />
                     ) : (

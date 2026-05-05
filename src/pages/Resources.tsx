@@ -1,5 +1,6 @@
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import GlobalThreatIntel from "@/components/GlobalThreatIntel";
 import { motion, AnimatePresence } from "framer-motion";
 import { useState, useEffect } from "react";
 import {
@@ -436,6 +437,8 @@ const Resources = () => {
               No posts in this category yet. Check back soon.
             </p>
           )}
+
+          <GlobalThreatIntel />
         </div>
       </main>
       <Footer />

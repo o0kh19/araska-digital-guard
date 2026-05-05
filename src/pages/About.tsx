@@ -283,6 +283,11 @@ const About = () => {
         </div>
       </section>
 
+      {/* HOW WE WORK */}
+      <section className="mb-24">
+        <HowItWorks />
+      </section>
+
       {/* CTA */}
       <section className="max-w-6xl mx-auto px-6">
         <motion.div

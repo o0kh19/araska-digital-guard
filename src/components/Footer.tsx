@@ -33,8 +33,8 @@ const Footer = () => (
             <div className="w-[2.5px] self-stretch rounded-sm bg-primary" />
             <div className="relative inline-flex flex-col items-start leading-none">
               <span
-                className="font-bold italic tracking-tight text-foreground leading-none"
-                style={{ fontFamily: "'Playfair Display', serif" }}
+                className="font-bold tracking-tight text-foreground leading-none"
+                style={{ fontFamily: "'Space Grotesk', sans-serif", letterSpacing: "-0.04em" }}
               >
                 <span className="text-2xl md:text-2xl">A</span><span className="text-base md:text-lg">ras</span><span className="text-2xl md:text-2xl">K</span><span className="text-base md:text-lg">a</span>
               </span>

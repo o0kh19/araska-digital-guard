@@ -2,7 +2,8 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import { Link } from "react-router-dom";
 import { motion } from "framer-motion";
-import { Linkedin, Mail, Award, Shield, Sword, ClipboardCheck, GraduationCap, Cpu } from "lucide-react";
+import { Linkedin, Mail, Award, Shield, Sword, ClipboardCheck, GraduationCap, Cpu, Upload, Link2, X } from "lucide-react";
+import { useEffect, useRef, useState } from "react";
 
 type Member = {
   name: string;
@@ -56,7 +57,53 @@ const team: Member[] = [
   },
 ];
 
+const STORAGE_KEY = "araska-team-photos-v1";
+
 const Team = () => {
+  const [photos, setPhotos] = useState<Record<string, string>>({});
+  const fileInputs = useRef<Record<string, HTMLInputElement | null>>({});
+
+  useEffect(() => {
+    try {
+      const raw = localStorage.getItem(STORAGE_KEY);
+      if (raw) setPhotos(JSON.parse(raw));
+    } catch {
+      /* noop */
+    }
+  }, []);
+
+  const persist = (next: Record<string, string>) => {
+    setPhotos(next);
+    try {
+      localStorage.setItem(STORAGE_KEY, JSON.stringify(next));
+    } catch {
+      /* noop */
+    }
+  };
+
+  const handleFile = (name: string, file: File) => {
+    const reader = new FileReader();
+    reader.onload = () => {
+      if (typeof reader.result === "string") {
+        persist({ ...photos, [name]: reader.result });
+      }
+    };
+    reader.readAsDataURL(file);
+  };
+
+  const handleUrl = (name: string) => {
+    const url = window.prompt(`Paste an image URL for ${name}:`, photos[name] ?? "");
+    if (url === null) return;
+    const trimmed = url.trim();
+    if (!trimmed) return;
+    persist({ ...photos, [name]: trimmed });
+  };
+
+  const handleRemove = (name: string) => {
+    const { [name]: _, ...rest } = photos;
+    persist(rest);
+  };
+
   return (
     <div className="min-h-screen bg-transparent">
       <Header />
@@ -88,6 +135,7 @@ const Team = () => {
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
             {team.map((m, idx) => {
               const Icon = m.accentIcon;
+              const photo = photos[m.name];
               return (
                 <motion.article
                   key={m.name}
@@ -100,28 +148,81 @@ const Team = () => {
                   {/* Accent gradient bar */}
                   <div className="absolute inset-x-0 top-0 h-1 bg-gradient-to-r from-primary/0 via-primary to-primary/0 opacity-60 group-hover:opacity-100 transition-opacity" />
 
-                  {/* Photo placeholder */}
+                  {/* Photo area */}
                   <div className="relative aspect-[4/3] overflow-hidden bg-gradient-to-br from-primary/15 via-card to-primary/5">
-                    <div className="absolute inset-0 flex items-center justify-center">
-                      <span className="text-7xl font-extrabold text-primary/30 tracking-tight select-none">
-                        {m.initials}
-                      </span>
-                    </div>
-                    {/* Decorative grid */}
-                    <div
-                      className="absolute inset-0 opacity-[0.07]"
-                      style={{
-                        backgroundImage:
-                          "linear-gradient(hsl(var(--primary)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--primary)) 1px, transparent 1px)",
-                        backgroundSize: "24px 24px",
-                      }}
-                    />
+                    {photo ? (
+                      <img
+                        src={photo}
+                        alt={`${m.name} — ${m.role}`}
+                        className="absolute inset-0 w-full h-full object-cover"
+                        loading="lazy"
+                      />
+                    ) : (
+                      <>
+                        <div className="absolute inset-0 flex items-center justify-center">
+                          <span className="text-7xl font-extrabold text-primary/30 tracking-tight select-none">
+                            {m.initials}
+                          </span>
+                        </div>
+                        <div
+                          className="absolute inset-0 opacity-[0.07]"
+                          style={{
+                            backgroundImage:
+                              "linear-gradient(hsl(var(--primary)) 1px, transparent 1px), linear-gradient(90deg, hsl(var(--primary)) 1px, transparent 1px)",
+                            backgroundSize: "24px 24px",
+                          }}
+                        />
+                      </>
+                    )}
+
                     {/* Role icon chip */}
                     <div className="absolute top-4 right-4 w-10 h-10 rounded-full bg-background/80 backdrop-blur-md border border-primary/30 flex items-center justify-center shadow-[0_0_16px_hsl(var(--primary)/0.3)]">
                       <Icon size={18} className="text-primary" />
                     </div>
+
+                    {/* Photo controls (visible on hover) */}
+                    <div className="absolute top-4 left-4 flex items-center gap-2 opacity-0 group-hover:opacity-100 transition-opacity">
+                      <input
+                        ref={(el) => (fileInputs.current[m.name] = el)}
+                        type="file"
+                        accept="image/*"
+                        className="hidden"
+                        onChange={(e) => {
+                          const file = e.target.files?.[0];
+                          if (file) handleFile(m.name, file);
+                          e.target.value = "";
+                        }}
+                      />
+                      <button
+                        type="button"
+                        onClick={() => fileInputs.current[m.name]?.click()}
+                        title="Upload photo from your computer"
+                        className="h-9 px-3 rounded-full bg-background/85 backdrop-blur-md border border-primary/30 text-foreground hover:text-primary hover:border-primary inline-flex items-center gap-1.5 text-[11px] font-bold uppercase tracking-[0.12em] transition-colors"
+                      >
+                        <Upload size={13} /> Upload
+                      </button>
+                      <button
+                        type="button"
+                        onClick={() => handleUrl(m.name)}
+                        title="Set photo from a URL"
+                        className="h-9 w-9 rounded-full bg-background/85 backdrop-blur-md border border-primary/30 text-foreground hover:text-primary hover:border-primary inline-flex items-center justify-center transition-colors"
+                      >
+                        <Link2 size={14} />
+                      </button>
+                      {photo && (
+                        <button
+                          type="button"
+                          onClick={() => handleRemove(m.name)}
+                          title="Remove photo"
+                          className="h-9 w-9 rounded-full bg-background/85 backdrop-blur-md border border-border text-muted-foreground hover:text-destructive hover:border-destructive inline-flex items-center justify-center transition-colors"
+                        >
+                          <X size={14} />
+                        </button>
+                      )}
+                    </div>
+
                     {/* Bottom fade */}
-                    <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-card to-transparent" />
+                    <div className="absolute inset-x-0 bottom-0 h-20 bg-gradient-to-t from-card to-transparent pointer-events-none" />
                   </div>
 
                   {/* Body */}
@@ -174,6 +275,11 @@ const Team = () => {
               );
             })}
           </div>
+
+          <p className="text-center text-xs text-muted-foreground mt-6">
+            Hover any card to upload a photo from your computer or paste an image URL. Photos are
+            saved in your browser.
+          </p>
         </section>
 
         {/* CTA */}

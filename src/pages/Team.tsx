@@ -54,7 +54,7 @@ const team: Member[] = [
     role: "Cyber Training & Awareness Manager",
     initials: "MA",
     accentIcon: GraduationCap,
-    bio: "Designs and delivers technical workshops and executive simulations in Kurdish, Arabic, and English. Builds human firewalls inside organizations of every size.",
+    bio: "​",
     credentials: ["CEH", "CompTIA Security+", "Certified Trainer", "Phishing Simulation Expert"],
   },
 ];

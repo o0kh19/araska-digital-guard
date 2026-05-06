@@ -259,7 +259,7 @@ const StatsSection = () => {
           {stats.map((s, i) => (
             <TiltCard key={s.label} index={i} inView={inView}>
               <div
-                className="bg-white rounded-lg p-9 text-center transition-shadow duration-300 group"
+                className="bg-white rounded-lg p-9 text-center transition-shadow duration-300 group h-full flex flex-col items-center"
                 style={{
                   border: "1px solid #E2E8F0",
                   boxShadow: "0 1px 3px rgba(0,0,0,0.04)",

@@ -41,7 +41,7 @@ const articles: Article[] = [
 
 **What is phishing?**
 
-Phishing is when an attacker sends you a message — usually an email, but sometimes a text message or a WhatsApp message — pretending to be someone you trust. They might pretend to be your bank, your email provider, a colleague, a government department, or even your CEO. The message looks real. The logo looks right. The language sounds professional. But the goal is always the same: get you to click a link, open a file, or hand over information.
+Fourth, use Multi-Factor Authentication (MFA) on every account that allows it. If an attacker does capture your password through a phishing attack, MFA means they still cannot get in without the second factor usually a code sent to your phone.
 
 When you click that link, one of three things typically happens. You are taken to a fake website that looks identical to a real one — your bank, your Microsoft login, your email — and when you enter your password, the attacker captures it. Or a file downloads onto your device and installs malicious software. Or you are asked to fill in a form and hand over sensitive information directly.
 

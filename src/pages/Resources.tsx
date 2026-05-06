@@ -36,14 +36,14 @@ const articles: Article[] = [
   {
     category: "Awareness",
     title: "Phishing & Social Engineering",
-    summary: "How attackers trick your people — and how to stop them.",
+    summary: "How attackers trick your people and how to stop them.",
     body: `Phishing will not disappear. But a team that knows what to look for, takes a moment before clicking, and knows how to report suspicious activity is dramatically harder to compromise than one that does not. That awareness is a security control in itself and it costs nothing to build.
 
 **What is phishing?**
 
 Fourth, use Multi-Factor Authentication (MFA) on every account that allows it. If an attacker does capture your password through a phishing attack, MFA means they still cannot get in without the second factor usually a code sent to your phone.
 
-When you click that link, one of three things typically happens. You are taken to a fake website that looks identical to a real one — your bank, your Microsoft login, your email — and when you enter your password, the attacker captures it. Or a file downloads onto your device and installs malicious software. Or you are asked to fill in a form and hand over sensitive information directly.
+Fourth, use Multi-Factor Authentication (MFA) on every account that allows it. If an attacker does capture your password through a phishing attack, MFA means they still cannot get in without the second factor usually a code sent to your phone.
 
 **What is social engineering?**
 

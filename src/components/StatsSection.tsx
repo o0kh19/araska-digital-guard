@@ -157,9 +157,9 @@ const TiltCard = ({ children, index, inView }: { children: React.ReactNode; inde
         transformStyle: "preserve-3d",
         transformPerspective: 1000,
       }}
-      className="relative"
+      className="relative h-full"
     >
-      <div style={{ transform: "translateZ(0)" }}>{children}</div>
+      <div style={{ transform: "translateZ(0)" }} className="h-full">{children}</div>
     </motion.div>
   );
 };

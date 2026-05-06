@@ -1,35 +1,47 @@
 import { motion, useInView, useMotionValue, useTransform, animate, useSpring } from "framer-motion";
 import { useEffect, useRef, useState, MouseEvent } from "react";
-import { ShieldAlert, Users, Activity } from "lucide-react";
+import { ShieldCheck, Clock, Users, Lock } from "lucide-react";
 
 const stats = [
   {
-    icon: ShieldAlert,
-    value: 1,
-    suffix: " Hour",
-    prefix: "< ",
-    label: "Mean Time to Respond",
-    desc: "SLA-backed commitment from the moment an alert is raised",
+    icon: ShieldCheck,
+    value: 100,
+    suffix: "%",
+    prefix: "",
+    label: "Compliance",
+    desc: "Aligned with global NIST & OWASP standards",
+    format: (n: number) => Math.round(n).toString(),
+    decimals: 0,
+  },
+  {
+    icon: Clock,
+    value: 15,
+    prefix: "<",
+    suffix: " Mins",
+    label: "15 Mins",
+    desc: "Target critical incident response time",
     format: (n: number) => Math.round(n).toString(),
     decimals: 0,
   },
   {
     icon: Users,
-    value: 10,
-    suffix: "​",
-    label: "Happy Clients",
-    desc: "Organisations trusting us with their cyber resilience.",
-    format: (n: number) => Math.round(n).toLocaleString("en-GB"),
+    value: 24,
+    prefix: "",
+    suffix: "/7",
+    label: "24/7",
+    desc: "Around-the-clock proactive monitoring",
+    format: (n: number) => Math.round(n).toString(),
     decimals: 0,
   },
   {
-    icon: Activity,
-    value: 99.99,
+    icon: Lock,
+    value: 0,
+    prefix: "",
     suffix: "%",
-    label: "Uptime Guarantee",
-    desc: "SOC availability backed by our service-level agreements.",
-    format: (n: number) => n.toFixed(2),
-    decimals: 2,
+    label: "Tolerance",
+    desc: "Tolerance for client data loss in our incident response plans",
+    format: (n: number) => Math.round(n).toString(),
+    decimals: 0,
   },
 ];
 

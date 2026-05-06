@@ -7,7 +7,7 @@ const pillars = [
   {
     icon: Users,
     title: "Business-First",
-    desc: "We learn how you operate, then tailor protection to your reality — never generic advice.",
+    desc: "We learn how you operate, then tailor protection to your reality never generic advice.",
   },
   {
     icon: Languages,
@@ -50,7 +50,7 @@ const ProblemSection = () => {
             Cybersecurity that <span className="text-primary">speaks your language</span> and protects what matters.
           </h2>
           <p className="text-muted-foreground text-lg sm:text-xl leading-[1.7]">
-            Cybersecurity is too often complex, costly, and hard to understand — leaving many businesses without the
+            Cybersecurity is too often complex, costly, and hard to understand leaving many businesses without the
             protection they need. At ArasKa Cyber Core, we're changing that.
           </p>
         </motion.div>
@@ -189,7 +189,7 @@ const ProblemSection = () => {
               className="sm:col-span-2 relative rounded-2xl border border-primary/30 bg-gradient-to-br from-primary/10 via-card/40 to-transparent p-7"
             >
               <p className="text-foreground text-base sm:text-lg leading-[1.7] italic border-l-2 border-primary/70 pl-5">
-                "Because it's a matter of <span className="text-primary not-italic font-semibold">when</span>, not if —
+                "Because it's a matter of <span className="text-primary not-italic font-semibold">when</span>, not if
                 you deserve a partner who responds swiftly and acts when it matters most."
               </p>
             </motion.div>

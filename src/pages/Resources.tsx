@@ -101,7 +101,7 @@ Strong passwords combined with MFA will not make you immune to attack. But they 
     category: "SOC & Monitoring",
     title: "What is a SOC and Why You Need One",
     summary: "The security team that watches your business while you sleep.",
-    body: `Most businesses have locks on their doors and cameras on their buildings. They would not leave their premises unmonitored overnight. But their digital environment — their email, their servers, their cloud systems, their employee devices — runs 24 hours a day with nobody watching it at all. A Security Operations Centre, or SOC, is the answer to that problem.
+    body: `You receive regular reports showing your security posture, what was detected, and what was done about it. You do not need to understand the technical detail we translate it into plain language so you can make informed decisions about your business's security.
 
 **What is a SOC?**
 

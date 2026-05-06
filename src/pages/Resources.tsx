@@ -63,7 +63,7 @@ Third, if something feels wrong, report it. Most businesses have no formal proce
 
 Fourth, use Multi-Factor Authentication (MFA) on every account that allows it. If an attacker does capture your password through a phishing attack, MFA means they still cannot get in without the second factor — usually a code sent to your phone.
 
-Phishing will not disappear. But a team that knows what to look for, takes a moment before clicking, and knows how to report suspicious activity is dramatically harder to compromise than one that does not. That awareness is a security control in itself — and it costs nothing to build.`,
+Phishing will not disappear. But a team that knows what to look for, takes a moment before clicking, and knows how to report suspicious activity is dramatically harder to compromise than one that does not. That awareness is a security control in itself and it costs nothing to build.`,
   },
   {
     category: "Identity Protection",

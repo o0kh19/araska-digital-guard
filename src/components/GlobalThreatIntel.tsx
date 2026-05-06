@@ -258,7 +258,7 @@ const GlobalThreatIntel = () => {
             </h3>
             <p className="text-foreground/85 leading-[1.75] text-[15px] sm:text-base">
               The threats making global headlines aren't reserved for Fortune 500
-              companies — the same tactics, tooling, and ransomware kits are being
+              companies the same tactics, tooling, and ransomware kits are being
               repurposed against UK SMBs every day. Phishing kits sold on dark-web
               marketplaces let low-skill attackers spin up convincing Microsoft 365
               login pages in minutes. If your business uses email, cloud storage,

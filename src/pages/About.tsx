@@ -93,7 +93,7 @@ const About = () => {
               Built to close a critical gap.
             </h2>
             <p className="text-muted-foreground text-lg leading-[1.8] mb-5">
-              Founded by experienced cybersecurity professionals, Araska Cyber Core was built to close a critical gap in the Kurdistan Region market — where many organisations face growing cyber threats but lack access to dedicated, affordable, and locally understood security expertise.
+              Founded by experienced cybersecurity professionals, Araska Cyber Core was built to close a critical gap in the Kurdistan Region market where many organisations face growing cyber threats but lack access to dedicated, affordable, and locally understood security expertise.
             </p>
             <p className="text-muted-foreground text-lg leading-[1.8] mb-8">
               With a registered entity in the United Kingdom and operational delivery in Erbil, we combine international credibility with local market understanding to deliver cybersecurity that is practical, accessible, and effective.

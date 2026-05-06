@@ -37,7 +37,7 @@ const articles: Article[] = [
     category: "Awareness",
     title: "Phishing & Social Engineering",
     summary: "How attackers trick your people — and how to stop them.",
-    body: `Every day, businesses across the world lose money, data, and access to their own systems — not because of sophisticated hacking tools, but because someone clicked a link in an email. That is phishing. And it is the single most common way attackers get into a business.
+    body: `Phishing will not disappear. But a team that knows what to look for, takes a moment before clicking, and knows how to report suspicious activity is dramatically harder to compromise than one that does not. That awareness is a security control in itself and it costs nothing to build.
 
 **What is phishing?**
 

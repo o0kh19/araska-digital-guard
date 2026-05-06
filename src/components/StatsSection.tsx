@@ -300,7 +300,7 @@ const StatsSection = () => {
                 <h3 className="text-[19px] font-semibold mb-2 text-light-foreground">
                   {s.label}
                 </h3>
-                <p className="text-[#3A4A5C] text-[14px] leading-[1.7]">{s.desc}</p>
+                <p className="text-[#3A4A5C] text-[14px] leading-[1.7] mt-auto">{s.desc}</p>
               </div>
             </TiltCard>
           ))}

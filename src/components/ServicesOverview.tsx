@@ -3,38 +3,40 @@ import { useRef, useState, useEffect, useLayoutEffect, useCallback } from "react
 import { Link } from "react-router-dom";
 import { Key, ShieldCheck, Siren, Radar, FileSearch, Zap, GraduationCap } from "lucide-react";
 import cyberShield from "@/assets/cyber-shield.jpg";
+import { useTranslation } from "@/i18n";
 
 const primaryServices = [
   {
     icon: Key,
-    title: "24/7 Proactive Monitoring (SOC)",
-    desc: "We track the attackers who target your industry, so you know what to defend against  before they strike.",
+    titleKey: "servicesOverview.primaryServices.0.title",
+    descKey: "servicesOverview.primaryServices.0.desc",
     slug: "soc-as-a-service",
   },
   {
     icon: ShieldCheck,
-    title: "Threat & Risk Analysis (Intel & Assessment)",
-    desc: "We track the attackers who target your industry, so you know what to defend against — before they strike.",
+    titleKey: "servicesOverview.primaryServices.1.title",
+    descKey: "servicesOverview.primaryServices.1.desc",
     slug: "threat-risk-analysis",
   },
   {
     icon: Siren,
-    title: "Emergency Response & Security Training",
-    desc: "Fast incident containment plus practical staff training to reduce human error and recover faster.",
+    titleKey: "servicesOverview.primaryServices.2.title",
+    descKey: "servicesOverview.primaryServices.2.desc",
     slug: "emergency-response-training",
   },
 ];
 
 const secondaryServices = [
-  { icon: Radar, title: "Vulnerability Management", slug: "vulnerability-management" },
-  { icon: FileSearch, title: "vCISO Advisory", slug: "vciso-advisory" },
-  { icon: Zap, title: "M365 Security Hardening", slug: "m365-hardening" },
-  { icon: GraduationCap, title: "Security Policy Development", slug: "security-policy-development" },
+  { icon: Radar, titleKey: "servicesOverview.secondaryServices.0.title", slug: "vulnerability-management" },
+  { icon: FileSearch, titleKey: "servicesOverview.secondaryServices.1.title", slug: "vciso-advisory" },
+  { icon: Zap, titleKey: "servicesOverview.secondaryServices.2.title", slug: "m365-hardening" },
+  { icon: GraduationCap, titleKey: "servicesOverview.secondaryServices.3.title", slug: "security-policy-development" },
 ];
 
 type LinePath = { d: string };
 
 const ServicesOverview = () => {
+  const { t } = useTranslation();
   const ref = useRef<HTMLDivElement>(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
@@ -96,13 +98,13 @@ const ServicesOverview = () => {
           transition={{ duration: 0.5 }}
           className="mb-14"
         >
-          <span className="eyebrow text-xl">What We Do</span>
+          <span className="eyebrow text-xl">{t("servicesOverview.eyebrow")}</span>
           <span className="eyebrow-rule" />
           <h2 className="text-3xl sm:text-4xl font-bold mb-4 text-foreground tracking-[-0.015em]">
-            End-to-End Cybersecurity Services
+            {t("servicesOverview.title")}
           </h2>
           <p className="text-muted-foreground max-w-2xl leading-[1.8]">
-            Tailored to your organisation's size, industry, and risk profile.
+            {t("servicesOverview.subtitle")}
           </p>
         </motion.div>
 
@@ -153,7 +155,7 @@ const ServicesOverview = () => {
             <div className="absolute top-4 left-4 flex items-center gap-2 px-3 py-1.5 rounded-full bg-black/55 backdrop-blur-sm border border-primary/40">
               <span className={`status-dot ${anyHovered ? "fast" : ""}`} />
               <span className="text-[11px] font-semibold uppercase tracking-wider text-white font-mono-label">
-                {anyHovered ? "Live · Activity Detected" : "Live · Monitoring"}
+                {anyHovered ? t("servicesOverview.liveStatus.active") : t("servicesOverview.liveStatus.normal")}
               </span>
             </div>
           </motion.div>
@@ -203,14 +205,16 @@ const ServicesOverview = () => {
                     />
                   </div>
                   <h3 className="text-[18px] font-bold uppercase tracking-wide text-foreground mb-3 leading-tight">
-                    {svc.title}
+                    {t(svc.titleKey)}
                   </h3>
-                  <p className="text-muted-foreground text-[15px] leading-[1.7] mb-6 flex-1 font-bold">{svc.desc}</p>
+                  <p className="text-muted-foreground text-[15px] leading-[1.7] mb-6 flex-1 font-bold">
+                    {t(svc.descKey)}
+                  </p>
                   <Link
                     to={`/services#${svc.slug}`}
                     className="inline-flex items-center justify-center px-5 py-2 text-xs font-bold uppercase tracking-wider rounded border border-primary/40 text-primary hover:bg-primary hover:text-primary-foreground transition-all"
                   >
-                    Learn More
+                    {t("servicesOverview.learnMore")}
                   </Link>
                 </motion.div>
               );
@@ -240,7 +244,9 @@ const ServicesOverview = () => {
                   >
                     <svc.icon className="text-primary" size={18} strokeWidth={1.6} />
                   </div>
-                  <h4 className="text-sm font-semibold text-foreground leading-snug">{svc.title}</h4>
+                  <h4 className="text-sm font-semibold text-foreground leading-snug">
+                    {t(svc.titleKey)}
+                  </h4>
                 </Link>
               </motion.div>
             ))}

@@ -2,31 +2,11 @@ import { motion, useInView } from "framer-motion";
 import { useRef } from "react";
 import { Languages, Users, ShieldCheck, Zap } from "lucide-react";
 import socDashboard from "@/assets/soc-dashboard.jpg";
-
-const pillars = [
-  {
-    icon: Users,
-    title: "Business-First",
-    desc: "We learn how you operate, then tailor protection to your reality never generic advice.",
-  },
-  {
-    icon: Languages,
-    title: "Your Language",
-    desc: "Every report, briefing, and training in Kurdish, Arabic, or English for real clarity.",
-  },
-  {
-    icon: ShieldCheck,
-    title: "Always-On Defence",
-    desc: "Keep your business running, your data secure, and your people prepared as threats evolve.",
-  },
-  {
-    icon: Zap,
-    title: "Rapid Response",
-    desc: "When it matters most, a partner who knows your environment and acts within minutes.",
-  },
-];
+import { useTranslation } from "@/i18n";
 
 const ProblemSection = () => {
+  const { t } = useTranslation();
+  const pillars = (t("problem.pillars") as Array<{ title: string; desc: string }>) || [];
   const ref = useRef(null);
   const inView = useInView(ref, { once: true, margin: "-80px" });
 
@@ -44,22 +24,21 @@ const ProblemSection = () => {
           transition={{ duration: 0.6 }}
           className="max-w-3xl mb-16"
         >
-          <span className="eyebrow text-xl">Why we do it</span>
+          <span className="eyebrow text-xl">{t("problem.eyebrow")}</span>
           <span className="eyebrow-rule mb-6" />
           <h2 className="text-4xl sm:text-5xl font-extrabold text-foreground tracking-[-0.02em] leading-[1.05] mb-6 lg:text-4xl">
-            Cybersecurity that <span className="text-primary">speaks your language</span> and protects what matters.
+            {t("problem.headline")[0]} <span className="text-primary">{t("problem.headline")[1]}</span>
           </h2>
           <p className="text-muted-foreground text-lg sm:text-xl leading-[1.7]">
-            Cybersecurity is too often complex, costly, and hard to understand leaving many businesses without the
-            protection they need. At ArasKa Cyber Core, we're changing that.
+            {t("problem.body")}
           </p>
         </motion.div>
 
-        {/* MAIN GRID */}
-        <div className="grid lg:grid-cols-12 gap-8 lg:gap-12 items-stretch">
-          {/* Image card */}
+        {/* Two-column layout: image + pillars */}
+        <div className="grid lg:grid-cols-12 gap-8 items-center">
+          {/* Left: Dashboard image */}
           <motion.div
-            initial={{ opacity: 0, x: -30 }}
+            initial={{ opacity: 0, x: -40 }}
             animate={inView ? { opacity: 1, x: 0 } : {}}
             transition={{ duration: 0.6, delay: 0.1 }}
             className="lg:col-span-5 relative rounded-2xl overflow-hidden border border-primary/20 shadow-[0_20px_60px_-20px_hsl(var(--primary)/0.4)] group"
@@ -160,10 +139,9 @@ const ProblemSection = () => {
             `}</style>
           </motion.div>
 
-          {/* Pillars grid */}
+          {/* Right: Pillars grid */}
           <div className="lg:col-span-7 grid sm:grid-cols-2 gap-5">
             {pillars.map((p, i) => {
-              const Icon = p.icon;
               return (
                 <motion.div
                   key={p.title}
@@ -173,7 +151,7 @@ const ProblemSection = () => {
                   className="group relative bg-card/60 backdrop-blur-sm border border-border rounded-2xl p-7 transition-all duration-300 hover:border-primary/60 hover:-translate-y-1 hover:shadow-[0_12px_40px_-12px_hsl(var(--primary)/0.4)]"
                 >
                   <div className="w-12 h-12 rounded-xl bg-primary/10 border border-primary/30 flex items-center justify-center mb-5 transition-all duration-300 group-hover:bg-primary/20 group-hover:shadow-[0_0_20px_hsl(var(--primary)/0.4)]">
-                    <Icon className="w-6 h-6 text-primary" />
+                    <ShieldCheck className="w-6 h-6 text-primary" />
                   </div>
                   <h3 className="text-lg font-bold text-foreground mb-2 tracking-[-0.01em]">{p.title}</h3>
                   <p className="text-muted-foreground text-[15px] leading-[1.7]">{p.desc}</p>
@@ -189,9 +167,8 @@ const ProblemSection = () => {
               className="sm:col-span-2 relative rounded-2xl border border-primary/30 bg-gradient-to-br from-primary/10 via-card/40 to-transparent p-7"
             >
               <p className="text-foreground text-base sm:text-lg leading-[1.7] italic border-l-2 border-primary/70 pl-5">
-                "Because it's a matter of <span className="text-primary not-italic font-semibold">when</span>, not if
-                you deserve a partner who responds swiftly and acts when it matters most."
-              </p>
+              {t("problem.quote")}
+            </p>
             </motion.div>
           </div>
         </div>

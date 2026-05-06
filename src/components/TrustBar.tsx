@@ -1,3 +1,5 @@
+import { useTranslation } from "@/i18n";
+
 const MicrosoftLogo = () => (
   <div className="flex items-center gap-2">
     <svg width="22" height="22" viewBox="0 0 23 23" aria-hidden="true">
@@ -69,19 +71,22 @@ const logos = [
   { name: "Microsoft", Comp: MicrosoftLogo },
 ];
 
-const TrustBar = () => (
-  <section className="relative bg-slate-50 py-16 overflow-hidden">
-    <div className="absolute inset-0 cyber-grid-bg-light opacity-40 pointer-events-none" />
-    <div className="relative max-w-6xl mx-auto px-6">
-      <div className="text-center mb-10">
-        <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 tracking-[-0.02em]">
-          Trusted Cyber{" "}
-          <span style={{ color: "hsl(222 89% 55%)" }}>Security Standards</span>
-        </h2>
-        <p className="mt-3 text-slate-600 text-base">
-          Dedicated to industry-leading security standards and frameworks.
-        </p>
-      </div>
+const TrustBar = () => {
+  const { t } = useTranslation();
+
+  return (
+    <section className="relative bg-slate-50 py-16 overflow-hidden">
+      <div className="absolute inset-0 cyber-grid-bg-light opacity-40 pointer-events-none" />
+      <div className="relative max-w-6xl mx-auto px-6">
+        <div className="text-center mb-10">
+          <h2 className="text-3xl sm:text-4xl font-bold text-slate-900 tracking-[-0.02em]">
+            {t("trustBar.title")[0]}{" "}
+            <span style={{ color: "hsl(222 89% 55%)" }}>{t("trustBar.title")[1]}</span>
+          </h2>
+          <p className="mt-3 text-slate-600 text-base">
+            {t("trustBar.desc")}
+          </p>
+        </div>
 
       <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
         {logos.map(({ name, Comp }) => (
@@ -99,6 +104,7 @@ const TrustBar = () => (
       </div>
     </div>
   </section>
-);
+  );
+};
 
 export default TrustBar;

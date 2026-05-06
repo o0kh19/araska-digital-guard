@@ -1,14 +1,7 @@
 import { useState, useEffect } from "react";
 import { Link, useLocation } from "react-router-dom";
 import { Menu, X, AlertTriangle, Globe } from "lucide-react";
-
-const navLinks = [
-  { label: "Home", href: "/" },
-  { label: "Services", href: "/services" },
-  { label: "Resources", href: "/resources" },
-  { label: "Team", href: "/team" },
-  { label: "About", href: "/about" },
-];
+import { useTranslation } from "@/i18n";
 
 const LANGS = ["EN", "AR", "KU"] as const;
 type Lang = (typeof LANGS)[number];
@@ -16,8 +9,15 @@ type Lang = (typeof LANGS)[number];
 const Header = () => {
   const [scrolled, setScrolled] = useState(false);
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [lang, setLang] = useState<Lang>("EN");
   const location = useLocation();
+  const { lang, setLang, t } = useTranslation();
+  const navLinks = [
+    { label: t("nav.home"), href: "/" },
+    { label: t("nav.services"), href: "/services" },
+    { label: t("nav.resources"), href: "/resources" },
+    { label: t("nav.team"), href: "/team" },
+    { label: t("nav.about"), href: "/about" },
+  ];
 
   useEffect(() => {
     const onScroll = () => setScrolled(window.scrollY > 40);
@@ -113,6 +113,7 @@ const Header = () => {
           {/* Language switcher — desktop */}
           <div className="hidden lg:flex items-center gap-2 ml-2">
             <Globe size={15} className="text-muted-foreground" />
+            <span className="text-[11px] uppercase tracking-[0.14em] text-muted-foreground">{t("header.language")}</span>
             <div className="inline-flex items-center bg-slate-50/60 border border-slate-200/70 rounded-full p-1">
               {LANGS.map((l) => {
                 const active = lang === l;
@@ -166,7 +167,7 @@ const Header = () => {
             {/* Language switcher — mobile */}
             <div className="mt-4 pt-4 border-t border-slate-200 flex items-center justify-between">
               <span className="inline-flex items-center gap-2 text-[11px] font-bold uppercase tracking-[0.14em] text-muted-foreground">
-                <Globe size={14} /> Language
+                <Globe size={14} /> {t("header.language")}
               </span>
               <div className="inline-flex items-center bg-slate-50 border border-slate-200 rounded-full p-1">
                 {LANGS.map((l) => {

@@ -18,7 +18,7 @@ const stats = [
     value: 15,
     prefix: "<",
     suffix: " Mins",
-    label: "15 Mins",
+    label: "Response Time",
     desc: "Target critical incident response time",
     format: (n: number) => Math.round(n).toString(),
     decimals: 0,
@@ -28,7 +28,7 @@ const stats = [
     value: 24,
     prefix: "",
     suffix: "/7",
-    label: "24/7",
+    label: "Live Monitoring",
     desc: "Around-the-clock proactive monitoring",
     format: (n: number) => Math.round(n).toString(),
     decimals: 0,
@@ -38,7 +38,7 @@ const stats = [
     value: 0,
     prefix: "",
     suffix: "%",
-    label: "Tolerance",
+    label: "Data Loss Margin",
     desc: "Tolerance for client data loss in our incident response plans",
     format: (n: number) => Math.round(n).toString(),
     decimals: 0,
@@ -157,9 +157,9 @@ const TiltCard = ({ children, index, inView }: { children: React.ReactNode; inde
         transformStyle: "preserve-3d",
         transformPerspective: 1000,
       }}
-      className="relative"
+      className="relative h-full"
     >
-      <div style={{ transform: "translateZ(0)" }}>{children}</div>
+      <div style={{ transform: "translateZ(0)" }} className="h-full">{children}</div>
     </motion.div>
   );
 };
@@ -259,7 +259,7 @@ const StatsSection = () => {
           {stats.map((s, i) => (
             <TiltCard key={s.label} index={i} inView={inView}>
               <div
-                className="bg-white rounded-lg p-9 text-center transition-shadow duration-300 group"
+                className="bg-white rounded-lg p-9 text-center transition-shadow duration-300 group h-full flex flex-col items-center"
                 style={{
                   border: "1px solid #E2E8F0",
                   boxShadow: "0 1px 3px rgba(0,0,0,0.04)",
@@ -300,7 +300,7 @@ const StatsSection = () => {
                 <h3 className="text-[19px] font-semibold mb-2 text-light-foreground">
                   {s.label}
                 </h3>
-                <p className="text-[#3A4A5C] text-[14px] leading-[1.7]">{s.desc}</p>
+                <p className="text-[#3A4A5C] text-[14px] leading-[1.7] mt-auto">{s.desc}</p>
               </div>
             </TiltCard>
           ))}

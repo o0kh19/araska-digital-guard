@@ -1,23 +1,17 @@
-## Update "By the Numbers" section on Home page
+## Update "By the Numbers" labels & alignment
 
-Replace the current 3 stats in `src/components/StatsSection.tsx` with the 4 stats shown in the reference image.
+In `src/components/StatsSection.tsx`, update the `stats` array labels:
 
-### New stats (4 cards)
+- `<15 Mins` card → label: **"Response Time"**
+- `24/7` card → label: **"Live Monitoring"**
+- `0%` card → label: **"Data Loss Margin"**
+- `100%` card → label stays **"Compliance"**
 
-1. **100% — Compliance** — "Aligned with global NIST & OWASP standards" — icon: `ShieldCheck`
-2. **<15 Mins** — "Target critical incident response time" — icon: `Clock`
-3. **24/7** — "Around-the-clock proactive monitoring" — icon: `Users` (or `Eye`)
-4. **0% — Tolerance** — "Tolerance for client data loss in our incident response plans" — icon: `Lock`
+### Alignment & spacing consistency
 
-### Changes in `src/components/StatsSection.tsx`
+- Ensure each card uses the same vertical rhythm: icon (mb-5) → number (mb-2) → label (mb-2) → description.
+- Add `min-h-[14rem]` (or similar) to the card inner container so all 4 cards match height regardless of description length ("Tolerance for client data loss…" is longer than others).
+- Keep icon centered (`mx-auto`) and text `text-center` — already set.
+- Verify the number line uses consistent font size; the `<15 Mins` value will wrap on narrow screens, so reduce number to `text-3xl sm:text-4xl` only if needed (otherwise leave as-is on desktop).
 
-- Replace the `stats` array with the 4 entries above (update `value`, `prefix`, `suffix`, `label`, `desc`, `format`, `decimals`, `icon`).
-- For "24/7" and "<15 Mins", use a string-based display (skip the count-up animation by using value directly) or format functions that output the literal text. Simplest: keep `GlitchCounter` for numeric ones (100, 15, 0) and use prefix/suffix to wrap (`<` / ` Mins`, `%`, `/7` etc.).
-  - 100 → prefix none, suffix `%`
-  - 15 → prefix `<`, suffix ` Mins`
-  - 24 → prefix none, suffix `/7`
-  - 0 → prefix none, suffix `%`
-- Update grid to `lg:grid-cols-4` so all 4 cards fit on one row on desktop (currently `lg:grid-cols-3`).
-- Import `Clock` and `Lock` from `lucide-react`; remove unused `ShieldAlert` and `Activity`.
-
-No other files affected. Animation, tilt, glow, and styling remain unchanged.
+No other files affected.

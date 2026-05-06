@@ -169,7 +169,7 @@ const About = () => {
                 From SMBs to sector-focused enterprises.
               </h2>
               <p className="text-muted-foreground text-lg leading-[1.8]">
-                We work with small and medium-sized businesses, growing enterprises, and sector-focused organisations across the Kurdistan Region and wider Iraq — industries where cyber resilience is no longer optional.
+                We work with small and medium-sized businesses, growing enterprises, and sector-focused organisations across the Kurdistan Region and wider Iraq industries where cyber resilience is no longer optional.
               </p>
             </div>
             <div>

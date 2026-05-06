@@ -80,7 +80,7 @@ const Footer = () => (
 
         {/* Contact */}
         <div>
-          <h4 className="text-xs font-medium uppercase tracking-[0.18em] text-primary mb-4">Contact</h4>
+          <h4 className="text-xs font-medium uppercase tracking-[0.18em] text-primary mb-4">CONTACT</h4>
           <div className="space-y-3">
             <a
               href="mailto:info@araskacyber.com"

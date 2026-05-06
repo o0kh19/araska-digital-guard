@@ -5,7 +5,7 @@ import { componentTagger } from "lovable-tagger";
 
 // https://vitejs.dev/config/
 export default defineConfig(({ mode }) => ({
-  base: "/araska-digital-guard/",
+  base: process.env.GITHUB_ACTIONS ? "/araska-digital-guard/" : "/",
   server: {
     host: "::",
     port: 8080,

@@ -51,7 +51,7 @@ const services: Service[] = [
     whatItIs:
       "Our Threat & Risk Analysis service helps identify the threats most relevant to your organisation and prioritises the vulnerabilities that need immediate attention.",
     whyItMatters:
-      "Effective security starts with understanding your risks. We assess your environment, review possible attack paths, and provide practical recommendations so you can focus resources where they matter most — and reduce exposure to targeted threats.",
+      "When a security incident happens, speed matters. A slow or unprepared response multiplies the cost of an attack both financially and operationally. Trained staff and a tested response plan reduce the chance of human error becoming a security incident.",
     whatYouGet: [
       "Threat landscape assessment",
       "Risk identification and prioritisation",

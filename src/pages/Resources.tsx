@@ -41,7 +41,9 @@ const articles: Article[] = [
 
 **What is phishing?**
 
-Phishing is when an attacker sends you a message — usually an email, but sometimes a text or WhatsApp — pretending to be someone you trust. The message looks real, the logo looks right, and the language sounds professional. But the goal is always the same: get you to click a link, open a file, or hand over information.
+Fourth, use Multi-Factor Authentication (MFA) on every account that allows it. If an attacker does capture your password through a phishing attack, MFA means they still cannot get in without the second factor usually a code sent to your phone.
+
+Fourth, use Multi-Factor Authentication (MFA) on every account that allows it. If an attacker does capture your password through a phishing attack, MFA means they still cannot get in without the second factor usually a code sent to your phone.
 
 **What is social engineering?**
 

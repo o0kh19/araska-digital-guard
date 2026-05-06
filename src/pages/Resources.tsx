@@ -69,7 +69,7 @@ Phishing will not disappear. But a team that knows what to look for, takes a mom
     category: "Identity Protection",
     title: "Password & MFA Security",
     summary: "The two things that protect every account your business uses.",
-    body: `Your password is the key to your business. Your email account, your financial systems, your cloud storage, your customer records — they are all protected by passwords. And in most businesses, those passwords are far weaker than they should be.
+    body: `Review the passwords currently in use across your business. If anyone is using simple, short, or repeated passwords, change them now and move to a password manager. This is not a technical project it is a discipline that anyone can adopt with a small amount of guidance.
 
 **The problem with passwords**
 

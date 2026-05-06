@@ -8,7 +8,7 @@ const primaryServices = [
   {
     icon: Key,
     title: "24/7 Proactive Monitoring (SOC)",
-    desc: "Our experts watch your systems 24/7. We find threats, stop them fast, and tell you what happened — in plain language.",
+    desc: "We track the attackers who target your industry, so you know what to defend against  before they strike.",
     slug: "soc-as-a-service",
   },
   {

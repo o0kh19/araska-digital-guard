@@ -77,9 +77,9 @@ const Header = () => {
                   className="font-bold tracking-tight text-foreground leading-none"
                   style={{ fontFamily: "'Space Grotesk', sans-serif", letterSpacing: "-0.04em" }}
                 >
-                  <span className="text-4xl md:text-4xl">A</span>
+                  <span className="text-4xl md:text-4xl text-justify">A</span>
                   <span className="text-2xl md:text-3xl">ras</span>
-                  <span className="text-4xl md:text-4xl">K</span>
+                  <span className="text-4xl md:text-4xl text-justify">K</span>
                   <span className="text-2xl md:text-3xl">a</span>
                 </span>
                 <span className="text-[10px] md:text-[11px] tracking-[0.4em] mt-1.5 uppercase">
